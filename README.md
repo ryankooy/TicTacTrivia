@@ -1,5 +1,5 @@
 # project-1
-Project-1
+UNC Coding Bootcamp Project 1
 
 requirements:
 2 APIs |
