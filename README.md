@@ -10,7 +10,7 @@ good quality coding standards |
 incorporate reapeating elements (tables, columns, etc.) |
 Bootstrap or alternative CSS framework |
 deploy site to GitHub Pages |
-inclue user input validation |
+include user input validation |
 utilize Firebase for persistent data storage |
 mobile responsiveness |
 Materialize
