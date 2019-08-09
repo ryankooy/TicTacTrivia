@@ -14,3 +14,6 @@ include user input validation |
 utilize Firebase for persistent data storage |
 mobile responsiveness |
 Materialize
+
+
+trivia api --https://opentdb.com/api_config.php--
