@@ -3,9 +3,31 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <title></title>
     </head>
     <body>
-        
+    <form>
+        <div class="form-group">
+            <label for="catagory-select">Test</label>
+            <select class="form-control" id="catagory-select">
+              <option value = "9">General Knowledge</option>
+              <option value = "12">Music</option>
+              <option value = "23">History</option>
+              <option value = "17">Science & Nature</option>
+              <option value = "11">Film</option>
+            </select>
+            <label for="difficulty-select">Difficulty</label>
+            <select class="form-control" id="difficulty-select">
+                <option value="easy">Easy</option>
+                <option value="medium">Medium</option>
+                <option value="hard">Hard</option>
+            </select>
+            <button type="submit" id="testSubmit" class="btn btn-primary">Submit</button>
+          </div>
+    </form>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script rel="text/javascript" src="assets/javascript/app.js"></script>
     </body>
 </html>
