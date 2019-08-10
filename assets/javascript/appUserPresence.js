@@ -1,7 +1,3 @@
-<script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-auth.js"></script>
-// ^ add to index.html
-
 var firebaseConfig = {
    apiKey: "AIzaSyDGxeGNaPIi0Vp018GM7Br7SYonsYESqhg",
    authDomain: "project-1-4a8dc.firebaseapp.com",
@@ -41,7 +37,7 @@ database.ref().on('value', function(snap) {
     userName = snap.val().username;
     phoneNumber = snap.val().phonenumber;
     $('#').text(userName);
-
+    console.log(userName);
 });
 
 // add username that new user picks - push to db
