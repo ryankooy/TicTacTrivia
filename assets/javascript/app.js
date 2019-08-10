@@ -21,6 +21,7 @@ $.ajax({
     $(".TTTboard").show()
 })
 })
+//-----------------------------------------------------------------------------------------------------
 $(document).on("click", ".TTTboard", function(){
     var x = $(this).val()
     console.log(res[x].question)
