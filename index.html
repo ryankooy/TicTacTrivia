@@ -7,29 +7,32 @@
         <title></title>
     </head>
     <body>
-    <form>
-        <div class="form-group">
-            <label for="catagory-select">Test</label>
-            <select class="form-control" id="catagory-select">
-              <option value = "9">General Knowledge</option>
-              <option value = "12">Music</option>
-              <option value = "23">History</option>
-              <option value = "17">Science & Nature</option>
-              <option value = "11">Film</option>
-            </select>
-            <label for="difficulty-select">Difficulty</label>
-            <select class="form-control" id="difficulty-select">
-                <option value="easy">Easy</option>
-                <option value="medium">Medium</option>
-                <option value="hard">Hard</option>
-            </select>
-            <button type="submit" id="testSubmit" class="btn btn-primary">Submit</button>
-          </div>
-    </form>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script rel="text/javascript" src="assets/javascript/app.js"></script>
-    <script rel="text/javascript" src="assets/javascript/appUserPresence.js"></script>
-    <script rel="text/javascript" src="assets/javascript/appChatBox.js"></script>
-    <script rel="text/javascript" src="assets/javascript/appUserScores.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-database.js"></script>
+        <form>
+            <div class="form-group">
+                <label for="catagory-select">Test</label>
+                <select class="form-control" id="catagory-select">
+                <option value = "9">General Knowledge</option>
+                <option value = "12">Music</option>
+                <option value = "23">History</option>
+                <option value = "17">Science & Nature</option>
+                <option value = "11">Film</option>
+                </select>
+                <label for="difficulty-select">Difficulty</label>
+                <select class="form-control" id="difficulty-select">
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+                <button type="submit" id="testSubmit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script rel="text/javascript" src="assets/javascript/app.js"></script>
+        <script rel="text/javascript" src="assets/javascript/appUserPresence.js"></script>
+        <script rel="text/javascript" src="assets/javascript/appChatBox.js"></script>
+        <script rel="text/javascript" src="assets/javascript/appUserScores.js"></script>
     </body>
 </html>
