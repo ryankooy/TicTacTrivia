@@ -24,8 +24,25 @@ connectionsRef.on('value', function(snap) {
     $('#').text(snap.numChildren());
 });
 
-database.ref().on('value', function(snap) {
-    $('input').val().trim();
+$('submit').on('click', function(event) {
+    event.preventDefault();
+    var userName = $('#').val().trim();
+    var phoneNumber = $('#').val().trim();
 });
 
-// add username that new user picks
+database.ref().set({
+    username: userName,
+    phonenumber: phoneNumber
+});
+
+// $('input').val().trim();
+
+database.ref().on('value', function(snap) {
+    userName = snap.val().username;
+    phoneNumber = snap.val().phonenumber;
+    $('#').text(userName);
+
+});
+
+// add username that new user picks - push to db
+// phone number - optional - push to db
