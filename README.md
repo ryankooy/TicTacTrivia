@@ -15,5 +15,7 @@ utilize Firebase for persistent data storage |
 mobile responsiveness |
 Materialize
 
-
+Proposal: https://docs.google.com/document/d/1x1-RtJWTrd8_3jiYtUmVJ-KKKoOl4DpSaesO2llv8iA/edit?usp=sharing
 trivia api --https://opentdb.com/api_config.php--
+
+
