@@ -10,3 +10,5 @@ appId: "1:650110209456:web:6f0bcf90d12ba6c6"
 };
 
 firebase.initializeApp(firebaseConfig);
+
+var database = firebase.database();
