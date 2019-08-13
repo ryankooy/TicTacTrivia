@@ -2,6 +2,8 @@
 //-----------------------------------------------------------------------------------------------------
 var res = ""
 $(".TTTboard").hide()
+
+//when clicking submit, ajax's the required information
 $("#testSubmit").on("click", function(event){
     event.preventDefault();
 
@@ -18,7 +20,7 @@ $.ajax({
     $(".TTTboard").show()
 })
 })
-
+// filler var for finding the correct answer
 var correctAns = 0
 
 $(document).on("click", ".TTTboard", function(){
@@ -50,3 +52,7 @@ $(document).on("click", ".guess", function(){
         console.log("wrong")
     }
 })
+
+function clearScrn(){
+
+}
