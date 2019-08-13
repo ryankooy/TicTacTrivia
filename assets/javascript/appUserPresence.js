@@ -31,8 +31,6 @@ database.ref().set({
     phonenumber: phoneNumber
 });
 
-// $('input').val().trim();
-
 database.ref().on('value', function(snap) {
     userName = snap.val().username;
     phoneNumber = snap.val().phonenumber;
