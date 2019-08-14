@@ -16,25 +16,32 @@ var connectionsRef = database.ref("/connections");
 
 var connectedRef = database.ref(".info/connected");
 
+var userName;
+var email;
+var phoneNumber;
+
 connectionsRef.on('value', function(snap) {
-    $('#').text(snap.numChildren());
+    $('#online').text(snap.numChildren());
 });
 
-$('submit').on('click', function(event) {
+$('#user-b').on('click', function(event) {
     event.preventDefault();
-    var userName = $('#').val().trim();
-    var phoneNumber = $('#').val().trim();
+    userName = $('#username').val().trim();
+    email = $('#email').val().trim();
+    phoneNumber = $('#phone').val().trim();
 });
 
 database.ref().set({
     username: userName,
+    email: email,
     phonenumber: phoneNumber
 });
 
 database.ref().on('value', function(snap) {
     userName = snap.val().username;
+    email = snap.val().email;
     phoneNumber = snap.val().phonenumber;
-    $('#').text(userName);
+    $('#name').text(userName);
     console.log(userName);
 });
 
