@@ -4,7 +4,7 @@ var res = ""
 $(".TTTboard").hide()
 
 //when clicking submit, calls the questions and their answers
-$("#testSubmit").on("click", function(event){
+$("#catagory-Submit").on("click", function(event){
     event.preventDefault();
 
     //gets the value of the catagory and difficulty and saves them to vars
@@ -56,6 +56,8 @@ $(document).on("click", ".TTTboard", function(){
     questionH1.attr("class", "question")
     questionH1.text(res[x].question)
     $(".questionsTest").append(questionH1)
+
+
 })
 
 //when the answer is clicked checks to see if the answer is correct.
@@ -65,12 +67,20 @@ $(document).on("click", ".guess", function(){
     if ($(this).val() == correctAns){
 
         console.log("correct")
+        clearScrn()
     }
     else{
         console.log("wrong")
     }
 })
 
+//used to clear the questions and answers divs
 function clearScrn(){
-
+    $(".questionsTest").empty()
+    $(".answersTest").empty()
 }
+
+
+//--------------------------------------------------------------------------------
+
+
