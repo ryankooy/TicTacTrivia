@@ -12,38 +12,52 @@ firebase.initializeApp(firebaseConfig);
 
 var database = firebase.database();
 
-var connectionsRef = database.ref("/connections");
+// var connectionsRef = database.ref("/connections");
 
-var connectedRef = database.ref(".info/connected");
+// var connectedRef = database.ref(".info/connected");
 
 var userName;
 var email;
 var phoneNumber;
 
-connectionsRef.on('value', function(snap) {
-    $('#online').text(snap.numChildren());
-});
+// connectedRef.on('value', function(snap) {
+    
+//   // If they are connected..
+//   if (snap.val()) {
+
+//     // Add user to the connections list.
+//     var con = connectionsRef.push(true);
+
+//     // Remove user from the connection list when they disconnect.
+//     con.onDisconnect().remove();
+//   }
+
+// });
+
+// connectionsRef.on('value', function(snapshot) {
+//     $('#online').text("There are " + snapshot.numChildren() + " players online.");
+// });
 
 $('#user-b').on('click', function(event) {
     event.preventDefault();
     userName = $('#username').val().trim();
     email = $('#email').val().trim();
     phoneNumber = $('#phone').val().trim();
-});
-
-database.ref().set({
-    username: userName,
-    email: email,
-    phonenumber: phoneNumber
-});
-
-database.ref().on('value', function(snap) {
-    userName = snap.val().username;
-    email = snap.val().email;
-    phoneNumber = snap.val().phonenumber;
-    $('#name').text(userName);
     console.log(userName);
+
+    database.ref().set({
+        username: userName,
+        email: email,
+        phonenumber: phoneNumber
+    });
+
+    database.ref().on('value', function(snap) {
+        userName = snap.val().username;
+        email = snap.val().email;
+        phoneNumber = snap.val().phonenumber;
+        $('#name').text("Hi, " + userName + "!");
+        console.log(userName);
+    });
+
 });
 
-// add username that new user picks - push to db
-// phone number - optional - push to db
