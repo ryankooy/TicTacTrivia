@@ -5,43 +5,38 @@
         <title>Project 1</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-<<<<<<< HEAD
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="msapplication-TileColor" content="#3372DF">
+        <meta name="msapplication-navbutton-color" content="#303F9F">
+
+        <!-- Assorted Firebase Chat File Links-->
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
         <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.orange-indigo.min.css">
-        <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
-        <meta name="msapplication-navbutton-color" content="#303F9F">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" href="assets/css/main.css">
         <link href="assets/json/.eslintrc.json">
         <link href="assets/json/firebase.json">
         <link rel="manifest" href="assets/json/manifest.json">
         <link href="assets/json/package.json">
+        <link href="assets/web-start/.firebaserc">
         <link href="assets/web-start/.firebase/hosting.cHVibGlj.cache">
-        <title>Project 1</title>
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        
+        <!-- External Fonts -->
+
+        <!-- Css Style Sheets -->
+        <link rel="stylesheet" href="assets/style.css"> 
+        <link rel="stylesheet" href="assets/css/main.css">
+
     </head>
     <body>
-=======
 
-        <!-- Firebase CDN -->
->>>>>>> 63482a995c4f53683cf3d51132317eb3492f7284
+        <!-- Firebase CDN (in body) -->
         <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-auth.js"></script>
         <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-database.js"></script>
-        <script src="/__/firebase/init.js"></script>
-     
-         <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <!-- External Fonts -->
-
-         <!-- Css Style Sheets -->
-         <link rel="stylesheet" href="assets/style.css"> 
-
-    </head>
-    <body>
+        <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase/init.js"></script>
         <!-- Section 1: Start -->
         <section id="start">
                 <table class="table">
@@ -69,102 +64,7 @@
             
         </section>
 
-         <!-- Section 4: Category Selection -->
-        <section id="category-selection">
-            <form>
-                <div class="form-group">
-                    <!-- Category Selection -->
-                    <label class="form-item__label" for="select">Test</label>
-                        <select class="form-control" id="catagory-select">
-                            <option disabled selected value="" required>Select Category</option>
-                            <option value = "21">Sports</option>
-                            <option value = "12">Music</option>
-                            <option value = "23">History</option>
-                            <option value = "17">Science & Nature</option>
-                            <option value = "11">Film</option>
-                        </select>
-                    <label class="form-item__label" for="select">Difficulty</label>
-                        <select class="form-control" id="difficulty-select">
-                            <option disabled selected value="" >Select Difficulty</option>
-                            <option value="easy">Easy</option>
-                            <option value="medium">Medium</option>
-                            <option value="hard">Hard</option>
-                        </select>
-                    
-                </div>
-            </form>
-            <!-- submit -->
-            <button type="submit" id="category-submit" class="btn btn-primary">Submit</button>
-        </section>
-
-        <!-- Section 5: Game Play -->
-        <section id="game-play">
-            <div>
-                <button class="TTTboard" value="0">1</button>
-                <button class="TTTboard" value="1">2</button>
-                <button class="TTTboard" value="2">3</button>
-                <button class="TTTboard" value="3">4</button>
-                <button class="TTTboard" value="4">5</button>
-                <button class="TTTboard" value="5">6</button>
-                <button class="TTTboard" value="6">7</button>
-                <button class="TTTboard" value="7">8</button>
-                <button class="TTTboard" value="8">9</button>
-            </div>
-            <div class="questionsTest">
-
-            </div>
-            <div class="answersTest">
-
-        <!-- <script src="/__/firebase/init.js"></script> -->
-        <div id="user-info">
-            <p>Create a username:</p>
-            <input type="text" id="username">
-            <p>Enter your email address (optional):</p>
-            <input type="email" id="email">
-            <p>Enter your phone number (optional):</p>
-            <input id="phone">
-            <button type="submit" id="user-b">Submit</button>
-            <p id="online"></p>
-            <p id="name"></p>
-        </div>
-<<<<<<< HEAD
-        <form>
-            <div class="form-group">
-                <label for="catagory-select">Test</label>
-                <select class="form-control" id="catagory-select">
-                <option value = "21">Sports</option>
-                <option value = "12">Music</option>
-                <option value = "23">History</option>
-                <option value = "17">Science & Nature</option>
-                <option value = "11">Film</option>
-                </select>
-                <label for="difficulty-select">Difficulty</label>
-                <select class="form-control" id="difficulty-select">
-                    <option value="easy">Easy</option>
-                    <option value="medium">Medium</option>
-                    <option value="hard">Hard</option>
-                </select>
-                <button type="submit" id="testSubmit" class="btn btn-primary">Submit</button>
-            </div>
-        </form>
-        <div>
-            <button class="TTTboard" value="0">1</button>
-            <button class="TTTboard" value="1">2</button>
-            <button class="TTTboard" value="2">3</button>
-            <button class="TTTboard" value="3">4</button>
-            <button class="TTTboard" value="4">5</button>
-            <button class="TTTboard" value="5">6</button>
-            <button class="TTTboard" value="6">7</button>
-            <button class="TTTboard" value="7">8</button>
-            <button class="TTTboard" value="8">9</button>
-        </div>
-        <div class="questionsTest">
-        </div>
-        <div class="answersTest">
-        </div>
-
         <!-- chatbox -->
-
         <section id="chatbox">
             <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-header">
             <header class="mdl-layout__header mdl-color-text--white mdl-color--light-blue-700">
@@ -216,16 +116,98 @@
                 </main>
             </div>
         </section>
-<!-- Import and configure the Firebase SDK -->
-        <!-- <script src="/__/firebase/6.3.4/firebase-app.js"></script>
-        <script src="/__/firebase/6.3.4/firebase-auth.js"></script>
-        <script src="/__/firebase/6.3.4/firebase-storage.js"></script>
-        <script src="/__/firebase/6.3.4/firebase-messaging.js"></script>
-        <script src="/__/firebase/6.3.4/firebase-firestore.js"></script>
-        <script src="/__/firebase/6.3.4/firebase-performance.js"></script> -->
-        <!-- <script src="/__/firebase/init.js"></script> -->
-=======
+
+         <!-- Section 4: Category Selection -->
+        <section id="category-selection">
+            <form>
+                <div class="form-group">
+                    <!-- Category Selection -->
+                    <label class="form-item__label" for="select">Test</label>
+                        <select class="form-control" id="catagory-select">
+                            <option disabled selected value="" required>Select Category</option>
+                            <option value = "21">Sports</option>
+                            <option value = "12">Music</option>
+                            <option value = "23">History</option>
+                            <option value = "17">Science & Nature</option>
+                            <option value = "11">Film</option>
+                        </select>
+                    <label class="form-item__label" for="select">Difficulty</label>
+                        <select class="form-control" id="difficulty-select">
+                            <option disabled selected value="" >Select Difficulty</option>
+                            <option value="easy">Easy</option>
+                            <option value="medium">Medium</option>
+                            <option value="hard">Hard</option>
+                        </select>
+                    
+                </div>
+            </form>
+            <!-- submit -->
+            <button type="submit" id="category-submit" class="btn btn-primary">Submit</button>
         </section>
+
+        <!-- Section 5: Game Play -->
+        <section id="game-play">
+            <div>
+                <button class="TTTboard" value="0">1</button>
+                <button class="TTTboard" value="1">2</button>
+                <button class="TTTboard" value="2">3</button>
+                <button class="TTTboard" value="3">4</button>
+                <button class="TTTboard" value="4">5</button>
+                <button class="TTTboard" value="5">6</button>
+                <button class="TTTboard" value="6">7</button>
+                <button class="TTTboard" value="7">8</button>
+                <button class="TTTboard" value="8">9</button>
+            </div>
+            <div class="questionsTest">
+
+            </div>
+            <div class="answersTest">
+
+        <div id="user-info">
+            <p>Create a username:</p>
+            <input type="text" id="username">
+            <p>Enter your email address (optional):</p>
+            <input type="email" id="email">
+            <p>Enter your phone number (optional):</p>
+            <input id="phone">
+            <button type="submit" id="user-b">Submit</button>
+            <p id="online"></p>
+            <p id="name"></p>
+        </div>
+        <form>
+            <div class="form-group">
+                <label for="catagory-select">Test</label>
+                <select class="form-control" id="catagory-select">
+                <option value = "21">Sports</option>
+                <option value = "12">Music</option>
+                <option value = "23">History</option>
+                <option value = "17">Science & Nature</option>
+                <option value = "11">Film</option>
+                </select>
+                <label for="difficulty-select">Difficulty</label>
+                <select class="form-control" id="difficulty-select">
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+                <button type="submit" id="testSubmit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+        <div>
+            <button class="TTTboard" value="0">1</button>
+            <button class="TTTboard" value="1">2</button>
+            <button class="TTTboard" value="2">3</button>
+            <button class="TTTboard" value="3">4</button>
+            <button class="TTTboard" value="4">5</button>
+            <button class="TTTboard" value="5">6</button>
+            <button class="TTTboard" value="6">7</button>
+            <button class="TTTboard" value="7">8</button>
+            <button class="TTTboard" value="8">9</button>
+        </div>
+        <div class="questionsTest">
+        </div>
+        <div class="answersTest">
+        </div>
 
         <!-- Section 6: outcome -->
         <section id="outcome">
@@ -251,7 +233,6 @@
 
         </section>     
 
->>>>>>> 63482a995c4f53683cf3d51132317eb3492f7284
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script rel="text/javascript" src="assets/javascript/app.js"></script>
         <script rel="text/javascript" src="assets/javascript/appUserPresence.js"></script>
@@ -259,7 +240,7 @@
         <script rel="text/javascript" src="assets/javascript/appUserScores.js"></script>
         <script rel="text/javascript" src="assets/javascript/main.js"></script>
         <script rel="text/javascript" src="assets/javascript/firebase-messaging-sw.js"></script>
+        <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
         <script rel="text/javascript" src="assets/web-start/functions/index.js"></script>
-        <!-- <script rel="text/javascript" src="assets/web-start/public/scripts/main.js"></script> -->
     </body>
 </html>

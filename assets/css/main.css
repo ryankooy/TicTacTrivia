@@ -14,9 +14,18 @@
  * limitations under the License.
  */
 
- html, body {
+html, body {
   font-family: 'Roboto', 'Helvetica', sans-serif;
 }
+
+#chatbox {
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  width: 500px;
+  height: 300px;
+}
+
 main, #messages-card {
   height: 100%;
   padding-bottom: 0;
@@ -27,6 +36,7 @@ main, #messages-card {
 }
 #messages-card {
   margin-top: 15px;
+  width: 100%;
 }
 .mdl-layout__header-row span {
   margin-left: 15px;
