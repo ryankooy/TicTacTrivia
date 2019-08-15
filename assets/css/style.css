@@ -1,0 +1,38 @@
+/*
+========================================
+Index.html layout
+========================================
+*/
+
+* {
+    box-sizing: border-box;
+  }
+  *, *::after, *::before {
+    box-sizing: border-box;
+  }
+
+/*
+========================================
+Main Container
+========================================
+*/
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    /* min-height: 100vh; */
+    overflow: hidden;
+    padding: 5vh 5vw;
+}
+
+.containerMain {
+    margin: 0 auto;
+    max-width: 1000px;
+    width: 100%;
+    height: 14vh;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    background: grey;
+
+  }
+
+
