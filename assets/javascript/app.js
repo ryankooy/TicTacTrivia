@@ -1,10 +1,10 @@
-// Basics of setting up the questions of the tic-tac-toe board 
+// Trivia
 //-----------------------------------------------------------------------------------------------------
 var res = ""
 $(".TTTboard").hide()
 
 //when clicking submit, calls the questions and their answers
-$("#catagory-Submit").on("click", function(event){
+$("#category-submit").on("click", function(event){
     event.preventDefault();
 
     //gets the value of the catagory and difficulty and saves them to vars
@@ -84,3 +84,58 @@ function clearScrn(){
 //--------------------------------------------------------------------------------
 
 
+// Tic-tac-toe
+//--------------------------------------------------------------------------------
+var player1 = true
+var player2 = false
+
+$(document).on("click", ".TTTboard", function(){
+
+    if (player1 === true){
+        $(this).addClass("blue")
+        console.log(player1, player2)
+        player2 = true
+        player1 = false
+        checkWins()
+    }
+    else{
+        $(this).addClass("red")
+        console.log(player1, player2)
+        player1 = true
+        player2 = false
+        checkWins()
+    }
+
+})
+
+function checkWins(){
+    var blueWins1 = $("#one.blue, #two.blue, #three.blue").length === 3
+    var blueWins2 = $("#four.blue, #five.blue, #six.blue").length === 3
+    var blueWins3 = $("#seven.blue, #eight.blue, #nine.blue").length === 3
+    var blueWins4 = $("#one.blue, #four.blue, #seven.blue").length === 3
+    var blueWins5 = $("#two.blue, #five.blue, eight.blue").length === 3
+    var blueWins6 = $("#three.blue, #six.blue, #nine.blue").length === 3
+    var blueWins7 = $("#one.blue, #five.blue, #nine.blue").length === 3
+    var blueWins8 = $("#three.blue, #five.blue, #seven.blue").length === 3
+
+    if(blueWins1 === true || blueWins2 === true || blueWins3 === true ||
+         blueWins4 === true || blueWins5 === true || blueWins6 === true ||
+         blueWins7 === true || blueWins8 === true){
+        alert("Blue Wins")
+    }
+    
+    var redWins1 = $("#one.red, #two.red, #three.red").length === 3
+    var redWins2 = $("#four.red, #five.red, #six.red").length === 3
+    var redWins3 = $("#seven.red, #eight.red, #nine.red").length === 3
+    var redWins4 = $("#one.red, #four.red, #seven.red").length === 3
+    var redWins5 = $("#two.red, #five.red, eight.red").length === 3
+    var redWins6 = $("#three.red, #six.red, #nine.red").length === 3
+    var redWins7 = $("#one.red, #five.red, #nine.red").length === 3
+    var redWins8 = $("#three.red, #five.red, #seven.red").length === 3
+    
+    if(redWins1 === true || redWins2 === true || redWins3 === true ||
+        redWins4 === true || redWins5 === true || redWins6 === true ||
+        redWins7 === true || redWins8 === true){
+       alert("Red Wins")
+   }
+}
