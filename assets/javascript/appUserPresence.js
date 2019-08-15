@@ -20,24 +20,6 @@ var userName;
 var email;
 var phoneNumber;
 
-// connectedRef.on('value', function(snap) {
-    
-//   // If they are connected..
-//   if (snap.val()) {
-
-//     // Add user to the connections list.
-//     var con = connectionsRef.push(true);
-
-//     // Remove user from the connection list when they disconnect.
-//     con.onDisconnect().remove();
-//   }
-
-// });
-
-// connectionsRef.on('value', function(snapshot) {
-//     $('#online').text("There are " + snapshot.numChildren() + " players online.");
-// });
-
 $('#user-b').on('click', function(event) {
     event.preventDefault();
     userName = $('#username').val().trim();
@@ -61,3 +43,29 @@ $('#user-b').on('click', function(event) {
 
 });
 
+var provider = new firebase.auth.GoogleAuthProvider();
+
+provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
+
+firebase.auth().signInWithPopup(provider).then(function(result) {
+  // This gives you a Google Access Token. You can use it to access the Google API.
+  var token = result.credential.accessToken;
+  // The signed-in user info.
+  var user = result.user;
+  // ...
+}).catch(function(error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  // The email of the user's account used.
+  var email = error.email;
+  // The firebase.auth.AuthCredential type that was used.
+  var credential = error.credential;
+  // ...
+});
+
+firebase.auth().signOut().then(function() {
+  // Sign-out successful.
+}).catch(function(error) {
+  // An error happened.
+});
