@@ -26,8 +26,10 @@
         <!-- External Fonts -->
 
         <!-- Css Style Sheets -->
+        <link rel="stylesheet" href="assets/css/reset.css">
         <link rel="stylesheet" href="assets/style.css"> 
         <link rel="stylesheet" href="assets/css/main.css">
+        <link rel="stylesheet" href="assets/css/game_board.css">
 
     </head>
     <body>
@@ -61,6 +63,7 @@
 
         <!-- Section 3: Player Selection -->
         <section id="player-selection">
+<<<<<<< HEAD
             
         </section>
 
@@ -106,8 +109,23 @@
                 </main>
             </div>
         </section> -->
+=======
+            <div id="user-info">
+                    <p>Create a username:</p>
+                    <input type="text" id="username">
+                    <p>Enter your email address (optional):</p>
+                    <input type="email" id="email">
+                    <p>Enter your phone number (optional):</p>
+                    <input id="phone">
+                    <button type="submit" id="user-b">Submit</button>
+                    <p id="online"></p>
+                    <p id="name"></p>
+                </div>
+            
+        </section>
+>>>>>>> e3ef40bd51f21fe27dcc2ed7037cc8677cb671ef
 
-         <!-- Section 4: Category Selection -->
+        <!-- Section 4: Category Selection -->
         <section id="category-selection">
             <form>
                 <div class="form-group">
@@ -131,73 +149,68 @@
                     
                 </div>
             </form>
+
+            <!-- chatbox -->
+            <section id="chatbox">
+                <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-header">
+                <header class="mdl-layout__header mdl-color-text--white mdl-color--light-blue-700">
+                    <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid">
+                        <div class="mdl-layout__header-row mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
+                            <h3><i class="material-icons">chat_bubble_outline</i> Friendly Chat</h3>
+                        </div>
+                        <div id="user-container">
+                            <div hidden id="user-pic"></div>
+                            <div hidden id="user-name"></div>
+                            <button hidden id="sign-out" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--white">
+                                Sign-out
+                            </button>
+                            <button hidden id="sign-in" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--white">
+                                <i class="material-icons">account_circle</i>Sign-in with Google
+                            </button>
+                        </div>
+                    </div>
+                </header>
+                <main class="mdl-layout__content mdl-color--grey-100">
+                    <div id="messages-card-container" class="mdl-cell mdl-cell--12-col mdl-grid">
+                    <!-- Messages container -->
+                        <div id="messages-card" class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--6-col-tablet mdl-cell--6-col-desktop">
+                            <div class="mdl-card__supporting-text mdl-color-text--grey-600">
+                                <div id="messages">
+                                </div>
+                                <form id="message-form" action="#">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <input class="mdl-textfield__input" type="text" id="message" autocomplete="off">
+                                        <label class="mdl-textfield__label" for="message">Message...</label>
+                                    </div>
+                                    <button id="submit" disabled type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                                        Send
+                                    </button>
+                                </form>
+                                <form id="image-form" action="#">
+                                    <input id="mediaCapture" type="file" accept="image/*" capture="camera">
+                                    <button id="submitImage" title="Add an image" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--amber-400 mdl-color-text--white">
+                                        <i class="material-icons">image</i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                        <div id="must-signin-snackbar" class="mdl-js-snackbar mdl-snackbar">
+                            <div class="mdl-snackbar__text"></div>
+                                <button class="mdl-snackbar__action" type="button"></button>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+            </section>
+
             <!-- submit -->
             <button type="submit" id="category-submit" class="btn btn-primary">Submit</button>
         </section>
 
         <!-- Section 5: Game Play -->
-        <section id="game-play">
-            <div>
-                <button class="TTTboard" value="0">1</button>
-                <button class="TTTboard" value="1">2</button>
-                <button class="TTTboard" value="2">3</button>
-                <button class="TTTboard" value="3">4</button>
-                <button class="TTTboard" value="4">5</button>
-                <button class="TTTboard" value="5">6</button>
-                <button class="TTTboard" value="6">7</button>
-                <button class="TTTboard" value="7">8</button>
-                <button class="TTTboard" value="8">9</button>
-            </div>
-            <div class="questionsTest">
-
-            </div>
-            <div class="answersTest">
-
-        <div id="user-info">
-            <p>Create a username:</p>
-            <input type="text" id="username">
-            <p>Enter your email address (optional):</p>
-            <input type="email" id="email">
-            <p>Enter your phone number (optional):</p>
-            <input id="phone">
-            <button type="submit" id="user-b">Submit</button>
-            <p id="online"></p>
-            <p id="name"></p>
-        </div>
-        <form>
-            <div class="form-group">
-                <label for="catagory-select">Test</label>
-                <select class="form-control" id="catagory-select">
-                <option value = "21">Sports</option>
-                <option value = "12">Music</option>
-                <option value = "23">History</option>
-                <option value = "17">Science & Nature</option>
-                <option value = "11">Film</option>
-                </select>
-                <label for="difficulty-select">Difficulty</label>
-                <select class="form-control" id="difficulty-select">
-                    <option value="easy">Easy</option>
-                    <option value="medium">Medium</option>
-                    <option value="hard">Hard</option>
-                </select>
-                <button type="submit" id="testSubmit" class="btn btn-primary">Submit</button>
-            </div>
-        </form>
-        <div>
-            <button class="TTTboard" value="0">1</button>
-            <button class="TTTboard" value="1">2</button>
-            <button class="TTTboard" value="2">3</button>
-            <button class="TTTboard" value="3">4</button>
-            <button class="TTTboard" value="4">5</button>
-            <button class="TTTboard" value="5">6</button>
-            <button class="TTTboard" value="6">7</button>
-            <button class="TTTboard" value="7">8</button>
-            <button class="TTTboard" value="8">9</button>
-        </div>
-        <div class="questionsTest">
-        </div>
-        <div class="answersTest">
-        </div>
+      
+        <!-- Game board on new index page -->
+        <a href="game_board.html"></a>
 
         <!-- Section 6: outcome -->
         <section id="outcome">
