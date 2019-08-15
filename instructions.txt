@@ -1,0 +1,24 @@
+Welcome to ***Extreme Trivia Tac Toe*****
+
+You must enter a username to play the game.  You can also enter your email address so that others can challenge you to a game.
+
+Choose either Player 1 or Player 2. 
+If no other players are online, you can invite a friend, or challenge a previous player. 
+
+Once Player 1 and Player 2 are selected, the game will start and other players must wait until the game is complete in order to start a new game. 
+
+Player 1 will choose the category.
+Then player 1 will choose the difficulty level.
+
+When the game starts, the 15 second timer will begin.  
+Player 1 must select a square on the 3 x 3 grid. 
+Both players will be given the remaining time to answer the question.
+
+If you answer the question first your icon will appear in that square. 
+If your opponent answers that question first their icon will appear in that square.
+Then the next player selects a square.
+If time runs out or if no one anwers the question correctly, the next player gets to select a square.
+
+The first player with 3 squares in a row wins the game!
+
+There’s also a live chat that occurs throughout the game. 
