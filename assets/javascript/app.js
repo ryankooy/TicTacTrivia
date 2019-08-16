@@ -71,6 +71,7 @@ $(document).on("click", ".guess", function(){
     }
     else{
         console.log("wrong")
+        clearScrn()
     }
 })
 
@@ -84,7 +85,7 @@ function clearScrn(){
 //--------------------------------------------------------------------------------
 
 
-// Tic-tac-toe
+// Tic-tac-toe base
 //--------------------------------------------------------------------------------
 var player1 = true
 var player2 = false
@@ -93,6 +94,8 @@ $(document).on("click", ".TTTboard", function(){
 
     if (player1 === true){
         $(this).addClass("blue")
+        $(this).addClass("btn-primary")
+        $(this).prop('disabled', true)
         console.log(player1, player2)
         player2 = true
         player1 = false
@@ -100,6 +103,8 @@ $(document).on("click", ".TTTboard", function(){
     }
     else{
         $(this).addClass("red")
+        $(this).addClass("btn-danger")
+        $(this).prop('disabled', true)
         console.log(player1, player2)
         player1 = true
         player2 = false
@@ -108,12 +113,13 @@ $(document).on("click", ".TTTboard", function(){
 
 })
 
+//need to clean up but the function the checks for a win
 function checkWins(){
     var blueWins1 = $("#one.blue, #two.blue, #three.blue").length === 3
     var blueWins2 = $("#four.blue, #five.blue, #six.blue").length === 3
     var blueWins3 = $("#seven.blue, #eight.blue, #nine.blue").length === 3
     var blueWins4 = $("#one.blue, #four.blue, #seven.blue").length === 3
-    var blueWins5 = $("#two.blue, #five.blue, eight.blue").length === 3
+    var blueWins5 = $("#two.blue, #five.blue, #eight.blue").length === 3
     var blueWins6 = $("#three.blue, #six.blue, #nine.blue").length === 3
     var blueWins7 = $("#one.blue, #five.blue, #nine.blue").length === 3
     var blueWins8 = $("#three.blue, #five.blue, #seven.blue").length === 3
@@ -128,7 +134,7 @@ function checkWins(){
     var redWins2 = $("#four.red, #five.red, #six.red").length === 3
     var redWins3 = $("#seven.red, #eight.red, #nine.red").length === 3
     var redWins4 = $("#one.red, #four.red, #seven.red").length === 3
-    var redWins5 = $("#two.red, #five.red, eight.red").length === 3
+    var redWins5 = $("#two.red, #five.red, #eight.red").length === 3
     var redWins6 = $("#three.red, #six.red, #nine.red").length === 3
     var redWins7 = $("#one.red, #five.red, #nine.red").length === 3
     var redWins8 = $("#three.red, #five.red, #seven.red").length === 3
