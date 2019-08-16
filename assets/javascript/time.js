@@ -1,35 +1,37 @@
-//  var duration = moment.duration({
-//     'seconds': 30,
-//         'hour': 2,
-//         'minutes': 10
-// });
+var myCounter = new Countdown({  
+    seconds:15,  // number of seconds to count down
+    onUpdateStatus: function(sec){
+        $("#timer").html(sec);}, // callback for each second
+    onCounterEnd: function(){ 
+         $("#timer").html('Time is up!');} // final action
+});
 
-// var timestamp = new Date(0,0,0,2,10,30);
-// var interval = 1;
-// setInterval(function () {
-//     timestamp = new Date(timestamp.getTime() + interval*1000);
-    
-//     duration = moment.duration(duration.asSeconds() + interval, 'seconds');
-//     //.asSeconds() 
-//     $('.countdown').text(Math.round(duration.asHours()) + 'h:' + Math.round(duration.asMinutes()) + 'm:' + Math.round(duration.asSeconds()) + 's'); //.seconds() 
-//     $('.countdown1').text(duration.days() + 'd:' + duration.hours() + 'h:' + duration.minutes() + 'm:' + duration.seconds() + 's');
-// })
+myCounter.start();
 
+function Countdown(options) {
+  var timer,
+  instance = this,
+  seconds = options.seconds || 10,
+  updateStatus = options.onUpdateStatus || function () {},
+  counterEnd = options.onCounterEnd || function () {};
 
+  function decrementCounter() {
+    updateStatus(seconds);
+    if (seconds === 0) {
+      counterEnd();
+      instance.stop();
+    }
+    seconds--;
+  }
 
-var count=15;
+  this.start = function () {
+    clearInterval(timer);
+    timer = 0;
+    seconds = options.seconds;
+    timer = setInterval(decrementCounter, 1000);
+  };
 
-var counter=setInterval(timer, 1000); 
-
-function timer() {
-  count=count-1;
-  if (count < 0)   {
-     clearInterval(counter);
-     return;
-     
-  } 
-  $("#timer").html(count + " secs")
+  this.stop = function () {
+    clearInterval(timer);
+  };
 }
-
-
-
