@@ -12,31 +12,24 @@ firebase.initializeApp(firebaseConfig);
 
 var database = firebase.database();
 
-// var connectionsRef = database.ref("/connections");
-
-// var connectedRef = database.ref(".info/connected");
-
 var userName;
 var email;
-var phoneNumber;
+var highScores;
 
 $('#user-b').on('click', function(event) {
     event.preventDefault();
     userName = $('#username').val().trim();
     email = $('#email').val().trim();
-    phoneNumber = $('#phone').val().trim();
     console.log(userName);
 
     database.ref().set({
         username: userName,
         email: email,
-        phonenumber: phoneNumber
     });
 
     database.ref().on('value', function(snap) {
         userName = snap.val().username;
         email = snap.val().email;
-        phoneNumber = snap.val().phonenumber;
         $('#name').text("Hi, " + userName + "!");
         console.log(userName);
     });
