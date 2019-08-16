@@ -9,6 +9,17 @@
         <meta name="msapplication-TileColor" content="#3372DF">
         <meta name="msapplication-navbutton-color" content="#303F9F">
 
+        <!-- Assorted Firebase Chat File Links-->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+        <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.orange-indigo.min.css">
+        <link href="assets/json/.eslintrc.json">
+        <link href="assets/json/firebase.json">
+        <link rel="manifest" href="assets/json/manifest.json">
+        <link href="assets/json/package.json">
+        <link href="assets/web-start/.firebaserc">
+        <link href="assets/web-start/.firebase/hosting.cHVibGlj.cache">
+
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         
@@ -17,6 +28,7 @@
         <!-- Css Style Sheets -->
         <link rel="stylesheet" href="assets/css/reset.css">
         <link rel="stylesheet" href="assets/style.css"> 
+        <link rel="stylesheet" href="assets/css/main.css">
         <link rel="stylesheet" href="assets/css/game_board.css">
 
     </head>
@@ -27,19 +39,9 @@
         <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-auth.js"></script>
         <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-database.js"></script>
         <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase/init.js"></script>
-     
         
-
-        
-
-        <!-- Section 5: Game Play -->
-      
-        <!-- Game board on new index page -->
-        <a href="game_board.html"></a>
-
-
-        <!--Here for testing sake right now, will be romoved in the future-->
-        <!-------------------------------------------------------------------->
+        <!-- Section 5: Game Play / Game Board -->
+        <div class="jumbotron">Play the Game!</div>
         <section id="game-play">
             <div class="container m-4">
                 <button class="TTTboard" value="0" id="one">1</button>
@@ -56,15 +58,19 @@
 
             </div>
             <div class="answersTest">
-        <!-------------------------------------------------------------------->
-        </section>
+        
+        <a href="index.html"></a>
 
         
-
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script rel="text/javascript" src="assets/javascript/app.js"></script>
         <script rel="text/javascript" src="assets/javascript/appUserPresence.js"></script>
         <script rel="text/javascript" src="assets/javascript/appChatBox.js"></script>
+        <script rel="text/javascript" src="assets/javascript/appUserScores.js"></script>
+        <script rel="text/javascript" src="assets/javascript/main.js"></script>
+        <script rel="text/javascript" src="assets/javascript/firebase-messaging-sw.js"></script>
+        <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+        <script rel="text/javascript" src="assets/web-start/functions/index.js"></script>
         <script rel="text/javascript" src="assets/javascript/time.js"></script>
     </body>
 </html>
