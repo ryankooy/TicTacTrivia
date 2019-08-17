@@ -39,13 +39,13 @@ var gameResults = "";               // Stores game results
 $(document).ready(function() {
 /*
 ========================================
-shoot Game
+play Game
 ========================================
 */
 
-$('#shoot').on('click', newPlayers);
+$('#play').on('click', newPlayers);
 var nameField = $('#userName');             // Hides name feild on click 
-var addPlayerButton = $('#shoot');         // Stores new play 
+var addPlayerButton = $('#play');         // Stoes new play 
 var convo = database.ref().child('chat');
 var messageField = $('#message');
 var chatLog = $('#chat-log');
@@ -154,7 +154,7 @@ function newPlayers(){
     }
 
     })
-  })
+  }
 }
 
 /*
