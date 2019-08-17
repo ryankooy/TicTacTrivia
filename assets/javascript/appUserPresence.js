@@ -58,44 +58,8 @@ Add Players
 */
 
 function newPlayers(){
-  var provider = new firebase.auth.GoogleAuthProvider();
-  provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
-  firebase.auth().signInWithPopup(provider).then(function(result) {
-    // This gives you a Google Access Token. You can use it to access the Google API.
-    var token = result.credential.accessToken;
-    // The signed-in user info.
-    var user = result.user;
-    // ...
-  }).catch(function(error) {
-    // Handle Errors here.
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    // The email of the user's account used.
-    var email = error.email;
-    // The firebase.auth.AuthCredential type that was used.
-    var credential = error.credential;
-    // ...
-  });
-  firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
-    // User is signed in.
-  } else {
-    // No user is signed in.
-  }
-  });
-  var user = firebase.auth().currentUser;
-  var name, email, photoUrl, uid, emailVerified;
-
-  if (user != null) {
-    name = user.displayName;
-    email = user.email;
-    photoUrl = user.photoURL;
-    emailVerified = user.emailVerified;
-    uid = user.uid;  // The user's ID, unique to the Firebase project. Do NOT use
-                    // this value to authenticate with your backend server, if
-                    // you have one. Use User.getToken() instead.
-  }
-
+ 
+  firebase.auth().signInAnonymously();     
   var playerName = $('#userName').val().trim();
   player.name = playerName; 
   player.uid = firebase.auth().currentUser.uid;
@@ -155,7 +119,21 @@ function newPlayers(){
 
     })
   }
-}
+// })
+
+/*
+========================================
+Player Count
+========================================
+*/
+ 
+playerCount.on("value", function(snapshot) {       // Checks player count 
+  totalPlayers = snapshot.val();               
+  if (totalPlayers === 2) {                      // If the total player count is 2 shoot the game 
+      shootGame();
+  }
+  console.log(totalPlayers);
+});
 
 /*
 ========================================
@@ -186,6 +164,7 @@ Add Players
     chatLog.prepend(messageList); 
   
   }); 
+})
 
   convo.onDisconnect().remove();          // Remove chat when the game is disconnected 
 
@@ -194,30 +173,29 @@ Add Players
 ========================================
 SMS API
 ========================================
-*/
+// */
 
-  var unirest = require("unirest");
+//   var unirest = require("unirest");
 
-  var req = unirest("POST", "https://textbelt-sms.p.rapidapi.com/text");
+//   var req = unirest("POST", "https://textbelt-sms.p.rapidapi.com/text");
 
-  req.headers({
-    "x-rapidapi-host": "textbelt-sms.p.rapidapi.com",
-    "x-rapidapi-key": "74c90693ebmsh681955c4af50b5fp1e600ejsn76ad4d3cdc7d",
-    "content-type": "application/x-www-form-urlencoded"
-  });
+//   req.headers({
+//     "x-rapidapi-host": "textbelt-sms.p.rapidapi.com",
+//     "x-rapidapi-key": "74c90693ebmsh681955c4af50b5fp1e600ejsn76ad4d3cdc7d",
+//     "content-type": "application/x-www-form-urlencoded"
+//   });
 
-  req.form({
-    "message": {},
-    "phone": {},
-    "key": {}
-  });
+//   req.form({
+//     "message": {},
+//     "phone": {},
+//     "key": {}
+//   });
 
-  req.end(function (res) {
-    if (res.error) throw new Error(res.error);
+//   req.end(function (res) {
+//     if (res.error) throw new Error(res.error);
 
-    console.log(res.body);
-  });
+//     console.log(res.body);
+//   });
 
 
-
-});
+})
