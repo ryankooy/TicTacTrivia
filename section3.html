@@ -10,8 +10,17 @@
         <meta name="msapplication-navbutton-color" content="#303F9F">
 
         <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
         
+        <!-- PURECSS -->
+        <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+        <!--[if lte IE 8]>
+            <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/grids-responsive-old-ie-min.css">
+        <![endif]-->
+        <!--[if gt IE 8]><!-->
+        <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/grids-responsive-min.css">
+        <!--<![endif]-->
+
         <!-- External Fonts -->
 
         <!-- Css Style Sheets -->
@@ -30,15 +39,18 @@
     
 
         <!-- Section 3: Player Selection -->
-        <div class="jumbotron">Player Selection</div>
+        <!-- <div class="jumbotron">Player Selection</div> -->
         <section class="containerMain" id="player-selection">
             <div id="user-info">
-                    <p>Create a username:</p>
-                    <input type="text" id="username">
+                <div class="input-group">
+                    <input type="text" class="form-control" id="userName" placeholder="Please Enter Your Name">
+                    <div class="input-group-btn">
+                      <button class="btn" id="play" type="submit">CLICK ME</button>
+                    </div>
+                </div>
                     <p>Enter your email address (optional):</p>
                     <input type="email" id="email">
-                    <p>Enter your phone number (optional):</p>
-                    <input id="phone">
+                
                     <button type="submit" id="user-b">Submit</button>
                     <p id="online"></p>
                     <p id="name"></p>

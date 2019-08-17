@@ -22,14 +22,14 @@ body {
     margin: 0 auto;
     /* min-height: 100vh; */
     overflow: hidden;
-    padding: 5vh 5vw;
+    padding: 8vh 8vw;
 }
 
 .containerMain {
     margin: 0 auto;
     max-width: 1000px;
     width: 100%;
-    height: 14vh;
+    height: 78vh;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     background: grey;
 
