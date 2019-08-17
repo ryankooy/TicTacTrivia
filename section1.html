@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>  
+
+        <title>StartPage</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="msapplication-TileColor" content="#3372DF">
+        <meta name="msapplication-navbutton-color" content="#303F9F">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        
+        <!-- External Fonts -->
+
+        <!-- Css Style Sheets -->
+        <link rel="stylesheet" href="assets/css/reset.css">
+        <link rel="stylesheet" href="assets/style.css"> 
+        <link rel="stylesheet" href="assets/css/game_board.css">
+
+    </head>
+    <body>
+
+        <!-- Firebase CDN (in body) -->
+        <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase/init.js"></script>
+     
+        <!-- Section 1: Start -->
+        <section class="containerMain" id="start">
+
+<div class="jumbotron">Extreme Trivia Tac Toe</div>
+            
+<button> Play Now</button>
+<button> Instructions</button>
+<button> Invite a friend</button>
+ 
+ 
+
+
+<h1>Leaderboard (top 5 scores )</h1>
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                        <th scope="col">Winner</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Difficulty</th>
+                        <th scope="col">Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                    </table>
+
+                  
+        </section>
+        
+        
+
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script rel="text/javascript" src="assets/javascript/app.js"></script>
+        <script rel="text/javascript" src="assets/javascript/appUserPresence.js"></script>
+        <script rel="text/javascript" src="assets/javascript/appChatBox.js"></script>
+        <script rel="text/javascript" src="assets/javascript/time.js"></script>
+    </body>
+</html>

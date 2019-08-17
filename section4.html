@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>  
+
+        <title>Category Selection</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="msapplication-TileColor" content="#3372DF">
+        <meta name="msapplication-navbutton-color" content="#303F9F">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        
+        <!-- External Fonts -->
+
+        <!-- Css Style Sheets -->
+        <link rel="stylesheet" href="assets/css/reset.css">
+        <link rel="stylesheet" href="assets/style.css"> 
+        <link rel="stylesheet" href="assets/css/game_board.css">
+
+    </head>
+    <body>
+
+        <!-- Firebase CDN (in body) -->
+        <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase/init.js"></script>
+     
+   
+
+        <!-- Section 4: Category Selection -->
+        <div class="jumbotron">Select a Category</div>
+        <section class="containerMain" id="category-selection">
+            <form>
+                <div class="form-group">
+                    <!-- Category Selection -->
+                    <label class="form-item__label" for="select">Test</label>
+                        <select class="form-control" id="catagory-select">
+                            <option disabled selected value="" required>Select Category</option>
+                            <option value = "21">Sports</option>
+                            <option value = "12">Music</option>
+                            <option value = "23">History</option>
+                            <option value = "17">Science & Nature</option>
+                            <option value = "11">Film</option>
+                        </select>
+                    <label class="form-item__label" for="select">Difficulty</label>
+                        <select class="form-control" id="difficulty-select">
+                            <option disabled selected value="" >Select Difficulty</option>
+                            <option value="easy">Easy</option>
+                            <option value="medium">Medium</option>
+                            <option value="hard">Hard</option>
+                        </select>
+                    
+                </div>
+            </form>
+
+        <!-- submit -->
+        <button type="submit" id="category-submit" class="btn btn-primary">Submit</button>
+        </section>
+
+        
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script rel="text/javascript" src="assets/javascript/app.js"></script>
+        <script rel="text/javascript" src="assets/javascript/appUserPresence.js"></script>
+        <script rel="text/javascript" src="assets/javascript/appChatBox.js"></script>
+        <script rel="text/javascript" src="assets/javascript/time.js"></script>
+    </body>
+</html>
