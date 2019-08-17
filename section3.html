@@ -8,6 +8,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="msapplication-TileColor" content="#3372DF">
         <meta name="msapplication-navbutton-color" content="#303F9F">
+        <meta name="google-signin-client_id" content="650110209456-bl9j3p6plcgpl80bbveb7as8d2kjfjar.apps.googleusercontent.com">      
 
         <!-- Bootstrap CSS -->
         <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
@@ -25,7 +26,7 @@
 
         <!-- Css Style Sheets -->
         <link rel="stylesheet" href="assets/css/reset.css">
-        <link rel="stylesheet" href="assets/style.css"> 
+        <link rel="stylesheet" href="assets/css/style.css"> 
         <link rel="stylesheet" href="assets/css/game_board.css">
 
     </head>
@@ -35,8 +36,6 @@
         <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-auth.js"></script>
         <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-database.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase/init.js"></script>
-    
 
         <!-- Section 3: Player Selection -->
         <!-- <div class="jumbotron">Player Selection</div> -->
@@ -50,15 +49,27 @@
                 </div>
                     <p>Enter your email address (optional):</p>
                     <input type="email" id="email">
-                
-                    <button type="submit" id="user-b">Submit</button>
-                    <p id="online"></p>
-                    <p id="name"></p>
                 </div>
             
         </section>
 
+        <!-- Google Sign-In Button -->        
+        <div class="g-signin2" data-onsuccess="onSignIn"></div>      
+
+        <script>
+        
+            function onSignIn(googleUser) {
+                var profile = googleUser.getBasicProfile();
+                console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+                console.log('Name: ' + profile.getName());
+                console.log('Image URL: ' + profile.getImageUrl());
+                console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+            }
+
+        </script>
        
+        <!-- Google Sign-In -->
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
 
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script rel="text/javascript" src="assets/javascript/app.js"></script>
