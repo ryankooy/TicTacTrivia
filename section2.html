@@ -10,38 +10,39 @@
         <meta name="msapplication-navbutton-color" content="#303F9F">
 
         <!-- Bootstrap CSS -->
-        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         
         <!-- PURECSS -->
-        <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+        <!-- <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous"> -->
         <!--[if lte IE 8]>
             <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/grids-responsive-old-ie-min.css">
         <![endif]-->
         <!--[if gt IE 8]><!-->
-        <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/grids-responsive-min.css">
+        <!-- <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/grids-responsive-min.css"> -->
         <!--<![endif]-->
 
         <!-- External Fonts -->
 
         <!-- Css Style Sheets -->
         <link rel="stylesheet" href="assets/css/reset.css">
-        <link rel="stylesheet" href="assets/style.css"> 
+        <link rel="stylesheet" href="assets/css/style.css"> 
         <link rel="stylesheet" href="assets/css/game_board.css">
 
     </head>
     <body>
 
-        <!-- Firebase CDN (in body) -->
+        <!-- Firebase CDN -->
+        <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase.js"></script>
         <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-auth.js"></script>
         <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-database.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase/init.js"></script>
-     
+        <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-messaging.js"></script>
+
         
         <!-- Section 2: Introduction -->
-        <div class="jumbotron">Introduction</div>
+      
         <section class="containerMain" id="introduction">
-           
+                <div>Introduction</div>
 
                 <div class="instructions">
                     Welcome to ***Extreme Trivia Tac Toe*****
@@ -70,7 +71,6 @@ The first player with 3 squares in a row wins the game!
 There’s also a live chat that occurs throughout the game. 
 </div>
  <button>play now</button>
-        </section>
 
         
 
