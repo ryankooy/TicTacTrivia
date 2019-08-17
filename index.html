@@ -16,17 +16,11 @@
 
         <!-- Css Style Sheets -->
         <link rel="stylesheet" href="assets/css/reset.css">
-        <link rel="stylesheet" href="assets/style.css"> 
+        <link rel="stylesheet" href="assets/css/style.css"> 
         <link rel="stylesheet" href="assets/css/game_board.css">
 
     </head>
     <body>
-
-        <!-- Firebase CDN (in body) -->
-        <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-auth.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-database.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase/init.js"></script>
      
         <!-- Section 1: Start -->
         <section class="containerMain" id="start">
@@ -51,14 +45,13 @@
         </section>
 
         <!-- Section 3: Player Selection -->
+
         <section class="containerMain" id="player-selection">
             <div id="user-info">
                     <p>Create a username:</p>
                     <input type="text" id="username">
                     <p>Enter your email address (optional):</p>
                     <input type="email" id="email">
-                    <p>Enter your phone number (optional):</p>
-                    <input id="phone">
                     <button type="submit" id="user-b">Submit</button>
                     <p id="online"></p>
                     <p id="name"></p>
@@ -144,7 +137,12 @@
                 </tbody>
                 </table>
 
-        </section>     
+        </section> 
+
+        <!-- Firebase CDN (in body) -->
+        <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-database.js"></script>
 
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script rel="text/javascript" src="assets/javascript/app.js"></script>

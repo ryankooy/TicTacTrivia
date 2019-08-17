@@ -12,10 +12,6 @@ firebase.initializeApp(firebaseConfig);
 
 var database = firebase.database();
 
-// var connectionsRef = database.ref("/connections");
-
-// var connectedRef = database.ref(".info/connected");
-
 /*
 ========================================
 Global Variables
@@ -49,7 +45,7 @@ shoot Game
 
 $('#shoot').on('click', newPlayers);
 var nameField = $('#userName');             // Hides name feild on click 
-var addPlayerButton = $('#shoot');         // Stoes new play 
+var addPlayerButton = $('#shoot');         // Stores new play 
 var convo = database.ref().child('chat');
 var messageField = $('#message');
 var chatLog = $('#chat-log');
@@ -62,7 +58,29 @@ Add Players
 */
 
 function newPlayers(){
-  firebase.auth().signInAnonymously(); 
+  var provider = new firebase.auth.GoogleAuthProvider();
+  provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
+  firebase.auth().signInWithPopup(provider).then(function(result) {
+    // This gives you a Google Access Token. You can use it to access the Google API.
+    var token = result.credential.accessToken;
+    // The signed-in user info.
+    var user = result.user;
+    // ...
+  }).catch(function(error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    // The email of the user's account used.
+    var email = error.email;
+    // The firebase.auth.AuthCredential type that was used.
+    var credential = error.credential;
+    // ...
+  });
+  firebase.auth().signOut().then(function() {
+    // Sign-out successful.
+  }).catch(function(error) {
+    // An error happened.
+
   var playerName = $('#userName').val().trim();
   player.name = playerName; 
   player.uid = firebase.auth().currentUser.uid;
@@ -103,7 +121,7 @@ function newPlayers(){
       addPlayersButton.hide(); 
       $('#player-1').show(); 
       $('#player-2').show();
-      console.log("This is tthe value of:" + player_2);
+      console.log("This is the value of:" + player_2);
       database.ref('turn').set(1);
       playerCount.once('value').then(function(snapshot) {
         totalPlayers = snapshot.val();
@@ -124,14 +142,13 @@ function newPlayers(){
   })
 }
 
-
 /*
 ========================================
 Add Players 
 ========================================
 */
 
-  $('#chat').on('click', function(){
+  $('#chat').on('click', function() {
 
     var message = {
       name: nameField.val(),
@@ -157,7 +174,35 @@ Add Players
 
   convo.onDisconnect().remove();          // Remove chat when the game is disconnected 
 
+});
 
+/*
+========================================
+SMS API
+========================================
+*/
+
+  var unirest = require("unirest");
+
+  var req = unirest("POST", "https://textbelt-sms.p.rapidapi.com/text");
+
+  req.headers({
+    "x-rapidapi-host": "textbelt-sms.p.rapidapi.com",
+    "x-rapidapi-key": "74c90693ebmsh681955c4af50b5fp1e600ejsn76ad4d3cdc7d",
+    "content-type": "application/x-www-form-urlencoded"
+  });
+
+  req.form({
+    "message": {},
+    "phone": {},
+    "key": {}
+  });
+
+  req.end(function (res) {
+    if (res.error) throw new Error(res.error);
+
+    console.log(res.body);
+  });
 
 /*
 ========================================
@@ -165,54 +210,32 @@ RYANS WORK
 ========================================
 */
 
-// $('#user-b').on('click', function(event) {
-//     event.preventDefault();
-//     userName = $('#username').val().trim();
-//     email = $('#email').val().trim();
-//     phoneNumber = $('#phone').val().trim();
-//     console.log(userName);
+  var provider = new firebase.auth.GoogleAuthProvider();
 
-//     database.ref().set({
-//         username: userName,
-//         email: email,
-//         phonenumber: phoneNumber
-//     });
+  firebase.auth().signInWithPopup(provider).then(function(result) {
+    // This gives you a Google Access Token. You can use it to access the Google API.
+    var token = result.credential.accessToken;
+    // The signed-in user info.
+    var user = result.user;
+    // ...
+  }).catch(function(error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    // The email of the user's account used.
+    var email = error.email;
+    // The firebase.auth.AuthCredential type that was used.
+    var credential = error.credential;
+    // ...
+  });
 
-//     database.ref().on('value', function(snap) {
-//         userName = snap.val().username;
-//         email = snap.val().email;
-//         phoneNumber = snap.val().phonenumber;
-//         $('#name').text("Hi, " + userName + "!");
-//         console.log(userName);
-//     });
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      // User is signed in.
+    } else {
+      // No user is signed in.
+    }
+  });
 
-// });
-
-// var provider = new firebase.auth.GoogleAuthProvider();
-
-// provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
-
-// firebase.auth().signInWithPopup(provider).then(function(result) {
-//   // This gives you a Google Access Token. You can use it to access the Google API.
-//   var token = result.credential.accessToken;
-//   // The signed-in user info.
-//   var user = result.user;
-//   // ...
-// }).catch(function(error) {
-//   // Handle Errors here.
-//   var errorCode = error.code;
-//   var errorMessage = error.message;
-//   // The email of the user's account used.
-//   var email = error.email;
-//   // The firebase.auth.AuthCredential type that was used.
-//   var credential = error.credential;
-//   // ...
-// });
-
-// firebase.auth().signOut().then(function() {
-//   // Sign-out successful.
-// }).catch(function(error) {
-//   // An error happened.
-// });
 
 });
