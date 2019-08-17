@@ -1,7 +1,7 @@
 var myCounter = new Countdown({  
     seconds:15,  // number of seconds to count down
     onUpdateStatus: function(sec){
-        $("#timer").html(sec);}, // callback for each second
+        $("#timer").html(sec + ' seconds remaining');}, // callback for each second
     onCounterEnd: function(){ 
          $("#timer").html('Time is up!');} // final action
 });
