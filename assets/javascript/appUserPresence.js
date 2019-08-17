@@ -170,9 +170,12 @@ Add Players
 
 /*
 ========================================
-SMS API
+Leaderboard Results
 ========================================
 */
 
+database.ref().on('value', function(snap) {
+  
+});
 
 });
