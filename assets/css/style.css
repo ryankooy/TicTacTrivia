@@ -32,5 +32,29 @@ body {
     height: 78vh;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     background: grey;
+    position: relative; 
 
+}
+
+/*
+========================================
+Chat Box Styling 
+========================================
+*/
+
+.chat-box {
+  margin: 0 auto;
+  position: absolute; 
+  max-height: 400px; 
+  max-width: 100%; 
+  width: 900%; 
+  min-width: 1px; 
+  padding-left: 4vw; 
+  padding-right: 4vw; 
+  bottom: 4vw; 
+}
+
+#chat-log {
+  max-height: 150px;
+  overflow: scroll;
 }
