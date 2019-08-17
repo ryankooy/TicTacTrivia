@@ -178,6 +178,34 @@ Add Players
 
 /*
 ========================================
+SMS API
+========================================
+*/
+
+  var unirest = require("unirest");
+
+  var req = unirest("POST", "https://textbelt-sms.p.rapidapi.com/text");
+
+  req.headers({
+    "x-rapidapi-host": "textbelt-sms.p.rapidapi.com",
+    "x-rapidapi-key": "74c90693ebmsh681955c4af50b5fp1e600ejsn76ad4d3cdc7d",
+    "content-type": "application/x-www-form-urlencoded"
+  });
+
+  req.form({
+    "message": {},
+    "phone": {},
+    "key": {}
+  });
+
+  req.end(function (res) {
+    if (res.error) throw new Error(res.error);
+
+    console.log(res.body);
+  });
+
+/*
+========================================
 RYANS WORK 
 ========================================
 */
