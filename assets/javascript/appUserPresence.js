@@ -58,7 +58,8 @@ Add Players
 */
 
 function newPlayers(){
-
+ 
+  firebase.auth().signInAnonymously();     
   var playerName = $('#userName').val().trim();
   player.name = playerName; 
   player.uid = firebase.auth().currentUser.uid;
@@ -118,6 +119,20 @@ function newPlayers(){
 
     });
   }
+// })
+
+/*
+========================================
+Player Count
+========================================
+*/
+ 
+playerCount.on("value", function(snapshot) {       // Checks player count 
+  totalPlayers = snapshot.val();               
+  if (totalPlayers === 2) {                      // If the total player count is 2 shoot the game 
+      shootGame();
+  }
+  console.log(totalPlayers);
 });
 
 /*
@@ -149,6 +164,7 @@ Add Players
     chatLog.prepend(messageList); 
   
   }); 
+})
 
   convo.onDisconnect().remove();          // Remove chat when the game is disconnected 
 
@@ -158,30 +174,5 @@ SMS API
 ========================================
 */
 
-  var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "https://textbelt-sms.p.rapidapi.com/text",
-    "method": "POST",
-    "headers": {
-      "x-rapidapi-host": "textbelt-sms.p.rapidapi.com",
-      "x-rapidapi-key": "74c90693ebmsh681955c4af50b5fp1e600ejsn76ad4d3cdc7d",
-      "content-type": "application/x-www-form-urlencoded"
-    },
-    "data": {
-      "message": "$('#message').val().trim()",
-      "phone": "$('#phone-n').val().trim()",
-      "key": "74c90693ebmsh681955c4af50b5fp1e600ejsn76ad4d3cdc7d"
-    }
-  };
 
-  $.ajax(settings).done(function (response) {
-    $('#user-b').on('click', function() {
-    // console.log(settings.data.message);
-    // console.log(settings.data.phone);
-    console.log(response.data);
-    console.log("hi");
-    });
-  });
-    console.log("hi");
 });
