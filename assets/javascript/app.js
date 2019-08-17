@@ -1,3 +1,6 @@
+$(document).ready(function(){
+
+
 // Trivia
 //-----------------------------------------------------------------------------------------------------
 var res = ""
@@ -6,7 +9,6 @@ $(".TTTboard").hide()
 //when clicking submit, calls the questions and their answers
 $("#category-submit").on("click", function(event){
     event.preventDefault();
-
     //gets the value of the catagory and difficulty and saves them to vars
     var catagorySelect = $("#catagory-select").val()
     var difficultySelect = $("#difficulty-select").val()
@@ -30,44 +32,42 @@ $.ajax({
 // filler var for finding the correct answer
 var correctAns = 0
 
-//when a spot on the board is clicked
-$(document).on("click", ".TTTboard", function(){
+// //when a spot on the board is clicked
+// $(document).on("click", ".TTTboard", function(){
 
-    //gets the spot on the board where the user selects and pulls the value (0-8) to get the equivilent number in the question list
-    var x = $(this).val()
+//     //gets the spot on the board where the user selects and pulls the value (0-8) to get the equivilent number in the question list
+//     var x = $(this).val()
 
-    //picks a random number 0-3 and splices the correct answer into the API's incorrect answer array
-    correctAns = Math.floor(Math.random() * (4 - 0))
-    var answers = res[x].incorrect_answers
-    answers.splice(correctAns, 0 , res[x].correct_answer)
-    // console.log (correctAns)
+//     //picks a random number 0-3 and splices the correct answer into the API's incorrect answer array
+//     correctAns = Math.floor(Math.random() * (4 - 0))
+//     var answers = res[x].incorrect_answers
+//     answers.splice(correctAns, 0 , res[x].correct_answer)
+//     // console.log (correctAns)
 
-    //for loop to create 4 buttons with the answer array in them
-    for(var i = 0; i < answers.length; i++){
-        var answerButton = $("<button>")
-        answerButton.attr("value", i)
-        answerButton.attr("class", "guess")
-        answerButton.text(answers[i])
-        $(".answersTest").append(answerButton)
-    }
+//     //for loop to create 4 buttons with the answer array in them
+//     for(var i = 0; i < answers.length; i++){
+//         var answerButton = $("<button>")
+//         answerButton.attr("value", i)
+//         answerButton.attr("class", "guess")
+//         answerButton.text(answers[i])
+//         $(".answersTest").append(answerButton)
+//     }
 
-    // adds the question to the page based on which board button was clicked. 
-    var questionH1 = $("<h1>")
-    questionH1.attr("class", "question")
-    questionH1.text(res[x].question)
-    $(".questionsTest").append(questionH1)
+//     // adds the question to the page based on which board button was clicked. 
+//     var questionH1 = $("<h1>")
+//     questionH1.attr("class", "question")
+//     questionH1.text(res[x].question)
+//     $(".questionsTest").append(questionH1)
 
 
-})
+// })
 
 //when the answer is clicked checks to see if the answer is correct.
 $(document).on("click", ".guess", function(){
-    console.log("clicked: " + $(this).val())
-    console.log(" correct:" + correctAns)
     if ($(this).val() == correctAns){
-
         console.log("correct")
         clearScrn()
+        $(".TTTboard").show()
     }
     else{
         console.log("wrong")
@@ -84,33 +84,48 @@ function clearScrn(){
 
 //--------------------------------------------------------------------------------
 
+function question(data){
+
+//picks a random number 0-3 and splices the correct answer into the API's incorrect answer array
+correctAns = Math.floor(Math.random() * (4 - 0))
+var answers = res[data].incorrect_answers
+answers.splice(correctAns, 0 , res[data].correct_answer)
+// console.log (correctAns)
+
+//for loop to create 4 buttons with the answer array in them
+for(var i = 0; i < answers.length; i++){
+    var answerButton = $("<button>")
+    answerButton.attr("value", i)
+    answerButton.attr("class", "guess")
+    answerButton.text(answers[i])
+    $(".answersTest").append(answerButton)
+}
+
+// adds the question to the page based on which board button was clicked. 
+var questionH1 = $("<h1>")
+questionH1.attr("class", "question")
+questionH1.text(res[data].question)
+$(".questionsTest").append(questionH1)
+
+}
 
 // Tic-tac-toe base
 //--------------------------------------------------------------------------------
-var player1 = true
-var player2 = false
+var player1Turn= true
+var player2Turn = false
 
 $(document).on("click", ".TTTboard", function(){
+    $(".TTTboard").hide()
 
-    if (player1 === true){
-        $(this).addClass("blue")
-        $(this).addClass("btn-primary")
-        $(this).prop('disabled', true)
-        console.log(player1, player2)
-        player2 = true
-        player1 = false
-        checkWins()
-    }
-    else{
-        $(this).addClass("red")
-        $(this).addClass("btn-danger")
-        $(this).prop('disabled', true)
-        console.log(player1, player2)
-        player1 = true
-        player2 = false
-        checkWins()
-    }
+    var x = $(this).val()
 
+    question(x)
+
+
+
+
+    
+    
 })
 
 //need to clean up but the function the checks for a win
@@ -145,3 +160,33 @@ function checkWins(){
        alert("Red Wins")
    }
 }
+
+
+//Notes: 
+//Order of events of game
+//1)sets each player to a "color"
+//2)sets turn to player 1
+//3)player 1 selects a tile
+//4)game shows player 1 the question
+//5)both players answer, faster answer gets the question, if its a tie player one would get the point. 
+//6)sets the board point selectet to disabled and changes turn to player 2. rinse repeat.
+//6)game carries on until win criteria are met. 
+
+
+// if (player1Turn === true){
+//     $(this).addClass("blue")
+//     $(this).addClass("btn-primary")
+//     $(this).prop('disabled', true)
+//     player2Turn = true
+//     player1Turn = false
+//     checkWins()
+// }
+// else{
+//     $(this).addClass("red")
+//     $(this).addClass("btn-danger")
+//     $(this).prop('disabled', true)
+//     player1Turn = true
+//     player2Turn = false
+//     checkWins()
+// }
+})
