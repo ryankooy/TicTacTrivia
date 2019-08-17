@@ -174,8 +174,8 @@ Leaderboard Results
 ========================================
 */
 
-database.ref().on('value', function(snap) {
+// database.ref().on('value', function(snap) {
   
-});
+// });
 
 });
