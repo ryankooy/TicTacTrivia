@@ -10,10 +10,12 @@
     </head>
     <body>
       Challenge a user
-  <form action="https://formspree.io/lamanaml@gmail.com" method="POST">
-  <input type="text" name="name">
-  <input type="email" name="_replyto">
-  <input type="submit" value="Send">
+  <form method="POST" action="https://formspree.io/lamanaml@gmail.com">
+  <input type="email" name="email" placeholder="Your email">
+  <input type="hidden" name="_cc" value="culinaryhealing@gmail.com" />
+  <input type="hidden" name="_subject" value="Extreme Trivia Tac Toe Challenge Request" />
+  <textarea name="message" placeholder="I want to challenge you to a game of Extreme Trivia.  Join me at https://ryankooy.github.io/project-1/lamanasstage.html"></textarea>
+  <button type="submit">Send Challenge Request</button>
 </form>
 
 
