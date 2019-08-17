@@ -1,8 +1,10 @@
 $(document).ready(function(){
 
 
-// Trivia
-//-----------------------------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------------------------------------
+//
+//-----------------------------------------------------------------------------------------------------------------------
 var res = ""
 $(".TTTboard").hide()
 
@@ -27,41 +29,82 @@ $.ajax({
     $(".TTTboard").show()
 })
 })
+//-------------------------------------------------------------------------------------------------------------------
+//
+//-----------------------------------------------------------------------------------------------------------------------
+
+
 
 
 // filler var for finding the correct answer
 var correctAns = 0
 
+var whoIsRight = 0
+
+var guesses = 0
+
+
+//-------------------------------------------------------------------------------------------------------------------
+//
+//-----------------------------------------------------------------------------------------------------------------------
 //when the answer is clicked checks to see if the answer is correct.
-$(document).on("click", ".guess", function(){
+$(document).on("click", "#answersPlayer1 > .guess", function(){
     if ($(this).val() == correctAns){
         console.log("correct")
         clearScrn()
         $(".TTTboard").show()
+        whoIsRight = 1
+    triviaWinner()
     }
     else{
-        console.log("wrong")
+        console.log("wrong")    
+        $("#answersPlayer1").empty()
+        guesses++
+        triviaWinner()
+
+    }
+})
+
+$(document).on("click", "#answersPlayer2 > .guess", function(){
+    if ($(this).val() == correctAns){
+        console.log("correct")
         clearScrn()
         $(".TTTboard").show()
+        whoIsRight = 2
+        triviaWinner()
+    }
+    else{
+        console.log("wrong")    
+        $("#answersPlayer2").empty()
+        guesses++
+        triviaWinner()
     }
 })
 
 //used to clear the questions and answers divs
 function clearScrn(){
-    $(".questionsTest").empty()
-    $(".answersTest").empty()
+    $("#question").empty()
+    $("#answersPlayer1").empty()
+    $("#answersPlayer2").empty()
 }
+//-------------------------------------------------------------------------------------------------------------------
+//
+//-----------------------------------------------------------------------------------------------------------------------
 
 
-//--------------------------------------------------------------------------------
 
+
+//-------------------------------------------------------------------------------------------------------------------
+//
+//-----------------------------------------------------------------------------------------------------------------------
 function question(data){
 
 //picks a random number 0-3 and splices the correct answer into the API's incorrect answer array
 correctAns = Math.floor(Math.random() * (4 - 0))
 var answers = res[data].incorrect_answers
 answers.splice(correctAns, 0 , res[data].correct_answer)
-// console.log (correctAns)
+
+whoIsRight = 0
 
 //for loop to create 4 buttons with the answer array in them
 for(var i = 0; i < answers.length; i++){
@@ -69,36 +112,72 @@ for(var i = 0; i < answers.length; i++){
     answerButton.attr("value", i)
     answerButton.attr("class", "guess")
     answerButton.text(answers[i])
-    $(".answersTest").append(answerButton)
+    $("#answersPlayer1").prepend(answerButton)
+    
 }
-
+for(var i = 0; i < answers.length; i++){
+    var answerButton = $("<button>")
+    answerButton.attr("value", i)
+    answerButton.attr("class", "guess")
+    answerButton.text(answers[i])
+    $("#answersPlayer2").append(answerButton)
+}
 // adds the question to the page based on which board button was clicked. 
 var questionH1 = $("<h1>")
 questionH1.attr("class", "question")
 questionH1.text(res[data].question)
-$(".questionsTest").append(questionH1)
+$("#question").html(questionH1)
 
 }
+//-------------------------------------------------------------------------------------------------------------------
+//
+//-----------------------------------------------------------------------------------------------------------------------
 
-// Tic-tac-toe base
-//--------------------------------------------------------------------------------
-var player1Turn= true
-var player2Turn = false
+
+
+//-------------------------------------------------------------------------------------------------------------------
+// tic-tac-toe board does not hide on question instead becomes disabled 
+//-----------------------------------------------------------------------------------------------------------------------
+var x = 0
 
 $(document).on("click", ".TTTboard", function(){
     $(".TTTboard").hide()
 
-    var x = $(this).val()
+    x = $(this).val()
+
+    guesses = 0
 
     question(x)
 
 
-
-
-    
-    
 })
+//-------------------------------------------------------------------------------------------------------------------
+//
+//-----------------------------------------------------------------------------------------------------------------------
 
+function triviaWinner(){
+    if(whoIsRight === 0 && guesses === 2){
+        console.log("No winner")
+        $(".TTTboard").show()
+        clearScrn()
+    }
+    if(whoIsRight === 1){
+        console.log("Player1 wins")
+        if ($(".TTTboard").val() === x){
+        $(this).attr("class", "red")
+    }
+    }
+    if(whoIsRight === 2){
+        console.log("Player2 wins")
+        if ($(".TTTboard").val() === x){
+            $(this).attr("class", "blue")
+        }
+    }
+    
+}
+//-------------------------------------------------------------------------------------------------------------------
+//
+//-----------------------------------------------------------------------------------------------------------------------
 //need to clean up but the function the checks for a win
 function checkWins(){
     var blueWins1 = $("#one.blue, #two.blue, #three.blue").length === 3
@@ -131,7 +210,9 @@ function checkWins(){
        alert("Red Wins")
    }
 }
-
+//-------------------------------------------------------------------------------------------------------------------
+//
+//-----------------------------------------------------------------------------------------------------------------------
 
 //Notes: 
 //Order of events of game
