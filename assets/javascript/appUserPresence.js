@@ -58,43 +58,6 @@ Add Players
 */
 
 function newPlayers(){
-  var provider = new firebase.auth.GoogleAuthProvider();
-  provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
-  firebase.auth().signInWithPopup(provider).then(function(result) {
-    // This gives you a Google Access Token. You can use it to access the Google API.
-    var token = result.credential.accessToken;
-    // The signed-in user info.
-    var user = result.user;
-    // ...
-  }).catch(function(error) {
-    // Handle Errors here.
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    // The email of the user's account used.
-    var email = error.email;
-    // The firebase.auth.AuthCredential type that was used.
-    var credential = error.credential;
-    // ...
-  });
-  firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
-    // User is signed in.
-  } else {
-    // No user is signed in.
-  }
-  });
-  var user = firebase.auth().currentUser;
-  var name, email, photoUrl, uid, emailVerified;
-
-  if (user != null) {
-    name = user.displayName;
-    email = user.email;
-    photoUrl = user.photoURL;
-    emailVerified = user.emailVerified;
-    uid = user.uid;  // The user's ID, unique to the Firebase project. Do NOT use
-                    // this value to authenticate with your backend server, if
-                    // you have one. Use User.getToken() instead.
-  }
 
   var playerName = $('#userName').val().trim();
   player.name = playerName; 
@@ -195,30 +158,30 @@ SMS API
 ========================================
 */
 
-//   var unirest = require("unirest");
+  var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://textbelt-sms.p.rapidapi.com/text",
+    "method": "POST",
+    "headers": {
+      "x-rapidapi-host": "textbelt-sms.p.rapidapi.com",
+      "x-rapidapi-key": "74c90693ebmsh681955c4af50b5fp1e600ejsn76ad4d3cdc7d",
+      "content-type": "application/x-www-form-urlencoded"
+    },
+    "data": {
+      "message": "$('#message').val().trim()",
+      "phone": "$('#phone-n').val().trim()",
+      "key": "74c90693ebmsh681955c4af50b5fp1e600ejsn76ad4d3cdc7d"
+    }
+  };
 
-//   var req = unirest("POST", "https://textbelt-sms.p.rapidapi.com/text");
-
-//   req.headers({
-//     "x-rapidapi-host": "textbelt-sms.p.rapidapi.com",
-//     "x-rapidapi-key": "74c90693ebmsh681955c4af50b5fp1e600ejsn76ad4d3cdc7d",
-//     "content-type": "application/x-www-form-urlencoded"
-//   });
-
-//   req.form({
-//     "message": {},
-//     "phone": {},
-//     "key": {}
-//   });
-
-//   req.end(function (res) {
-//     if (res.error) throw new Error(res.error);
-
-//     console.log(res.body);
-//   });
-
-//   if (!firebase.apps.length) {
-//    firebase.initializeApp({});
-// }
-
+  $.ajax(settings).done(function (response) {
+    $('#user-b').on('click', function() {
+    // console.log(settings.data.message);
+    // console.log(settings.data.phone);
+    console.log(response.data);
+    console.log("hi");
+    });
+  });
+    console.log("hi");
 });
