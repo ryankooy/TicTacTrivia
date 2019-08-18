@@ -35,31 +35,25 @@
             <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-database.js"></script>
             <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-messaging.js"></script>
         
+        <main class="containerMain">
             <!-- Section 1: Start -->
-        <!-- <section class="containerMain" id="start">
-                <table class="table">
-                    <thead class="thead-dark">
-                        <tr>
-                        <th scope="col">Winner</th>
-                        <th scope="col">Category</th>
-                        <th scope="col">Difficulty</th>
-                        <th scope="col">Score</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        
-                    </tbody>
-                    </table>
-        </section> -->
+
+            <!-- </section> -->
         
         <!-- Section 2: Introduction -->
         <!-- <section class="containerMain" id="introduction">
+               <div class="text-center row-1 tite"> 
+                    <h1>TIC TAC TRIVIA!</h1>
+                </div>
+
             
         </section> -->
 
         <!-- Section 3: Player Selection -->
-
-        <!-- <section class="containerMain" id="player-selection">
+        <section id="player-selection">
+                <div class="text-center row-1 tite"> 
+                    <h1>TIC TAC TRIVIA!</h1>
+                </div>
                 <div id="user-info">
                     <div class="input-group">
                         <input type="text" class="form-control" id="userName" placeholder="Please Enter Your Name">
@@ -67,14 +61,19 @@
                           <button class="btn" id="play" type="submit">CLICK ME</button>
                         </div>
                     </div>
-                        <p>Enter your email address (optional):</p>
-                        <input type="email" id="email">
-                    </div>
+                </div>
+            <form method="POST" action="https://formspree.io/lamanaml@gmail.com">
+                <input type="email" name="email" placeholder="Your email">
+                <input type="hidden" id="opponent_email" name="_cc" value="culinaryhealing@gmail.com" />
+                <input type="hidden" name="_subject" value="Extreme Trivia Tac Toe Challenge Request" />
+                <!-- <textarea name="message" placeholder="I want to challenge you to a game of Extreme Trivia.  Join me at https://ryankooy.github.io/project-1/lamanasstage.html"></textarea> -->
+                <button type="submit">Send Challenge Request</button>
+            </form>
     
-        </section> -->
-
+        </section>
+        
         <!-- Section 4: Category Selection -->
-        <section class="containerMain" id="category-selection">
+        <!-- <section id="category-selection"> -->
             <!-- <form>
                 <div class="form-group">  -->
                     <!-- Category Selection -->
@@ -100,27 +99,19 @@
 
         <!-- submit -->
         <!-- <button type="submit" id="category-submit" class="btn btn-primary">Submit</button> -->
-            <div class="chat-box" id="row">
-                <div>
-                    <ul id="chat-log"></ul>
-                </div>
-                    <span class="input-group text-center">
-                        <input type="text" class="form-control" id="message" placeholder="Game on...">
-                    <button class="btn btn-dark" id="chat" type="submit"><span>CHAT</span></button>
-            </div>
-    
-        </section>
+        <!-- </section> -->
 
         <!-- Section 5: Game Play -->
-        <div class="containerMain" id="game-play"> 
-            <div class="tite"> 
+        <section class="game-play">
+        <!-- <div id="game-play">  -->
+            <div class="row-1 tite"> 
                 title 
             </div>
             <div class="container-game">
                 <div class="game-board">
                     game board - left side 
                 </div>
-                <div class="timer">
+                <div id="timer"> 
                     timer - right side 
                 </div>
                 <div class="status">
@@ -131,24 +122,21 @@
                 </div>
             </div>
 
-            <div class="container-players"> 
+            <div class="row">
+           
+                <div class="col-6 container-player-1"> 
                 <div class="player-1-name">
                     player 1 
                 </div>
-            </div>
+                </div>
 
-            <div class="container-players"> 
-                    <div class="player-1-name">
+                 <div class="col-6 container-player-2"> 
+                    <div class="player-2-name">
                         player 2 
                     </div>
                 </div>
 
-            <div class="container-player-1"> 
-                
-            </div>
-
-
-        </div>
+        <!-- </div> -->
       
         <!-- Game board on new index page -->
         <a href="game_board.html"></a>
@@ -168,6 +156,7 @@
                 <button class="TTTboard" value="7" id="eight">8</button>
                 <button class="TTTboard" value="8" id="nine">9</button>
             </div>
+
             
             <div id="question">
                 </div>
@@ -178,8 +167,18 @@
                 <div id="answersPlayer2">
                 </div>
         ---------------------------------------------------------------- -->
-        
 
+        <!--- CHAT SECTION -->
+        <!-- <diV class="chat-box" id="row">
+            <div>
+                <ul id="chat-log"></ul>
+            </div>
+                <span class="input-group text-center">
+                    <input type="text" class="form-control" id="message" placeholder="Game on...">
+                <button class="btn btn-dark" id="chat" type="submit"><span>CHAT</span></button>
+            </div>
+        </section>  -->
+        <!-------------------------------------------------------------------->
         <!-- Section 6: outcome -->
         <!-- <section class="containerMain" id="outcome">
 
@@ -201,10 +200,8 @@
                     
                 </tbody>
                 </table> -->
-
-        <!-- Chat section -->
-        <!-- </section>  -->
-
+        </section> 
+        </main>
         <!-- Firebase Core JavaScript Link -->
         <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-auth.js"></script>
@@ -214,11 +211,14 @@
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         
         <script rel="text/javascript" src="assets/javascript/app.js"></script>
+              
+        <!-- <script rel="text/javascript" src="assets/javascript/appUserPresence.js"></script> -->
         <script rel="text/javascript" src="assets/javascript/appUserPresence.js"></script>
         <script rel="text/javascript" src="assets/javascript/appUserScores.js"></script>
         <script rel="text/javascript" src="assets/javascript/firebase-messaging-sw.js"></script>
         <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
         <script rel="text/javascript" src="assets/web-start/functions/index.js"></script>
         <script rel="text/javascript" src="assets/javascript/time.js"></script>
+        <script rel="text/javascript" src="assets/javascript/test_players.js"></script>
     </body>
 </html>
