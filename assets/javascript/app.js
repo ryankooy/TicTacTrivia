@@ -1,3 +1,4 @@
+/*
 $(document).ready(function(){
 
 
@@ -52,8 +53,6 @@ database.ref("categoryResults/").on("child_added", function(){
     $(".TTTboard").show()
 })
 
-database.ref("questionResults/").on("child_added",function(childSnapshot){
-})
 
 
 // filler var for finding the correct answer
@@ -63,11 +62,6 @@ var whoIsRight = 0
 
 var guesses = 0
 
-
-//-------------------------------------------------------------------------------------------------------------------
-//
-//-----------------------------------------------------------------------------------------------------------------------
-//when the answer is clicked checks to see if the answer is correct.
 $(document).on("click", "#answersPlayer1 > .guess", function(){
     if ($(this).val() == correctAns){
         console.log("correct")
@@ -119,13 +113,11 @@ function question(data){
 
 database.ref("questionResults/").on("child_added",function(childSnapshot){
 
-    
-
 var res = childSnapshot.val().results.results[data]
 
-console.log(res)
 //picks a random number 0-3 and splices the correct answer into the API's incorrect answer array
 correctAns = Math.floor(Math.random() * (4 - 0))
+
 var answers = res.incorrect_answers
 answers.splice(correctAns, 0 , res.correct_answer)
 
@@ -150,9 +142,7 @@ for(var i = 0; i < answers.length; i++){
 // adds the question to the page based on which board button was clicked. 
 var questionH1 = $("<h1>")
 questionH1.attr("class", "question")
-questionH1.text(res.question)
-$("#question").html(questionH1)
-
+questionH1.html(res.question)
 })  
 }
 //-------------------------------------------------------------------------------------------------------------------
@@ -177,6 +167,10 @@ $(document).on("click", ".TTTboard", function(){
 
     question(x)
 
+    if(currentTurn === 1){
+        $(".question").append(questionH1)
+
+    }
 
 })
 //-------------------------------------------------------------------------------------------------------------------
@@ -265,3 +259,5 @@ function checkWins(){
 //     checkWins()
 // }
 })
+
+*/

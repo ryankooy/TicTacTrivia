@@ -33,7 +33,7 @@ var firebaseConfig = {
    uid: "", 
  };
  
- var recentWinners = null; 
+ var currentTurn = null; 
  var player_1 = null;                // Sets up player 1
  var player_2 = null;                // Sets up player 2
  var totalPlayers = null;            // Sets up total number of players
@@ -59,11 +59,11 @@ var firebaseConfig = {
  ========================================
  */
 
- $('Start').hide();                  // Section 1: Start 
- $('introduction').hide();          // Section 2: Introduction 
- $('#player-selection').hide();    // Section 3: Player Selection 
- $('#category-selection').hide(); // Section 4: Category Selection 
- $('#game-play').hide();         // Section 5: Game Play
+//  $('Start').hi   de();                  // Section 1: Start 
+//  $('introduction').hide();          // Section 2: Introduction 
+//  $('#player-selection').hide();    // Section 3: Player Selection 
+//  $('#category-selection').hide(); // Section 4: Category Selection 
+//  $('#game-play').hide();         // Section 5: Game Play
  $('.chat-box').hide();         // Chat Section 
  $('#outcome').hide();         // Section 6: Outcome 
  $('#results').hide();        // Section 7: Results 
@@ -120,7 +120,7 @@ var firebaseConfig = {
        $('container-player-1').hide();
 
        nameField.hide(); 
-       addPlayersButton.hide(); 
+       addPlayerButton.hide(); 
        console.log("This is the value of:" + player_2);
        database.ref('turn').set(1);
        playerCount.once('value').then(function(snapshot) {
@@ -186,8 +186,6 @@ var firebaseConfig = {
    playerTwo.on('value', function(snapshot) {
        var data = snapshot.val();
        var playerTwoName = data.name;
-       var playerTwoWins = data.wins;
-       var playerTwoLosses = data.losses;
  
        if (player_2 === 2) {
             $('player-selection').hide();
@@ -306,3 +304,212 @@ var firebaseConfig = {
  
  })
  
+
+ /*
+ ============================
+ Win results
+  **************need to DRY****************************
+ ============================
+ */
+
+function checkWins(){
+  var blueWins1 = $("#one.blue, #two.blue, #three.blue").length === 3
+  var blueWins2 = $("#four.blue, #five.blue, #six.blue").length === 3
+  var blueWins3 = $("#seven.blue, #eight.blue, #nine.blue").length === 3
+  var blueWins4 = $("#one.blue, #four.blue, #seven.blue").length === 3
+  var blueWins5 = $("#two.blue, #five.blue, #eight.blue").length === 3
+  var blueWins6 = $("#three.blue, #six.blue, #nine.blue").length === 3
+  var blueWins7 = $("#one.blue, #five.blue, #nine.blue").length === 3
+  var blueWins8 = $("#three.blue, #five.blue, #seven.blue").length === 3
+
+  if(blueWins1 === true || blueWins2 === true || blueWins3 === true ||
+       blueWins4 === true || blueWins5 === true || blueWins6 === true ||
+       blueWins7 === true || blueWins8 === true){
+      alert("Blue Wins")
+  }
+  
+  var redWins1 = $("#one.red, #two.red, #three.red").length === 3
+  var redWins2 = $("#four.red, #five.red, #six.red").length === 3
+  var redWins3 = $("#seven.red, #eight.red, #nine.red").length === 3
+  var redWins4 = $("#one.red, #four.red, #seven.red").length === 3
+  var redWins5 = $("#two.red, #five.red, #eight.red").length === 3
+  var redWins6 = $("#three.red, #six.red, #nine.red").length === 3
+  var redWins7 = $("#one.red, #five.red, #nine.red").length === 3
+  var redWins8 = $("#three.red, #five.red, #seven.red").length === 3
+  
+  if(redWins1 === true || redWins2 === true || redWins3 === true ||
+      redWins4 === true || redWins5 === true || redWins6 === true ||
+      redWins7 === true || redWins8 === true){
+     alert("Red Wins")
+ }
+}
+
+/*
+============================
+Setting a category 
+============================
+*/
+var res = ""
+$(".TTTboard").hide()
+
+
+$("#category-submit").on("click", function(event){ //Clicking the submit button on category select
+    event.preventDefault();
+    
+    var catagorySelect = $("#catagory-select").val() //the number associated with the category
+    var difficultySelect = $("#difficulty-select").val() //the difficulty chosen
+    
+    var triviaApi = "https://opentdb.com/api.php?amount=9&category=" + catagorySelect + "&difficulty=" + difficultySelect + "&type=multiple"// the api to get our trivia
+
+    $.ajax({
+        url:triviaApi,
+        method: 'GET'
+}).then(function(response){
+
+    // used to simplify the the response to be easier
+    res = response.results
+    console.log(res)
+
+    var categoryChoice = {  //used to save the category and difficulty used for the leaderboards
+        category: catagorySelect, 
+        difficulty: difficultySelect,
+    }
+    var questions ={ //saves the response from the trivia api into our firebase database
+        results: response,
+    }
+    
+
+    database.ref("categoryResults/").push(categoryChoice)
+    database.ref("questionResults/").push(questions)
+    
+})
+})
+
+database.ref("categoryResults/").on("child_added", function(){   
+  $("#categorySelect").hide()
+  $(".TTTboard").show()
+})
+/*
+====================
+Checking answer 
+*********needs work*********
+====================
+*/
+
+var correctAns = 0
+
+var whoIsRight = 0
+
+$(document).on("click", "#answersPlayer1 > .guess", function(){
+    if ($(this).val() == correctAns){
+        console.log("correct")
+        clearScrn()
+        $(".TTTboard").show()
+        whoIsRight = 1
+    triviaWinner()
+    }
+    else{
+        console.log("wrong")    
+        $("#answersPlayer1").empty()
+        guesses++
+        triviaWinner()
+
+    }
+})
+
+$(document).on("click", "#answersPlayer2 > .guess", function(){
+    if ($(this).val() == correctAns){
+        console.log("correct")
+        clearScrn()
+        $(".TTTboard").show()
+        whoIsRight = 2
+        triviaWinner()
+    }
+    else{
+        console.log("wrong")    
+        $("#answersPlayer2").empty()
+        guesses++
+        triviaWinner()
+    }
+})
+
+
+/*
+================
+Getting the question and answers function
+================
+*/
+function question(data){
+
+  database.ref("questionResults/").on("child_added",function(childSnapshot){
+  
+  var res = childSnapshot.val().results.results[data]
+  
+  //picks a random number 0-3 and splices the correct answer into the API's incorrect answer array
+  correctAns = Math.floor(Math.random() * (4 - 0))
+  
+  var answers = res.incorrect_answers
+  answers.splice(correctAns, 0 , res.correct_answer)
+  
+  whoIsRight = 0
+  
+  //for loop to create 4 buttons with the answer array in them
+  for(var i = 0; i < answers.length; i++){
+      var answerButton = $("<button>")
+      answerButton.attr("value", i)
+      answerButton.attr("class", "guess")
+      answerButton.text(answers[i])
+      $("#answersPlayer1").prepend(answerButton)
+      
+  }
+  for(var i = 0; i < answers.length; i++){
+      var answerButton = $("<button>")
+      answerButton.attr("value", i)
+      answerButton.attr("class", "guess")
+      answerButton.text(answers[i])
+      $("#answersPlayer2").append(answerButton)
+  }
+  // adds the question to the page based on which board button was clicked. 
+  var questionH1 = $("<h1>")
+  questionH1.attr("class", "question")
+  questionH1.html(res.question)
+  })  
+  }
+
+  /*
+  ======================
+  clicking the board and brining the questions and answers up
+  ======================
+  */
+
+ var x = 0
+
+ $(document).on("click", ".TTTboard", function(){
+     $(".TTTboard").hide()
+ 
+     x = $(this).val()
+ 
+     question(x)
+     
+     database.ref().once("value", function(snapshot) {
+      var player_1_name = snapshot.child('players/' + player_1 + '/name').val();
+      var player_2_name = snapshot.child('players/' + player_2 + '/name').val();
+
+
+      turn.once('value').then(function(snapshot) { 
+          currentTurn = snapshot.val();
+          if (currentTurn === null) {
+              currentTurn = 1;
+              turn.set(currentTurn); 
+          } else if (currentTurn === 1) {
+              currentTurn = 2;
+              turn.set(currentTurn); 
+          } else if (currentTurn === 2) {
+              currentTurn = 1;
+              turn.set(currentTurn); 
+              
+          }
+      });
+  });
+
+ })
