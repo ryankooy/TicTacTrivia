@@ -12,6 +12,11 @@
         <!-- Materialize Compiled and minified JavaScript -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
                 
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <!-- External Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Cinzel|Raleway:100&display=swap" rel="stylesheet">
 
 
         <!-- External Fonts -->
@@ -110,7 +115,7 @@
             </section>
 
             <!-- Section 3: Player Selection -->
-            <section id="player-selection">
+            <!-- <section id="player-selection">
                     <div class="text-center row-1 tite"> 
                         <h1>TIC TAC TRIVIA!</h1>
                     </div>
@@ -126,16 +131,21 @@
                     <input type="email" name="email" placeholder="Your email">
                     <input type="hidden" id="opponent_email" name="_cc" value="culinaryhealing@gmail.com" />
                     <input type="hidden" name="_subject" value="Extreme Trivia Tac Toe Challenge Request" />
-                    <!-- <textarea name="message" placeholder="I want to challenge you to a game of Extreme Trivia.  Join me at https://ryankooy.github.io/project-1/lamanasstage.html"></textarea> -->
+                    <textarea name="message" placeholder="I want to challenge you to a game of Extreme Trivia.  Join me at https://ryankooy.github.io/project-1/lamanasstage.html"></textarea>
                     <button type="submit">Send Challenge Request</button>
                 </form>
         
-            </section>
+            </section> -->
             
             <!-- Section 4: Category Selection --> 
             <section id="category-selection">
+<<<<<<< HEAD
                 <form>
                     <div class="form-group">  -->
+=======
+                <form id="categorySelect c-s-p1">
+                    <div class="form-group">
+>>>>>>> b8eff8e3dcd089b1f1f8bb1a5ccbb49644f0620d
                         Category Selection
                         <label class="form-item__label" for="select">Test</label>
                             <select class="form-control" id="catagory-select">
@@ -155,11 +165,37 @@
                             </select>
                         
                     </div>
+<<<<<<< HEAD
+                </form>
+=======
+                    <button type="submit" id="category-submit" class="btn">Submit</button>
                 </form>
 
-            <!-- submit -->
-            <!-- <button type="submit" id="category-submit" class="btn btn-primary">Submit</button> -->
-            <!-- </section> -->
+                <form id="c-s-p2">
+                        <div class="form-group">
+                            Category Selection
+                            <label class="form-item__label" for="select"></label>
+                                <select class="form-control" id="catagory-select">
+                                    <option disabled selected value="" required>Player 1 is selecting from the following categories...</option>
+                                    <option value = "21" disabled>Sports</option>
+                                    <option value = "12" disabled>Music</option>
+                                    <option value = "23" disabled>History</option>
+                                    <option value = "17" disabled>Science & Nature</option>
+                                    <option value = "11" disabled>Film</option>
+                                </select>
+                            <label class="form-item__label" for="select"></label>
+                                <select class="form-control" id="difficulty-select">
+                                    <option disabled selected value="" >Player 1 is selecting from the following difficulties...</option>
+                                    <option value="easy" disabled>Easy</option>
+                                    <option value="medium" disabled>Medium</option>
+                                    <option value="hard" disabled>Hard</option>
+                                </select>
+                            
+                        </div>
+                    </form>
+>>>>>>> b8eff8e3dcd089b1f1f8bb1a5ccbb49644f0620d
+
+            </section>
 
             <!-- Section 5: Game Play -->
             <section id="game-play">
@@ -168,7 +204,47 @@
                 </div>
                 <div class="container-game">
                     <div class="game-board">
-                        game board - left side 
+                        <div class="container m-4">
+                            <div class="row">
+                            <button class="TTTboard" value="0" id="one">1</button>
+                            <button class="TTTboard" value="1" id="two">2</button>
+                            <button class="TTTboard" value="2" id="three">3</button>
+                        </div>
+                        <div class="row"></div>
+                            <button class="TTTboard" value="3" id="four">4</button>
+                            <button class="TTTboard" value="4" id="five">5</button>
+                            <button class="TTTboard" value="5" id="six">6</button>
+                        </div>
+                        <div class="row">
+                            <button class="TTTboard" value="6" id="seven">7</button>
+                            <button class="TTTboard" value="7" id="eight">8</button>
+                            <button class="TTTboard" value="8" id="nine">9</button>
+                        </div>
+                        </div>
+                        <div id="timer"> 
+            
+                        </div>
+                        
+                        <div class="p1">
+                            <div class="containerP turn" id="containerP-1">
+                                <div id="player-1" data-turn="1">
+                                </div>
+                                <div class="question">
+            
+                                </div>
+                                <div class="answers"></div>
+                            </div>
+                        </div>
+                        <div class="p2">
+                                <div class="containerP turn" id="containerP-2">
+                                    <div id="player-2" data-turn="2">
+                                    </div>
+                                    <div class="question">
+                
+                                    </div>
+                                    <div class="answers"></div>
+                                </div>
+                            </div>
                     </div>
                     <div id="timer"> 
                         timer - right side 
