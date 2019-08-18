@@ -20,10 +20,16 @@ var firebaseConfig = {
  var playerCount = database.ref('playerCount'); // Keeps track of the number of players in the database
  var outcome = database.ref('gameResults');    // Connects outcomes to the database
  var turn = database.ref('turn');
- var category = database.ref('category');
- var difficulty = database.ref('difficulty');
+ var categoryResults = database.ref('categoryResults');
  
- 
+ var categories = {  //used to save the category and difficulty used for the leaderboards
+  category: "", 
+  difficulty: "",
+}
+var questions ={ //saves the response from the trivia api into our firebase database
+  results: "",
+}
+
  var player = {                  // Stores player details
    name: "",
    email: "",
@@ -374,13 +380,15 @@ $("#category-submit").on("click", function(event){ //Clicking the submit button 
         category: catagorySelect, 
         difficulty: difficultySelect,
     }
+
+    
     var questions ={ //saves the response from the trivia api into our firebase database
         results: response,
     }
     
 
-    database.ref("categoryResults/").push(categoryChoice)
-    database.ref("questionResults/").push(questions)
+    database.ref("categoryResults/").set(categoryChoice)
+    database.ref("questionResults/").set(questions)
     
 })
 })
@@ -459,16 +467,10 @@ function question(data){
       answerButton.attr("value", i)
       answerButton.attr("class", "guess")
       answerButton.text(answers[i])
-      $("#answersPlayer1").prepend(answerButton)
+      $(".answers").append(answerButton)
       
   }
-  for(var i = 0; i < answers.length; i++){
-      var answerButton = $("<button>")
-      answerButton.attr("value", i)
-      answerButton.attr("class", "guess")
-      answerButton.text(answers[i])
-      $("#answersPlayer2").append(answerButton)
-  }
+  
   // adds the question to the page based on which board button was clicked. 
   var questionH1 = $("<h1>")
   questionH1.attr("class", "question")
@@ -489,7 +491,9 @@ function question(data){
  
      x = $(this).val()
  
-     question(x)
+     question(x).then(function(){
+
+     })
      
      database.ref().once("value", function(snapshot) {
       var player_1_name = snapshot.child('players/' + player_1 + '/name').val();
