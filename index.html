@@ -6,17 +6,12 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        
-         <!-- PURECSS -->
-         <!-- <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous"> -->
-        <!--[if lte IE 8]>
-            <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/grids-responsive-old-ie-min.css">
-        <![endif]-->
-        <!--[if gt IE 8]><!-->
-        <!-- <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/grids-responsive-min.css"> -->
-        <!--<![endif]-->
+        <!-- Materialize Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+        <!-- Materialize Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+                
 
 
         <!-- External Fonts -->
@@ -36,168 +31,208 @@
             <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-messaging.js"></script>
         
         <main class="containerMain">
+
             <!-- Section 1: Start -->
+                <!-- <section id="start"> 
 
-            <!-- </section> -->
+                    <div class="text-center row-1 tite"> 
+                        <h1>TIC TAC TRIVIA!</h1>
+                    </div>
+
+                    <div id="row">
+                        <button>Introduction</button>
+                        <button>Challenge Opponent</button>
+                    </div>
+
+                    <div class="leader-board">
+                        <h1>Leaderboard (top 5 scores )</h1>
+                        <table class="table">
+                            <thead class="thead-dark">
+                                <tr>
+                                <th scope="col">Winner</th>
+                                <th scope="col">Category</th>
+                                <th scope="col">Difficulty</th>
+                                <th scope="col">Score</th>
+                                </tr>
+                            </thead>
+                            
+                            <tbody>
+                        
+                            </tbody>
+                        </table>
+                    </div>
+
+                </section> -->
         
-        <!-- Section 2: Introduction -->
-        <!-- <section class="containerMain" id="introduction">
-               <div class="text-center row-1 tite"> 
-                    <h1>TIC TAC TRIVIA!</h1>
-                </div>
-
-            
-        </section> -->
-
-        <!-- Section 3: Player Selection -->
-        <section id="player-selection">
+            <!-- Section 2: Introduction -->
+            <section class="containerMain" id="introduction">
                 <div class="text-center row-1 tite"> 
-                    <h1>TIC TAC TRIVIA!</h1>
-                </div>
-                <div id="user-info">
-                    <div class="input-group">
-                        <input type="text" class="form-control" id="userName" placeholder="Please Enter Your Name">
-                        <div class="input-group-btn">
-                          <button class="btn" id="play" type="submit">CLICK ME</button>
+                        <h1>TIC TAC TRIVIA!</h1>
+                    </div>
+                
+                <div class="row">
+                    <div class="col-6-">
+                        <div class="instructions">
+                            <h2>Welcome to ***Extreme Trivia Tac Toe*****</h2>
+                
+                            <p>You must enter a username to play the game.  You can also enter your email address so that others can challenge you to a game.</p>
+                            <p>Choose either Player 1 or Player 2.</p>
+                            <p>If no other players are online, you can invite a friend, or challenge a previous player.</p>
+                
+                            <p>Once Player 1 and Player 2 are selected, the game will start and other players must wait until the game is complete in order to start a new game.</p>
+                
+                            <p>Player 1 will choose the category.</p>
+                            <p>Then player 1 will choose the difficulty level.</p>
+                
+                            <p>When the game starts, the 15 second timer will begin.</p>  
+                            <p>Player 1 must select a square on the 3 x 3 grid.</p>
+                            <p>Both players will be given the remaining time to answer the question.</p>
+                
+                            <p>If you answer the question first your icon will appear in that square. </p>
+                            <p>If your opponent answers that question first their icon will appear in that square.</p>
+                            <p>Then the next player selects a square.</p>
+                            <p>If time runs out or if no one anwers the question correctly, the next player gets to select a square.</p>
+                
+                            <p>The first player with 3 squares in a row wins the game!</p>
+                
+                            <p>There’s also a live chat that occurs throughout the game.</p>
                         </div>
                     </div>
+                    <div class="col-6-">
+                        <!-- Demo -->
+
+                        <button>Play</button>
+                    </div>
                 </div>
-            <form method="POST" action="https://formspree.io/lamanaml@gmail.com">
-                <input type="email" name="email" placeholder="Your email">
-                <input type="hidden" id="opponent_email" name="_cc" value="culinaryhealing@gmail.com" />
-                <input type="hidden" name="_subject" value="Extreme Trivia Tac Toe Challenge Request" />
-                <!-- <textarea name="message" placeholder="I want to challenge you to a game of Extreme Trivia.  Join me at https://ryankooy.github.io/project-1/lamanasstage.html"></textarea> -->
-                <button type="submit">Send Challenge Request</button>
-            </form>
-    
-        </section>
+                
+
+                
+            </section>
+
+            <!-- Section 3: Player Selection -->
+            <section id="player-selection">
+                    <div class="text-center row-1 tite"> 
+                        <h1>TIC TAC TRIVIA!</h1>
+                    </div>
+                    <div id="user-info">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="userName" placeholder="Please Enter Your Name">
+                            <div class="input-group-btn">
+                            <button class="btn" id="play" type="submit">CLICK ME</button>
+                            </div>
+                        </div>
+                    </div>
+                <form method="POST" action="https://formspree.io/lamanaml@gmail.com">
+                    <input type="email" name="email" placeholder="Your email">
+                    <input type="hidden" id="opponent_email" name="_cc" value="culinaryhealing@gmail.com" />
+                    <input type="hidden" name="_subject" value="Extreme Trivia Tac Toe Challenge Request" />
+                    <!-- <textarea name="message" placeholder="I want to challenge you to a game of Extreme Trivia.  Join me at https://ryankooy.github.io/project-1/lamanasstage.html"></textarea> -->
+                    <button type="submit">Send Challenge Request</button>
+                </form>
         
-        <!-- Section 4: Category Selection -->
-        <!-- <section id="category-selection"> -->
-            <!-- <form>
-                <div class="form-group">  -->
-                    <!-- Category Selection -->
-                    <!-- <label class="form-item__label" for="select">Test</label>
-                        <select class="form-control" id="catagory-select">
-                            <option disabled selected value="" required>Select Category</option>
-                            <option value = "21">Sports</option>
-                            <option value = "12">Music</option>
-                            <option value = "23">History</option>
-                            <option value = "17">Science & Nature</option>
-                            <option value = "11">Film</option>
-                        </select>
-                    <label class="form-item__label" for="select">Difficulty</label>
-                        <select class="form-control" id="difficulty-select">
-                            <option disabled selected value="" >Select Difficulty</option>
-                            <option value="easy">Easy</option>
-                            <option value="medium">Medium</option>
-                            <option value="hard">Hard</option>
-                        </select>
-                    
-                </div>
-            </form> -->
+            </section>
+            
+            <!-- Section 4: Category Selection --> 
+            <!-- <section id="category-selection"> -->
+                <!-- <form>
+                    <div class="form-group">  -->
+                        <!-- Category Selection -->
+                        <!-- <label class="form-item__label" for="select">Test</label>
+                            <select class="form-control" id="catagory-select">
+                                <option disabled selected value="" required>Select Category</option>
+                                <option value = "21">Sports</option>
+                                <option value = "12">Music</option>
+                                <option value = "23">History</option>
+                                <option value = "17">Science & Nature</option>
+                                <option value = "11">Film</option>
+                            </select>
+                        <label class="form-item__label" for="select">Difficulty</label>
+                            <select class="form-control" id="difficulty-select">
+                                <option disabled selected value="" >Select Difficulty</option>
+                                <option value="easy">Easy</option>
+                                <option value="medium">Medium</option>
+                                <option value="hard">Hard</option>
+                            </select>
+                        
+                    </div>
+                </form> -->
 
-        <!-- submit -->
-        <!-- <button type="submit" id="category-submit" class="btn btn-primary">Submit</button> -->
-        <!-- </section> -->
+            <!-- submit -->
+            <!-- <button type="submit" id="category-submit" class="btn btn-primary">Submit</button> -->
+            <!-- </section> -->
 
-        <!-- Section 5: Game Play -->
-        <section class="game-play">
-        <!-- <div id="game-play">  -->
-            <div class="row-1 tite"> 
-                title 
-            </div>
-            <div class="container-game">
-                <div class="game-board">
-                    game board - left side 
+            <!-- Section 5: Game Play -->
+            <section id="game-play">
+                <div class="row-1 tite"> 
+                    title 
                 </div>
-                <div id="timer"> 
-                    timer - right side 
-                </div>
-                <div class="status">
-                    player... its your turn to choose a square 
-                </div> 
-                <div class="question">
-                    question
-                </div>
-            </div>
-
-            <div class="row">
-           
-                <div class="col-6 container-player-1"> 
-                <div class="player-1-name">
-                    player 1 
-                </div>
-                </div>
-
-                 <div class="col-6 container-player-2"> 
-                    <div class="player-2-name">
-                        player 2 
+                <div class="container-game">
+                    <div class="game-board">
+                        game board - left side 
+                    </div>
+                    <div id="timer"> 
+                        timer - right side 
+                    </div>
+                    <div class="status">
+                        player... its your turn to choose a square 
+                    </div> 
+                    <div class="question">
+                        question
                     </div>
                 </div>
 
-        <!-- </div> -->
-      
-        <!-- Game board on new index page -->
-        <a href="game_board.html"></a>
-
-         <section id="game-play">
-            <div class="container m-4">
-                <button class="TTTboard" value="0" id="one">1</button>
-                <button class="TTTboard" value="1" id="two">2</button>
-                <button class="TTTboard" value="2" id="three">3</button>
-                <button class="TTTboard" value="3" id="four">4</button>
-                <button class="TTTboard" value="4" id="five">5</button>
-                <button class="TTTboard" value="5" id="six">6</button>
-                <button class="TTTboard" value="6" id="seven">7</button>
-                <button class="TTTboard" value="7" id="eight">8</button>
-                <button class="TTTboard" value="8" id="nine">9</button>
-            </div>
-
+                <div class="row">
             
-            <div id="question">
+                    <div class="col-6 container-player-1"> 
+                    <div class="player-1-name">
+                        player 1 
+                    </div>
+                    </div>
+
+                    <div class="col-6 container-player-2"> 
+                        <div class="player-2-name">
+                            player 2 
+                        </div>
+                    </div>
+
                 </div>
-                
-                <div id="answersPlayer1">
-                </div>
-                
-                <div id="answersPlayer2">
-                </div>
-    
+        
+            <!-- Game board on new index page -->
+            
+            </section> 
+            <!--- CHAT SECTION -->
+                <diV class="chat-box" id="row">
+                    <div>
+                        <ul id="chat-log"></ul>
+                    </div>
+                        <span class="input-group text-center">
+                            <input type="text" class="form-control" id="message" placeholder="Game on...">
+                        <button class="btn btn-dark" id="chat" type="submit"><span>CHAT</span></button>
+                    </div>
+        
+            <!-------------------------------------------------------------------->
+            <!-- Section 6: outcome -->
+            <!-- <section id="outcome">
 
-        <!--- CHAT SECTION -->
-        <!-- <diV class="chat-box" id="row">
-            <div>
-                <ul id="chat-log"></ul>
-            </div>
-                <span class="input-group text-center">
-                    <input type="text" class="form-control" id="message" placeholder="Game on...">
-                <button class="btn btn-dark" id="chat" type="submit"><span>CHAT</span></button>
-            </div>
-        </section>  -->
-        <!-------------------------------------------------------------------->
-        <!-- Section 6: outcome -->
-        <!-- <section class="containerMain" id="outcome">
+            </section> -->
 
-        </section> -->
+            <!-- Section 7: Results -->
+            <!-- <section id="results">
 
-        <!-- Section 7: Results -->
-        <!-- <section class="containerMain" id="results">
-
-             <table class="table">
-                <thead class="thead-dark">
-                    <tr>
-                    <th scope="col">Winner</th>
-                    <th scope="col">Category</th>
-                    <th scope="col">Difficulty</th>
-                    <th scope="col">Score</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                </tbody>
-                </table> -->
-        </section> 
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                        <th scope="col">Winner</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Difficulty</th>
+                        <th scope="col">Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                    </table> -->
+                <!-- </section>  -->
         </main>
         <!-- Firebase Core JavaScript Link -->
         <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-app.js"></script>
