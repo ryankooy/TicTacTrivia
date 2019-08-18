@@ -14,9 +14,21 @@ $("#category-submit").on("click", function(event){
     //gets the value of the catagory and difficulty and saves them to vars
     var catagorySelect = $("#catagory-select").val()
     var difficultySelect = $("#difficulty-select").val()
+    
+    var categoryChoice = {
+        category: catagorySelect,
+        difficulty: difficultySelect,
+    }
 
+    database.ref("categoryResults/").push(categoryChoice)
+
+})
+//-------------------------------------------------------------------------------------------------------------------
+//
+
+    console.log("works",childSnapshot.val().category,childSnapshot.val().difficulty )
     //the link to pull the information with the catagory and difficulty above
-    var triviaApi = "https://opentdb.com/api.php?amount=9&category=" + catagorySelect + "&difficulty=" + difficultySelect+ "&type=multiple"
+    var triviaApi = "https://opentdb.com/api.php?amount=9&category=" + childSnapshot.val().category + "&difficulty=" + childSnapshot.val().difficulty + "&type=multiple"
 
 $.ajax({
     url:triviaApi,
@@ -26,12 +38,12 @@ $.ajax({
     // used to simplify the the response to be easier
     res = response.results
     console.log(res)
+})
+//-----------------------------------------------------------------------------------------------------------------------
+database.ref("categoryResults/").on("child_added", function(){   
+    $("#categorySelect").hide()
     $(".TTTboard").show()
 })
-})
-//-------------------------------------------------------------------------------------------------------------------
-//
-//-----------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -130,6 +142,8 @@ $("#question").html(questionH1)
 
 }
 //-------------------------------------------------------------------------------------------------------------------
+//each players color. 
+//to send the data to firebase for global use
 //
 //-----------------------------------------------------------------------------------------------------------------------
 
@@ -152,7 +166,8 @@ $(document).on("click", ".TTTboard", function(){
 
 })
 //-------------------------------------------------------------------------------------------------------------------
-//
+//do while test
+//add to firebase?????
 //-----------------------------------------------------------------------------------------------------------------------
 
 function triviaWinner(){
@@ -163,15 +178,9 @@ function triviaWinner(){
     }
     if(whoIsRight === 1){
         console.log("Player1 wins")
-        if ($(".TTTboard").val() === x){
-        $(this).attr("class", "red")
-    }
-    }
+            }
     if(whoIsRight === 2){
         console.log("Player2 wins")
-        if ($(".TTTboard").val() === x){
-            $(this).attr("class", "blue")
-        }
     }
     
 }
