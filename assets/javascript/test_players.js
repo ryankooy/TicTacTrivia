@@ -46,6 +46,7 @@ var questions ={ //saves the response from the trivia api into our firebase data
  var gameResults = "";               // Stores game results 
  
  $(document).ready(function() {
+
  /*
  ========================================
  play Game
@@ -65,15 +66,18 @@ var questions ={ //saves the response from the trivia api into our firebase data
  ========================================
  */
 
-//  $('Start').hi   de();                  // Section 1: Start 
-//  $('introduction').hide();          // Section 2: Introduction 
+ $('#Start').hide();                  // Section 1: Start 
+ $('#introduction').hide();          // Section 2: Introduction 
 //  $('#player-selection').hide();    // Section 3: Player Selection 
-//  $('#category-selection').hide(); // Section 4: Category Selection 
+ $('#category-selection').hide(); // Section 4: Category Selection 
 //  $('#game-play').hide();         // Section 5: Game Play
- $('.chat-box').hide();         // Chat Section 
+//  $('.chat-box').hide();         // Chat Section 
  $('#outcome').hide();         // Section 6: Outcome 
  $('#results').hide();        // Section 7: Results 
+
  
+  $('#select').formSelect();
+
  /*
  ========================================
  Add Players 
