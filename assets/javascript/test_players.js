@@ -447,12 +447,11 @@ $(document).on("click", "#answersPlayer2 > .guess", function(){
 Getting the question and answers function
 ================
 */
-function question(data){
 
+function question(data){
+  
   database.ref("questionResults/").on("child_added",function(childSnapshot){
-  
-  var res = childSnapshot.val().results.results[data]
-  
+  var res = childSnapshot.val().results[data]
   //picks a random number 0-3 and splices the correct answer into the API's incorrect answer array
   correctAns = Math.floor(Math.random() * (4 - 0))
   
@@ -461,22 +460,21 @@ function question(data){
   
   whoIsRight = 0
   
-  //for loop to create 4 buttons with the answer array in them
-  for(var i = 0; i < answers.length; i++){
-      var answerButton = $("<button>")
-      answerButton.attr("value", i)
-      answerButton.attr("class", "guess")
-      answerButton.text(answers[i])
-      $(".answers").append(answerButton)
-      
+  var activeQuestion = {
+    question: res.question,
   }
-  
-  // adds the question to the page based on which board button was clicked. 
-  var questionH1 = $("<h1>")
-  questionH1.attr("class", "question")
-  questionH1.html(res.question)
-  })  
-  }
+ var activeAnswer = {
+   answer: answers
+ }
+  database.ref("activeQuestion").set(activeQuestion)
+  database.ref("activeAnswer").set(activeAnswer)
+   
+database.ref("activeQuestion").on("child_added", function(childSnapshot){
+ console.log(database.ref().activeQuestion)
+})
+}
+  )}
+
 
   /*
   ======================
@@ -489,31 +487,29 @@ function question(data){
  $(document).on("click", ".TTTboard", function(){
      $(".TTTboard").hide()
  
-     x = $(this).val()
- 
-     question(x).then(function(){
+     x = parseInt($(this).val())
 
-     })
+     question(x)
      
-     database.ref().once("value", function(snapshot) {
-      var player_1_name = snapshot.child('players/' + player_1 + '/name').val();
-      var player_2_name = snapshot.child('players/' + player_2 + '/name').val();
+  //    database.ref().once("value", function(snapshot) {
+  //     var player_1_name = snapshot.child('players/' + player_1 + '/name').val();
+  //     var player_2_name = snapshot.child('players/' + player_2 + '/name').val();
 
 
-      turn.once('value').then(function(snapshot) { 
-          currentTurn = snapshot.val();
-          if (currentTurn === null) {
-              currentTurn = 1;
-              turn.set(currentTurn); 
-          } else if (currentTurn === 1) {
-              currentTurn = 2;
-              turn.set(currentTurn); 
-          } else if (currentTurn === 2) {
-              currentTurn = 1;
-              turn.set(currentTurn); 
+  //     turn.once('value').then(function(snapshot) { 
+  //         currentTurn = snapshot.val();
+  //         if (currentTurn === null) {
+  //             currentTurn = 1;
+  //             turn.set(currentTurn); 
+  //         } else if (currentTurn === 1) {
+  //             currentTurn = 2;
+  //             turn.set(currentTurn); 
+  //         } else if (currentTurn === 2) {
+  //             currentTurn = 1;
+  //             turn.set(currentTurn); 
               
-          }
-      });
-  });
+  //         }
+  //     });
+  // });
 
  })
