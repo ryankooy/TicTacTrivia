@@ -1,3 +1,4 @@
+/*
 $(document).ready(function(){
 
 
@@ -15,36 +16,42 @@ $("#category-submit").on("click", function(event){
     var catagorySelect = $("#catagory-select").val()
     var difficultySelect = $("#difficulty-select").val()
     
-    var categoryChoice = {
-        category: catagorySelect,
-        difficulty: difficultySelect,
-    }
+    var triviaApi = "https://opentdb.com/api.php?amount=9&category=" + catagorySelect + "&difficulty=" + difficultySelect + "&type=multiple"
 
-    database.ref("categoryResults/").push(categoryChoice)
-
-})
-//-------------------------------------------------------------------------------------------------------------------
-//
-
-    console.log("works",childSnapshot.val().category,childSnapshot.val().difficulty )
-    //the link to pull the information with the catagory and difficulty above
-    var triviaApi = "https://opentdb.com/api.php?amount=9&category=" + childSnapshot.val().category + "&difficulty=" + childSnapshot.val().difficulty + "&type=multiple"
-
-$.ajax({
-    url:triviaApi,
-    method: 'GET'
+    $.ajax({
+        url:triviaApi,
+        method: 'GET'
 }).then(function(response){
 
     // used to simplify the the response to be easier
     res = response.results
     console.log(res)
+
+    var categoryChoice = {
+        category: catagorySelect,
+        difficulty: difficultySelect,
+    }
+    var questions ={
+        results: response,
+    }
+    
+
+    database.ref("categoryResults/").push(categoryChoice)
+    database.ref("questionResults/").push(questions)
+    
 })
+})
+//-------------------------------------------------------------------------------------------------------------------
+//
+
+   // console.log("works",childSnapshot.val().category,childSnapshot.val().difficulty )
+    //the link to pull the information with the catagory and difficulty above
+    
 //-----------------------------------------------------------------------------------------------------------------------
 database.ref("categoryResults/").on("child_added", function(){   
     $("#categorySelect").hide()
     $(".TTTboard").show()
 })
-
 
 
 
@@ -55,11 +62,6 @@ var whoIsRight = 0
 
 var guesses = 0
 
-
-//-------------------------------------------------------------------------------------------------------------------
-//
-//-----------------------------------------------------------------------------------------------------------------------
-//when the answer is clicked checks to see if the answer is correct.
 $(document).on("click", "#answersPlayer1 > .guess", function(){
     if ($(this).val() == correctAns){
         console.log("correct")
@@ -104,17 +106,20 @@ function clearScrn(){
 //-----------------------------------------------------------------------------------------------------------------------
 
 
-
-
 //-------------------------------------------------------------------------------------------------------------------
 //
 //-----------------------------------------------------------------------------------------------------------------------
 function question(data){
 
+database.ref("questionResults/").on("child_added",function(childSnapshot){
+
+var res = childSnapshot.val().results.results[data]
+
 //picks a random number 0-3 and splices the correct answer into the API's incorrect answer array
 correctAns = Math.floor(Math.random() * (4 - 0))
-var answers = res[data].incorrect_answers
-answers.splice(correctAns, 0 , res[data].correct_answer)
+
+var answers = res.incorrect_answers
+answers.splice(correctAns, 0 , res.correct_answer)
 
 whoIsRight = 0
 
@@ -137,9 +142,8 @@ for(var i = 0; i < answers.length; i++){
 // adds the question to the page based on which board button was clicked. 
 var questionH1 = $("<h1>")
 questionH1.attr("class", "question")
-questionH1.text(res[data].question)
-$("#question").html(questionH1)
-
+questionH1.html(res.question)
+})  
 }
 //-------------------------------------------------------------------------------------------------------------------
 //each players color. 
@@ -163,6 +167,10 @@ $(document).on("click", ".TTTboard", function(){
 
     question(x)
 
+    if(currentTurn === 1){
+        $(".question").append(questionH1)
+
+    }
 
 })
 //-------------------------------------------------------------------------------------------------------------------
@@ -251,3 +259,5 @@ function checkWins(){
 //     checkWins()
 // }
 })
+
+*/
