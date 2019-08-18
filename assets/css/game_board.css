@@ -34,3 +34,13 @@ body {
     background: grey;
     position: relative; 
   }
+
+#one, #two, #three, #four, #five, #six, #seven, #eight, #nine {
+  height: 100px; 
+  width: 100px; 
+}
+
+.row {
+  margin: 0;
+  padding: 0;
+}
