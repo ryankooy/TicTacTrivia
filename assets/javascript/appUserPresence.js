@@ -1,49 +1,3 @@
-<<<<<<< HEAD
-// var firebaseConfig = {
-//    apiKey: "AIzaSyDGxeGNaPIi0Vp018GM7Br7SYonsYESqhg",
-//    authDomain: "project-1-4a8dc.firebaseapp.com",
-//    databaseURL: "https://project-1-4a8dc.firebaseio.com",
-//    projectId: "project-1-4a8dc",
-//    storageBucket: "",
-//    messagingSenderId: "650110209456",
-//    appId: "1:650110209456:web:de4e826c95bd7efe"
-// };
-
-// firebase.initializeApp(firebaseConfig);
-
-// var database = firebase.database();
-
-// /*
-// ========================================
-// Global Variables
-// ========================================
-// */
-// var players = database.ref('players');          // Connects players details to the database
-// var playerCount = database.ref('playerCount'); // Keeps track of the number of players in the database
-// var outcome = database.ref('gameResults');    // Connects outcomes to the database
-// var turn = database.ref('turn');
-
-// var player = {                  // Stores player details
-//   name: "",
-//   email: "",
-//   choice: "",
-//   wins: 0,
-//   losses: 0,
-//   uid: "", 
-// };
-
-// var player_1 = null;                // Sets up player 1
-// var player_2 = null;                // Sets up player 2
-// var totalPlayers = null;            // Sets up total number of players
-// var gameResults = "";               // Stores game results 
-
-// $(document).ready(function() {
-// /*
-// ========================================
-// play Game
-// ========================================
-// */
-=======
 var firebaseConfig = {
    apiKey: "AIzaSyDGxeGNaPIi0Vp018GM7Br7SYonsYESqhg",
    authDomain: "project-1-4a8dc.firebaseapp.com",
@@ -169,7 +123,6 @@ function newPlayers(){
     })
   }
 
->>>>>>> e40ccbf19253bd4208d2e966263e935d56ce40e9
 
 // $('#play').on('click', newPlayers);
 // var nameField = $('#userName');             // Hides name feild on click 
@@ -255,31 +208,6 @@ function newPlayers(){
 // ========================================
 // */
  
-<<<<<<< HEAD
-// playerCount.on("value", function(snapshot) {       // Checks player count 
-//   totalPlayers = snapshot.val();               
-//   if (totalPlayers === 2) {                      // If the total player count is 2 shoot the game 
-//       shootGame();
-//   }
-//   console.log(totalPlayers);
-// });
-
-// /*
-// ========================================
-// Add Players 
-// ========================================
-// */
-
-//   $('#chat').on('click', function() {
-
-//     var message = {
-//       name: nameField.val(),
-//       message: messageField()
-//     };
-    
-//     convo.push(message)
-//     messageField.val(' ');
-=======
 playerCount.on("value", function(snapshot) {       // Checks player count 
   totalPlayers = snapshot.val();               
   if (totalPlayers === 2) {                      // If the total player count is 2 shoot the game 
@@ -423,7 +351,6 @@ Chat function
     convo.push(message);
     messageField.val(' ');
   }); 
->>>>>>> e40ccbf19253bd4208d2e966263e935d56ce40e9
 
 //   convo.limitToLast(5).on('child_added', function(snapshot) {
 
@@ -431,16 +358,6 @@ Chat function
 //     var player = data.name; 
 //     var message = data.message;
 
-<<<<<<< HEAD
-//     var messageList = $('<li>');
-//     var playerName = $('<span id="playerName"></span>');
-//     playerName.html(player + ": ");
-//     messageList.html(message).prepend(playName); 
-//     chatLog.prepend(messageList); 
-  
-//   }); 
-// })
-=======
     var messageList = $('<li>');
     var playerName = $('<span id="playerName"></span>');
     playerName.html(player + ": ");
@@ -448,42 +365,8 @@ Chat function
     chatLog.prepend(messageList); 
   
   }); 
->>>>>>> e40ccbf19253bd4208d2e966263e935d56ce40e9
 
 //   convo.onDisconnect().remove();          // Remove chat when the game is disconnected 
 
 
-<<<<<<< HEAD
-// /*
-// ========================================
-// SMS API
-// ========================================
-// // */
-
-// //   var unirest = require("unirest");
-
-// //   var req = unirest("POST", "https://textbelt-sms.p.rapidapi.com/text");
-
-// //   req.headers({
-// //     "x-rapidapi-host": "textbelt-sms.p.rapidapi.com",
-// //     "x-rapidapi-key": "74c90693ebmsh681955c4af50b5fp1e600ejsn76ad4d3cdc7d",
-// //     "content-type": "application/x-www-form-urlencoded"
-// //   });
-
-// //   req.form({
-// //     "message": {},
-// //     "phone": {},
-// //     "key": {}
-// //   });
-
-// //   req.end(function (res) {
-// //     if (res.error) throw new Error(res.error);
-
-// //     console.log(res.body);
-// //   });
-
-
-// })
-=======
 })
->>>>>>> e40ccbf19253bd4208d2e966263e935d56ce40e9
