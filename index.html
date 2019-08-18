@@ -133,11 +133,11 @@
             </section>
             
             <!-- Section 4: Category Selection --> 
-            <!-- <section id="category-selection"> -->
-                <!-- <form>
-                    <div class="form-group">  -->
-                        <!-- Category Selection -->
-                        <!-- <label class="form-item__label" for="select">Test</label>
+            <section id="category-selection">
+                <form id="categorySelect">
+                    <div class="form-group">
+                        Category Selection
+                        <label class="form-item__label" for="select">Test</label>
                             <select class="form-control" id="catagory-select">
                                 <option disabled selected value="" required>Select Category</option>
                                 <option value = "21">Sports</option>
@@ -155,11 +155,9 @@
                             </select>
                         
                     </div>
-                </form> -->
-
-            <!-- submit -->
-            <!-- <button type="submit" id="category-submit" class="btn btn-primary">Submit</button> -->
-            <!-- </section> -->
+                    <button type="submit" id="category-submit" class="btn btn-primary">Submit</button>
+                </form>
+            </section>
 
             <!-- Section 5: Game Play -->
             <section id="game-play">
@@ -168,7 +166,41 @@
                 </div>
                 <div class="container-game">
                     <div class="game-board">
-                        game board - left side 
+                        <div class="container m-4">
+                            <button class="TTTboard" value="0" id="one">1</button>
+                            <button class="TTTboard" value="1" id="two">2</button>
+                            <button class="TTTboard" value="2" id="three">3</button>
+                            <button class="TTTboard" value="3" id="four">4</button>
+                            <button class="TTTboard" value="4" id="five">5</button>
+                            <button class="TTTboard" value="5" id="six">6</button>
+                            <button class="TTTboard" value="6" id="seven">7</button>
+                            <button class="TTTboard" value="7" id="eight">8</button>
+                            <button class="TTTboard" value="8" id="nine">9</button>
+                        </div>
+                        <div id="timer"> 
+            
+                        </div>
+                        
+                        <div class="p1">
+                            <div class="containerP turn" id="containerP-1">
+                                <div id="player-1" data-turn="1">
+                                </div>
+                                <div class="question">
+            
+                                </div>
+                                <div class="answers"></div>
+                            </div>
+                        </div>
+                        <div class="p2">
+                                <div class="containerP turn" id="containerP-2">
+                                    <div id="player-2" data-turn="2">
+                                    </div>
+                                    <div class="question">
+                
+                                    </div>
+                                    <div class="answers"></div>
+                                </div>
+                            </div>
                     </div>
                     <div id="timer"> 
                         timer - right side 
