@@ -47,6 +47,8 @@ var chosenSquare;
  var player_2 = null;                // Sets up player 2
  var totalPlayers = null;            // Sets up total number of players
  var gameResults = "";               // Stores game results 
+ var blueGame = false;               // True if Blue wins
+ var redGame = false;                // True if Red wins
  
  $(document).ready(function() {
 
@@ -374,7 +376,9 @@ function checkWins(){
   if(blueWins1 === true || blueWins2 === true || blueWins3 === true ||
        blueWins4 === true || blueWins5 === true || blueWins6 === true ||
        blueWins7 === true || blueWins8 === true){
-      alert("Blue Wins")
+      alert("Blue Wins");
+      blueGame = true;
+
   }
   
   var redWins1 = $("#one.red, #two.red, #three.red").length === 3
@@ -390,6 +394,7 @@ function checkWins(){
       redWins4 === true || redWins5 === true || redWins6 === true ||
       redWins7 === true || redWins8 === true){
      alert("Red Wins")
+     redGame = true;
  }
 }
 
@@ -573,3 +578,47 @@ function question(data){
 
  })
 })
+  //    database.ref().once("value", function(snapshot) {
+  //     var player_1_name = snapshot.child('players/' + player_1 + '/name').val();
+  //     var player_2_name = snapshot.child('players/' + player_2 + '/name').val();
+
+
+  //     turn.once('value').then(function(snapshot) { 
+  //         currentTurn = snapshot.val();
+  //         if (currentTurn === null) {
+  //             currentTurn = 1;
+  //             turn.set(currentTurn); 
+  //         } else if (currentTurn === 1) {
+  //             currentTurn = 2;
+  //             turn.set(currentTurn); 
+  //         } else if (currentTurn === 2) {
+  //             currentTurn = 1;
+  //             turn.set(currentTurn); 
+              
+  //         }
+  //     });
+  // });
+
+  /*
+====================
+Leaderboard results
+*********needs work*********
+====================
+*/
+
+// var leaderBoard = $('<tr>').append(
+//   $('<td>').text(),
+//   $('<td>').text(),
+//   $('<td>').text()
+// );
+
+// database.ref().on('value', function() {
+//   checkWins();
+//   if (blueGame === true) {
+//     $('.table > tbody').text(leaderBoard);
+//   } else if (redGame === true) {
+    
+//   }
+// });
+
+//  })

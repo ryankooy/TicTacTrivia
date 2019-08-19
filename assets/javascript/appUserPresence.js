@@ -120,10 +120,13 @@ function newPlayers(){
         alert('This game is currently full. Please try again later.');
     }
 
-    })
+    });
   }
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> d38ed9e4394049e0c0355f05e6f9fbdcb558cf25
 // $('#play').on('click', newPlayers);
 // var nameField = $('#userName');             // Hides name feild on click 
 // var addPlayerButton = $('#play');         // Stoes new play 
@@ -364,9 +367,55 @@ Chat function
     messageList.html(message).prepend(playerName); 
     chatLog.prepend(messageList); 
   
+<<<<<<< HEAD
+=======
   }); 
+>>>>>>> d38ed9e4394049e0c0355f05e6f9fbdcb558cf25
+
 
 //   convo.onDisconnect().remove();          // Remove chat when the game is disconnected 
 
+<<<<<<< HEAD
+// /*
+// ========================================
+// SMS API
+// ========================================
+// // */
 
+// //   var unirest = require("unirest");
+
+// //   var req = unirest("POST", "https://textbelt-sms.p.rapidapi.com/text");
+
+// //   req.headers({
+// //     "x-rapidapi-host": "textbelt-sms.p.rapidapi.com",
+// //     "x-rapidapi-key": "74c90693ebmsh681955c4af50b5fp1e600ejsn76ad4d3cdc7d",
+// //     "content-type": "application/x-www-form-urlencoded"
+// //   });
+
+// //   req.form({
+// //     "message": {},
+// //     "phone": {},
+// //     "key": {}
+// //   });
+
+// //   req.end(function (res) {
+// //     if (res.error) throw new Error(res.error);
+
+// //     console.log(res.body);
+// //   });
+
+/*
+========================================
+Leaderboard Results
+========================================
+*/
+
+// database.ref().on('value', function(snap) {
+  
+// });
+
+
+});
+=======
 // })
+>>>>>>> d38ed9e4394049e0c0355f05e6f9fbdcb558cf25
