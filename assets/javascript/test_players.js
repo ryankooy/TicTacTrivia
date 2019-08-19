@@ -42,13 +42,13 @@ var chosenSquare;
    uid: "", 
  };
  
- var currentTurn = null; 
+ var currentTurn = null;
  var player_1 = null;                // Sets up player 1
  var player_2 = null;                // Sets up player 2
  var totalPlayers = null;            // Sets up total number of players
  var gameResults = "";               // Stores game results 
- var blueGame = false;               // True if Blue wins
- var redGame = false;                // True if Red wins
+ var p1Win = false;                  // True if player 1 wins
+ var p2Win = false;                  // True if player 2 wins
  var gameEnd = false;                // True if a player wins the round
  
  $(document).ready(function() {
@@ -237,6 +237,7 @@ var chosenSquare;
             $('.game-play').show();
            $('#player-2').html('PLAYER 2: ' + playerTwoName + ' ');
        }
+
    });
    console.log("I am: " + player_2);
  
@@ -600,6 +601,7 @@ function question(data){
   //     });
   // });
 
+
   /*
 ====================
 Leaderboard results
@@ -607,21 +609,21 @@ Leaderboard results
 ====================
 */
 
-  database.ref().on('value', function(snap) {
-    var playerUN = snap.val().name;
-    var cat = snap.val().category;
-    var diff = snap.val().difficulty;
-    checkWins();
-    if (gameEnd === true) {
-      
-      var leaderBoard = $('<tr>').append(
-        $('<td>').text(playerUN),
-        $('<td>').text(cat),
-        $('<td>').text(diff)
-      );
-      $('.table > tbody').text(leaderBoard);
-    }
-  });
+// js needs to know which player had the final turn
+
+  // database.ref().on('value', function(snap) {
+  //   var playerW = snap.val().name;
+  //   var cat = snap.val().category;
+  //   var diff = snap.val().difficulty;
+  //   checkWins();
+  //   if (gameEnd === true) {
+  //     var leaderBoard = $('<tr>').append(
+  //       $('<td>').text(playerUN),
+  //       $('<td>').text(cat),
+  //       $('<td>').text(diff)
+  //     );
+  //     $('.table > tbody').prepend(leaderBoard);
+  //   }
+  // });
 
 });
-
