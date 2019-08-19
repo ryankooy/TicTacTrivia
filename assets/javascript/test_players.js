@@ -26,10 +26,11 @@ var firebaseConfig = {
  var categories = {  //used to save the category and difficulty used for the leaderboards
   category: "", 
   difficulty: "",
-}
-var questions ={ //saves the response from the trivia api into our firebase database
+ }
+
+ var questions ={ //saves the response from the trivia api into our firebase database
   results: "",
-}
+ }
 
  var player = {                  // Stores player details
    name: "",
@@ -45,6 +46,8 @@ var questions ={ //saves the response from the trivia api into our firebase data
  var player_2 = null;                // Sets up player 2
  var totalPlayers = null;            // Sets up total number of players
  var gameResults = "";               // Stores game results 
+ var blueGame = false;               // True if Blue wins
+ var redGame = false;                // True if Red wins
  
  $(document).ready(function() {
 
@@ -55,7 +58,7 @@ var questions ={ //saves the response from the trivia api into our firebase data
  */
  
  $('#play').on('click', newPlayers);
- var nameField = $('#userName');             // Hides name feild on click 
+ var nameField = $('#userName');             // Hides name field on click 
  var addPlayerButton = $('#play');         // Stores new play 
  var convo = database.ref().child('chat');
  var messageField = $('#message');
@@ -336,7 +339,9 @@ function checkWins(){
   if(blueWins1 === true || blueWins2 === true || blueWins3 === true ||
        blueWins4 === true || blueWins5 === true || blueWins6 === true ||
        blueWins7 === true || blueWins8 === true){
-      alert("Blue Wins")
+      alert("Blue Wins");
+      blueGame = true;
+
   }
   
   var redWins1 = $("#one.red, #two.red, #three.red").length === 3
@@ -352,6 +357,7 @@ function checkWins(){
       redWins4 === true || redWins5 === true || redWins6 === true ||
       redWins7 === true || redWins8 === true){
      alert("Red Wins")
+     redGame = true;
  }
 }
 
@@ -534,5 +540,19 @@ Leaderboard results
 ====================
 */
 
+var leaderBoard = $('<tr>').append(
+  $('<td>').text(),
+  $('<td>').text(),
+  $('<td>').text()
+);
+
+database.ref().on('value', function() {
+  checkWins();
+  if (blueGame === true) {
+    $('.table > tbody').text(leaderBoard);
+  } else if (redGame === true) {
+    
+  }
+});
 
  })
