@@ -22,14 +22,16 @@ var firebaseConfig = {
  var turn = database.ref('turn');
  var categoryResults = database.ref('categoryResults');
  var activeQuestion = database.ref('activeQuestion');
+ var questionResults = database.ref("questionResults/");
  
  var categories = {  //used to save the category and difficulty used for the leaderboards
   category: "", 
   difficulty: "",
 }
-var questions ={ //saves the response from the trivia api into our firebase database
+var questions = { //saves the response from the trivia api into our firebase database
   results: "",
 }
+var chosenSquare;
 
  var player = {                  // Stores player details
    name: "",
@@ -54,12 +56,12 @@ var questions ={ //saves the response from the trivia api into our firebase data
  ========================================
  */
  
- $('#play').on('click', newPlayers);
+//  $('#play').on('click', newPlayers);
  var nameField = $('#userName');             // Hides name feild on click 
- var addPlayerButton = $('#play');         // Stores new play 
  var convo = database.ref().child('chat');
  var messageField = $('#message');
  var chatLog = $('#chat-log');
+ var options = $('#answers');
 
  /*
  ========================================
@@ -67,16 +69,46 @@ var questions ={ //saves the response from the trivia api into our firebase data
  ========================================
  */
 
-//  $('#Start').hide();                  // Section 1: Start 
-//  $('#introduction').hide();          // Section 2: Introduction 
-//  $('#player-selection').hide();    // Section 3: Player Selection 
-//  $('#category-selection').hide(); // Section 4: Category Selection 
-//  $('#game-play').hide();         // Section 5: Game Play
-//  $('.chat-box').hide();         // Chat Section 
+ /* ----------------------------------------------------------------- */
+ $('.containerMain').hide();          // Hides main container 
+ $('#introduction').hide();          // Section 2: Introduction 
+ $('#player-selection').hide();     // Section 3: Player Selection 
+  $('#category-selection-1').hide(); // Section 4: Category Selection 
+  // $('#category-selection-2').hide(); // Section 4: Category Selection 
+ $('#game-play').hide();         // Section 5: Game Play
+ $('.chat-box').hide();         // Chat Section 
 //  $('#outcome').hide();         // Section 6: Outcome 
 //  $('#results').hide();        // Section 7: Results 
+/* ----------------------------------------------------------------- */
 
- 
+    $('#start').show();                     // Section 1: Start 
+    
+    $('#instructions').on('click', function() {   // Hides start page on click 
+      $('#introduction').show();         // Shows intrduction page 
+      $('#start').hide();
+      $('.containerMain').show();   
+    })
+
+    $('#play').on('click', function() {   // Hides start page on click 
+      $('#player-selection').show();     // Section 3 - player secetions
+      $('#start').hide();
+      $('.containerMain').show();   
+    })
+
+/* ----------------------------------------------------------------- */
+
+    $('#to-section-3').on('click', function(){
+      $('#player-selection').show();
+      $('#introduction').hide(); 
+    })
+
+/* ----------------------------------------------------------------- */
+
+    $('#submit-player').on('click', newPlayers);
+
+    $('#to-section-4').on('click', function(){
+      $('#player-selection').hide();
+    })
   
 
  /*
@@ -86,9 +118,10 @@ var questions ={ //saves the response from the trivia api into our firebase data
  */
  
  function newPlayers(){
-    $('#player-selection').hide();
    firebase.auth().signInAnonymously();     
    var playerName = $('#userName').val().trim();
+   var playerEmail = $('#email').val().trim();
+   player.email = playerEmail;
    player.name = playerName; 
    player.uid = firebase.auth().currentUser.uid;
  
@@ -98,17 +131,14 @@ var questions ={ //saves the response from the trivia api into our firebase data
        database.ref('players/1/').update(player);
        player_1_details = $('player-1');
        var player_2_details;
+       $('#section-3-player-1').html(playerName + 'YOU ARE PLAYER 1')
+       $('#section-3-player-1').append('WAITING FOR PLAYER 2...')
        player_1_details.html('PLAYER 1: ' + playerName + ' ');
        player_1 = 1; 
        player_2 = 2; 
-       $('container-player-1').show();
-       $('container-player-2').hide();
-       nameField.hide();
-       addPlayerButton.hide();
- 
+       $('#user-info').hide();
        console.log("This is tthe value of:" + player_1);
        database.ref('turn').set(1);
- 
        playerCount.once('value').then(function(snapshot) {
          totalPlayers = snapshot.val();
            if (totalPlayers === null) {
@@ -121,17 +151,16 @@ var questions ={ //saves the response from the trivia api into our firebase data
        });
  
      } else if (!snapshot.child('players/2').exists()) {
+      // $('#category-selection-2').show();
+      // $('.chat-box').show();  
        database.ref('players/2/').update(player); 
        player_2_details = $('player-2');
        var player_1_details; 
+       $('#section-3-player-2').html(playerName + 'YOU ARE PLAYER 2')
        player_2_details.html('PLAYER 2: ' + playerName + ' ');
        player_2 = 2; 
        player_1 = 1; 
-       $('container-player-2').show();
-       $('container-player-1').hide();
-
-       nameField.hide(); 
-       addPlayerButton.hide(); 
+       $('#player-selection').hide();
        console.log("This is the value of:" + player_2);
        database.ref('turn').set(1);
        playerCount.once('value').then(function(snapshot) {
@@ -143,8 +172,8 @@ var questions ={ //saves the response from the trivia api into our firebase data
              totalPlayers++;
              playerCount.set(totalPlayers);
          }
-       });
- 
+       })
+       
        } else { // If two players are signed into the database alert that the game is full 
          alert('This game is currently full. Please try again later.');
      }
@@ -158,14 +187,19 @@ var questions ={ //saves the response from the trivia api into our firebase data
  Player Count
  ========================================
  */
-  
+
+
  playerCount.on("value", function(snapshot) {       // Checks player count 
    totalPlayers = snapshot.val();               
    if (totalPlayers === 2) {                      // If the total player count is 2 shoot the game 
-       startGame();
+    $('.chat-box').show();  
+    $('#category-selection-1').show();   
+    $('#player-selection').hide();
+    startGame();
    }
    console.log(totalPlayers);
  });
+
  
  /*
  ========================================
@@ -174,7 +208,6 @@ var questions ={ //saves the response from the trivia api into our firebase data
  */
  
  function startGame() {
- 
    // Player details from the database
    var playerOne = database.ref('players/' + player_1 + '/');
    var playerTwo = database.ref('players/' + player_2 + '/');
@@ -184,11 +217,9 @@ var questions ={ //saves the response from the trivia api into our firebase data
        var data = snapshot.val();
        var playerOneName = data.name;
  
-       if (player_1 === 1) {
-           $('player-selection').hide();
+       if (player_1 === 1) {    
            $('.game-play').show();
            $('#player-1').html('PLAYER 1: ' + playerOneName + ' ');
-
        }
    })
    console.log("I am: " + player_1);
@@ -199,7 +230,7 @@ var questions ={ //saves the response from the trivia api into our firebase data
        var playerTwoName = data.name;
  
        if (player_2 === 2) {
-            $('player-selection').hide();
+        $('.chat-box').show();  
             $('.game-play').show();
            $('#player-2').html('PLAYER 2: ' + playerTwoName + ' ');
        }
@@ -308,12 +339,19 @@ var questions ={ //saves the response from the trivia api into our firebase data
      messageList.html(message).prepend(playerName); 
      chatLog.prepend(messageList); 
    
+
    }); 
+
+/*
+ ========================================
+ Resets Firebase Data on Disconnect 
+ ========================================
+ */
  
-   convo.onDisconnect().remove();          // Remove chat when the game is disconnected 
- 
- 
- })
+   convo.onDisconnect().remove();           // Remove chat when the game is disconnected 
+   categoryResults.onDisconnect().remove(); 
+   activeQuestion.onDisconnect().remove(); 
+   questionResults.onDisconnect().remove();
  
 
  /*
@@ -365,6 +403,8 @@ $(".TTTboard").hide()
 
 
 $("#category-submit").on("click", function(event){ //Clicking the submit button on category select
+  $('#game-play').show();
+  $('#category-selection-1').hide();
     event.preventDefault();
     
     var catagorySelect = $("#catagory-select").val() //the number associated with the category
@@ -474,12 +514,36 @@ function question(data){
       database.ref('activeQuestion').on('value', function(snapshot) {
         var data = snapshot.val();
         var question = data.question;
-        var answers = data.answers;
+        var answer_1 = data.answer;
+
+
+        
+        console.log('The length of the answers: '+ answer_1.length)
+
+        // answer_1.forEach(function(answer_1) {
+        //    var row = $('<button>');
+       
+        for (var i = 0; i < 4; i++ ) {
+          var buttonDiv = $("<div class='row'>");
+          var radioButton = $("<button>");
+          radioButton.append('<label><input class="record"' 
+          +i+' type="radio" name="' + answer_1.length +'"  value="' + answer_1[i] + '" /> ' + answer_1[i] + '</label>');
+          buttonDiv.append(radioButton)
+          $('.active-answers-1').append(buttonDiv);
+        } 
+     
+        for (var i = 0; i < 4; i++ ) {
+          var buttonDiv = $("<div class='row'>");
+          var radioButton = $("<button>");
+          radioButton.append('<label><input class="record"' 
+          +i+' type="radio" name="' + answer_1.length +'"  value="' + answer_1[i] + '" /> ' + answer_1[i] + '</label>');
+          buttonDiv.append(radioButton)
+          $('.active-answers-2').append(buttonDiv);
+        } 
+
       $('.active-question').html(question + ' ');
       console.log('The current question is: ' + question + ' ');
-      $('.active-answers-1').html(answers + ' ');
-      $('.active-answers-2').html(answers + ' ');
-      console.log('The current options are: ' + answers + ' ');
+      console.log('The current options are: ' + answer_1 + ' ');
     })
  
    
@@ -506,25 +570,6 @@ function question(data){
 
      question(x)
      
-  //    database.ref().once("value", function(snapshot) {
-  //     var player_1_name = snapshot.child('players/' + player_1 + '/name').val();
-  //     var player_2_name = snapshot.child('players/' + player_2 + '/name').val();
-
-
-  //     turn.once('value').then(function(snapshot) { 
-  //         currentTurn = snapshot.val();
-  //         if (currentTurn === null) {
-  //             currentTurn = 1;
-  //             turn.set(currentTurn); 
-  //         } else if (currentTurn === 1) {
-  //             currentTurn = 2;
-  //             turn.set(currentTurn); 
-  //         } else if (currentTurn === 2) {
-  //             currentTurn = 1;
-  //             turn.set(currentTurn); 
-              
-  //         }
-  //     });
-  // });
 
  })
+})
