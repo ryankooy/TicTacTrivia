@@ -23,6 +23,7 @@ var firebaseConfig = {
  var categoryResults = database.ref('categoryResults');
  var activeQuestion = database.ref('activeQuestion');
  var questionResults = database.ref("questionResults/");
+ var pastPlayers = database.ref('past-players');
  
  var categories = {  //used to save the category and difficulty used for the leaderboards
   category: "", 
@@ -113,6 +114,17 @@ var chosenSquare;
       $('#player-selection').hide();
     })
   
+ /*
+ ========================================
+ Challenge a player
+ ========================================
+ */
+
+var pastChallengers = $('<ul>').append(
+  $('<li>').text(pastPlayers)
+);
+
+$('#section-3-player-1').prepend(pastChallengers);
 
  /*
  ========================================
@@ -611,20 +623,20 @@ Leaderboard results
 
 // js needs to know which player had the final turn
 
-  database.ref().on('value', function(snap) {
-    var playerW = snap.val().name;
-    var cat = snap.val().category;
-    var diff = snap.val().difficulty;
-    checkWins();
-    if (gameEnd === true) {
-      var leaderBoard = $('<tr>').append(
-        $('<td>').text(playerW),
-        $('<td>').text(cat),
-        $('<td>').text(diff)
-      );
-      $('.table > tbody').prepend(leaderBoard);
-      outcome.push(playerW, cat, diff);
-    }
-  });
+  // database.ref().on('value', function(snap) {
+  //   var playerW = snap.val().name;
+  //   var cat = snap.val().category;
+  //   var diff = snap.val().difficulty;
+  //   checkWins();
+  //   if (gameEnd === true) {
+  //     var leaderBoard = $('<tr>').append(
+  //       $('<td>').text(playerW),
+  //       $('<td>').text(cat),
+  //       $('<td>').text(diff)
+  //     );
+  //     $('.table > tbody').prepend(leaderBoard);
+  //     outcome.push(playerW, cat, diff);
+  //   }
+  // });
 
 });
