@@ -69,14 +69,14 @@ var questions ={ //saves the response from the trivia api into our firebase data
  $('#Start').hide();                  // Section 1: Start 
  $('#introduction').hide();          // Section 2: Introduction 
 //  $('#player-selection').hide();    // Section 3: Player Selection 
- $('#category-selection').hide(); // Section 4: Category Selection 
+//  $('#category-selection').hide(); // Section 4: Category Selection 
 //  $('#game-play').hide();         // Section 5: Game Play
-//  $('.chat-box').hide();         // Chat Section 
+ $('.chat-box').hide();         // Chat Section 
  $('#outcome').hide();         // Section 6: Outcome 
  $('#results').hide();        // Section 7: Results 
 
  
-  $('#select').formSelect();
+  // $('#select').formSelect();
 
  /*
  ========================================
@@ -398,7 +398,7 @@ $("#category-submit").on("click", function(event){ //Clicking the submit button 
 })
 
 database.ref("categoryResults/").on("child_added", function(){   
-  $("#categorySelect").hide()
+  $("#category-selection").hide()
   $(".TTTboard").show()
 })
 /*
