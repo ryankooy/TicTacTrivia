@@ -611,19 +611,20 @@ Leaderboard results
 
 // js needs to know which player had the final turn
 
-  // database.ref().on('value', function(snap) {
-  //   var playerW = snap.val().name;
-  //   var cat = snap.val().category;
-  //   var diff = snap.val().difficulty;
-  //   checkWins();
-  //   if (gameEnd === true) {
-  //     var leaderBoard = $('<tr>').append(
-  //       $('<td>').text(playerUN),
-  //       $('<td>').text(cat),
-  //       $('<td>').text(diff)
-  //     );
-  //     $('.table > tbody').prepend(leaderBoard);
-  //   }
-  // });
+  database.ref().on('value', function(snap) {
+    var playerW = snap.val().name;
+    var cat = snap.val().category;
+    var diff = snap.val().difficulty;
+    checkWins();
+    if (gameEnd === true) {
+      var leaderBoard = $('<tr>').append(
+        $('<td>').text(playerW),
+        $('<td>').text(cat),
+        $('<td>').text(diff)
+      );
+      $('.table > tbody').prepend(leaderBoard);
+      outcome.push(playerW, cat, diff);
+    }
+  });
 
 });
