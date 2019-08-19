@@ -21,6 +21,7 @@ var firebaseConfig = {
  var outcome = database.ref('gameResults');    // Connects outcomes to the database
  var turn = database.ref('turn');
  var categoryResults = database.ref('categoryResults');
+ var activeQuestion = database.ref('activeQuestion');
  
  var categories = {  //used to save the category and difficulty used for the leaderboards
   category: "", 
@@ -66,17 +67,17 @@ var questions ={ //saves the response from the trivia api into our firebase data
  ========================================
  */
 
- $('#Start').hide();                  // Section 1: Start 
- $('#introduction').hide();          // Section 2: Introduction 
+//  $('#Start').hide();                  // Section 1: Start 
+//  $('#introduction').hide();          // Section 2: Introduction 
 //  $('#player-selection').hide();    // Section 3: Player Selection 
- $('#category-selection').hide(); // Section 4: Category Selection 
+//  $('#category-selection').hide(); // Section 4: Category Selection 
 //  $('#game-play').hide();         // Section 5: Game Play
 //  $('.chat-box').hide();         // Chat Section 
- $('#outcome').hide();         // Section 6: Outcome 
- $('#results').hide();        // Section 7: Results 
+//  $('#outcome').hide();         // Section 6: Outcome 
+//  $('#results').hide();        // Section 7: Results 
 
  
-  $('#select').formSelect();
+  
 
  /*
  ========================================
@@ -398,7 +399,7 @@ $("#category-submit").on("click", function(event){ //Clicking the submit button 
 })
 
 database.ref("categoryResults/").on("child_added", function(){   
-  $("#categorySelect").hide()
+  $("#category-selection").hide()
   $(".TTTboard").show()
 })
 /*
@@ -464,20 +465,30 @@ function question(data){
   
   whoIsRight = 0
   
-  var activeQuestion = {
-    question: res.question,
-  }
- var activeAnswer = {
-   answer: answers
- }
-  database.ref("activeQuestion").set(activeQuestion)
-  database.ref("activeAnswer").set(activeAnswer)
+    var chosenSquare = {
+      question: res.question,
+      answer: answers
+    }
+
+      database.ref('activeQuestion').set(chosenSquare)
+      database.ref('activeQuestion').on('value', function(snapshot) {
+        var data = snapshot.val();
+        var question = data.question;
+        var answers = data.answers;
+      $('.active-question').html(question + ' ');
+      console.log('The current question is: ' + question + ' ');
+      $('.active-answers-1').html(answers + ' ');
+      $('.active-answers-2').html(answers + ' ');
+      console.log('The current options are: ' + answers + ' ');
+    })
+ 
    
-database.ref("activeQuestion").on("child_added", function(childSnapshot){
- console.log(database.ref().activeQuestion)
+// database.ref("activeQuestion").on("child_added", function(childSnapshot){
+//  console.log(database.ref().activeQuestion)
+
 })
 }
-  )}
+  
 
 
   /*
@@ -486,7 +497,7 @@ database.ref("activeQuestion").on("child_added", function(childSnapshot){
   ======================
   */
 
- var x = 0
+ var x = 0;
 
  $(document).on("click", ".TTTboard", function(){
      $(".TTTboard").hide()
