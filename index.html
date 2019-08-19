@@ -28,14 +28,14 @@
 
     </head>
     <body>
-            <!-- Firebase CDN
+            <!-- Firebase CDN-->
             <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase.js"></script>
             <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-app.js"></script>
             <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-auth.js"></script>
             <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-database.js"></script>
             <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-messaging.js"></script>
             
-             Start Screen Background Video -->
+            <!-- Start Screen Background Video -->
             <video playsinline autoplay muted loop id="myVideo">
                     <source class="responsive-video" src="assets/images/backgrounds/tic_tac_trivia....mp4" type="video/mp4"  alt="Your browser does not support HTML5 video." preload>
             </video>
@@ -194,7 +194,7 @@
                 </div>
                 <div class="container-game">
                     <div class="game-board">
-                        <div class="container m-4">
+                        <div class="container resetTurn start-board">
                             <div class="row">
                             <button class="TTTboard" value="0" id="one">1</button>
                             <button class="TTTboard" value="1" id="two">2</button>
@@ -211,7 +211,7 @@
                             <button class="TTTboard" value="8" id="nine">9</button>
                         </div>
                         </div>
-
+                        
                         <div>
                             <div class="row title" id="timer"> 
                                 timer 
@@ -219,7 +219,7 @@
                             <div class="row title status">
                                     player... its your turn to choose a square 
                                 </div> 
-                                <div class="active-question">
+                                <div class="active-question-1">
                                     question
                                    
                                 </div>
@@ -239,6 +239,13 @@
                                 <div class="containerP turn" id="containerP-2">
                                     <div id="player-2" data-turn="2">
                                     </div>
+                                     <div class="active-question-2">
+                                            question
+                                           
+                                        </div>
+                                    <div class="row title status">
+                                            player... its your turn to choose a square 
+                                        </div> 
                                     <div class="active-answers-2">
                 
                                     </div>
