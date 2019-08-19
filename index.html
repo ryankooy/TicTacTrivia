@@ -131,7 +131,7 @@
                     <input type="email" name="email" placeholder="Your email">
                     <input type="hidden" id="opponent_email" name="_cc" value="culinaryhealing@gmail.com" />
                     <input type="hidden" name="_subject" value="Extreme Trivia Tac Toe Challenge Request" />
-                    <textarea name="message" placeholder="I want to challenge you to a game of Extreme Trivia.  Join me at https://ryankooy.github.io/project-1/lamanasstage.html"></textarea>
+                    <!-- <textarea name="message" placeholder="I want to challenge you to a game of Extreme Trivia.  Join me at https://ryankooy.github.io/project-1/lamanasstage.html"></textarea> -->
                     <button type="submit">Send Challenge Request</button>
                 </form>
         
@@ -212,56 +212,41 @@
                             <button class="TTTboard" value="8" id="nine">9</button>
                         </div>
                         </div>
-                        <div id="timer"> 
-            
+
+                        <div>
+                            <div id="timer"> 
+                                timer 
+                            </div>
+                            <div class="status">
+                                    player... its your turn to choose a square 
+                                </div> 
+                                <div class="active-question">
+                                    question
+                                </div>
                         </div>
                         
                         <div class="p1">
                             <div class="containerP turn" id="containerP-1">
                                 <div id="player-1" data-turn="1">
                                 </div>
-                                <div class="question">
+                                <div class="active-answers">
             
                                 </div>
-                                <div class="answers"></div>
+                                <div class="answers-1"></div>
                             </div>
                         </div>
                         <div class="p2">
                                 <div class="containerP turn" id="containerP-2">
                                     <div id="player-2" data-turn="2">
                                     </div>
-                                    <div class="question">
+                                    <div class="active-answers-2">
                 
                                     </div>
                                     <div class="answers"></div>
                                 </div>
                             </div>
                     </div>
-                    <div id="timer"> 
-                        timer - right side 
-                    </div>
-                    <div class="status">
-                        player... its your turn to choose a square 
-                    </div> 
-                    <div class="question">
-                        question
-                    </div>
                 </div>
-
-                <div class="row">
-            
-                    <div class="col-6 container-player-1"> 
-                    <div class="player-1-name">
-                        player 1 
-                    </div>
-                    </div>
-
-                    <div class="col-6 container-player-2"> 
-                        <div class="player-2-name">
-                            player 2 
-                        </div>
-                    </div>
-
                 </div>
         
             <!-- Game board on new index page -->
@@ -302,19 +287,12 @@
                 <!-- </section>  -->
         </main>
         <!-- Firebase Core JavaScript Link -->
-        <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-auth.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-database.js"></script>
         <!-- <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-messaging.js"></script> -->
         
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         
         <script rel="text/javascript" src="assets/javascript/app.js"></script>
               
-        <!-- <script rel="text/javascript" src="assets/javascript/appUserPresence.js"></script> -->
-        <script rel="text/javascript" src="assets/javascript/appUserPresence.js"></script>
-        <!-- <script rel="text/javascript" src="assets/javascript/appUserScores.js"></script> -->
-        <!-- <script rel="text/javascript" src="assets/javascript/firebase-messaging-sw.js"></script> -->
         <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
         <script rel="text/javascript" src="assets/javascript/time.js"></script>
         <script rel="text/javascript" src="assets/javascript/test_players.js"></script>
