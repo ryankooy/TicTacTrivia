@@ -24,7 +24,7 @@ body {
     overflow: hidden;
     padding: 8vh 8vw;
 }
-
+/* 
 .containerMain {
     margin: 0 auto;
     max-width: 1000px;
@@ -33,7 +33,7 @@ body {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     background: grey;
     position: relative; 
-  }
+  } */
 
 #one, #two, #three, #four, #five, #six, #seven, #eight, #nine {
   height: 100px; 
