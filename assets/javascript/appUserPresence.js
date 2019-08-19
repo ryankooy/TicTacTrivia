@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // var firebaseConfig = {
 //    apiKey: "AIzaSyDGxeGNaPIi0Vp018GM7Br7SYonsYESqhg",
 //    authDomain: "project-1-4a8dc.firebaseapp.com",
@@ -8,51 +7,6 @@
 //    messagingSenderId: "650110209456",
 //    appId: "1:650110209456:web:de4e826c95bd7efe"
 // };
-
-// firebase.initializeApp(firebaseConfig);
-
-// var database = firebase.database();
-
-// /*
-// ========================================
-// Global Variables
-// ========================================
-// */
-// var players = database.ref('players');          // Connects players details to the database
-// var playerCount = database.ref('playerCount'); // Keeps track of the number of players in the database
-// var outcome = database.ref('gameResults');    // Connects outcomes to the database
-// var turn = database.ref('turn');
-
-// var player = {                  // Stores player details
-//   name: "",
-//   email: "",
-//   choice: "",
-//   wins: 0,
-//   losses: 0,
-//   uid: "", 
-// };
-
-// var player_1 = null;                // Sets up player 1
-// var player_2 = null;                // Sets up player 2
-// var totalPlayers = null;            // Sets up total number of players
-// var gameResults = "";               // Stores game results 
-
-// $(document).ready(function() {
-// /*
-// ========================================
-// play Game
-// ========================================
-// */
-=======
-var firebaseConfig = {
-   apiKey: "AIzaSyDGxeGNaPIi0Vp018GM7Br7SYonsYESqhg",
-   authDomain: "project-1-4a8dc.firebaseapp.com",
-   databaseURL: "https://project-1-4a8dc.firebaseio.com",
-   projectId: "project-1-4a8dc",
-   storageBucket: "",
-   messagingSenderId: "650110209456",
-   appId: "1:650110209456:web:de4e826c95bd7efe"
-};
 
 firebase.initializeApp(firebaseConfig);
 
@@ -169,6 +123,10 @@ function newPlayers(){
     });
   }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> d38ed9e4394049e0c0355f05e6f9fbdcb558cf25
 // $('#play').on('click', newPlayers);
 // var nameField = $('#userName');             // Hides name feild on click 
 // var addPlayerButton = $('#play');         // Stoes new play 
@@ -409,10 +367,15 @@ Chat function
     messageList.html(message).prepend(playerName); 
     chatLog.prepend(messageList); 
   
+<<<<<<< HEAD
+=======
+  }); 
+>>>>>>> d38ed9e4394049e0c0355f05e6f9fbdcb558cf25
 
 
 //   convo.onDisconnect().remove();          // Remove chat when the game is disconnected 
 
+<<<<<<< HEAD
 // /*
 // ========================================
 // SMS API
@@ -453,3 +416,6 @@ Leaderboard Results
 
 
 });
+=======
+// })
+>>>>>>> d38ed9e4394049e0c0355f05e6f9fbdcb558cf25
