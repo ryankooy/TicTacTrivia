@@ -56,14 +56,16 @@
                     <input type="email" id="email">
                 </div>
 
-
-            <form method="POST" action="https://formspree.io/lamanaml@gmail.com">
-  <input type="email" name="email" placeholder="Your email">
-  <input type="hidden" id="opponent_email" name="_cc" value="culinaryhealing@gmail.com" />
-  <input type="hidden" name="_subject" value="Extreme Trivia Tac Toe Challenge Request" />
- <textarea name="message" placeholder="I want to challenge you to a game of Extreme Trivia.  Join me at https://ryankooy.github.io/project-1/lamanasstage.html"></textarea>
-  <button type="submit">Send Challenge Request</button>
-</form>
+-----------------------------------------------
+        <h3>Invite a friend</h3>
+    <form method="POST" action="https://formspree.io/lamanaml@gmail.com">
+        <input type="hidden" name="_subject" value="Extreme Trivia Tac Toe Challenge Request" />
+        
+        <input id="friend_email" type="email" name="_cc" placeholder="Friends email address"  /><br>
+       
+        <textarea name="message" placeholder="Enter a message"></textarea><br>
+        <button id="send_invite" type="submit">Send invitation</button>
+    </form>
         </section>
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
