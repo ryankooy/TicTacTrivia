@@ -371,6 +371,7 @@ $('#submit_invite').on('click', function() {
 
   var e = $('#friend_email').val().trim();
   $('#friend_email').attr('value', 'e');
+  $('#message-cont').html("<div>I challenge you to a game of Tic Tac Trivia!</div>");
 
 });
 
