@@ -259,15 +259,23 @@ var chosenSquare;
    database.ref('turn').set(1);   // Sets turn count to 1 
    database.ref('turn').on('value', function(snapshot) {
        var turn = snapshot.val();
+       var boardValFB = database.ref("boardvalue")
+       boardValFB.once("value", function(snapshot){
+         board = snapshot.val()
+         console.log("Board = " + board)
+         question(board);
+        $('.active-question-1').text(question1 + ' ');
+        $('.active-question-2').text(question1 + ' ');
+       })
  
        if (turn === null || turn === 1){
            playerOne.on('value', function(snapshot) {
                var data = snapshot.val();
                var playerOneName = data.name;
-               question(board);
-               $('.active-question-1').text(question1 + ' ');
-               $('.active-question-2').html(question1 + ' ');
+              //  question(board);
                $('.status').html('Player 1: ' + playerOneName + '\'s your turn to place an icon');
+              //  $('.active-question-1').text(question1 + ' ');
+              //  $('.active-question-2').text(question1 + ' ');
                console.log('Player 1: ' + playerOneName + '\'s your turn to place an icon');
            })
            console.log("it is player 1's turn");
@@ -275,13 +283,13 @@ var chosenSquare;
            playerTwo.on('value', function(snapshot) {
                var data = snapshot.val();
                var playerTwoName = data.name;
-               question(board);
-               $('.active-question-1').text(question1 + ' ');
-               $('.active-question-2').text(question1 + ' ');
+              //  question(board);
+              //  $('.active-question-1').text(question1 + ' ');
+              //  $('.active-question-2').text(question1 + ' ');
                $('.status').html('Player 2: ' + playerTwoName + '\'s your turn to place an icon');
                console.log("please update to: " + playerTwoName + "\"s turn");
            })
-           console.log("it is player 2's turn");
+           console.log("it is player 2's turn" + board);
        }
       
    })
@@ -590,21 +598,7 @@ function question(data){
      board = parseInt($(this).val())
   
      database.ref("boardvalue").set(board)
-    
      
-  
-    
-
- 
-})
-$(document).on("click", "#ready",function(){
-  database.ref().once('value', function(){
-  boardValue.once('value', function(snapshot){
-  board = snapshot.val();
-  question(board) 
-  console.log("this worked i think")
-})
-})
 })
 
 }) //    database.ref().once("value", function(snapshot) {
