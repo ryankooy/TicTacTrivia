@@ -371,7 +371,9 @@ Chat function
 $('#send_invite').on('click', function() {
   var e = $('#friend_email').val().trim();
   $('#friend_email').attr('value', 'e');
+  console.log(e);
 });
+
 
 
 });
