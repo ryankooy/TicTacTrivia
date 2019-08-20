@@ -36,11 +36,15 @@ body {
   } */
 
 #one, #two, #three, #four, #five, #six, #seven, #eight, #nine {
-  height: 100px; 
-  width: 100px; 
+  height: 10vh;
+  width: 10vh;
+  position: relative;
 }
 
-.row {
+#one:hover, #two:hover, #three:hover, #four:hover, #five:hover, #six:hover, #seven:hover, #eight:hover, #nine:hover {
+
+}
+  .row {
   margin: 0;
   padding: 0;
 }

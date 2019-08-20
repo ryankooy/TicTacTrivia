@@ -16,7 +16,7 @@ var firebaseConfig = {
  Global Variables
  ========================================
  */
- var players = database.ref('players');          // Connects players details to the database
+ var players = database.ref('players');          // Connects players' details to the database
  var playerCount = database.ref('playerCount'); // Keeps track of the number of players in the database
  var outcome = database.ref('gameResults');    // Connects outcomes to the database
  var turn = database.ref('turn');
@@ -61,7 +61,7 @@ var chosenSquare;
  */
  
 //  $('#play').on('click', newPlayers);
- var nameField = $('#userName');             // Hides name feild on click 
+ var nameField = $('#userName');             // Hides name field on click 
  var convo = database.ref().child('chat');
  var messageField = $('#message');
  var chatLog = $('#chat-log');
@@ -92,7 +92,7 @@ var chosenSquare;
       $('#start').hide();
       $('.containerMain').show();   
     })
-
+    $('#invite-friend').hide(); 
     $('#play').on('click', function() {   // Hides start page on click 
       $('#player-selection').show();     // Section 3 - player secetions
       $('#start').hide();
@@ -114,6 +114,17 @@ var chosenSquare;
       $('#player-selection').hide();
     })
   
+ /*
+ ========================================
+ Challenge a player
+ ========================================
+ */
+
+var pastChallengers = $('<ul>').append(
+  $('<li>').text(pastPlayers)
+);
+
+$('#section-3-player-1').prepend(pastChallengers);
 
  /*
  ========================================
@@ -135,12 +146,14 @@ var chosenSquare;
        database.ref('players/1/').update(player);
        player_1_details = $('player-1');
        var player_2_details;
-       $('#section-3-player-1').html(playerName + 'YOU ARE PLAYER 1')
-       $('#section-3-player-1').append('WAITING FOR PLAYER 2...')
+       $('#section-3-player-1').html('<h1>' + playerName + 'You are player 1' + '</h1>')
+       $('#section-3-player-1').append('Invite a friend with the link below. Waiting for player 2...')
        player_1_details.html('PLAYER 1: ' + playerName + ' ');
        player_1 = 1; 
        player_2 = 2; 
+       $('#invite-friend').show(); 
        $('#user-info').hide();
+       $('#submit-player').hide();
        console.log("This is tthe value of:" + player_1);
        database.ref('turn').set(1);
        playerCount.once('value').then(function(snapshot) {
@@ -156,7 +169,7 @@ var chosenSquare;
  
      } else if (!snapshot.child('players/2').exists()) {
       // $('#category-selection-2').show();
-      // $('.chat-box').show();  
+      $('#invite-friend').hide();  
        database.ref('players/2/').update(player); 
        player_2_details = $('player-2');
        var player_1_details; 
@@ -225,7 +238,8 @@ var chosenSquare;
        var playerOneName = data.name;
  
        if (player_1 === 1) {    
-           $('.game-play').show();
+          //  $('.p1').show(); 
+            // $('.p2').hide(); 
            $('#player-1').html('PLAYER 1: ' + playerOneName + ' ');
        }
    })
@@ -238,9 +252,11 @@ var chosenSquare;
  
        if (player_2 === 2) {
         $('.chat-box').show();  
-            $('.game-play').show();
+        // $('.p2').show(); 
+        // $('.p1').hide(); 
            $('#player-2').html('PLAYER 2: ' + playerTwoName + ' ');
        }
+
    });
    console.log("I am: " + player_2);
  
@@ -262,17 +278,15 @@ var chosenSquare;
        var boardValFB = database.ref("boardvalue")
        boardValFB.once("value", function(snapshot){
          board = snapshot.val()
-         console.log("Board = " + board)
          question(board);
-        $('.active-question-1').text(question1 + ' ');
-        $('.active-question-2').text(question1 + ' ');
+         $(".active-question-1").text(question1 + ' ');
+         $(".active-question-2").text(question1 + ' ');
        })
  
        if (turn === null || turn === 1){
            playerOne.on('value', function(snapshot) {
                var data = snapshot.val();
                var playerOneName = data.name;
-              //  question(board);
                $('.status').html('Player 1: ' + playerOneName + '\'s your turn to place an icon');
               //  $('.active-question-1').text(question1 + ' ');
               //  $('.active-question-2').text(question1 + ' ');
@@ -283,9 +297,6 @@ var chosenSquare;
            playerTwo.on('value', function(snapshot) {
                var data = snapshot.val();
                var playerTwoName = data.name;
-              //  question(board);
-              //  $('.active-question-1').text(question1 + ' ');
-              //  $('.active-question-2').text(question1 + ' ');
                $('.status').html('Player 2: ' + playerTwoName + '\'s your turn to place an icon');
                console.log("please update to: " + playerTwoName + "\"s turn");
            })
@@ -375,6 +386,7 @@ var chosenSquare;
    convo.onDisconnect().remove();           // Remove chat when the game is disconnected 
    categoryResults.onDisconnect().remove(); 
    activeQuestion.onDisconnect().remove(); 
+   boardValue.onDisconnect().remove();
    questionResults.onDisconnect().remove();
  
 
@@ -399,7 +411,7 @@ function checkWins(){
        blueWins4 === true || blueWins5 === true || blueWins6 === true ||
        blueWins7 === true || blueWins8 === true){
       alert("Blue Wins");
-      blueGame = true;
+      gameEnd = true;
 
   }
   
@@ -415,8 +427,8 @@ function checkWins(){
   if(redWins1 === true || redWins2 === true || redWins3 === true ||
       redWins4 === true || redWins5 === true || redWins6 === true ||
       redWins7 === true || redWins8 === true){
-     alert("Red Wins")
-     redGame = true;
+     alert("Red Wins");
+     gameEnd = true;
  }
 }
 
@@ -442,7 +454,7 @@ $("#category-submit").on("click", function(event){ //Clicking the submit button 
     $.ajax({
         url:triviaApi,
         method: 'GET'
-}).then(function(response){
+    }).then(function(response){
 
     // used to simplify the the response to be easier
     res = response.results
@@ -539,48 +551,47 @@ function question(data){
       question: res.question,
       answer: answers
     }
-
       database.ref('activeQuestion').set(chosenSquare)
       database.ref('activeQuestion').on('value', function(snapshot) {
         var data = snapshot.val();
         question1 = data.question;
         var answer_1 = data.answer;
-
-
         
         console.log('The length of the answers: '+ answer_1.length)
-
         // answer_1.forEach(function(answer_1) {
         //    var row = $('<button>');
-       
-        for (var i = 0; i < 4; i++ ) {
-          var buttonDiv = $("<div class='row'>");
-          var radioButton = $("<button>");
-          radioButton.append('<label><input class="record"' 
-          +i+' type="radio" name="' + answer_1.length +'"  value="' + answer_1[i] + '" /> ' + answer_1[i] + '</label>');
-          buttonDiv.append(radioButton)
-          $('.active-answers-1').append(buttonDiv);
-        } 
-     
-        for (var i = 0; i < 4; i++ ) {
-          var buttonDiv = $("<div class='row'>");
-          var radioButton = $("<button>");
-          radioButton.append('<label><input class="record"' 
-          +i+' type="radio" name="' + answer_1.length +'"  value="' + answer_1[i] + '" /> ' + answer_1[i] + '</label>');
-          buttonDiv.append(radioButton)
-          $('.active-answers-2').append(buttonDiv);
-        } 
 
-      // $('.active-question-1').html(question + ' ');
-      // $('.active-question-2').html(question + ' ');
-      console.log('The current question is: ' + question1 + ' ');
-      console.log('The current options are: ' + answer_1 + ' ');
+        $('.option-1').html(answer_1[0])
+        $('.option-2').html(answer_1[1])
+        $('.option-3').html(answer_1[2])
+        $('.option-4').html(answer_1[3])
+       
+    //     for (var i = 0; i < 4; i++ ) {
+    //       var buttonDiv = $("<div class='row'>");
+    //       var radioButton = $("<button>");
+    //       radioButton.append('<label><input class="record"' 
+    //       +i+' type="radio" name="' + answer_1.length +'"  value="' + answer_1[i] + '" /> ' + answer_1[i] + '</label>');
+    //       buttonDiv.append(radioButton)
+    //       $('.active-answers-1').append(buttonDiv);
+    //     } 
+     
+    //     for (var i = 0; i < 4; i++ ) {
+    //       var buttonDiv = $("<div class='row'>");
+    //       var radioButton = $("<button>");
+    //       radioButton.append('<label><input class="record"' 
+    //       +i+' type="radio" name="' + answer_1.length +'"  value="' + answer_1[i] + '" /> ' + answer_1[i] + '</label>');
+    //       buttonDiv.append(radioButton)
+    //       $('.active-answers-2').append(buttonDiv);
+    //     } 
+    //   // $('.active-question-1').html(question + ' ');
+    //   // $('.active-question-2').html(question + ' ');
+    //   console.log('The current question is: ' + question1 + ' ');
+    //   console.log('The current options are: ' + answer_1 + ' ');
     })
  
    
 // database.ref("activeQuestion").on("child_added", function(childSnapshot){
 //  console.log(database.ref().activeQuestion)
-
 })
 }
   
@@ -595,6 +606,7 @@ function question(data){
  
 
  $(document).on("click", ".TTTboard", function(){
+  timer()
     //  $(".TTTboard").hide()
  
      board = parseInt($(this).val())
@@ -624,6 +636,7 @@ function question(data){
   //     });
   // });
 
+
   /*
 ====================
 Leaderboard results
@@ -631,19 +644,21 @@ Leaderboard results
 ====================
 */
 
-// var leaderBoard = $('<tr>').append(
-//   $('<td>').text(),
-//   $('<td>').text(),
-//   $('<td>').text()
-// );
+// js needs to know which player had the final turn
 
-// database.ref().on('value', function() {
-//   checkWins();
-//   if (blueGame === true) {
-//     $('.table > tbody').text(leaderBoard);
-//   } else if (redGame === true) {
-    
-//   }
-// });
-
-//  })
+  // database.ref().on('value', function(snap) {
+  //   var playerW = snap.val().name;
+  //   var cat = snap.val().category;
+  //   var diff = snap.val().difficulty;
+  //   checkWins();
+  //   if (gameEnd === true) {
+  //     var leaderBoard = $('<tr>').append(
+  //       $('<td>').text(playerW),
+  //       $('<td>').text(cat),
+  //       $('<td>').text(diff)
+  //     );
+  //     $('.table > tbody').prepend(leaderBoard);
+  //     outcome.push(playerW, cat, diff);
+  //   }
+  // });
+});
