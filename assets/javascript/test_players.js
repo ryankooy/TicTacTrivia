@@ -85,6 +85,7 @@ var chosenSquare;
 //  $('#results').hide();        // Section 7: Results 
 /* ----------------------------------------------------------------- */
 
+    $("myVideo").show()
     $('#start').show();                     // Section 1: Start 
     
     $('#instructions').on('click', function() {   // Hides start page on click 
@@ -120,11 +121,11 @@ var chosenSquare;
  ========================================
  */
 
-var pastChallengers = $('<ul>').append(
-  $('<li>').text(pastPlayers)
-);
+// var pastChallengers = $('<ul>').append(
+//   $('<li>').text(pastPlayers)
+// );
 
-$('#section-3-player-1').prepend(pastChallengers);
+// $('#section-3-player-1').prepend(pastChallengers); 
 
  /*
  ========================================
@@ -279,8 +280,8 @@ $('#section-3-player-1').prepend(pastChallengers);
        boardValFB.once("value", function(snapshot){
          board = snapshot.val()
          question(board);
-         $(".active-question-1").text(question1 + ' ');
-         $(".active-question-2").text(question1 + ' ');
+         $(".active-question-1").html(question1 + ' ');
+         $(".active-question-2").html(question1 + ' ');
        })
  
        if (turn === null || turn === 1){
@@ -442,6 +443,7 @@ var res = ""
 
 
 $("#category-submit").on("click", function(event){ //Clicking the submit button on category select
+  $("#myVideo").hide()
   $('#game-play').show();
   $('#category-selection-1').hide();
     event.preventDefault();
@@ -488,45 +490,50 @@ Checking answer
 *********needs work*********
 ====================
 */
+var correctANSText = ""
+var guesses = 0
 
-var correctAns = 0
-
-var whoIsRight = 0
-
-$(document).on("click", "#answersPlayer1 > .guess", function(){
-    if ($(this).val() == correctAns){
-        console.log("correct")
-        clearScrn()
-        $(".TTTboard").show()
-        whoIsRight = 1
-    triviaWinner()
-    }
-    else{
-        console.log("wrong")    
-        $("#answersPlayer1").empty()
-        guesses++
-        triviaWinner()
-
-    }
+$(document).on("click", '.guess1' ,function(){
+  if($(".guess1").is(':checked') && $(this).val() == correctANSText){
+    guesses ++
+    database.ref("player1Guess/Guess").set(true)
+    database.ref("TotalGuesses").set(guesses)
+  }
+  if($(".guess1").is(':checked') && $(this).val() != correctANSText){
+    guesses ++
+    database.ref("player1Guess/Guess").set(false)
+    database.ref("TotalGuesses").set(guesses)
+  }
 })
-
-$(document).on("click", "#answersPlayer2 > .guess", function(){
-    if ($(this).val() == correctAns){
-        console.log("correct")
-        clearScrn()
-        $(".TTTboard").show()
-        whoIsRight = 2
-        triviaWinner()
-    }
-    else{
-        console.log("wrong")    
-        $("#answersPlayer2").empty()
-        guesses++
-        triviaWinner()
-    }
+$(document).on("click", '.guess2' ,function(){
+  if($(".guess2").is(':checked') && $(this).val() == correctANSText){
+    guesses ++
+    database.ref("player2Guess/Guess").set(true)
+    database.ref("TotalGuesses").set(guesses)
+  }
+  if($(".guess2").is(':checked') && $(this).val() != correctANSText){
+    guesses ++
+    database.ref("player2Guess/Guess").set(false)
+    database.ref("TotalGuesses").set(guesses)
+  }
 })
-
-
+database.ref("player1Guess").on("value", function(childSnapshot){
+  if(childSnapshot.val() === true){
+    console.log("player1 Wins")
+  }
+  else{
+    console.log("Wrong")
+  }
+})
+  
+database.ref("player2Guess").on("value", function(childSnapshot){
+  if(childSnapshot === true){
+    console.log("player2 Wins")
+  }
+  else{
+    console.log("Wrong")
+  }
+})
 /*
 ================
 Getting the question and answers function
@@ -536,12 +543,15 @@ Getting the question and answers function
 function question(data){
   $(".active-answers-1").empty()
   $(".active-answers-2").empty()
+  guesses = 0
+  
+  database.ref("TotalGuesses").set(guesses)
   
   database.ref("questionResults/").on("child_added",function(childSnapshot){
   var res = childSnapshot.val().results[data]
   //picks a random number 0-3 and splices the correct answer into the API's incorrect answer array
   correctAns = Math.floor(Math.random() * (4 - 0))
-  
+  correctANSText = res.correct_answer 
   var answers = res.incorrect_answers
   answers.splice(correctAns, 0 , res.correct_answer)
   
@@ -549,10 +559,14 @@ function question(data){
   
     var chosenSquare = {
       question: res.question,
-      answer: answers
+      answer: answers,
     }
+    var correct = {
+      correct: correctANSText,
+    }
+      database.ref("correctAnswer").set(correct)
       database.ref('activeQuestion').set(chosenSquare)
-      database.ref('activeQuestion').on('value', function(snapshot) {
+      database.ref('activeQuestion').once('value', function(snapshot) {
         var data = snapshot.val();
         question1 = data.question;
         var answer_1 = data.answer;
@@ -561,10 +575,10 @@ function question(data){
         // answer_1.forEach(function(answer_1) {
         //    var row = $('<button>');
 
-        $('.option-1').html(answer_1[0])
-        $('.option-2').html(answer_1[1])
-        $('.option-3').html(answer_1[2])
-        $('.option-4').html(answer_1[3])
+        $('.option-1').html(answer_1[0]).attr('value', answer_1[0])
+        $('.option-2').html(answer_1[1]).attr('value', answer_1[1])
+        $('.option-3').html(answer_1[2]).attr('value', answer_1[2])
+        $('.option-4').html(answer_1[3]).attr('value', answer_1[3])
        
     //     for (var i = 0; i < 4; i++ ) {
     //       var buttonDiv = $("<div class='row'>");
@@ -612,7 +626,13 @@ function question(data){
      board = parseInt($(this).val())
   
      database.ref("boardvalue").set(board)
-     
+    //  var boardValFB = database.ref("boardvalue")
+    //  boardValFB.once("value", function(snapshot){
+    //    board = snapshot.val()
+    //    question(board);
+    //    $(".active-question-1").html(question1 + ' ');
+    //    $(".active-question-2").html(question1 + ' ');
+    //  })
 })
 
 }) //    database.ref().once("value", function(snapshot) {
@@ -661,4 +681,4 @@ Leaderboard results
   //     outcome.push(playerW, cat, diff);
   //   }
   // });
-});
+
