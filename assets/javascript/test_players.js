@@ -16,7 +16,7 @@ var firebaseConfig = {
  Global Variables
  ========================================
  */
- var players = database.ref('players');          // Connects players details to the database
+ var players = database.ref('players');          // Connects players' details to the database
  var playerCount = database.ref('playerCount'); // Keeps track of the number of players in the database
  var outcome = database.ref('gameResults');    // Connects outcomes to the database
  var turn = database.ref('turn');
@@ -61,7 +61,7 @@ var chosenSquare;
  */
  
 //  $('#play').on('click', newPlayers);
- var nameField = $('#userName');             // Hides name feild on click 
+ var nameField = $('#userName');             // Hides name field on click 
  var convo = database.ref().child('chat');
  var messageField = $('#message');
  var chatLog = $('#chat-log');
@@ -114,6 +114,17 @@ var chosenSquare;
       $('#player-selection').hide();
     })
   
+ /*
+ ========================================
+ Challenge a player
+ ========================================
+ */
+
+var pastChallengers = $('<ul>').append(
+  $('<li>').text(pastPlayers)
+);
+
+$('#section-3-player-1').prepend(pastChallengers);
 
  /*
  ========================================
@@ -141,7 +152,7 @@ var chosenSquare;
        player_1 = 1; 
        player_2 = 2; 
        $('#user-info').hide();
-       console.log("This is tthe value of:" + player_1);
+       console.log("This is the value of:" + player_1);
        database.ref('turn').set(1);
        playerCount.once('value').then(function(snapshot) {
          totalPlayers = snapshot.val();
@@ -241,6 +252,7 @@ var chosenSquare;
             $('.game-play').show();
            $('#player-2').html('PLAYER 2: ' + playerTwoName + ' ');
        }
+
    });
    console.log("I am: " + player_2);
  
@@ -391,7 +403,7 @@ function checkWins(){
        blueWins4 === true || blueWins5 === true || blueWins6 === true ||
        blueWins7 === true || blueWins8 === true){
       alert("Blue Wins");
-      blueGame = true;
+      gameEnd = true;
 
   }
   
@@ -407,8 +419,8 @@ function checkWins(){
   if(redWins1 === true || redWins2 === true || redWins3 === true ||
       redWins4 === true || redWins5 === true || redWins6 === true ||
       redWins7 === true || redWins8 === true){
-     alert("Red Wins")
-     redGame = true;
+     alert("Red Wins");
+     gameEnd = true;
  }
 }
 
@@ -434,7 +446,7 @@ $("#category-submit").on("click", function(event){ //Clicking the submit button 
     $.ajax({
         url:triviaApi,
         method: 'GET'
-}).then(function(response){
+    }).then(function(response){
 
     // used to simplify the the response to be easier
     res = response.results
@@ -607,7 +619,7 @@ $(document).on("click", "#ready",function(){
 })
 })
 
-}) //    database.ref().once("value", function(snapshot) {
+ //    database.ref().once("value", function(snapshot) {
   //     var player_1_name = snapshot.child('players/' + player_1 + '/name').val();
   //     var player_2_name = snapshot.child('players/' + player_2 + '/name').val();
 
@@ -628,6 +640,7 @@ $(document).on("click", "#ready",function(){
   //     });
   // });
 
+
   /*
 ====================
 Leaderboard results
@@ -635,19 +648,22 @@ Leaderboard results
 ====================
 */
 
-// var leaderBoard = $('<tr>').append(
-//   $('<td>').text(),
-//   $('<td>').text(),
-//   $('<td>').text()
-// );
+// js needs to know which player had the final turn
 
-// database.ref().on('value', function() {
-//   checkWins();
-//   if (blueGame === true) {
-//     $('.table > tbody').text(leaderBoard);
-//   } else if (redGame === true) {
-    
-//   }
-// });
+  // database.ref().on('value', function(snap) {
+  //   var playerW = snap.val().name;
+  //   var cat = snap.val().category;
+  //   var diff = snap.val().difficulty;
+  //   checkWins();
+  //   if (gameEnd === true) {
+  //     var leaderBoard = $('<tr>').append(
+  //       $('<td>').text(playerW),
+  //       $('<td>').text(cat),
+  //       $('<td>').text(diff)
+  //     );
+  //     $('.table > tbody').prepend(leaderBoard);
+  //     outcome.push(playerW, cat, diff);
+  //   }
+  // });
 
-//  })
+});
