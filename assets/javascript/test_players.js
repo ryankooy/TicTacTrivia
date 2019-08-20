@@ -522,6 +522,8 @@ Getting the question and answers function
 */
 
 function question(data){
+  $(".active-answers-1").empty()
+  $(".active-answers-2").empty()
   
   database.ref("questionResults/").on("child_added",function(childSnapshot){
   var res = childSnapshot.val().results[data]
