@@ -28,7 +28,7 @@
 
     </head>
     <body>
-            <!-- Firebase CDN -->
+            <!-- Firebase CDN-->
             <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase.js"></script>
             <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-app.js"></script>
             <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-auth.js"></script>
@@ -194,7 +194,7 @@
                 </div>
                 <div class="container-game">
                     <div class="game-board">
-                        <div class="container m-4">
+                        <div class="container resetTurn start-board">
                             <div class="row">
                             <button class="TTTboard" value="0" id="one">1</button>
                             <button class="TTTboard" value="1" id="two">2</button>
@@ -211,7 +211,7 @@
                             <button class="TTTboard" value="8" id="nine">9</button>
                         </div>
                         </div>
-
+                        
                         <div>
                             <div class="row title" id="timer"> 
                                 timer 
@@ -219,7 +219,7 @@
                             <div class="row title status">
                                     player... its your turn to choose a square 
                                 </div> 
-                                <div class="active-question">
+                                <div class="active-question-1">
                                     question
                                    
                                 </div>
@@ -239,6 +239,13 @@
                                 <div class="containerP turn" id="containerP-2">
                                     <div id="player-2" data-turn="2">
                                     </div>
+                                     <div class="active-question-2">
+                                            question
+                                           
+                                        </div>
+                                    <div class="row title status">
+                                            player... its your turn to choose a square 
+                                        </div> 
                                     <div class="active-answers-2">
                 
                                     </div>
@@ -291,7 +298,6 @@
         
         <script rel="text/javascript" src="assets/javascript/app.js"></script>
               
-
         <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
         <script rel="text/javascript" src="assets/javascript/time.js"></script>
         <script rel="text/javascript" src="assets/javascript/test_players.js"></script>

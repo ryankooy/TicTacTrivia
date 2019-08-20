@@ -23,7 +23,7 @@ var firebaseConfig = {
  var categoryResults = database.ref('categoryResults');
  var activeQuestion = database.ref('activeQuestion');
  var questionResults = database.ref("questionResults/");
- var pastPlayers = database.ref('past-players');
+var boardValue = database.ref("boardvalue/");
  
  var categories = {  //used to save the category and difficulty used for the leaderboards
   category: "", 
@@ -43,15 +43,15 @@ var chosenSquare;
    uid: "", 
  };
  
- var currentTurn = null;
+ var board = null;
+ var currentTurn = null; 
  var player_1 = null;                // Sets up player 1
  var player_2 = null;                // Sets up player 2
  var totalPlayers = null;            // Sets up total number of players
  var gameResults = "";               // Stores game results 
- var p1Win = false;                  // True if player 1 wins
- var p2Win = false;                  // True if player 2 wins
- var gameEnd = false;                // True if a player wins the round
- 
+ var blueGame = false;               // True if Blue wins
+ var redGame = false;                // True if Red wins
+ var question1 = '';
  $(document).ready(function() {
 
  /*
@@ -207,9 +207,9 @@ $('#section-3-player-1').prepend(pastChallengers);
  playerCount.on("value", function(snapshot) {       // Checks player count 
    totalPlayers = snapshot.val();               
    if (totalPlayers === 2) {                      // If the total player count is 2 shoot the game 
-    $('.chat-box').show();  
-    $('#category-selection-1').show();   
-    $('#player-selection').hide();
+    // $('.chat-box').show();  
+    // $('#category-selection-1').show();   
+    // $('#player-selection').hide();
     startGame();
    }
    console.log(totalPlayers);
@@ -223,6 +223,9 @@ $('#section-3-player-1').prepend(pastChallengers);
  */
  
  function startGame() {
+  $('.chat-box').show();  
+  $('#category-selection-1').show();   
+  $('#player-selection').hide();
    // Player details from the database
    var playerOne = database.ref('players/' + player_1 + '/');
    var playerTwo = database.ref('players/' + player_2 + '/');
@@ -273,8 +276,10 @@ $('#section-3-player-1').prepend(pastChallengers);
            playerOne.on('value', function(snapshot) {
                var data = snapshot.val();
                var playerOneName = data.name;
- 
-               $('#status').html('Player 1: ' + playerOneName + '\'s your turn to place an icon');
+               question(board);
+               $('.active-question-1').text(question1 + ' ');
+               $('.active-question-2').html(question1 + ' ');
+               $('.status').html('Player 1: ' + playerOneName + '\'s your turn to place an icon');
                console.log('Player 1: ' + playerOneName + '\'s your turn to place an icon');
            })
            console.log("it is player 1's turn");
@@ -282,7 +287,10 @@ $('#section-3-player-1').prepend(pastChallengers);
            playerTwo.on('value', function(snapshot) {
                var data = snapshot.val();
                var playerTwoName = data.name;
-               $('#status').html('Player 2: ' + playerOneName + '\'s your turn to place an icon');
+               question(board);
+               $('.active-question-1').text(question1 + ' ');
+               $('.active-question-2').text(question1 + ' ');
+               $('.status').html('Player 2: ' + playerTwoName + '\'s your turn to place an icon');
                console.log("please update to: " + playerTwoName + "\"s turn");
            })
            console.log("it is player 2's turn");
@@ -312,12 +320,16 @@ $('#section-3-player-1').prepend(pastChallengers);
            } else if (currentTurn === 1) {
                currentTurn = 2;
                turn.set(currentTurn); 
+              //  question(board);
+              //  $('.status').html('Player 1: ' + player_1_name + '\'s your turn to place an icon');
                console.log("please update to: " + player_1_name + "\"s turn");
                console.log("My turn should be 1: " + currentTurn);
                console.log("player 1 clicked a button");
            } else if (currentTurn === 2) {
                currentTurn = 1;
                turn.set(currentTurn); 
+              //  question(board);
+              //  $('.status').html('Player 2: ' + player_2_name + '\'s your turn to place an icon')
                console.log("please update to: " + player_2_name + "\"s turn");
                console.log("My turn should be 2: " + currentTurn);
                console.log("player 2: clicked a button");
@@ -418,7 +430,7 @@ Setting a category
 ============================
 */
 var res = ""
-$(".TTTboard").hide()
+// $(".TTTboard").hide()
 
 
 $("#category-submit").on("click", function(event){ //Clicking the submit button on category select
@@ -458,8 +470,9 @@ $("#category-submit").on("click", function(event){ //Clicking the submit button 
 })
 
 database.ref("categoryResults/").on("child_added", function(){   
-  $("#category-selection").hide()
-  $(".TTTboard").show()
+  $("#category-selection-1").hide()
+  // $(".TTTboard").show()
+  $("#game-play").show()
 })
 /*
 ====================
@@ -532,7 +545,7 @@ function question(data){
       database.ref('activeQuestion').set(chosenSquare)
       database.ref('activeQuestion').on('value', function(snapshot) {
         var data = snapshot.val();
-        var question = data.question;
+        question1 = data.question;
         var answer_1 = data.answer;
 
 
@@ -560,8 +573,9 @@ function question(data){
           $('.active-answers-2').append(buttonDiv);
         } 
 
-      $('.active-question').html(question + ' ');
-      console.log('The current question is: ' + question + ' ');
+      // $('.active-question-1').html(question + ' ');
+      // $('.active-question-2').html(question + ' ');
+      console.log('The current question is: ' + question1 + ' ');
       console.log('The current options are: ' + answer_1 + ' ');
     })
  
@@ -580,19 +594,32 @@ function question(data){
   ======================
   */
 
- var x = 0;
+ 
 
  $(document).on("click", ".TTTboard", function(){
-     $(".TTTboard").hide()
+    //  $(".TTTboard").hide()
  
-     x = parseInt($(this).val())
-
-     question(x)
+     board = parseInt($(this).val())
+  
+     database.ref("boardvalue").set(board)
+    
      
+  
+    
 
- })
+ 
+})
+$(document).on("click", "#ready",function(){
+  database.ref().once('value', function(){
+  boardValue.once('value', function(snapshot){
+  board = snapshot.val();
+  question(board) 
+  console.log("this worked i think")
+})
+})
+})
 
-  //    database.ref().once("value", function(snapshot) {
+ //    database.ref().once("value", function(snapshot) {
   //     var player_1_name = snapshot.child('players/' + player_1 + '/name').val();
   //     var player_2_name = snapshot.child('players/' + player_2 + '/name').val();
 
