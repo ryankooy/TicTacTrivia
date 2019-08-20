@@ -680,6 +680,7 @@ Leaderboard results
 
   // database.ref().on('value', function(snap) {
   //   var playerW = snap.val().name;
+  //  var playerEM = snap.val().email;
   //   var cat = snap.val().category;
   //   var diff = snap.val().difficulty;
   //   checkWins();
