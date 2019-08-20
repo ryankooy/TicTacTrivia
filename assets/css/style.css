@@ -18,6 +18,9 @@ Main Container
 */
 body {
     display: flex;
+    background-image: url('../images/backgrounds/static_background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
     flex-direction: column;
     margin: 0 auto;
     min-height: 100vh;
@@ -37,7 +40,17 @@ body {
     position: absolute; 
     padding: 4vh 4vw; 
     left: 4vw; 
-
+}
+.containerMain2 {
+  margin: 0 auto;
+  max-width: 62vw;
+  min-height: 400px; 
+  width: 100%;
+  height: 78vh;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border: 2px solid navy;
+  background:white;
+  padding: 4vh 4vw; 
 }
 
 .row-1 {
@@ -196,5 +209,9 @@ h3 {
 
 #user-info {
   margin-top: 10px; 
+}
+
+.container-game {
+  padding-top: 60px; 
 }
 
