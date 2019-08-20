@@ -39,6 +39,9 @@ body {
   height: 10vh;
   width: 10vh;
   position: relative;
+  background-image: url('../images/button_question.png');
+  background-size: cover; 
+  background-repeat: no-repeat; 
 }
 
 #one:hover, #two:hover, #three:hover, #four:hover, #five:hover, #six:hover, #seven:hover, #eight:hover, #nine:hover {

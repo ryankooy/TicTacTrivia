@@ -75,6 +75,7 @@ var chosenSquare;
 
  /* ----------------------------------------------------------------- */
  $('.containerMain').hide();          // Hides main container 
+ $('.containerMain2').hide(); 
  $('#introduction').hide();          // Section 2: Introduction 
  $('#player-selection').hide();     // Section 3: Player Selection 
   $('#category-selection-1').hide(); // Section 4: Category Selection 
@@ -84,8 +85,13 @@ var chosenSquare;
 //  $('#outcome').hide();         // Section 6: Outcome 
 //  $('#results').hide();        // Section 7: Results 
 /* ----------------------------------------------------------------- */
+<<<<<<< HEAD
 
     $("myVideo").show()
+=======
+    $('#myVideo').show();
+    $('.containerMain2').hide();
+>>>>>>> 89bee65df1db151095f1c158c33d5dae61bb5035
     $('#start').show();                     // Section 1: Start 
     
     $('#instructions').on('click', function() {   // Hides start page on click 
@@ -443,7 +449,13 @@ var res = ""
 
 
 $("#category-submit").on("click", function(event){ //Clicking the submit button on category select
+<<<<<<< HEAD
   $("#myVideo").hide()
+=======
+  $('.containerMain').hide();  
+  $('.containerMain2').show();
+  $('#myVideo').hide();
+>>>>>>> 89bee65df1db151095f1c158c33d5dae61bb5035
   $('#game-play').show();
   $('#category-selection-1').hide();
     event.preventDefault();
