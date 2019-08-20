@@ -20,11 +20,13 @@
 
 
         <!-- External Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Roboto|Vast+Shadow&display=swap" rel="stylesheet">
 
         <!-- Css Style Sheets -->
         <link rel="stylesheet" href="assets/css/reset.css">
         <link rel="stylesheet" href="assets/css/style.css"> 
         <link rel="stylesheet" href="assets/css/game_board.css">
+        <link rel="stylesheet" nref="assets/css/animate.css">
 
     </head>
     <body>
@@ -49,8 +51,8 @@
                         <h2>Three in a row... the more you know!</h2>
                     </div>
                 <div class="align-items-center row">
-                    <button class="btn-start btn-block col s6" id="instructions">INSTRUCTIONS</button> 
-                    <button class="btn-start btn-block col s6" id="play">PLAY</button>  
+                    <button class="btn-start btn-block col s6" id="instructions">Instructions</button> 
+                    <button class="btn-start btn-block col s6" id="play">Play</button>  
                 </div>
             </section>
     
@@ -90,7 +92,7 @@
                     </div>
                 </div>
                     
-                <button class="btn btn-block" id="to-section-3">Challenge an Opponent</button>
+                <!-- <button class="btn btn-block" id="to-section-3">Challenge an Opponent</button> -->
                 
 
                
@@ -102,30 +104,35 @@
                         <h1>TIC TAC TRIVIA!</h1>
                     </div>
                     <div id="user-info">
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="userName" placeholder="Please Enter Your Name" required>
+                        <h2>Enter Your Name to Get Started</h2>
+                        <div class="center-align input-group">
+                            <input type="text" class="center-align form-control in" id="userName" placeholder="Please Enter Your Name" required>
                             <!-- <input type="text" class="form-control" id="email" placeholder="Please Enter Your Email (Optional)"> -->
                         </div>
                             <div class="input-group">
-                                <input id="email" type="text" class="form-control" placeholder="(Optional) Please Enter Your Email">
+                                <input id="email" type="text" class="center-align form-control in" placeholder="(Optional) Please Enter Your Email">
                             </div>
                             
                             <div class="input-group-btn">
-                            <button class="btn" id="submit-player" type="submit">CLICK ME</button>
+                          
                         </div>
                     </div>
-                <form method="POST" action="https://formspree.io/lamanaml@gmail.com">
-                    <input type="email" name="email" placeholder="Your email">
-                    <input type="hidden" id="opponent_email" name="_cc" value="culinaryhealing@gmail.com" />
-                    <input type="hidden" name="_subject" value="Extreme Trivia Tac Toe Challenge Request" />
-                    <!-- <textarea name="message" placeholder="I want to challenge you to a game of Extreme Trivia.  Join me at https://ryankooy.github.io/project-1/lamanasstage.html"></textarea> -->
-                    <button type="submit">Send Challenge Request</button>
-                </form>
-                <div class="row">
-                      <div id="section-3-player-1"></div>
-                </div>
+                    <div class="row">
+                            <div id="section-3-player-1"></div>
+                    </div>
+                    <div id="invite-friend">
+                        <h1>Challenge a friend by sending a link to their email.</h1>
+                    <form method="POST" action="https://formspree.io/lamanaml@gmail.com">
+                        <input type="email" name="email" placeholder="Your email">
+                        <input type="hidden" id="opponent_email" name="_cc" value="culinaryhealing@gmail.com" />
+                        <input type="hidden" name="_subject" value="Extreme Trivia Tac Toe Challenge Request" />
+                        <!-- <textarea name="message" placeholder="I want to challenge you to a game of Extreme Trivia.  Join me at https://ryankooy.github.io/project-1/lamanasstage.html"></textarea> -->
+                        <button class="btn" type="submit">Send Challenge Request</button>
+                    </form>
+                    </div>
               
-                <button class="col s6 btn btn-block" id="to-section-4">Challenge an Opponent</button>
+                <button class="btn btn-block" id="submit-player" type="submit">CLICK ME</button>
+                <!-- <button class="col s6 btn btn-block" id="to-section-4">Challenge an Opponent</button> -->
                 
         
             </section>
@@ -133,10 +140,15 @@
             <!-- Section 4: Category Selection --> 
             <sectio>
                 <div id="category-selection-1">
+                    <div class="text-center"> 
+                            <h1>TIC TAC TRIVIA!</h1>
+                        </div>
                 <form id="categorySelect">
                     <div class="form-group">
-                        Category Selection
-                        <label class="form-item__label" for="select">Test</label>
+                            <div> 
+                                <h3>Category Selection</h3>
+                            </div>
+                        <label class="form-item__label" for="select"></label>
                             <select class="form-control" id="catagory-select">
                                 <option disabled selected value="" required>Select Category</option>
                                 <option value = "21">Sports</option>
@@ -145,7 +157,10 @@
                                 <option value = "17">Science & Nature</option>
                                 <option value = "11">Film</option>
                             </select>
-                        <label class="form-item__label" for="select">Difficulty</label>
+                        <div> 
+                                <h3>Difficulty Selection</h3>
+                            </div>
+                        <label class="form-item__label" for="select"></label>
                             <select class="form-control" id="difficulty-select">
                                 <option disabled selected value="" >Select Difficulty</option>
                                 <option value="easy">Easy</option>
@@ -190,76 +205,115 @@
             <!-- Section 5: Game Play -->
             <section id="game-play">
                 <div class="row-1 tite"> 
-                    title 
+                   <h1 >TIC TAC TRIVIA</h1>
                 </div>
-                <div class="container-game">
-                    <div class="game-board">
-                        <div class="container resetTurn start-board">
+                <div class="container-game row">
+                    <div class="col-lg-6 col-md- col-sm-">
+                        <div class="game-board container resetTurn start-board">
                             <div class="row">
-                            <button class="TTTboard" value="0" id="one">1</button>
-                            <button class="TTTboard" value="1" id="two">2</button>
-                            <button class="TTTboard" value="2" id="three">3</button>
-                        </div>
-                        <div class="row">
-                            <button class="TTTboard" value="3" id="four">4</button>
-                            <button class="TTTboard" value="4" id="five">5</button>
-                            <button class="TTTboard" value="5" id="six">6</button>
-                        </div>
-                        <div class="row">
-                            <button class="TTTboard" value="6" id="seven">7</button>
-                            <button class="TTTboard" value="7" id="eight">8</button>
-                            <button class="TTTboard" value="8" id="nine">9</button>
-                        </div>
-                        </div>
-                        
-                        <div>
-                            <div class="row title" id="timer"> 
-                                timer 
+                                <button class="TTTboard" value="0" id="one">1</button>
+                                <button class="TTTboard" value="1" id="two">2</button>
+                                <button class="TTTboard" value="2" id="three">3</button>
                             </div>
-                            <div class="row title status">
-                                    player... its your turn to choose a square 
-                                </div> 
-                                <div class="active-question-1">
-                                    question
-                                   
-                                </div>
+                            <div class="row">
+                                <button class="TTTboard" value="3" id="four">4</button>
+                                <button class="TTTboard" value="4" id="five">5</button>
+                                <button class="TTTboard" value="5" id="six">6</button>
+                            </div>
+                            <div class="row">
+                                <button class="TTTboard" value="6" id="seven">7</button>
+                                <button class="TTTboard" value="7" id="eight">8</button>
+                                <button class="TTTboard" value="8" id="nine">9</button>
+                            </div>
                         </div>
-                
+                    </div>
+                        
+                    <div class="col-lg-6 col-md- col-sm- ">
+                        <div class="row title" id="timer"> 
+                            timer 
+                        </div>
+                        <div class="row title status">
+                                player... its your turn to choose a square 
+                            </div> 
+
                         <div class="p1">
                             <div class="containerP turn" id="containerP-1">
-                                <div id="player-1" data-turn="1">
-                                </div>
-                                <div class="active-answers-1">
-            
-                                </div>
-                                <div class="answers-1"></div>
+                                
+                                <div id="player-1" data-turn="1"> </div>
+                                <div class="active-question-1"></div>
+                                <div class="active-answers-1"></div>
+                                    <form class="radio-buttons" action="#">
+                                    <p>
+                                        <label for="btn-1">
+                                            <input class="with-gap" name="group1" id="btn-1" type="radio" value="option1" />
+                                            <span class="option-1">Option 1</span>
+                                          </label>
+                                    </p>
+                                    <p>
+                                        <label for="btn-2">
+                                            <input class="with-gap" name="group1" id="btn-2" type="radio" value="option2"  />
+                                            <span class="option-2">Option 2</span>
+                                          </label>
+                                    </p>
+                                    <p>
+                                      <label for="btn-3">
+                                        <input class="with-gap" name="group1" id="btn-3" type="radio" value="option3" />
+                                        <span class="option-3">Option 3</span>
+                                      </label>
+                                    </p>
+                                    <p>
+                                      <label for="btn-4">
+                                        <input class="with-gap" name="group1" id="btn-4" type="radio" value="option4" />
+                                        <span class="option-4">Option 4</span>
+                                      </label>
+                                    </p>
+                                  </form>
+                                <!-- <div class="answers-1"></div> -->
                             </div>
                         </div>
                         <div class="p2">
-                                <div class="containerP turn" id="containerP-2">
-                                    <div id="player-2" data-turn="2">
-                                    </div>
-                                     <div class="active-question-2">
-                                            question
-                                           
-                                        </div>
-                                    <div class="row title status">
-                                            player... its your turn to choose a square 
-                                        </div> 
-                                    <div class="active-answers-2">
-                
-                                    </div>
-                                    <div class="answers"></div>
-                                </div>
+                            <div class="containerP turn" id="containerP-2">
+                                <div id="player-2" data-turn="2"> </div>
+                                <div class="row title status">
+                                    player... its your turn to choose a square 
+                                </div> 
+                                <div class="active-question-2"></div>
+                                <div class="active-answers-2"></div>
+                                <form class="radio-buttons" action="#">
+                                        <p>
+                                            <label for="btn-1">
+                                                <input class="with-gap" name="group1" id="btn-1" type="radio" value="option1" />
+                                                <span class="option-1">Option 1</span>
+                                              </label>
+                                        </p>
+                                        <p>
+                                            <label for="btn-2">
+                                                <input class="with-gap" name="group1" id="btn-2" type="radio" value="option2"  />
+                                                <span class="option-2">Option 2</span>
+                                              </label>
+                                        </p>
+                                        <p>
+                                          <label for="btn-3">
+                                            <input class="with-gap" name="group1" id="btn-3" type="radio" value="option3" />
+                                            <span class="option-3">Option 3</span>
+                                          </label>
+                                        </p>
+                                        <p>
+                                          <label for="btn-4">
+                                            <input class="with-gap" name="group1" id="btn-4" type="radio" value="option4" />
+                                            <span class="option-4">Option 4</span>
+                                          </label>
+                                        </p>
+                                      </form>
                             </div>
+                        </div>
                     </div>
-                </div>
                 </div>
             
             </section> 
             <!--- CHAT SECTION -->
-                <diV class="chat-box" id="row">
-                    <div>
+                <diV class="row chat-box" id="row">
+                    <div id="chat-log-1">
                         <ul id="chat-log"></ul>
                     </div>
                         <span class="input-group text-center">

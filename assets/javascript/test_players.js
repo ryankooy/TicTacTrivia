@@ -92,7 +92,7 @@ var chosenSquare;
       $('#start').hide();
       $('.containerMain').show();   
     })
-
+    $('#invite-friend').hide(); 
     $('#play').on('click', function() {   // Hides start page on click 
       $('#player-selection').show();     // Section 3 - player secetions
       $('#start').hide();
@@ -146,13 +146,15 @@ $('#section-3-player-1').prepend(pastChallengers);
        database.ref('players/1/').update(player);
        player_1_details = $('player-1');
        var player_2_details;
-       $('#section-3-player-1').html(playerName + 'YOU ARE PLAYER 1')
-       $('#section-3-player-1').append('WAITING FOR PLAYER 2...')
+       $('#section-3-player-1').html('<h1>' + playerName + 'You are player 1' + '</h1>')
+       $('#section-3-player-1').append('Invite a friend with the link below. Waiting for player 2...')
        player_1_details.html('PLAYER 1: ' + playerName + ' ');
        player_1 = 1; 
        player_2 = 2; 
+       $('#invite-friend').show(); 
        $('#user-info').hide();
-       console.log("This is the value of:" + player_1);
+       $('#submit-player').hide();
+       console.log("This is tthe value of:" + player_1);
        database.ref('turn').set(1);
        playerCount.once('value').then(function(snapshot) {
          totalPlayers = snapshot.val();
@@ -167,7 +169,7 @@ $('#section-3-player-1').prepend(pastChallengers);
  
      } else if (!snapshot.child('players/2').exists()) {
       // $('#category-selection-2').show();
-      // $('.chat-box').show();  
+      $('#invite-friend').hide();  
        database.ref('players/2/').update(player); 
        player_2_details = $('player-2');
        var player_1_details; 
@@ -236,7 +238,8 @@ $('#section-3-player-1').prepend(pastChallengers);
        var playerOneName = data.name;
  
        if (player_1 === 1) {    
-           $('.game-play').show();
+          //  $('.p1').show(); 
+            // $('.p2').hide(); 
            $('#player-1').html('PLAYER 1: ' + playerOneName + ' ');
        }
    })
@@ -249,7 +252,8 @@ $('#section-3-player-1').prepend(pastChallengers);
  
        if (player_2 === 2) {
         $('.chat-box').show();  
-            $('.game-play').show();
+        // $('.p2').show(); 
+        // $('.p1').hide(); 
            $('#player-2').html('PLAYER 2: ' + playerTwoName + ' ');
        }
 
@@ -271,14 +275,18 @@ $('#section-3-player-1').prepend(pastChallengers);
    database.ref('turn').set(1);   // Sets turn count to 1 
    database.ref('turn').on('value', function(snapshot) {
        var turn = snapshot.val();
+       var boardValFB = database.ref("boardvalue")
+       boardValFB.once("value", function(snapshot){
+         board = snapshot.val()
+         question(board);
+         $(".active-question-1").text(question1 + ' ');
+         $(".active-question-2").text(question1 + ' ');
+       })
  
        if (turn === null || turn === 1){
            playerOne.on('value', function(snapshot) {
                var data = snapshot.val();
                var playerOneName = data.name;
-               question(board);
-               $('.active-question-1').text(question1 + ' ');
-               $('.active-question-2').html(question1 + ' ');
                $('.status').html('Player 1: ' + playerOneName + '\'s your turn to place an icon');
                console.log('Player 1: ' + playerOneName + '\'s your turn to place an icon');
            })
@@ -287,9 +295,6 @@ $('#section-3-player-1').prepend(pastChallengers);
            playerTwo.on('value', function(snapshot) {
                var data = snapshot.val();
                var playerTwoName = data.name;
-               question(board);
-               $('.active-question-1').text(question1 + ' ');
-               $('.active-question-2').text(question1 + ' ');
                $('.status').html('Player 2: ' + playerTwoName + '\'s your turn to place an icon');
                console.log("please update to: " + playerTwoName + "\"s turn");
            })
@@ -379,6 +384,7 @@ $('#section-3-player-1').prepend(pastChallengers);
    convo.onDisconnect().remove();           // Remove chat when the game is disconnected 
    categoryResults.onDisconnect().remove(); 
    activeQuestion.onDisconnect().remove(); 
+   boardValue.onDisconnect().remove();
    questionResults.onDisconnect().remove();
  
 
@@ -526,6 +532,8 @@ Getting the question and answers function
 */
 
 function question(data){
+  $(".active-answers-1").empty()
+  $(".active-answers-2").empty()
   
   database.ref("questionResults/").on("child_added",function(childSnapshot){
   var res = childSnapshot.val().results[data]
@@ -541,48 +549,47 @@ function question(data){
       question: res.question,
       answer: answers
     }
-
       database.ref('activeQuestion').set(chosenSquare)
       database.ref('activeQuestion').on('value', function(snapshot) {
         var data = snapshot.val();
         question1 = data.question;
         var answer_1 = data.answer;
-
-
         
         console.log('The length of the answers: '+ answer_1.length)
-
         // answer_1.forEach(function(answer_1) {
         //    var row = $('<button>');
-       
-        for (var i = 0; i < 4; i++ ) {
-          var buttonDiv = $("<div class='row'>");
-          var radioButton = $("<button>");
-          radioButton.append('<label><input class="record"' 
-          +i+' type="radio" name="' + answer_1.length +'"  value="' + answer_1[i] + '" /> ' + answer_1[i] + '</label>');
-          buttonDiv.append(radioButton)
-          $('.active-answers-1').append(buttonDiv);
-        } 
-     
-        for (var i = 0; i < 4; i++ ) {
-          var buttonDiv = $("<div class='row'>");
-          var radioButton = $("<button>");
-          radioButton.append('<label><input class="record"' 
-          +i+' type="radio" name="' + answer_1.length +'"  value="' + answer_1[i] + '" /> ' + answer_1[i] + '</label>');
-          buttonDiv.append(radioButton)
-          $('.active-answers-2').append(buttonDiv);
-        } 
 
-      // $('.active-question-1').html(question + ' ');
-      // $('.active-question-2').html(question + ' ');
-      console.log('The current question is: ' + question1 + ' ');
-      console.log('The current options are: ' + answer_1 + ' ');
+        $('.option-1').html(answer_1[0])
+        $('.option-2').html(answer_1[1])
+        $('.option-3').html(answer_1[2])
+        $('.option-4').html(answer_1[3])
+       
+    //     for (var i = 0; i < 4; i++ ) {
+    //       var buttonDiv = $("<div class='row'>");
+    //       var radioButton = $("<button>");
+    //       radioButton.append('<label><input class="record"' 
+    //       +i+' type="radio" name="' + answer_1.length +'"  value="' + answer_1[i] + '" /> ' + answer_1[i] + '</label>');
+    //       buttonDiv.append(radioButton)
+    //       $('.active-answers-1').append(buttonDiv);
+    //     } 
+     
+    //     for (var i = 0; i < 4; i++ ) {
+    //       var buttonDiv = $("<div class='row'>");
+    //       var radioButton = $("<button>");
+    //       radioButton.append('<label><input class="record"' 
+    //       +i+' type="radio" name="' + answer_1.length +'"  value="' + answer_1[i] + '" /> ' + answer_1[i] + '</label>');
+    //       buttonDiv.append(radioButton)
+    //       $('.active-answers-2').append(buttonDiv);
+    //     } 
+    //   // $('.active-question-1').html(question + ' ');
+    //   // $('.active-question-2').html(question + ' ');
+    //   console.log('The current question is: ' + question1 + ' ');
+    //   console.log('The current options are: ' + answer_1 + ' ');
     })
  
    
 // database.ref("activeQuestion").on("child_added", function(childSnapshot){
 //  console.log(database.ref().activeQuestion)
-
 })
 }
   
@@ -597,27 +604,23 @@ function question(data){
  
 
  $(document).on("click", ".TTTboard", function(){
+  timer()
     //  $(".TTTboard").hide()
  
      board = parseInt($(this).val())
   
      database.ref("boardvalue").set(board)
-    
-     
   
-    
-
- 
 })
-$(document).on("click", "#ready",function(){
-  database.ref().once('value', function(){
-  boardValue.once('value', function(snapshot){
-  board = snapshot.val();
-  question(board) 
-  console.log("this worked i think")
-})
-})
-})
+// $(document).on("click", "#ready",function(){
+//   database.ref().once('value', function(){
+//   boardValue.once('value', function(snapshot){
+//   board = snapshot.val();
+//   question(board) 
+//   console.log("this worked i think")
+// })
+// })
+// })
 
  //    database.ref().once("value", function(snapshot) {
   //     var player_1_name = snapshot.child('players/' + player_1 + '/name').val();
@@ -665,5 +668,4 @@ Leaderboard results
   //     outcome.push(playerW, cat, diff);
   //   }
   // });
-
 });
