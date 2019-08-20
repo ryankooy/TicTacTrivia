@@ -194,9 +194,9 @@ var chosenSquare;
  playerCount.on("value", function(snapshot) {       // Checks player count 
    totalPlayers = snapshot.val();               
    if (totalPlayers === 2) {                      // If the total player count is 2 shoot the game 
-    $('.chat-box').show();  
-    $('#category-selection-1').show();   
-    $('#player-selection').hide();
+    // $('.chat-box').show();  
+    // $('#category-selection-1').show();   
+    // $('#player-selection').hide();
     startGame();
    }
    console.log(totalPlayers);
@@ -210,6 +210,9 @@ var chosenSquare;
  */
  
  function startGame() {
+    $('.chat-box').show();  
+    $('#category-selection-1').show();   
+    $('#player-selection').hide();
    // Player details from the database
    var playerOne = database.ref('players/' + player_1 + '/');
    var playerTwo = database.ref('players/' + player_2 + '/');
@@ -220,7 +223,7 @@ var chosenSquare;
        var playerOneName = data.name;
  
        if (player_1 === 1) {    
-           $('.game-play').show();
+          //  $('.game-play').show();
            $('#player-1').html('PLAYER 1: ' + playerOneName + ' ');
        }
    })
@@ -233,7 +236,7 @@ var chosenSquare;
  
        if (player_2 === 2) {
         $('.chat-box').show();  
-            $('.game-play').show();
+            // $('.game-play').show();
            $('#player-2').html('PLAYER 2: ' + playerTwoName + ' ');
        }
    });
@@ -259,8 +262,7 @@ var chosenSquare;
            playerOne.on('value', function(snapshot) {
                var data = snapshot.val();
                var playerOneName = data.name;
- 
-               $('#status').html('Player 1: ' + playerOneName + '\'s your turn to place an icon');
+               $('.status').html('Player 1: ' + playerOneName + '\'s your turn to place an icon');
                console.log('Player 1: ' + playerOneName + '\'s your turn to place an icon');
            })
            console.log("it is player 1's turn");
@@ -268,7 +270,7 @@ var chosenSquare;
            playerTwo.on('value', function(snapshot) {
                var data = snapshot.val();
                var playerTwoName = data.name;
-               $('#status').html('Player 2: ' + playerOneName + '\'s your turn to place an icon');
+               $('.status').html('Player 2: ' + playerTwoName + '\'s your turn to place an icon');
                console.log("please update to: " + playerTwoName + "\"s turn");
            })
            console.log("it is player 2's turn");
@@ -298,12 +300,14 @@ var chosenSquare;
            } else if (currentTurn === 1) {
                currentTurn = 2;
                turn.set(currentTurn); 
+              //  $('#status').html('Player 2: ' + player_1_name + '\'s your turn to place an icon');
                console.log("please update to: " + player_1_name + "\"s turn");
                console.log("My turn should be 1: " + currentTurn);
                console.log("player 1 clicked a button");
            } else if (currentTurn === 2) {
                currentTurn = 1;
                turn.set(currentTurn); 
+              //  $('#status').html('Player 2: ' + player_2_name + '\'s your turn to place an icon');
                console.log("please update to: " + player_2_name + "\"s turn");
                console.log("My turn should be 2: " + currentTurn);
                console.log("player 2: clicked a button");
@@ -444,7 +448,7 @@ $("#category-submit").on("click", function(event){ //Clicking the submit button 
 })
 
 database.ref("categoryResults/").on("child_added", function(){   
-  $("#category-selection").hide()
+  $("#category-selection-1").hide()
   $(".TTTboard").show()
 })
 /*
@@ -554,7 +558,7 @@ function question(data){
    
 // database.ref("activeQuestion").on("child_added", function(childSnapshot){
 //  console.log(database.ref().activeQuestion)
-
+// })
 })
 }
   
@@ -569,8 +573,8 @@ function question(data){
  var x = 0;
 
  $(document).on("click", ".TTTboard", function(){
-     $(".TTTboard").hide()
- 
+    //  $(".TTTboard").hide()
+     timer()
      x = parseInt($(this).val())
 
      question(x)
