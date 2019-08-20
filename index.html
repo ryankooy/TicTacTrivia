@@ -172,58 +172,32 @@
                     <button type="submit" id="category-submit" class="btn">Submit</button>
                 </form>
             </div>
-                <!-- <div id="category-selection-2">
-                    <div class="row">
-                            <div id="section-3-player-2"></div>
-                        </div>
-                <form>
-                        <div class="form-group">
-                            Category Selection
-                            <label class="form-item__label" for="select"></label>
-                                <select class="form-control" id="catagory-select">
-                                    <option disabled selected value="" required>Player 1 is selecting from the following categories...</option>
-                                    <option value = "21" disabled>Sports</option>
-                                    <option value = "12" disabled>Music</option>
-                                    <option value = "23" disabled>History</option>
-                                    <option value = "17" disabled>Science & Nature</option>
-                                    <option value = "11" disabled>Film</option>
-                                </select>
-                            <label class="form-item__label" for="select"></label>
-                                <select class="form-control" id="difficulty-select">
-                                    <option disabled selected value="" >Player 1 is selecting from the following difficulties...</option>
-                                    <option value="easy" disabled>Easy</option>
-                                    <option value="medium" disabled>Medium</option>
-                                    <option value="hard" disabled>Hard</option>
-                                </select>
-                            
-                        </div>
-                    </form>
-                </div> -->
 
             </section>
-
+        </main>
             <!-- Section 5: Game Play -->
-            <section id="game-play">
+            <section class="containerMain2" id="game-play">
                 <div class="row-1 tite"> 
                    <h1 >TIC TAC TRIVIA</h1>
                 </div>
-                <div class="container-game row">
+                <div class="container-game">
+                    <div class="row">
                     <div class="col-lg-6 col-md- col-sm-">
                         <div class="game-board container resetTurn start-board">
                             <div class="row">
-                                <button class="TTTboard" value="0" id="one">1</button>
-                                <button class="TTTboard" value="1" id="two">2</button>
-                                <button class="TTTboard" value="2" id="three">3</button>
+                                <button class="TTTboard" value="0" id="one"></button>
+                                <button class="TTTboard" value="1" id="two"></button>
+                                <button class="TTTboard" value="2" id="three"></button>
                             </div>
                             <div class="row">
-                                <button class="TTTboard" value="3" id="four">4</button>
-                                <button class="TTTboard" value="4" id="five">5</button>
-                                <button class="TTTboard" value="5" id="six">6</button>
+                                <button class="TTTboard" value="3" id="four"></button>
+                                <button class="TTTboard" value="4" id="five"></button>
+                                <button class="TTTboard" value="5" id="six"></button>
                             </div>
                             <div class="row">
-                                <button class="TTTboard" value="6" id="seven">7</button>
-                                <button class="TTTboard" value="7" id="eight">8</button>
-                                <button class="TTTboard" value="8" id="nine">9</button>
+                                <button class="TTTboard" value="6" id="seven"></button>
+                                <button class="TTTboard" value="7" id="eight"></button>
+                                <button class="TTTboard" value="8" id="nine"></button>
                             </div>
                         </div>
                     </div>
@@ -244,27 +218,27 @@
                                 <div class="active-answers-1"></div>
                                     <form class="radio-buttons" action="#">
                                     <p>
-                                        <label for="btn-1">
-                                            <input class="with-gap" name="group1" id="btn-1" type="radio" value="option1" />
-                                            <span class="option-1">Option 1</span>
+                                        <label for="btn-1-1">
+                                            <input class="with-gap option-1 guess1" name="group1" id="btn-1-1" type="radio" value="" />
+                                            <span class="option-1 guess">Option 1</span>
                                           </label>
                                     </p>
                                     <p>
-                                        <label for="btn-2">
-                                            <input class="with-gap" name="group1" id="btn-2" type="radio" value="option2"  />
-                                            <span class="option-2">Option 2</span>
+                                        <label for="btn-2-1">
+                                            <input class="with-gap option-2 guess1" name="group1" id="btn-2-1" type="radio" value=""  />
+                                            <span class="option-2 guess">Option 2</span>
                                           </label>
                                     </p>
                                     <p>
-                                      <label for="btn-3">
-                                        <input class="with-gap" name="group1" id="btn-3" type="radio" value="option3" />
-                                        <span class="option-3">Option 3</span>
+                                      <label for="btn-3-1">
+                                        <input class="with-gap option-3 guess1" name="group1" id="btn-3-1" type="radio" value="" />
+                                        <span class="option-3 guess">Option 3</span>
                                       </label>
                                     </p>
                                     <p>
-                                      <label for="btn-4">
-                                        <input class="with-gap" name="group1" id="btn-4" type="radio" value="option4" />
-                                        <span class="option-4">Option 4</span>
+                                      <label for="btn-4-1">
+                                        <input class="with-gap option-4 guess1" name="group1" id="btn-4-1" type="radio" value="" />
+                                        <span class="option-4 guess">Option 4</span>
                                       </label>
                                     </p>
                                   </form>
@@ -281,26 +255,26 @@
                                 <div class="active-answers-2"></div>
                                 <form class="radio-buttons" action="#">
                                         <p>
-                                            <label for="btn-1">
-                                                <input class="with-gap" name="group1" id="btn-1" type="radio" value="option1" />
+                                            <label for="btn-1-2">
+                                                <input class="with-gap option- guess2" name="group1" id="btn-1-2" type="radio" value="0" />
                                                 <span class="option-1">Option 1</span>
                                               </label>
                                         </p>
                                         <p>
-                                            <label for="btn-2">
-                                                <input class="with-gap" name="group1" id="btn-2" type="radio" value="option2"  />
+                                            <label for="btn-2-2">
+                                                <input class="with-gap option- guess2" name="group1" id="btn-2-2" type="radio" value="1"  />
                                                 <span class="option-2">Option 2</span>
                                               </label>
                                         </p>
                                         <p>
-                                          <label for="btn-3">
-                                            <input class="with-gap" name="group1" id="btn-3" type="radio" value="option3" />
+                                          <label for="btn-3-2">
+                                            <input class="with-gap option- guess2" name="group1" id="btn-3-2" type="radio" value="2" />
                                             <span class="option-3">Option 3</span>
                                           </label>
                                         </p>
                                         <p>
-                                          <label for="btn-4">
-                                            <input class="with-gap" name="group1" id="btn-4" type="radio" value="option4" />
+                                          <label for="btn-4-2">
+                                            <input class="with-gap option- guess2" name="group1" id="btn-4-2" type="radio" value="3" />
                                             <span class="option-4">Option 4</span>
                                           </label>
                                         </p>
@@ -308,6 +282,7 @@
                             </div>
                         </div>
                     </div>
+                </div>
                 </div>
             
             </section> 
@@ -344,7 +319,7 @@
                     </tbody>
                     </table> -->
                 <!-- </section>  -->
-        </main>
+       
         <!-- Firebase Core JavaScript Link -->
         <!-- <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-messaging.js"></script> -->
         
