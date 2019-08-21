@@ -37,6 +37,7 @@ var chosenSquare;
  var player = {                  // Stores player details
    name: "",
    email: "",
+   choice: "",
    wins: 0,
    losses: 0,
    uid: "", 
@@ -88,12 +89,11 @@ var chosenSquare;
     $("myVideo").show()
     $('#start').show();                     // Section 1: Start 
     $('.containerMain2').hide();
-
+    
     $('#instructions').on('click', function() {   // Hides start page on click 
       $('#introduction').show();         // Shows intrduction page 
       $('#start').hide();
-      $('.containerMain').show();
- 
+      $('.containerMain').show();   
     })
     $('#invite-friend').hide(); 
     $('#play').on('click', function() {   // Hides start page on click 
@@ -101,12 +101,13 @@ var chosenSquare;
       $('#start').hide();
       $('.containerMain').show();   
     })
-  
-    $('#play-now').on('click', function() {   // Hides start page on click 
-      $('#player-selection').show();     // Section 3 - player secetions
-      $('#introduction').hide();
-      $('.containerMain').show();   
-    })
+/* ----------------------------------------------------------------- */
+
+$('#play-now').on('click', function() {   // Hides start page on click 
+  $('#player-selection').show();     // Section 3 - player secetions
+  $('#introduction').hide();
+  $('.containerMain').show();   
+})
 
 /* ----------------------------------------------------------------- */
 
@@ -169,7 +170,7 @@ $('#submit_invite').on('click', function() {
        player_1_details = $('player-1');
        var player_2_details;
        $('#section-3-player-1').html('<h2>' + playerName + ' You are player 1' + '</h2>');
-       $('#section-3-player-1').append('<h2>' + 'You are currently the only player online. Waiting for player 2...' + '</h2>');
+       $('#section-3-player-1').append('<h2>' + 'You are currently the only player 1. Waiting for player 2...' + '</h2>');
        player_1_details.html('PLAYER 1: ' + playerName + ' ');
        player_1 = 1; 
        player_2 = 2; 
@@ -260,7 +261,7 @@ $('#submit_invite').on('click', function() {
        var playerOneName = data.name;
  
        if (player_1 === 1) {    
-           $('.p1').show(); 
+          //  $('.p1').show(); 
             // $('.p2').hide(); 
            $('#player-1').html('PLAYER 1: ' + playerOneName + ' ');
        }
@@ -274,7 +275,7 @@ $('#submit_invite').on('click', function() {
  
        if (player_2 === 2) {
         $('.chat-box').show();  
-        $('.p2').show(); 
+        // $('.p2').show(); 
         // $('.p1').hide(); 
            $('#player-2').html('PLAYER 2: ' + playerTwoName + ' ');
        }
@@ -462,15 +463,8 @@ Setting a category
 var res = ""
 // $(".TTTboard").hide()
 
-
-
-
-  $("#category-submit").on("click", function(event){ //Clicking the submit button on category select 
-
 $("#category-submit").on("click", function(event){ //Clicking the submit button on category select
-  $('.containerMain').hide();  
-  $('.containerMain2').show();
-  $('#myVideo').hide();
+
   $('#game-play').show();
   $('#category-selection-1').hide();
     event.preventDefault();
@@ -517,7 +511,6 @@ database.ref("categoryResults/").on("child_added", function(){
   // $(".TTTboard").show()
   $("#game-play").show()
 })
-
 /*
 ====================
 Checking answer 
@@ -525,92 +518,49 @@ Checking answer
 ====================
 */
 var correctANSText = ""
-var guesses = database.ref("TotalGuesses")
-database.ref("TotalGuesses").onDisconnect().remove();
+var guesses = 0
 
 $(document).on("click", '.guess1' ,function(){
   if($(".guess1").is(':checked') && $(this).val() == correctANSText){
-    database.ref("players/1/choice").set(true)
+    guesses ++
+    database.ref("player1Guess/Guess").set(true)
+    database.ref("TotalGuesses").set(guesses)
   }
   if($(".guess1").is(':checked') && $(this).val() != correctANSText){
-    database.ref("players/1/choice").set(false)
+    guesses ++
+    database.ref("player1Guess/Guess").set(false)
+    database.ref("TotalGuesses").set(guesses)
   }
 })
 $(document).on("click", '.guess2' ,function(){
   if($(".guess2").is(':checked') && $(this).val() == correctANSText){
-    database.ref("players/2/choice").set(true)
+    guesses ++
+    database.ref("player2Guess/Guess").set(true)
+    database.ref("TotalGuesses").set(guesses)
   }
   if($(".guess2").is(':checked') && $(this).val() != correctANSText){
-    database.ref("players/2/choice").set(false)
+    guesses ++
+    database.ref("player2Guess/Guess").set(false)
+    database.ref("TotalGuesses").set(guesses)
   }
 })
-var player1Guess ="" 
-var player2Guess = ""
-database.ref("players/1/choice").on("value", function(snapshot){
-  var p1Exists = (snapshot.val())
-  player1Guessed(p1Exists)
-  console.log("p1: " + p1Exists)
-  console.log(player1Guess,player2Guess)
-  winner()
-  if(player1Guess === false && player2Guess === false){
-    console.log("both fail")
+database.ref("player1Guess").on("value", function(childSnapshot){
+  if(childSnapshot.val() === true){
+    console.log("player1 Wins")
+  }
+  else{
+    console.log("Wrong")
   }
 })
-database.ref("players/2/choice").on("value", function(snapshot){
-  var p2Exists = (snapshot.val())
-  player2Guessed(p2Exists)
-  console.log("p2: " + p2Exists)
-  console.log(player1Guess,player2Guess)
-  winner()
-  if(player1Guess === false && player2Guess === false){
-    console.log("both fail")
-  }
-})
-
-
-function player1Guessed(data1){
-  player1Guess = data1
-  console.log(player1Guess)
-}
-
-function player2Guessed(data2){
-  player2Guess = data2
-  console.log(player2Guess)
-}
-
-function winner(){
-  if (player1Guess === true){
-    console.log("player 1 wins")
-  }
-  if (player2Guess === true){
-    console.log("player 2 wins")
-  }
-}
-
-
-// database.ref("players/1/choice").on("value", function(childSnapshot){
-//   if(childSnapshot.val() === true){
-//     console.log("player1 Wins")
-//   }
-//   else if (childSnapshot === false){
-//     console.log("Wrong")
-//     $(".p1").hide()
-//     console.log(player1Guess, player2guess)
-//   }
-// })
   
-// database.ref("players/2/choice").on("value", function(childSnapshot){
-//   if(childSnapshot === true){
-//     console.log("player2 Wins")
-//   }
-//   else if (childSnapshot === false){
-//     console.log("Wrong")
-//     $(".p2").hide()
-//     console.log(player1Guess, player2guess)
-//   }
-// })
-
-
+database.ref("player2Guess").on("value", function(childSnapshot){
+  if(childSnapshot === true){
+    console.log("player2 Wins")
+  }
+  else{
+    console.log("Wrong")
+  }
+})
 /*
 ================
 Getting the question and answers function
@@ -761,4 +711,3 @@ Leaderboard results
   //   }
   // });
 
-  
