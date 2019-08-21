@@ -85,13 +85,8 @@ var chosenSquare;
 //  $('#outcome').hide();         // Section 6: Outcome 
 //  $('#results').hide();        // Section 7: Results 
 /* ----------------------------------------------------------------- */
-<<<<<<< HEAD
-
-    $("myVideo").show()
-=======
     $('#myVideo').show();
     $('.containerMain2').hide();
->>>>>>> 89bee65df1db151095f1c158c33d5dae61bb5035
     $('#start').show();                     // Section 1: Start 
     
     $('#instructions').on('click', function() {   // Hides start page on click 
@@ -449,13 +444,9 @@ var res = ""
 
 
 $("#category-submit").on("click", function(event){ //Clicking the submit button on category select
-<<<<<<< HEAD
-  $("#myVideo").hide()
-=======
   $('.containerMain').hide();  
   $('.containerMain2').show();
   $('#myVideo').hide();
->>>>>>> 89bee65df1db151095f1c158c33d5dae61bb5035
   $('#game-play').show();
   $('#category-selection-1').hide();
     event.preventDefault();
@@ -680,7 +671,7 @@ Leaderboard results
 
   // database.ref().on('value', function(snap) {
   //   var playerW = snap.val().name;
-  //  var playerEM = snap.val().email;
+  //   var playerEM = snap.val().email;
   //   var cat = snap.val().category;
   //   var diff = snap.val().difficulty;
   //   checkWins();
@@ -691,7 +682,7 @@ Leaderboard results
   //       $('<td>').text(diff)
   //     );
   //     $('.table > tbody').prepend(leaderBoard);
-  //     outcome.push(playerW, cat, diff);
   //   }
   // });
+
 
