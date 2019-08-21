@@ -34,7 +34,6 @@ body {
     background: grey;
     position: relative; 
   } */
-
 #one, #two, #three, #four, #five, #six, #seven, #eight, #nine {
   height: 10vh;
   width: 10vh;
@@ -42,6 +41,7 @@ body {
   background-image: url('../images/button_question.png');
   background-size: cover; 
   background-repeat: no-repeat; 
+  z-index: 1;
 }
 
 #one:hover, #two:hover, #three:hover, #four:hover, #five:hover, #six:hover, #seven:hover, #eight:hover, #nine:hover {
@@ -52,20 +52,23 @@ body {
   padding: 0;
 }
 
-#player-1-botton {
+
+.player-1-botton {
   height: 10vh;
   width: 10vh;
   position: relative;
   background-image: url('../images/button_player_1.png');
   background-size: cover; 
   background-repeat: no-repeat; 
+  z-index: 10;
 }
 
-#player-2-botton {
+.player-2-botton {
   height: 10vh;
   width: 10vh;
   position: relative;
   background-image: url('../images/button_player_2.png');
   background-size: cover; 
   background-repeat: no-repeat; 
+  z-index: 10;
 }
