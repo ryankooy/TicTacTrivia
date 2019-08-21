@@ -84,9 +84,10 @@ var chosenSquare;
 //  $('#outcome').hide();         // Section 6: Outcome 
 //  $('#results').hide();        // Section 7: Results 
 /* ----------------------------------------------------------------- */
-    $('#myVideo').show();
-    $('.containerMain2').hide();
+
+    $("myVideo").show()
     $('#start').show();                     // Section 1: Start 
+    $('.containerMain2').hide();
     
     $('#instructions').on('click', function() {   // Hides start page on click 
       $('#introduction').show();         // Shows intrduction page 
@@ -125,7 +126,20 @@ var chosenSquare;
 //   $('<li>').text(pastPlayers)
 // );
 
-// $('#section-3-player-1').prepend(pastChallengers); 
+// $('#section-3-player-1').prepend(pastChallengers);
+
+ /*
+ ========================================
+ Invite A Friend Via Email 
+ ========================================
+ */
+
+$('#submit_invite').on('click', function() {
+
+  var e = $('#friend_email').val().trim();
+  $('#friend_email').attr('value', 'e');
+
+});
 
  /*
  ========================================
@@ -147,8 +161,8 @@ var chosenSquare;
        database.ref('players/1/').update(player);
        player_1_details = $('player-1');
        var player_2_details;
-       $('#section-3-player-1').html('<h1>' + playerName + 'You are player 1' + '</h1>')
-       $('#section-3-player-1').append('Invite a friend with the link below. Waiting for player 2...')
+       $('#section-3-player-1').html('<h2>' + playerName + ' You are player 1' + '</h2>');
+       $('#section-3-player-1').append('<h2>' + 'Waiting for player 2...' + '</h2>');
        player_1_details.html('PLAYER 1: ' + playerName + ' ');
        player_1 = 1; 
        player_2 = 2; 
@@ -442,6 +456,10 @@ var res = ""
 // $(".TTTboard").hide()
 
 
+
+
+  $("#category-submit").on("click", function(event){ //Clicking the submit button on category select 
+
 $("#category-submit").on("click", function(event){ //Clicking the submit button on category select
   $('.containerMain').hide();  
   $('.containerMain2').show();
@@ -481,7 +499,13 @@ $("#category-submit").on("click", function(event){ //Clicking the submit button 
 })
 })
 
-database.ref("categoryResults/").on("child_added", function(){   
+database.ref("categoryResults/").on("child_added", function(){  
+  $('.chat-box').removeClass("row");
+  $('.chat-box').removeClass("chat-2");
+  $('.chat-box').addClass("chat-3");
+  $('#myVideo').hide();
+  $('.containerMain').hide();  
+  $('.containerMain2').show();
   $("#category-selection-1").hide()
   // $(".TTTboard").show()
   $("#game-play").show()
@@ -592,6 +616,7 @@ function question(data){
   guesses = 0
   
   database.ref("TotalGuesses").set(guesses)
+  
   
   database.ref("questionResults/").on("child_added",function(childSnapshot){
   var res = childSnapshot.val().results[data]
@@ -714,6 +739,7 @@ Leaderboard results
 
   // database.ref().on('value', function(snap) {
   //   var playerW = snap.val().name;
+  //  var playerEM = snap.val().email;
   //   var cat = snap.val().category;
   //   var diff = snap.val().difficulty;
   //   checkWins();
@@ -728,3 +754,4 @@ Leaderboard results
   //   }
   // });
 
+  
