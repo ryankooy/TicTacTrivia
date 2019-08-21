@@ -681,4 +681,6 @@ Leaderboard results
   //     $('.table > tbody').prepend(leaderBoard);
   //     outcome.push(playerW, cat, diff);
   //   }
-  
+
+ });
+
