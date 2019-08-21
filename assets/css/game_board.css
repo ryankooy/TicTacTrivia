@@ -51,3 +51,21 @@ body {
   margin: 0;
   padding: 0;
 }
+
+#player-1-botton {
+  height: 10vh;
+  width: 10vh;
+  position: relative;
+  background-image: url('../images/button_player_1.png');
+  background-size: cover; 
+  background-repeat: no-repeat; 
+}
+
+#player-2-botton {
+  height: 10vh;
+  width: 10vh;
+  position: relative;
+  background-image: url('../images/button_player_2.png');
+  background-size: cover; 
+  background-repeat: no-repeat; 
+}

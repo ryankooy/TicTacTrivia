@@ -30,6 +30,7 @@ body {
 
 .containerMain {
     margin: 0 auto;
+    overflow: auto; 
     max-width: 62vw;
     min-height: 400px; 
     width: 100%;
@@ -51,13 +52,14 @@ body {
   border: 2px solid navy;
   background:white;
   padding: 4vh 4vw; 
+  overflow: auto; 
 }
 
 .row-1 {
   margin: 0 auto;
   padding-left: 0 4vw; 
   height: 5vh; 
-
+  margin-bottom: 20px; 
 }
 
 /*
@@ -69,13 +71,26 @@ Chat Box Styling
 
 .chat-box {
   margin: 0 auto;
-  position: absolute; 
   max-width: 53vw; 
   width: 100%; 
   min-width: 1px; 
   padding-left: 4vw; 
   padding-right: 4vw; 
-  bottom: 4vw; 
+}
+
+.chat-2 {
+  position: absolute; 
+  bottom: 18vh; 
+  max-width: 53vw; 
+  width: 100%; 
+}
+.chat-3 {
+  z-index: 2;
+  position: absolute; 
+  bottom: 18vh; 
+  max-width: 60vw; 
+  width: 100%; 
+  left: 20vw; 
 }
 
 #chat-log-1 {
@@ -83,6 +98,7 @@ Chat Box Styling
   max-width: 53vw; 
   width: 100%;
   overflow: scroll;
+  overflow-x: hidden;
 }
 
 /*
@@ -136,7 +152,7 @@ h1 {
 }
 
  h2 {
-  font-size: 1.5rem; 
+  font-size: 1.2rem; 
   font-family: 'Roboto', sans-serif;
   margin-top: 2vh; 
   margin-bottom: 2vh; 
@@ -173,9 +189,9 @@ Buttons
 
 .btn {
   background-color: rgb(14, 14, 51);
-  margin-top: 5vh;
   font-family: 'Roboto', sans-serif;
   letter-spacing: 1px; 
+  margin-top: 1vh; 
 }
 
 .in {
@@ -184,7 +200,7 @@ Buttons
 
 #submit-player {
   position: absolute; 
-  bottom: 20px; 
+  bottom: 3vh; 
   left: 0px; 
   margin: 0 5vw; 
   width: 52vw; 
@@ -214,4 +230,9 @@ h3 {
 .container-game {
   padding-top: 60px; 
 }
+/*
+========================================
+Game Buttons 
+========================================
+*/
 
