@@ -88,6 +88,7 @@ var chosenSquare;
 
     $("myVideo").show()
     $('#start').show();                     // Section 1: Start 
+    $('.containerMain2').hide();
     
     $('#instructions').on('click', function() {   // Hides start page on click 
       $('#introduction').show();         // Shows intrduction page 
@@ -127,6 +128,19 @@ var chosenSquare;
 // );
 
 // $('#section-3-player-1').prepend(pastChallengers);
+
+ /*
+ ========================================
+ Invite A Friend Via Email 
+ ========================================
+ */
+
+$('#submit_invite').on('click', function() {
+
+  var e = $('#friend_email').val().trim();
+  $('#friend_email').attr('value', 'e');
+
+});
 
  /*
  ========================================
@@ -442,11 +456,8 @@ Setting a category
 var res = ""
 // $(".TTTboard").hide()
 
-  $("#category-submit").on("click", function(event){ //Clicking the submit button on category select 
-  $("#category-submit").on("click", function(event){ //Clicking the submit button on category select
-  $('.containerMain').hide();  
-  $('.containerMain2').show();
-  $('#myVideo').hide();
+$("#category-submit").on("click", function(event){ //Clicking the submit button on category select
+
   $('#game-play').show();
   $('#category-selection-1').hide();
     event.preventDefault();
@@ -691,4 +702,3 @@ Leaderboard results
   //     $('.table > tbody').prepend(leaderBoard);
   //   }
   // });
- });

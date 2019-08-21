@@ -122,19 +122,20 @@
                     </div>
                     <div id="invite-friend">
                         <h3>Challenge a friend by sending a link to their email.</h3>
-                    <form method="POST" action="https://formspree.io/lamanaml@gmail.com">
-                        <input type="email" name="email" placeholder="Your email">
-                        <input type="hidden" id="opponent_email" name="_cc" value="culinaryhealing@gmail.com" />
-                        <input type="hidden" name="_subject" value="Extreme Trivia Tac Toe Challenge Request" />
-                        <!-- <textarea name="message" placeholder="I want to challenge you to a game of Extreme Trivia.  Join me at https://ryankooy.github.io/project-1/lamanasstage.html"></textarea> -->
-                        <button class="btn" type="submit">Send Challenge Request</button>
-                    </form>
+                        <form method="POST" action="https://formspree.io/lamanaml@gmail.com">
+                            <input type="hidden" name="_subject" value="Extreme Trivia Tac Toe Challenge Request" />
+                            
+                            <input id="friend_email" type="email" name="_cc" placeholder="Friends email address"  /><br>
+                           
+                            <textarea id="message-cont" rows="4" name="message">I challenge you to a game of Tic Tac Trivia! Click here&colon; https://ryankooy.github.io/project-1/</textarea><br>
+                            <button id="send_invite" class="btn" type="submit">Send Challenge Request</button>
+                        </form>
                     </div>
               
                 <button class="btn btn-block" id="submit-player" type="submit">CLICK ME</button>
                 <!-- <button class="col s6 btn btn-block" id="to-section-4">Challenge an Opponent</button> -->
                 
-        
+                
             </section>
             
             <!-- Section 4: Category Selection --> 
