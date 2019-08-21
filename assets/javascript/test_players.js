@@ -713,3 +713,4 @@ Leaderboard results
   //     $('.table > tbody').prepend(leaderBoard);
   //   }
   // });
+  });
