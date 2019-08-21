@@ -89,16 +89,23 @@ var chosenSquare;
     $("myVideo").show()
     $('#start').show();                     // Section 1: Start 
     $('.containerMain2').hide();
-    
+
     $('#instructions').on('click', function() {   // Hides start page on click 
       $('#introduction').show();         // Shows intrduction page 
       $('#start').hide();
-      $('.containerMain').show();   
+      $('.containerMain').show();
+ 
     })
     $('#invite-friend').hide(); 
     $('#play').on('click', function() {   // Hides start page on click 
       $('#player-selection').show();     // Section 3 - player secetions
       $('#start').hide();
+      $('.containerMain').show();   
+    })
+  
+    $('#play-now').on('click', function() {   // Hides start page on click 
+      $('#player-selection').show();     // Section 3 - player secetions
+      $('#introduction').hide();
       $('.containerMain').show();   
     })
 
@@ -163,7 +170,7 @@ $('#submit_invite').on('click', function() {
        player_1_details = $('player-1');
        var player_2_details;
        $('#section-3-player-1').html('<h2>' + playerName + ' You are player 1' + '</h2>');
-       $('#section-3-player-1').append('<h2>' + 'Waiting for player 2...' + '</h2>');
+       $('#section-3-player-1').append('<h2>' + 'You are currently the only player online. Waiting for player 2...' + '</h2>');
        player_1_details.html('PLAYER 1: ' + playerName + ' ');
        player_1 = 1; 
        player_2 = 2; 
