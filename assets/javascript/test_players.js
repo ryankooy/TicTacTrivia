@@ -23,7 +23,7 @@ var firebaseConfig = {
  var categoryResults = database.ref('categoryResults');
  var activeQuestion = database.ref('activeQuestion');
  var questionResults = database.ref("questionResults/");
-var boardValue = database.ref("boardvalue/");
+ var boardValue = database.ref("boardvalue/");
  
  var categories = {  //used to save the category and difficulty used for the leaderboards
   category: "", 
@@ -303,8 +303,6 @@ $('#submit_invite').on('click', function() {
                var data = snapshot.val();
                var playerOneName = data.name;
                $('.status').html('Player 1: ' + playerOneName + '\'s your turn to place an icon');
-              //  $('.active-question-1').text(question1 + ' ');
-              //  $('.active-question-2').text(question1 + ' ');
                console.log('Player 1: ' + playerOneName + '\'s your turn to place an icon');
            })
            console.log("it is player 1's turn");
@@ -315,12 +313,11 @@ $('#submit_invite').on('click', function() {
                $('.status').html('Player 2: ' + playerTwoName + '\'s your turn to place an icon');
                console.log("please update to: " + playerTwoName + "\"s turn");
            })
-           console.log("it is player 2's turn" + board);
+           console.log("it is player 2's turn");
        }
       
    })
  };
- 
  /*
  ========================================
  Current Turn 
@@ -425,7 +422,7 @@ function checkWins(){
   if(blueWins1 === true || blueWins2 === true || blueWins3 === true ||
        blueWins4 === true || blueWins5 === true || blueWins6 === true ||
        blueWins7 === true || blueWins8 === true){
-      alert("Blue Wins");
+      alert("player 2 Wins");
       gameEnd = true;
 
   }
@@ -442,7 +439,7 @@ function checkWins(){
   if(redWins1 === true || redWins2 === true || redWins3 === true ||
       redWins4 === true || redWins5 === true || redWins6 === true ||
       redWins7 === true || redWins8 === true){
-     alert("Red Wins");
+     alert("player 1 Wins");
      gameEnd = true;
  }
 }
@@ -453,13 +450,8 @@ Setting a category
 ============================
 */
 var res = ""
-// $(".TTTboard").hide()
 
-
-
-
-  $("#category-submit").on("click", function(event){ //Clicking the submit button on category select 
-
+ 
 $("#category-submit").on("click", function(event){ //Clicking the submit button on category select
   $('.containerMain').hide();  
   $('.containerMain2').show();
@@ -498,7 +490,6 @@ $("#category-submit").on("click", function(event){ //Clicking the submit button 
     
 })
 })
-
 database.ref("categoryResults/").on("child_added", function(){  
   $('.chat-box').removeClass("row");
   $('.chat-box').removeClass("chat-2");
@@ -507,14 +498,12 @@ database.ref("categoryResults/").on("child_added", function(){
   $('.containerMain').hide();  
   $('.containerMain2').show();
   $("#category-selection-1").hide()
-  // $(".TTTboard").show()
   $("#game-play").show()
 })
 
 /*
 ====================
 Checking answer 
-*********needs work*********
 ====================
 */
 var correctANSText = ""
@@ -524,17 +513,21 @@ database.ref("TotalGuesses").onDisconnect().remove();
 $(document).on("click", '.guess1' ,function(){
   if($(".guess1").is(':checked') && $(this).val() == correctANSText){
     database.ref("players/1/choice").set(true)
+    $(this).prop("checked", false)
   }
   if($(".guess1").is(':checked') && $(this).val() != correctANSText){
     database.ref("players/1/choice").set(false)
+    $(this).prop("checked", false)
   }
 })
 $(document).on("click", '.guess2' ,function(){
   if($(".guess2").is(':checked') && $(this).val() == correctANSText){
     database.ref("players/2/choice").set(true)
+    $(this).prop("checked", false)
   }
   if($(".guess2").is(':checked') && $(this).val() != correctANSText){
-    database.ref("players/2/choice").set(false)
+    database.ref("players/2/choice").set(false) 
+    $(this).prop("checked", false)
   }
 })
 var player1Guess ="" 
@@ -574,35 +567,25 @@ function player2Guessed(data2){
 function winner(){
   if (player1Guess === true){
     console.log("player 1 wins")
+    $("[value=" + board + "]").addClass("red").addClass("player-1-botton")
+    checkWins()
+    clearWinCriteria()
+
   }
   if (player2Guess === true){
     console.log("player 2 wins")
+    $("[value=" + board + "]").addClass("blue").addClass("player-2-botton")
+    checkWins()
+    clearWinCriteria()
   }
 }
 
-
-// database.ref("players/1/choice").on("value", function(childSnapshot){
-//   if(childSnapshot.val() === true){
-//     console.log("player1 Wins")
-//   }
-//   else if (childSnapshot === false){
-//     console.log("Wrong")
-//     $(".p1").hide()
-//     console.log(player1Guess, player2guess)
-//   }
-// })
-  
-// database.ref("players/2/choice").on("value", function(childSnapshot){
-//   if(childSnapshot === true){
-//     console.log("player2 Wins")
-//   }
-//   else if (childSnapshot === false){
-//     console.log("Wrong")
-//     $(".p2").hide()
-//     console.log(player1Guess, player2guess)
-//   }
-// })
-
+function clearWinCriteria(){
+  database.ref("players/2/choice").remove()
+  database.ref("players/1/choice").remove()
+  player1Guess = ""
+  player2Guess = ""
+}
 
 /*
 ================
@@ -643,40 +626,13 @@ function question(data){
         var answer_1 = data.answer;
         
         console.log('The length of the answers: '+ answer_1.length)
-        // answer_1.forEach(function(answer_1) {
-        //    var row = $('<button>');
 
         $('.option-1').html(answer_1[0]).attr('value', answer_1[0])
         $('.option-2').html(answer_1[1]).attr('value', answer_1[1])
         $('.option-3').html(answer_1[2]).attr('value', answer_1[2])
         $('.option-4').html(answer_1[3]).attr('value', answer_1[3])
        
-    //     for (var i = 0; i < 4; i++ ) {
-    //       var buttonDiv = $("<div class='row'>");
-    //       var radioButton = $("<button>");
-    //       radioButton.append('<label><input class="record"' 
-    //       +i+' type="radio" name="' + answer_1.length +'"  value="' + answer_1[i] + '" /> ' + answer_1[i] + '</label>');
-    //       buttonDiv.append(radioButton)
-    //       $('.active-answers-1').append(buttonDiv);
-    //     } 
-     
-    //     for (var i = 0; i < 4; i++ ) {
-    //       var buttonDiv = $("<div class='row'>");
-    //       var radioButton = $("<button>");
-    //       radioButton.append('<label><input class="record"' 
-    //       +i+' type="radio" name="' + answer_1.length +'"  value="' + answer_1[i] + '" /> ' + answer_1[i] + '</label>');
-    //       buttonDiv.append(radioButton)
-    //       $('.active-answers-2').append(buttonDiv);
-    //     } 
-    //   // $('.active-question-1').html(question + ' ');
-    //   // $('.active-question-2').html(question + ' ');
-    //   console.log('The current question is: ' + question1 + ' ');
-    //   console.log('The current options are: ' + answer_1 + ' ');
     })
- 
-   
-// database.ref("activeQuestion").on("child_added", function(childSnapshot){
-//  console.log(database.ref().activeQuestion)
 })
 }
   
@@ -691,42 +647,15 @@ function question(data){
  
 
  $(document).on("click", ".TTTboard", function(){
-  timer()
-    //  $(".TTTboard").hide()
+    timer()
  
      board = parseInt($(this).val())
   
      database.ref("boardvalue").set(board)
-    //  var boardValFB = database.ref("boardvalue")
-    //  boardValFB.once("value", function(snapshot){
-    //    board = snapshot.val()
-    //    question(board);
-    //    $(".active-question-1").html(question1 + ' ');
-    //    $(".active-question-2").html(question1 + ' ');
-    //  })
+
 })
 
-}) //    database.ref().once("value", function(snapshot) {
-  //     var player_1_name = snapshot.child('players/' + player_1 + '/name').val();
-  //     var player_2_name = snapshot.child('players/' + player_2 + '/name').val();
-
-
-  //     turn.once('value').then(function(snapshot) { 
-  //         currentTurn = snapshot.val();
-  //         if (currentTurn === null) {
-  //             currentTurn = 1;
-  //             turn.set(currentTurn); 
-  //         } else if (currentTurn === 1) {
-  //             currentTurn = 2;
-  //             turn.set(currentTurn); 
-  //         } else if (currentTurn === 2) {
-  //             currentTurn = 1;
-  //             turn.set(currentTurn); 
-              
-  //         }
-  //     });
-  // });
-
+})
 
   /*
 ====================
@@ -752,6 +681,6 @@ Leaderboard results
   //     $('.table > tbody').prepend(leaderBoard);
   //     outcome.push(playerW, cat, diff);
   //   }
-  // });
 
  });
+
