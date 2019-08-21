@@ -367,4 +367,12 @@ Chat function
 
 //   convo.onDisconnect().remove();          // Remove chat when the game is disconnected 
 
+$('#submit_invite').on('click', function() {
+
+  var e = $('#friend_email').val().trim();
+  $('#friend_email').attr('value', 'e');
+
+});
+
+
 });
