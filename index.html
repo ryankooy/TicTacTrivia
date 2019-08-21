@@ -51,8 +51,8 @@
                         <h2>Three in a row... the more you know!</h2>
                     </div>
                 <div class="align-items-center row">
-                    <button class="btn-start btn-block col s6" id="instructions">Instructions</button> 
-                    <button class="btn-start btn-block col s6" id="play">Play</button>  
+                    <button class="btn-start btn-block col s6" id="instructions">INSTRUCTIONS</button> 
+                    <button class="btn-start btn-block col s6" id="play">PLAY</button>  
                 </div>
             </section>
     
@@ -89,6 +89,7 @@
                         <p>The first player with 3 squares in a row wins the game!</p>
             
                         <p>There’s also a live chat that occurs throughout the game.</p>
+                        <button class="btn-start btn-block" id="play-now">PLAY</button>  
                     </div>
                 </div>
                     
@@ -125,7 +126,7 @@
                         <form method="POST" action="https://formspree.io/lamanaml@gmail.com">
                             <input type="hidden" name="_subject" value="Extreme Trivia Tac Toe Challenge Request" />
                             
-                            <input id="friend_email" type="email" name="_cc" placeholder="Friends email address"  /><br>
+                            <input id="friend_email" type="email" name="_cc" placeholder="Enter A Friend's Email Address"  /><br>
                            
                             <textarea id="message-cont" rows="4" name="message">I challenge you to a game of Tic Tac Trivia! Click here&colon; https://ryankooy.github.io/project-1/</textarea><br>
                             <button id="send_invite" class="btn" type="submit">Send Challenge Request</button>
@@ -147,7 +148,7 @@
                 <form id="categorySelect">
                     <div class="form-group">
                             <div> 
-                                <h3>Category Selection</h3>
+                                <h3>CATEGORY SELECTION </h3>
                             </div>
                         <label class="form-item__label" for="select"></label>
                             <select class="form-control" id="catagory-select">
@@ -159,7 +160,7 @@
                                 <option value = "11">Film</option>
                             </select>
                         <div> 
-                                <h3>Difficulty Selection</h3>
+                                <h3>DIFFICULTY SELECTION</h3>
                             </div>
                         <label class="form-item__label" for="select"></label>
                             <select class="form-control" id="difficulty-select">
@@ -178,112 +179,122 @@
         </main>
             <!-- Section 5: Game Play -->
             <section class="containerMain2" id="game-play">
-                <div class="row-1 tite"> 
-                   <h1 >TIC TAC TRIVIA</h1>
+                <div class="tite text-center"> 
+                   <h1>TIC TAC TRIVIA</h1>
                 </div>
                 <div class="container-game">
                     <div class="row">
-                    <div class="col-lg-6 col-md- col-sm-">
-                        <div class="game-board container resetTurn start-board">
-                            <div class="row">
-                                <button class="TTTboard" value="0" id="one"></button>
-                                <button class="TTTboard" value="1" id="two"></button>
-                                <button class="TTTboard" value="2" id="three"></button>
-                            </div>
-                            <div class="row">
-                                <button class="TTTboard" value="3" id="four"></button>
-                                <button class="TTTboard" value="4" id="five"></button>
-                                <button class="TTTboard" value="5" id="six"></button>
-                            </div>
-                            <div class="row">
-                                <button class="TTTboard" value="6" id="seven"></button>
-                                <button class="TTTboard" value="7" id="eight"></button>
-                                <button class="TTTboard" value="8" id="nine"></button>
+                        <div class="col-lg-6 col-md- col-sm-">
+                            <!-- Game Board -->
+                            <div class="game-board container resetTurn start-board">
+                                <div class="row">
+                                    <button class="TTTboard" value="0" id="one"></button>
+                                    <button class="TTTboard" value="1" id="two"></button>
+                                    <button class="TTTboard" value="2" id="three"></button>
+                                </div>
+                                <div class="row">
+                                    <button class="TTTboard" value="3" id="four"></button>
+                                    <button class="TTTboard" value="4" id="five"></button>
+                                    <button class="TTTboard" value="5" id="six"></button>
+                                </div>
+                                <div class="row">
+                                    <button class="TTTboard" value="6" id="seven"></button>
+                                    <button class="TTTboard" value="7" id="eight"></button>
+                                    <button class="TTTboard" value="8" id="nine"></button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                        
+                     <!-- Player info  -->
                     <div class="col-lg-6 col-md- col-sm- ">
-                        <div class="row title" id="timer"> 
-                            <!-- timer  -->
-                        </div>
-                        <div class="row title status">
-                                <!-- player... its your turn to choose a square  -->
-                        </div> 
+                        
+                        <!-- Player 1's info -->
+                        <div class="containerP turn" id="containerP-1">
+                            <div id="player-1" data-turn="1"></div>
+                             
+                            <!-- Timer & Status  -->
+                            <div class="row title"> 
+                                <span id="timer"></span>
+                            </div>
+                            <div class="row title"> <!-- player... its your turn to choose a square  --> 
+                                <span id="status"></span>
+                            </div>
 
-                        <div class="p1">
-                            <div class="containerP turn" id="containerP-1">
-                                
-                                <div id="player-1" data-turn="1"> </div>
-                                <div class="active-question-1"></div>
-                                <div class="active-answers-1"></div>
-                                    <form class="radio-buttons" action="#">
+                             <!-- Questions & Answers  -->
+                            <div class="active-question-1"></div>
+                            <div class="active-answers-1"></div>
+                                <!-- Buttons -->
+                                <form class="radio-buttons" action="#">
                                     <p>
                                         <label for="btn-1-1">
                                             <input class="with-gap option-1 guess1" name="group1" id="btn-1-1" type="radio" value="" />
                                             <span class="option-1 guess">Option 1</span>
-                                          </label>
+                                        </label>
                                     </p>
                                     <p>
                                         <label for="btn-2-1">
                                             <input class="with-gap option-2 guess1" name="group1" id="btn-2-1" type="radio" value=""  />
                                             <span class="option-2 guess">Option 2</span>
-                                          </label>
+                                        </label>
                                     </p>
                                     <p>
-                                      <label for="btn-3-1">
-                                        <input class="with-gap option-3 guess1" name="group1" id="btn-3-1" type="radio" value="" />
-                                        <span class="option-3 guess">Option 3</span>
-                                      </label>
+                                        <label for="btn-3-1">
+                                            <input class="with-gap option-3 guess1" name="group1" id="btn-3-1" type="radio" value="" />
+                                            <span class="option-3 guess">Option 3</span>
+                                        </label>
                                     </p>
                                     <p>
-                                      <label for="btn-4-1">
-                                        <input class="with-gap option-4 guess1" name="group1" id="btn-4-1" type="radio" value="" />
-                                        <span class="option-4 guess">Option 4</span>
-                                      </label>
+                                        <label for="btn-4-1">
+                                            <input class="with-gap option-4 guess1" name="group1" id="btn-4-1" type="radio" value="" />
+                                            <span class="option-4 guess">Option 4</span>
+                                        </label>
                                     </p>
-                                  </form>
-                                <!-- <div class="answers-1"></div> -->
-                            </div>
+                                </form>
                         </div>
-                        <div class="p2">
-                            <div class="containerP turn" id="containerP-2">
-                                <div id="player-2" data-turn="2"> </div>
-                                <div class="row title status">
-                                    player... its your turn to choose a square 
-                                </div> 
-                                <div class="active-question-2"></div>
-                                <div class="active-answers-2"></div>
+                        <!-- Player 2's info -->
+                        <div class="containerP turn" id="containerP-2">
+                            <div id="player-2" data-turn="2"></div>
+                            
+                            <!-- Timer & Status  -->
+                            <div class="row title"> 
+                                <span id="timer"></span>
+                            </div>
+                            <div class="row title"> <!-- player... its your turn to choose a square  --> 
+                                <span id="status"></span>
+                            </div>
+
+                            <!-- Questions & Answers  -->
+                            <div class="active-question-2"></div>
+                            <div class="active-answers-2"></div>
+                                <!-- Buttons -->
                                 <form class="radio-buttons" action="#">
-                                        <p>
-                                            <label for="btn-1-2">
-                                                <input class="with-gap option-1 guess2" name="group1" id="btn-1-2" type="radio" value="" />
-                                                <span class="option-1 guess">Option 1</span>
-                                              </label>
-                                        </p>
-                                        <p>
-                                            <label for="btn-2-2">
-                                                <input class="with-gap option-2 guess2" name="group1" id="btn-2-2" type="radio" value=""  />
-                                                <span class="option-2 guess">Option 2</span>
-                                              </label>
-                                        </p>
-                                        <p>
-                                          <label for="btn-3-2">
+                                    <p>
+                                        <label for="btn-1-2">
+                                            <input class="with-gap option-1 guess2" name="group1" id="btn-1-2" type="radio" value="" />
+                                            <span class="option-1 guess">Option 1</span>
+                                        </label>
+                                    </p>
+                                    <p>
+                                        <label for="btn-2-2">
+                                            <input class="with-gap option-2 guess2" name="group1" id="btn-2-2" type="radio" value=""  />
+                                            <span class="option-2 guess">Option 2</span>
+                                        </label>
+                                    </p>
+                                    <p>
+                                        <label for="btn-3-2">
                                             <input class="with-gap option-3 guess2" name="group1" id="btn-3-2" type="radio" value="" />
                                             <span class="option-3 guess">Option 3</span>
-                                          </label>
-                                        </p>
-                                        <p>
-                                          <label for="btn-4-2">
+                                        </label>
+                                    </p>
+                                    <p>
+                                        <label for="btn-4-2">
                                             <input class="with-gap option-4 guess2" name="group1" id="btn-4-2" type="radio" value="" />
                                             <span class="option-4 guess">Option 4</span>
-                                          </label>
-                                        </p>
-                                      </form>
+                                        </label>
+                                    </p>
+                                </form>
                             </div>
                         </div>
                     </div>
-                </div>
                 </div>
             
             </section> 

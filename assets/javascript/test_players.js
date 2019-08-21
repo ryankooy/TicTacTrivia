@@ -37,6 +37,7 @@ var chosenSquare;
  var player = {                  // Stores player details
    name: "",
    email: "",
+   choice: "",
    wins: 0,
    losses: 0,
    uid: "", 
@@ -73,6 +74,7 @@ var chosenSquare;
  */
 
  /* ----------------------------------------------------------------- */
+
  $('.containerMain').hide();          // Hides main container 
  $('.containerMain2').hide(); 
  $('#introduction').hide();          // Section 2: Introduction 
@@ -83,6 +85,7 @@ var chosenSquare;
  $('.chat-box').hide();         // Chat Section 
 //  $('#outcome').hide();         // Section 6: Outcome 
 //  $('#results').hide();        // Section 7: Results 
+
 /* ----------------------------------------------------------------- */
 
     $("myVideo").show()
@@ -90,16 +93,36 @@ var chosenSquare;
     $('.containerMain2').hide();
     
     $('#instructions').on('click', function() {   // Hides start page on click 
-      $('#introduction').show();         // Shows intrduction page 
-      $('#start').hide();
-      $('.containerMain').show();   
+        $('#introduction').show();         // Shows intrduction page 
+        $('#start').hide();
+        $('.containerMain').show();   
     })
+    
     $('#invite-friend').hide(); 
+    
     $('#play').on('click', function() {   // Hides start page on click 
-      $('#player-selection').show();     // Section 3 - player secetions
-      $('#start').hide();
-      $('.containerMain').show();   
+        $('#player-selection').show();     // Section 3 - player secetions
+        $('#start').hide();
+        $('.containerMain').show();   
     })
+/* ----------------------------------------------------------------- */
+$("#submit-player").hide();
+$('#introduction').hide();
+
+$('#play').on('click', function() {   // Hides start page on click 
+  $('#player-selection').show();     // Section 3 - player secetions
+  $('.containerMain').show();   
+})
+
+$('#play-now').on('click', function() {   // Hides start page on click 
+  $('#player-selection').show();     // Section 3 - player secetions
+  $('#introduction').hide();
+  $('.containerMain').show();   
+})
+
+$("#userName").keyup(function() {
+  $("#submit-player").show();
+});
 
 /* ----------------------------------------------------------------- */
 
@@ -115,6 +138,11 @@ var chosenSquare;
     $('#to-section-4').on('click', function(){
       $('#player-selection').hide();
     })
+/* ----------------------------------------------------------------- */
+    $('#containerP-1').hide();      // Hides player 1's game section 
+    $('#containerP-2').hide();      // Hides player 2's game section 
+
+    $(".radio-buttons").hide(); 
   
  /*
  ========================================
@@ -161,11 +189,11 @@ $('#submit_invite').on('click', function() {
        database.ref('players/1/').update(player);
        player_1_details = $('player-1');
        var player_2_details;
-       $('#section-3-player-1').html('<h2>' + playerName + ' You are player 1' + '</h2>');
-       $('#section-3-player-1').append('<h2>' + 'Waiting for player 2...' + '</h2>');
+       $('#section-3-player-1').html('<h2>' + playerName + ' You Are Player 1' + '</h2>');
+       $('#section-3-player-1').append('<h2>' + 'You are currently the only player online. Waiting for player 2...' + '</h2>');
        player_1_details.html('PLAYER 1: ' + playerName + ' ');
        player_1 = 1; 
-       player_2 = 2; 
+      //  player_2 = 2; 
        $('#invite-friend').show(); 
        $('#user-info').hide();
        $('#submit-player').hide();
@@ -173,17 +201,16 @@ $('#submit_invite').on('click', function() {
        database.ref('turn').set(1);
        playerCount.once('value').then(function(snapshot) {
          totalPlayers = snapshot.val();
-           if (totalPlayers === null) {
-             totalPlayers = 1;
-             playerCount.set(totalPlayers);
-           } else {
-             totalPlayers++;
-             playerCount.set(totalPlayers);
+            if (totalPlayers === null) {
+              totalPlayers = 1;
+              playerCount.set(totalPlayers); // Updates the playerCount in the database = totalPlayers
+          } else {
+              totalPlayers++;
+              playerCount.set(totalPlayers);
           }
        });
  
      } else if (!snapshot.child('players/2').exists()) {
-      // $('#category-selection-2').show();
       $('#invite-friend').hide();  
        database.ref('players/2/').update(player); 
        player_2_details = $('player-2');
@@ -191,19 +218,16 @@ $('#submit_invite').on('click', function() {
        $('#section-3-player-2').html(playerName + 'YOU ARE PLAYER 2')
        player_2_details.html('PLAYER 2: ' + playerName + ' ');
        player_2 = 2; 
-       player_1 = 1; 
+      //  player_1 = 1; 
        $('#player-selection').hide();
        console.log("This is the value of:" + player_2);
        database.ref('turn').set(1);
        playerCount.once('value').then(function(snapshot) {
          totalPlayers = snapshot.val();
-           if (totalPlayers === null) {
-             totalPlayers = 1;
+           if (totalPlayers === 1) {
+             totalPlayers = 2;
              playerCount.set(totalPlayers);
-           } else {
-             totalPlayers++;
-             playerCount.set(totalPlayers);
-         }
+           } 
        })
        
        } else { // If two players are signed into the database alert that the game is full 
@@ -212,8 +236,7 @@ $('#submit_invite').on('click', function() {
  
      })
    }
- 
- 
+
  /*
  ========================================
  Player Count
@@ -224,12 +247,9 @@ $('#submit_invite').on('click', function() {
  playerCount.on("value", function(snapshot) {       // Checks player count 
    totalPlayers = snapshot.val();               
    if (totalPlayers === 2) {                      // If the total player count is 2 shoot the game 
-    // $('.chat-box').show();  
-    // $('#category-selection-1').show();   
-    // $('#player-selection').hide();
     startGame();
    }
-   console.log(totalPlayers);
+   console.log('Total number of active players: ' + totalPlayers);
  });
 
  
@@ -253,8 +273,6 @@ $('#submit_invite').on('click', function() {
        var playerOneName = data.name;
  
        if (player_1 === 1) {    
-           $('.p1').show(); 
-            // $('.p2').hide(); 
            $('#player-1').html('PLAYER 1: ' + playerOneName + ' ');
        }
    })
@@ -266,9 +284,6 @@ $('#submit_invite').on('click', function() {
        var playerTwoName = data.name;
  
        if (player_2 === 2) {
-        $('.chat-box').show();  
-        $('.p2').show(); 
-        // $('.p1').hide(); 
            $('#player-2').html('PLAYER 2: ' + playerTwoName + ' ');
        }
 
@@ -324,7 +339,6 @@ $('#submit_invite').on('click', function() {
  ========================================
  */
   
- 
  $(".resetTurn").on('click', function (){
    database.ref().once("value", function(snapshot) {
        var player_1_name = snapshot.child('players/' + player_1 + '/name').val();
@@ -400,6 +414,7 @@ $('#submit_invite').on('click', function() {
    activeQuestion.onDisconnect().remove(); 
    boardValue.onDisconnect().remove();
    questionResults.onDisconnect().remove();
+   players.onDisconnect().remove();
  
 
  /*
@@ -445,218 +460,215 @@ function checkWins(){
 }
 
 /*
-============================
+===================================================
 Setting a category 
-============================
+===================================================
 */
-var res = ""
+    var res = ""
 
  
-$("#category-submit").on("click", function(event){ //Clicking the submit button on category select
-  $('.containerMain').hide();  
-  $('.containerMain2').show();
-  $('#myVideo').hide();
-  $('#game-play').show();
-  $('#category-selection-1').hide();
-    event.preventDefault();
-    
-    var catagorySelect = $("#catagory-select").val() //the number associated with the category
-    var difficultySelect = $("#difficulty-select").val() //the difficulty chosen
-    
-    var triviaApi = "https://opentdb.com/api.php?amount=9&category=" + catagorySelect + "&difficulty=" + difficultySelect + "&type=multiple"// the api to get our trivia
+    $("#category-submit").on("click", function(event){ //Clicking the submit button on category select
 
-    $.ajax({
-        url:triviaApi,
-        method: 'GET'
-    }).then(function(response){
-
-    // used to simplify the the response to be easier
-    res = response.results
-    console.log(res)
-
-    var categoryChoice = {  //used to save the category and difficulty used for the leaderboards
-        category: catagorySelect, 
-        difficulty: difficultySelect,
-    }
-
-    
-    var questions ={ //saves the response from the trivia api into our firebase database
-        results: response,
-    }
-    
-
-    database.ref("categoryResults/").set(categoryChoice)
-    database.ref("questionResults/").set(questions)
-    
-})
-})
-database.ref("categoryResults/").on("child_added", function(){  
-  $('.chat-box').removeClass("row");
-  $('.chat-box').removeClass("chat-2");
-  $('.chat-box').addClass("chat-3");
-  $('#myVideo').hide();
-  $('.containerMain').hide();  
-  $('.containerMain2').show();
-  $("#category-selection-1").hide()
-  $("#game-play").show()
-})
-
-/*
-====================
-Checking answer 
-====================
-*/
-var correctANSText = ""
-var guesses = database.ref("TotalGuesses")
-database.ref("TotalGuesses").onDisconnect().remove();
-
-$(document).on("click", '.guess1' ,function(){
-  if($(".guess1").is(':checked') && $(this).val() == correctANSText){
-    database.ref("players/1/choice").set(true)
-    $(this).prop("checked", false)
-  }
-  if($(".guess1").is(':checked') && $(this).val() != correctANSText){
-    database.ref("players/1/choice").set(false)
-    $(this).prop("checked", false)
-  }
-})
-$(document).on("click", '.guess2' ,function(){
-  if($(".guess2").is(':checked') && $(this).val() == correctANSText){
-    database.ref("players/2/choice").set(true)
-    $(this).prop("checked", false)
-  }
-  if($(".guess2").is(':checked') && $(this).val() != correctANSText){
-    database.ref("players/2/choice").set(false) 
-    $(this).prop("checked", false)
-  }
-})
-var player1Guess ="" 
-var player2Guess = ""
-database.ref("players/1/choice").on("value", function(snapshot){
-  var p1Exists = (snapshot.val())
-  player1Guessed(p1Exists)
-  console.log("p1: " + p1Exists)
-  console.log(player1Guess,player2Guess)
-  winner()
-  if(player1Guess === false && player2Guess === false){
-    console.log("both fail")
-  }
-})
-database.ref("players/2/choice").on("value", function(snapshot){
-  var p2Exists = (snapshot.val())
-  player2Guessed(p2Exists)
-  console.log("p2: " + p2Exists)
-  console.log(player1Guess,player2Guess)
-  winner()
-  if(player1Guess === false && player2Guess === false){
-    console.log("both fail")
-  }
-})
-
-
-function player1Guessed(data1){
-  player1Guess = data1
-  console.log(player1Guess)
-}
-
-function player2Guessed(data2){
-  player2Guess = data2
-  console.log(player2Guess)
-}
-
-function winner(){
-  if (player1Guess === true){
-    console.log("player 1 wins")
-    $("[value=" + board + "]").addClass("red").addClass("player-1-botton")
-    checkWins()
-    clearWinCriteria()
-
-  }
-  if (player2Guess === true){
-    console.log("player 2 wins")
-    $("[value=" + board + "]").addClass("blue").addClass("player-2-botton")
-    checkWins()
-    clearWinCriteria()
-  }
-}
-
-function clearWinCriteria(){
-  database.ref("players/2/choice").remove()
-  database.ref("players/1/choice").remove()
-  player1Guess = ""
-  player2Guess = ""
-}
-
-/*
-================
-Getting the question and answers function
-================
-*/
-
-function question(data){
-  $(".active-answers-1").empty()
-  $(".active-answers-2").empty()
-  guesses = 0
-  
-  database.ref("TotalGuesses").set(guesses)
-  
-  
-  database.ref("questionResults/").on("child_added",function(childSnapshot){
-  var res = childSnapshot.val().results[data]
-  //picks a random number 0-3 and splices the correct answer into the API's incorrect answer array
-  correctAns = Math.floor(Math.random() * (4 - 0))
-  correctANSText = res.correct_answer 
-  var answers = res.incorrect_answers
-  answers.splice(correctAns, 0 , res.correct_answer)
-  
-  whoIsRight = 0
-  
-    var chosenSquare = {
-      question: res.question,
-      answer: answers,
-    }
-    var correct = {
-      correct: correctANSText,
-    }
-      database.ref("correctAnswer").set(correct)
-      database.ref('activeQuestion').set(chosenSquare)
-      database.ref('activeQuestion').once('value', function(snapshot) {
-        var data = snapshot.val();
-        question1 = data.question;
-        var answer_1 = data.answer;
+      $('#game-play').show();
+      $('#category-selection-1').hide();
+        event.preventDefault();
         
-        console.log('The length of the answers: '+ answer_1.length)
+        var catagorySelect = $("#catagory-select").val() //the number associated with the category
+        var difficultySelect = $("#difficulty-select").val() //the difficulty chosen
+        
+        var triviaApi = "https://opentdb.com/api.php?amount=9&category=" + catagorySelect + "&difficulty=" + difficultySelect + "&type=multiple"// the api to get our trivia
 
-        $('.option-1').html(answer_1[0]).attr('value', answer_1[0])
-        $('.option-2').html(answer_1[1]).attr('value', answer_1[1])
-        $('.option-3').html(answer_1[2]).attr('value', answer_1[2])
-        $('.option-4').html(answer_1[3]).attr('value', answer_1[3])
-       
+        $.ajax({
+            url:triviaApi,
+            method: 'GET'
+        }).then(function(response){
+
+        // used to simplify the the response to be easier
+        res = response.results
+        console.log(res)
+
+        var categoryChoice = {  //used to save the category and difficulty used for the leaderboards
+            category: catagorySelect, 
+            difficulty: difficultySelect,
+        }
+
+        
+        var questions ={ //saves the response from the trivia api into our firebase database
+            results: response,
+        }
+        
+
+        database.ref("categoryResults/").set(categoryChoice)
+        database.ref("questionResults/").set(questions)
+        
     })
-})
-}
+    })
+
+    database.ref("categoryResults/").on("child_added", function(){  
+      
+      $('.chat-box').removeClass("row");       // Removes & adds classes to shift the chat box when containerMain 2 is introduced 
+      $('.chat-box').removeClass("chat-2");
+      $('.chat-box').addClass("chat-3");
+      $('#myVideo').hide();                   // Hides the background video and reveals a static background
+      $('.containerMain').hide();  
+      $('.containerMain2').show();            // Introduces a new - centered container 
+      $("#category-selection-1").hide()
+      $("#game-play").show()
+
+        if (player_1 === 1) {
+          $('#containerP-1').show();
+        }
+        if (player_2 === 2) {
+          $('#containerP-2').show();
+        }
+    })
+
+
+/*
+===========================================
+Checking answer 
+===========================================
+*/
+    var correctANSText = ""
+    var guesses = 0
+
+    $(document).on("click", '.guess1' ,function(){
+        
+        if($(".guess1").is(':checked') && $(this).val() == correctANSText){
+          database.ref("players/1/choice").set(true)
+          $(this).prop("checked", false)
+
+          } if($(".guess1").is(':checked') && $(this).val() != correctANSText){
+              database.ref("players/1/choice").set(false)
+              $(this).prop("checked", false)
+            }
+    })
+
+    $(document).on("click", '.guess2' ,function(){
+        if($(".guess2").is(':checked') && $(this).val() == correctANSText){
+          database.ref("players/2/choice").set(true)
+          $(this).prop("checked", false)
+        
+        } if($(".guess2").is(':checked') && $(this).val() != correctANSText){
+            database.ref("players/2/choice").set(false) 
+            $(this).prop("checked", false)
+          }
+    })
+
+    database.ref("player1Guess").on("value", function(childSnapshot){
+        if(childSnapshot.val() === true){
+          console.log("player1 Wins")
+       
+        } else{
+          console.log("Wrong")
+        }
+    })
+
+
+    function player1Guessed(data1){
+      player1Guess = data1
+      console.log(player1Guess)
+    }
+
+    function player2Guessed(data2){
+      player2Guess = data2
+      console.log(player2Guess)
+    }
+
+    function winner(){
+      if (player1Guess === true){
+        console.log("player 1 wins")
+        $("[value=" + board + "]").addClass("red").addClass("player-1-botton")
+        checkWins()
+        clearWinCriteria()
+
+      }
+      if (player2Guess === true){
+        console.log("player 2 wins")
+        $("[value=" + board + "]").addClass("blue").addClass("player-2-botton")
+        checkWins()
+        clearWinCriteria()
+      }
+    }
+
+    function clearWinCriteria(){
+      database.ref("players/2/choice").remove()
+      database.ref("players/1/choice").remove()
+      player1Guess = ""
+      player2Guess = ""
+    }
+
+/*
+==========================================
+Question Function to Generate the Q & A's 
+==========================================
+*/
+
+    function question(data){
+        $(".active-answers-1").empty();        // Empties player-1's answers before a new question is generated
+        $(".active-answers-2").empty();        // Empties player-2's answers before a new question is generated
+        
+        guesses = 0;                          // Locally sets initial guesses to 0 
+        database.ref("TotalGuesses").set(guesses);   // Sets TotalGuesses in the database equal to the local guesses variable
+        
+        // When a child is added to the questionResults in the data base run the following function to generate the corresponding answers
+        database.ref("questionResults/").on("child_added",function(childSnapshot){
+            var res = childSnapshot.val().results[data]
+            //picks a random number 0-3 and splices the correct answer into the API's incorrect answer array
+            correctAns = Math.floor(Math.random() * (4 - 0))
+            correctANSText = res.correct_answer               // Collects the correct answer data from the database
+            var answers = res.incorrect_answers               // Collects the incorrect answer data from the database
+            answers.splice(correctAns, 0 , res.correct_answer)
+            
+            whoIsRight = 0                                 
+            
+                var chosenSquare = {
+                  question: res.question,
+                  answer: answers,
+                }
+
+                var correct = {
+                  correct: correctANSText,
+                }
+
+                database.ref("correctAnswer").set(correct)
+                database.ref('activeQuestion').set(chosenSquare)
+
+                database.ref('activeQuestion').once('value', function(snapshot) {
+                  
+                  var data = snapshot.val();
+                  question1 = data.question;
+                  var answer_1 = data.answer;
+                  console.log('The length of the answers: '+ answer_1.length);
+                  $('.option-1').html(answer_1[0]).attr('value', answer_1[0]);
+                  $('.option-2').html(answer_1[1]).attr('value', answer_1[1]);
+                  $('.option-3').html(answer_1[2]).attr('value', answer_1[2]);
+                  $('.option-4').html(answer_1[3]).attr('value', answer_1[3]);
+                
+                });
+                $('.radio-buttons').show();
+        });
+    
+    }
   
 
 
-  /*
-  ======================
-  clicking the board and brining the questions and answers up
-  ======================
-  */
+/*
+===========================================================
+Board onClick function (generating Q & A's 
+===========================================================
+*/
 
- 
+    $(document).on("click", ".TTTboard", function(){
+        timer()
+        board = parseInt($(this).val())
+        database.ref("boardvalue").set(board)
 
- $(document).on("click", ".TTTboard", function(){
-    timer()
- 
-     board = parseInt($(this).val())
-  
-     database.ref("boardvalue").set(board)
+    })
 
-})
-
-})
-
+/* ----------------------------------------------------------------- */
+}) // End of main document on ready function 
+/* ----------------------------------------------------------------- */
   /*
 ====================
 Leaderboard results
@@ -680,7 +692,6 @@ Leaderboard results
   //     );
   //     $('.table > tbody').prepend(leaderBoard);
   //     outcome.push(playerW, cat, diff);
-  //   }
-
- });
-
+    
+ 
+ 

@@ -99,6 +99,7 @@ Chat Box Styling
   width: 100%;
   overflow: scroll;
   overflow-x: hidden;
+  font-family: 'Roboto', sans-serif;
 }
 
 /*
@@ -156,6 +157,11 @@ h1 {
   font-family: 'Roboto', sans-serif;
   margin-top: 2vh; 
   margin-bottom: 2vh; 
+  /* color: #4479f4; */
+}
+h2:hover {
+  /* color: rgb(14, 14, 51); */
+  text-decoration: underline;
 }
 
 /*
@@ -227,11 +233,17 @@ h3 {
   margin-top: 10px; 
 }
 
-.container-game {
-  padding-top: 60px; 
+.container-game, #categorySelect {
+  padding-top: 4vh; 
 }
 
 textarea {
   border: none; 
 }
+
+input, p, #categorySelect {
+  font-family: 'Roboto', sans-serif;
+}
+
+
 
