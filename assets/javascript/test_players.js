@@ -122,11 +122,11 @@ var chosenSquare;
  ========================================
  */
 
-var pastChallengers = $('<ul>').append(
-  $('<li>').text(pastPlayers)
-);
+// var pastChallengers = $('<ul>').append(
+//   $('<li>').text(pastPlayers)
+// );
 
-$('#section-3-player-1').prepend(pastChallengers);
+// $('#section-3-player-1').prepend(pastChallengers);
 
  /*
  ========================================
@@ -148,8 +148,8 @@ $('#section-3-player-1').prepend(pastChallengers);
        database.ref('players/1/').update(player);
        player_1_details = $('player-1');
        var player_2_details;
-       $('#section-3-player-1').html('<h1>' + playerName + 'You are player 1' + '</h1>')
-       $('#section-3-player-1').append('Invite a friend with the link below. Waiting for player 2...')
+       $('#section-3-player-1').html('<h2>' + playerName + ' You are player 1' + '</h2>');
+       $('#section-3-player-1').append('<h2>' + 'Waiting for player 2...' + '</h2>');
        player_1_details.html('PLAYER 1: ' + playerName + ' ');
        player_1 = 1; 
        player_2 = 2; 
@@ -441,10 +441,7 @@ var res = ""
 // $(".TTTboard").hide()
 
 
-$("#category-submit").on("click", function(event){ //Clicking the submit button on category select
-  $('.containerMain').hide();  
-  $('.containerMain2').show();
-  $('#myVideo').hide();
+  $("#category-submit").on("click", function(event){ //Clicking the submit button on category select 
   $('#game-play').show();
   $('#category-selection-1').hide();
     event.preventDefault();
@@ -480,7 +477,13 @@ $("#category-submit").on("click", function(event){ //Clicking the submit button 
 })
 })
 
-database.ref("categoryResults/").on("child_added", function(){   
+database.ref("categoryResults/").on("child_added", function(){  
+  $('.chat-box').removeClass("row");
+  $('.chat-box').removeClass("chat-2");
+  $('.chat-box').addClass("chat-3");
+  $('#myVideo').hide();
+  $('.containerMain').hide();  
+  $('.containerMain2').show();
   $("#category-selection-1").hide()
   // $(".TTTboard").show()
   $("#game-play").show()
@@ -539,6 +542,7 @@ Getting the question and answers function
 function question(data){
   $(".active-answers-1").empty()
   $(".active-answers-2").empty()
+  
   
   database.ref("questionResults/").on("child_added",function(childSnapshot){
   var res = childSnapshot.val().results[data]
