@@ -443,18 +443,14 @@ var res = ""
 // $(".TTTboard").hide()
 
 
-<<<<<<< HEAD
+
   $("#category-submit").on("click", function(event){ //Clicking the submit button on category select 
-=======
+
 $("#category-submit").on("click", function(event){ //Clicking the submit button on category select
-<<<<<<< HEAD
-  $("#myVideo").hide()
-=======
   $('.containerMain').hide();  
   $('.containerMain2').show();
   $('#myVideo').hide();
->>>>>>> 89bee65df1db151095f1c158c33d5dae61bb5035
->>>>>>> 48f6c867b98cd6dc25bb320f3cb55ac54f79b4be
+
   $('#game-play').show();
   $('#category-selection-1').hide();
     event.preventDefault();
