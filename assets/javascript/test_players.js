@@ -456,7 +456,18 @@ Setting a category
 var res = ""
 // $(".TTTboard").hide()
 
+
+
+
+  $("#category-submit").on("click", function(event){ //Clicking the submit button on category select 
+
 $("#category-submit").on("click", function(event){ //Clicking the submit button on category select
+  $('.containerMain').hide();  
+  $('.containerMain2').show();
+  $('#myVideo').hide();
+
+$("#category-submit").on("click", function(event){ //Clicking the submit button on category select
+
 
   $('#game-play').show();
   $('#category-selection-1').hide();
