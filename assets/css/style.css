@@ -230,9 +230,8 @@ h3 {
 .container-game {
   padding-top: 60px; 
 }
-/*
-========================================
-Game Buttons 
-========================================
-*/
+
+textarea {
+  border: none; 
+}
 
