@@ -442,8 +442,6 @@ Setting a category
 var res = ""
 // $(".TTTboard").hide()
 
-
-
   $("#category-submit").on("click", function(event){ //Clicking the submit button on category select 
   $("#category-submit").on("click", function(event){ //Clicking the submit button on category select
   $('.containerMain').hide();  
@@ -693,5 +691,4 @@ Leaderboard results
   //     $('.table > tbody').prepend(leaderBoard);
   //   }
   // });
-
-
+ });
