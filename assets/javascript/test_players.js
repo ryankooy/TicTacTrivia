@@ -82,6 +82,7 @@ var chosenSquare;
   $('#category-selection-1').hide(); // Section 4: Category Selection 
   // $('#category-selection-2').hide(); // Section 4: Category Selection 
  $('#game-play').hide();         // Section 5: Game Play
+ $("#winner").hide()
  $('.chat-box').hide();         // Chat Section 
 //  $('#outcome').hide();         // Section 6: Outcome 
 //  $('#results').hide();        // Section 7: Results 
@@ -529,69 +530,83 @@ Setting a category
 Checking answer 
 ===========================================
 */
-    var correctANSText = ""
-    var guesses = 0
-
-    $(document).on("click", '.guess1' ,function(){
-        
-        if($(".guess1").is(':checked') && $(this).val() == correctANSText){
-          database.ref("players/1/choice").set(true)
-          $(this).prop("checked", false)
-
-          } if($(".guess1").is(':checked') && $(this).val() != correctANSText){
-              database.ref("players/1/choice").set(false)
-              $(this).prop("checked", false)
-            }
-    })
-
-    $(document).on("click", '.guess2' ,function(){
-        if($(".guess2").is(':checked') && $(this).val() == correctANSText){
-          database.ref("players/2/choice").set(true)
-          $(this).prop("checked", false)
-        
-        } if($(".guess2").is(':checked') && $(this).val() != correctANSText){
-            database.ref("players/2/choice").set(false) 
-            $(this).prop("checked", false)
-          }
-    })
-
-    database.ref("player1Guess").on("value", function(childSnapshot){
-        if(childSnapshot.val() === true){
-          console.log("player1 Wins")
-       
-        } else{
-          console.log("Wrong")
-        }
-    })
-
-
-    function player1Guessed(data1){
-      player1Guess = data1
-      console.log(player1Guess)
+  var correctANSText = ""
+  var guesses = database.ref("TotalGuesses")
+  database.ref("TotalGuesses").onDisconnect().remove();
+  $(document).on("click", '.guess1' ,function(){
+    if($(".guess1").is(':checked') && $(this).val() == correctANSText){
+      database.ref("players/1/choice").set(true)
+      $(this).prop("checked", false)
     }
-
-    function player2Guessed(data2){
-      player2Guess = data2
-      console.log(player2Guess)
+    if($(".guess1").is(':checked') && $(this).val() != correctANSText){
+      database.ref("players/1/choice").set(false)
+      $(this).prop("checked", false)
     }
-
-    function winner(){
-      if (player1Guess === true){
-        console.log("player 1 wins")
-        $("[value=" + board + "]").addClass("red").addClass("player-1-botton")
-        checkWins()
-        clearWinCriteria()
-
-      }
-      if (player2Guess === true){
-        console.log("player 2 wins")
-        $("[value=" + board + "]").addClass("blue").addClass("player-2-botton")
-        checkWins()
-        clearWinCriteria()
-      }
+  })
+  $(document).on("click", '.guess2' ,function(){
+    if($(".guess2").is(':checked') && $(this).val() == correctANSText){
+      database.ref("players/2/choice").set(true)
+      $(this).prop("checked", false)
     }
+    if($(".guess2").is(':checked') && $(this).val() != correctANSText){
+      database.ref("players/2/choice").set(false)
+      database.ref("players/2/choice").set(false) 
+      $(this).prop("checked", false)
+    }
+  })
+  var player1Guess ="" 
+  var player2Guess = ""
+  database.ref("players/1/choice").on("value", function(snapshot){
+    var p1Exists = (snapshot.val())
+    player1Guessed(p1Exists)
+    console.log("p1: " + p1Exists)
+    console.log(player1Guess,player2Guess)
+    winner()
+    if(player1Guess === false && player2Guess === false){
+      console.log("both fail")
+    }
+  })
+  database.ref("players/2/choice").on("value", function(snapshot){
+    var p2Exists = (snapshot.val())
+    player2Guessed(p2Exists)
+    console.log("p2: " + p2Exists)
+    console.log(player1Guess,player2Guess)
+    winner()
+    if(player1Guess === false && player2Guess === false){
+      console.log("both fail")
+    }
+  })
+  function player1Guessed(data1){
+    player1Guess = data1
+    console.log(player1Guess)
+  }
+  function player2Guessed(data2){
+    player2Guess = data2
+    console.log(player2Guess)
+  }
+  function winner(){
+    if (player1Guess === true){
+      // $("#containerP-1").hide()
+      // $("#containerP-2").hide()
+      console.log("player 1 wins")
+      $("[value=" + board + "]").attr("class", "red").addClass("player-1-botton")
+      checkWins()
+      clearWinCriteria()
+
+    }
+    if (player2Guess === true){
+      console.log("player 2 wins")
+      // $("#containerP-1").hide()
+      // $("#containerP-2").hide()
+      $("[value=" + board + "]").attr("class", "blue").addClass("player-2-botton")
+      checkWins()
+      setTimeout(clearWinCriteria, 2000)
+    }
+  }
 
     function clearWinCriteria(){
+      // $("#containerP-1").show()
+      // $("#containerP-2").show()
       database.ref("players/2/choice").remove()
       database.ref("players/1/choice").remove()
       player1Guess = ""
