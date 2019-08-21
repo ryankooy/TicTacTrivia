@@ -34,7 +34,7 @@ body {
     background: grey;
     position: relative; 
   } */
-#one, #two, #three, #four, #five, #six, #seven, #eight, #nine {
+.TTTboard {
   height: 10vh;
   width: 10vh;
   position: relative;
