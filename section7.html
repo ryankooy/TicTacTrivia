@@ -12,7 +12,12 @@
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> 
 
-       
+         <!-- Materialize Compiled and minified CSS -->
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+         <!-- Materialize Compiled and minified JavaScript -->
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+         
          <!-- PURECSS -->
          <!-- <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous"> -->
         <!--[if lte IE 8]>
@@ -42,24 +47,63 @@
         <div class="jumbotron">Results</div>
         <section class="containerMain" id="results">
 
-             <table class="table">
-                <thead class="thead-dark">
-                    <tr>
-                    <th scope="col">Winner</th>
-                    <th scope="col">Category</th>
-                    <th scope="col">Difficulty</th>
-                    <th scope="col">Challenge a Player</th>
-                    </tr>
+            <table class="highlight centered responsive-table ">
+                <thead>
+                  <tr>
+                      <th>WINNERS</th>
+                      <th>CATEGORY</th>
+                      <th>DIFFICULTY</th>
+                      <th>CHALLENGE AN OPPONENT</th>
+                  </tr>
                 </thead>
+        
                 <tbody>
-                    <tr>
-                    <td scope="col">LaMana</td>
-                    <td scope="col">Math</td>
-                    <td scope="col">Easy</td>
-                    <td scope="col"></td>
-                    </tr>
+                  <tr>
+                    <td>Ethan</td>
+                    <td>Music</td>
+                    <td>Hard</td>
+                    <td><p>
+                        <label for="opponent-1">
+                            <input class="with-gap" name="" id="opponent-1" type="radio" value="" />
+                            <span>Challenge Me</span>
+                        </label>
+                    </p></td>
+                  </tr>
+                  <tr>
+                    <td>Jessie</td>
+                    <td>Music</td>
+                    <td>Medium</td>
+                    <td><p>
+                        <label for="opponent-2">
+                            <input class="with-gap" name="" id="opponent-2" type="radio" value="" />
+                            <span>Challenge Me</span>
+                        </label>
+                    </p></td>
+                  </tr>
+                  <tr>
+                    <td>LaMana</td>
+                    <td>Science & Nature</td>
+                    <td>Medium</td>
+                    <td><p>
+                        <label for="opponent-3">
+                            <input class="with-gap" name="" id="opponent-3" type="radio" value="" />
+                            <span>Challenge Me</span>
+                        </label>
+                    </p></td>
+                  </tr>
+                  <tr>
+                    <td>Ryan</td>
+                    <td>Sports</td>
+                    <td>Easy</td>
+                    <td><p>
+                        <label for="opponent-4">
+                            <input class="with-gap" name="" id="opponent-4" type="radio" value="" />
+                            <span>Challenge Me</span>
+                        </label>
+                    </p></td>
+                  </tr>
                 </tbody>
-                </table>
+              </table>
 
         </section>     
 
@@ -67,6 +111,6 @@
         <script rel="text/javascript" src="assets/javascript/app.js"></script>
         <script rel="text/javascript" src="assets/javascript/appUserPresence.js"></script>
         <script rel="text/javascript" src="assets/javascript/time.js"></script>
-        <script rel="text/javascript" src="assets/javascript/test_players.js"></script>
+        <!-- <script rel="text/javascript" src="assets/javascript/test_players.js"></script> -->
     </body>
 </html>
