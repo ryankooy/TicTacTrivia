@@ -23,25 +23,24 @@ For education, it provides a fun study alternative for students.  This Open Triv
 This section is an example of our design process and will illustrate how we excuted in initial requrement from the design phase all the way through to implementation.
 
 From the user story we defined the need for the user to be able to connect with people 
-![Image description](readmefiles/inviteafrienduserstory.jpg)
+![Image description](readmefiles/inviteafrienduserstory.JPG)
 
 This need went into our conceptual design document
-![Image description](readmefiles/inviteafriendconcept.jpg)
+![Image description](readmefiles/inviteafriendconcept.JPG)
 
 After reviewing several APIs to accomplish this, Formspree was selected.  The HTML was created and the variables were defined and shared with other team members.
-![Image description](readmefiles/inviteafriendhtml.jpg)
+![Image description](readmefiles/inviteafriendhtml.JPG)
 
 The backend team used the variables were used in the javascript file and JQuery was used to connect with the DOM 
-![Image description](readmefiles/inviteafriendjs.jpg)
+![Image description](readmefiles/inviteafriendjs.JPG)
 
 The Front End developers styled the variabes with custom css
-![Image description](readmefiles/inviteafriendcss.jpg)
+![Image description](readmefiles/inviteafriendcss.JPG)
 
 Player submits the form!
-![Image description](readmefiles/inviteafriendui.jpg)
-
+![Image description](readmefiles/inviteafriendui.JPG)
 Opponents get the invite via email!
-![Image description](readmefiles/inviteafriendemail.jpg)
+![Image description](readmefiles/inviteafriendemail.JPG)
 
 After several iterations of trying to get the code to meet the exact requirement needed,  and and several rounds of testing, the finished feature was successfully implemented. 
 
