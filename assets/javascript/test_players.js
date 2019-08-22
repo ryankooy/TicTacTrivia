@@ -54,6 +54,20 @@ var chosenSquare;
  var blueGame = false;               // True if Blue wins
  var redGame = false;                // True if Red wins
  var question1 = '';
+ 
+ $('.containerMain').hide();          // Hides main container 
+    $('.containerMain2').hide(); 
+    $('#introduction').hide();          // Section 2: Introduction 
+    $('#player-selection').hide();     // Section 3: Player Selection 
+    $('#category-selection-1').hide(); // Section 4: Category Selection 
+      // $('#category-selection-2').hide(); // Section 4: Category Selection 
+    $('#game-play').hide();         // Section 5: Game Play
+    $("#winner").hide()
+    $('.chat-box').hide();         // Chat Section 
+     $('#outcome').hide();         // Section 6: Outcome 
+    $('#results').hide();   
+
+
  $(document).ready(function() {
 
  /*
@@ -91,17 +105,7 @@ Sound Effects
 
  /* ----------------------------------------------------------------- */
 
-    $('.containerMain').hide();          // Hides main container 
-    $('.containerMain2').hide(); 
-    $('#introduction').hide();          // Section 2: Introduction 
-    $('#player-selection').hide();     // Section 3: Player Selection 
-    $('#category-selection-1').hide(); // Section 4: Category Selection 
-      // $('#category-selection-2').hide(); // Section 4: Category Selection 
-    $('#game-play').hide();         // Section 5: Game Play
-    $("#winner").hide()
-    $('.chat-box').hide();         // Chat Section 
-    //  $('#outcome').hide();         // Section 6: Outcome 
-    $('#results').hide();        // Section 7: Results 
+         // Section 7: Results 
 
 /* ----------------------------------------------------------------- */
     $('.waiting').hide();
@@ -139,6 +143,9 @@ $('#play-now').on('click', function() {   // Hides start page on click
   $('#player-selection').show();     // Section 3 - player secetions
   $('#introduction').hide();
   $('.containerMain').show();   
+  
+  $('#outcome').hide();         // Section 6: Outcome 
+  $('#results').hide();   
 })
 
 $("#userName").keyup(function() {
@@ -300,7 +307,7 @@ $('#submit_invite').on('click', function() {
        var playerOneName = data.name;
  
        if (player_1 === 1) { 
-        $('#player-2').html('PLAYER 2: ' + playerOneName + ' ');
+        $('#player-1').html('PLAYER 1: ' + playerOneName + ' ');
        }
    })
    console.log("I am: " + player_1);
@@ -488,8 +495,8 @@ function checkWins(){
   if(blueWins1 === true || blueWins2 === true || blueWins3 === true ||
        blueWins4 === true || blueWins5 === true || blueWins6 === true ||
        blueWins7 === true || blueWins8 === true){
-      $("#modal-2").modal()
       gameEnd = true;
+      $("#winnerCircle").html(" Player 2 WINS!!!!!")
       $('#game-play').hide();         // Section 5: Game Play
       $("#winner").hide()
       $('.chat-box').hide();         // Chat Section       // Section 6: Outcome 
@@ -509,8 +516,8 @@ function checkWins(){
   if(redWins1 === true || redWins2 === true || redWins3 === true ||
       redWins4 === true || redWins5 === true || redWins6 === true ||
       redWins7 === true || redWins8 === true){
-     $("#modal-1").modal()
      gameEnd = true;
+     $("#winnerCircle").html("Player 1 WINS!!!!")
  $('#game-play').hide();         // Section 5: Game Play
  $("#winner").hide()
  $('.chat-box').hide();         // Chat Section       // Section 6: Outcome 
@@ -521,14 +528,14 @@ function checkWins(){
 
  if (draw === true){
    gameEnd = true
-  $("#modal-3").modal()
+   $("#winnerCircle").html("DRAW")
  $('#game-play').hide();         // Section 5: Game Play
  $("#winner").hide()
  $('.chat-box').hide();         // Chat Section       // Section 6: Outcome 
  $('#results').show();   
  }
 }
-}
+
 
 /*
 ===================================================
@@ -542,6 +549,9 @@ Setting a category
       // s_buttonClick.play();
       $('#game-play').show();
       $('#category-selection-1').hide();
+      
+     $('#outcome').hide();         // Section 6: Outcome 
+     $('#results').hide();   
         event.preventDefault();
         
         var catagorySelect = $("#catagory-select").val() //the number associated with the category
@@ -585,6 +595,8 @@ Setting a category
       $('.containerMain2').show();            // Introduces a new - centered container 
       $("#category-selection-1").hide()
       $("#game-play").show()
+      
+      $('#results').hide();
 
       // database.ref().once("value", function(snapshot) {
       //   var player_1_name = snapshot.child('players/' + player_1 + '/name').val();
@@ -811,7 +823,5 @@ Board onClick function (generating Q & A's
 /* ----------------------------------------------------------------- */
 }) // End of main document on ready function 
 /* ----------------------------------------------------------------- */
-
-  // $('#results').show();
 
 
