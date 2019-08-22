@@ -18,6 +18,8 @@
         <!-- External Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Cinzel|Raleway:100&display=swap" rel="stylesheet">
 
+        <!-- Animate.CSS -->
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 
         <!-- External Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Roboto|Vast+Shadow&display=swap" rel="stylesheet">
@@ -66,7 +68,7 @@
                     <h1>TIC TAC TRIVIA!</h1>
                 </div>
                     <div class="row">
-                        <h2>Three in a row... the more you know!</h2>
+                        <h2 class="animated bounceIn delay-1s">Three in a row... the more you know!</h2>
                     </div>
                 <div class="align-items-center row">
                     <button class="btn-start btn-block col s6" id="instructions">INSTRUCTIONS</button> 
@@ -133,7 +135,9 @@
                         </div>
                     </div>
                     <div class="canter-align" id="section-3-player-1">
-                        <!-- <span id="section-3-player-1"></span> -->
+                    </div>
+                    <div class="row waiting progress">
+                        <div class="indeterminate"></div>
                     </div>
                     <div id="invite-friend">
                         <h3>Challenge a friend by sending a link to their email.</h3>
@@ -332,26 +336,97 @@
         
             <!-------------------------------------------------------------------->
             <!-- Section 6: outcome -->
-            <!-- <section id="outcome">
-            </section> -->
+            <section id="outcome">
+                <div id="modal-1" class="modal">
+                    <div class="modal-content-1">
+                    </div>
+                    <div class="modal-footer">
+                      <a href="#!" class="modal-close waves-effect waves-black btn-block btn-flat">Agree</a>
+                    </div>
+                  </div>
+                  <div id="modal-2" class="modal">
+                    <div class="modal-content-2">
+                    </div>
+                    <div class="modal-footer">
+                      <a href="#!" class="modal-close waves-effect waves-black btn-block btn-flat">Agree</a>
+                    </div>
+                  </div>
+                  <div id="modal-3" class="modal">
+                    <div class="modal-content-3">
+                    </div>
+                    <div class="modal-footer">
+                      <a href="#!" class="modal-close waves-effect waves-black btn-block btn-flat">Agree</a>
+                    </div>
+                  </div>
+            </section>
 
             <!-- Section 7: Results -->
-            <!-- <section id="results">
-
-                <table class="table">
-                    <thead class="thead-dark">
-                        <tr>
-                        <th scope="col">Winner</th>
-                        <th scope="col">Category</th>
-                        <th scope="col">Difficulty</th>
-                        <th scope="col">Score</th>
-                        </tr>
+            <section class="containerMain2" id="results">
+                <div class="center-align row">
+                    <h1>TIC TAC TRIVIA!</h1>
+                </div>
+                <div class="row">
+                    <h2 class="animated bounceIn delay-1s">LEADER BOARD</h2>
+                </div>
+                <table class="highlight centered responsive-table ">
+                    <thead>
+                      <tr>
+                          <th>WINNERS</th>
+                          <th>CATEGORY</th>
+                          <th>DIFFICULTY</th>
+                          <th>CHALLENGE AN OPPONENT</th>
+                      </tr>
                     </thead>
+            
                     <tbody>
-                        
+                      <tr>
+                        <td>Ethan</td>
+                        <td>Music</td>
+                        <td>Hard</td>
+                        <td><p>
+                            <label for="opponent-1">
+                                <input class="with-gap" name="" id="opponent-1" type="radio" value="" />
+                                <span>Challenge Me</span>
+                            </label>
+                        </p></td>
+                      </tr>
+                      <tr>
+                        <td>Jessie</td>
+                        <td>Music</td>
+                        <td>Medium</td>
+                        <td><p>
+                            <label for="opponent-2">
+                                <input class="with-gap" name="" id="opponent-2" type="radio" value="" />
+                                <span>Challenge Me</span>
+                            </label>
+                        </p></td>
+                      </tr>
+                      <tr>
+                        <td>LaMana</td>
+                        <td>Science & Nature</td>
+                        <td>Medium</td>
+                        <td><p>
+                            <label for="opponent-3">
+                                <input class="with-gap" name="" id="opponent-3" type="radio" value="" />
+                                <span>Challenge Me</span>
+                            </label>
+                        </p></td>
+                      </tr>
+                      <tr>
+                        <td>Ryan</td>
+                        <td>Sports</td>
+                        <td>Easy</td>
+                        <td><p>
+                            <label for="opponent-4">
+                                <input class="with-gap" name="" id="opponent-4" type="radio" value="" />
+                                <span>Challenge Me</span>
+                            </label>
+                        </p></td>
+                      </tr>
                     </tbody>
-                    </table> -->
-                <!-- </section>  -->
+                  </table>
+                  <button class="btn-start btn-block" id="play-again">PLAY</button>  
+            </section> 
        
         <!-- Firebase Core JavaScript Link -->
         <!-- <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-messaging.js"></script> -->

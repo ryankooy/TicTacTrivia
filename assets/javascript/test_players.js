@@ -91,20 +91,20 @@ Sound Effects
 
  /* ----------------------------------------------------------------- */
 
- $('.containerMain').hide();          // Hides main container 
- $('.containerMain2').hide(); 
- $('#introduction').hide();          // Section 2: Introduction 
- $('#player-selection').hide();     // Section 3: Player Selection 
-  $('#category-selection-1').hide(); // Section 4: Category Selection 
-  // $('#category-selection-2').hide(); // Section 4: Category Selection 
- $('#game-play').hide();         // Section 5: Game Play
- $("#winner").hide()
- $('.chat-box').hide();         // Chat Section 
-//  $('#outcome').hide();         // Section 6: Outcome 
-//  $('#results').hide();        // Section 7: Results 
+    $('.containerMain').hide();          // Hides main container 
+    $('.containerMain2').hide(); 
+    $('#introduction').hide();          // Section 2: Introduction 
+    $('#player-selection').hide();     // Section 3: Player Selection 
+    $('#category-selection-1').hide(); // Section 4: Category Selection 
+      // $('#category-selection-2').hide(); // Section 4: Category Selection 
+    $('#game-play').hide();         // Section 5: Game Play
+    $("#winner").hide()
+    $('.chat-box').hide();         // Chat Section 
+    //  $('#outcome').hide();         // Section 6: Outcome 
+    $('#results').hide();        // Section 7: Results 
 
 /* ----------------------------------------------------------------- */
-
+    $('.waiting').hide();
     $("myVideo").show()
     $('#start').show();                     // Section 1: Start 
     $('.containerMain2').hide();
@@ -145,6 +145,15 @@ $("#userName").keyup(function() {
   // s_buttonClick.play();
   $("#submit-player").show();
 });
+
+/* ----------------------------------------------------------------- */
+
+$('#play-again').on('click', function(){
+  $('#player-selection').show();
+  $('.containerMain').show();   
+  $('.containerMain2').hide();   
+  $('#results').hide(); 
+})
 
 /* ----------------------------------------------------------------- */
 
@@ -206,10 +215,10 @@ $('#submit_invite').on('click', function() {
        var player_2_details;
        $('#section-3-player-1').html('<h2>' + playerName + ' You Are Player 1' + '</h2>');
        $('#section-3-player-1').append('<h2>' + 'You are currently the only player online. Waiting for player 2...' + '</h2>');
+       $('.waiting').show();
        player_1_details.html('PLAYER 1: ' + playerName + ' ');
        player_1 = 1; 
        currentTurn = 1;
-      //  player_2 = 2; 
        $('#invite-friend').show(); 
        $('#user-info').hide();
        $('#submit-player').hide();
@@ -228,6 +237,7 @@ $('#submit_invite').on('click', function() {
  
      } else if (!snapshot.child('players/2').exists()) {
       $('#invite-friend').hide();  
+      $('.waiting').hide();
        database.ref('players/2/').update(player); 
        player_2_details = $('player-2');
        var player_1_details; 
@@ -235,7 +245,6 @@ $('#submit_invite').on('click', function() {
        player_2_details.html('PLAYER 2: ' + playerName + ' ');
        player_2 = 2; 
        currentTurn = 2;
-      //  player_1 = 1; 
        $('#player-selection').hide();
        console.log("This is the value of:" + player_2);
        database.ref('turn').set(1);
@@ -261,7 +270,6 @@ $('#submit_invite').on('click', function() {
  ========================================
  */
 
-
  playerCount.on("value", function(snapshot) {       // Checks player count 
    totalPlayers = snapshot.val();               
    if (totalPlayers === 2) {                      // If the total player count is 2 shoot the game 
@@ -270,7 +278,6 @@ $('#submit_invite').on('click', function() {
    console.log('Total number of active players: ' + totalPlayers);
  });
 
- 
  /*
  ========================================
  Start Game
@@ -804,29 +811,7 @@ Board onClick function (generating Q & A's
 /* ----------------------------------------------------------------- */
 }) // End of main document on ready function 
 /* ----------------------------------------------------------------- */
-  /*
-====================
-Leaderboard results
-*********needs work*********
-====================
-*/
 
-// js needs to know which player had the final turn
+  // $('#results').show();
 
-  // database.ref().on('value', function(snap) {
-  //   var playerW = snap.val().name;
-  //  var playerEM = snap.val().email;
-  //   var cat = snap.val().category;
-  //   var diff = snap.val().difficulty;
-  //   checkWins();
-  //   if (gameEnd === true) {
-  //     var leaderBoard = $('<tr>').append(
-  //       $('<td>').text(playerW),
-  //       $('<td>').text(cat),
-  //       $('<td>').text(diff)
-  //     );
-  //     $('.table > tbody').prepend(leaderBoard);
-  //     outcome.push(playerW, cat, diff);
-    
- 
- 
+

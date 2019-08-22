@@ -16,51 +16,51 @@ Index.html layout
 Main Container
 ========================================
 */
-body {
-    display: flex;
-    background-image: url('../images/backgrounds/static_background.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    flex-direction: column;
-    margin: 0 auto;
-    min-height: 100vh;
-    overflow: hidden;
-    padding: 8vh 8vw;
-}
+    body {
+        display: flex;
+        background-image: url('../images/backgrounds/static_background.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        flex-direction: column;
+        margin: 0 auto;
+        min-height: 100vh;
+        overflow: hidden;
+        padding: 8vh 8vw;
+    }
 
-.containerMain {
-    margin: 0 auto;
-    overflow: auto; 
-    max-width: 62vw;
-    min-height: 400px; 
-    width: 100%;
-    height: 78vh;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    border: 2px solid navy;
-    background:white;
-    position: absolute; 
-    padding: 4vh 4vw; 
-    left: 4vw; 
-}
-.containerMain2 {
-  margin: 0 auto;
-  max-width: 62vw;
-  min-height: 400px; 
-  width: 100%;
-  height: 78vh;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  border: 2px solid navy;
-  background:white;
-  padding: 4vh 4vw; 
-  overflow: auto; 
-}
+    .containerMain {
+        margin: 0 auto;
+        overflow: auto; 
+        max-width: 62vw;
+        min-height: 400px; 
+        width: 100%;
+        height: 78vh;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        border: 2px solid navy;
+        background:white;
+        position: absolute; 
+        padding: 4vh 4vw; 
+        left: 4vw; 
+    }
+    .containerMain2 {
+      margin: 0 auto;
+      max-width: 62vw;
+      min-height: 400px; 
+      width: 100%;
+      height: 78vh;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      border: 2px solid navy;
+      background:white;
+      padding: 4vh 4vw; 
+      overflow: auto; 
+    }
 
-.row-1 {
-  margin: 0 auto;
-  padding-left: 0 4vw; 
-  height: 5vh; 
-  margin-bottom: 20px; 
-}
+    .row-1 {
+      margin: 0 auto;
+      padding-left: 0 4vw; 
+      height: 5vh; 
+      margin-bottom: 20px; 
+    }
 
 /*
 ========================================
@@ -68,39 +68,38 @@ Chat Box Styling
 ========================================
 */
 
+    .chat-box {
+      margin: 0 auto;
+      max-width: 53vw; 
+      width: 100%; 
+      min-width: 1px; 
+      padding-left: 4vw; 
+      padding-right: 4vw; 
+    }
 
-.chat-box {
-  margin: 0 auto;
-  max-width: 53vw; 
-  width: 100%; 
-  min-width: 1px; 
-  padding-left: 4vw; 
-  padding-right: 4vw; 
-}
+    .chat-2 {
+      position: absolute; 
+      bottom: 18vh; 
+      max-width: 53vw; 
+      width: 100%; 
+    }
+    .chat-3 {
+      z-index: 2;
+      position: absolute; 
+      bottom: 18vh; 
+      max-width: 60vw; 
+      width: 100%; 
+      left: 20vw; 
+    }
 
-.chat-2 {
-  position: absolute; 
-  bottom: 18vh; 
-  max-width: 53vw; 
-  width: 100%; 
-}
-.chat-3 {
-  z-index: 2;
-  position: absolute; 
-  bottom: 18vh; 
-  max-width: 60vw; 
-  width: 100%; 
-  left: 20vw; 
-}
-
-#chat-log-1 {
-  max-height: 100px;
-  max-width: 53vw; 
-  width: 100%;
-  overflow: scroll;
-  overflow-x: hidden;
-  font-family: 'Roboto', sans-serif;
-}
+    #chat-log-1 {
+      max-height: 100px;
+      max-width: 53vw; 
+      width: 100%;
+      overflow: scroll;
+      overflow-x: hidden;
+      font-family: 'Roboto', sans-serif;
+    }
 
 /*
 ========================================
@@ -108,16 +107,16 @@ Video Background
 ========================================
 */
 
-#myVideo {
-  position: fixed; 
-  right: 0;
-  bottom: 0;
-  min-width: 100%; 
-  min-height: 100%;
-  overflow: hidden;
-  transform: scaleX(-1);
-  z-index: -1;
-}
+    #myVideo {
+      position: fixed; 
+      right: 0;
+      bottom: 0;
+      min-width: 100%; 
+      min-height: 100%;
+      overflow: hidden;
+      transform: scaleX(-1);
+      z-index: -1;
+    }
 
 /*
 ========================================
@@ -125,44 +124,44 @@ Typography
 ========================================
 */
 
-/* Section 1 - Start Page Typography */
-.start-title {
-  background-color: white; 
-  position: absolute; 
-  border: 2px solid navy;
-  height: auto; 
-  max-width: 71vw; 
-  width: 100%;
-  left: 0; 
-  top: 29vh;
-  z-index: 1; 
-  padding: 20px; 
-}
+    /* Section 1 - Start Page Typography */
+    .start-title {
+      background-color: white; 
+      position: absolute; 
+      border: 2px solid navy;
+      height: auto; 
+      max-width: 71vw; 
+      width: 100%;
+      left: 0; 
+      top: 29vh;
+      z-index: 1; 
+      padding: 20px; 
+    }
 
-h1, h2 {
-  display: table;
-  margin: 0 auto; 
-  text-align: center; 
-  color: black; 
-  padding: 10px;
-}
-h1 {
-  font-size: 4rem; 
-  font-family: 'Vast Shadow', cursive;
-  color: rgb(14, 14, 51);
-}
+    h1, h2 {
+      display: table;
+      margin: 0 auto; 
+      text-align: center; 
+      color: black; 
+      padding: 10px;
+    }
+    h1 {
+      font-size: 4rem; 
+      font-family: 'Vast Shadow', cursive;
+      color: rgb(14, 14, 51);
+    }
 
- h2 {
-  font-size: 1.2rem; 
-  font-family: 'Roboto', sans-serif;
-  margin-top: 2vh; 
-  margin-bottom: 2vh; 
-  /* color: #4479f4; */
-}
-h2:hover {
-  /* color: rgb(14, 14, 51); */
-  text-decoration: underline;
-}
+    h2 {
+      font-size: 1.2rem; 
+      font-family: 'Roboto', sans-serif;
+      margin-top: 2vh; 
+      margin-bottom: 2vh; 
+      /* color: #4479f4; */
+    }
+    h2:hover {
+      /* color: rgb(14, 14, 51); */
+      text-decoration: underline;
+    }
 
 /*
 ========================================
@@ -170,82 +169,112 @@ Buttons
 ========================================
 */
 
-.btn-start {
-  left: 1.5vw; 
-  height: 50px; 
-  font-family: 'Roboto', sans-serif;
-  margin: 0 auto; 
-  border: none; 
-  margin-left: 20px; 
-  margin-right: 20px; 
-  letter-spacing: 1px; 
-}
-.btn-start:hover {
-  background-color: rgb(14, 14, 51);
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  color: white;
-  font-weight: bold; 
-}
+    .btn-start {
+      left: 1.5vw; 
+      height: 50px; 
+      font-family: 'Roboto', sans-serif;
+      margin: 0 auto; 
+      border: none; 
+      margin-left: 20px; 
+      margin-right: 20px; 
+      letter-spacing: 1px; 
+    }
+    .btn-start:hover {
+      background-color: rgb(14, 14, 51);
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      color: white;
+      font-weight: bold; 
+    }
 
-.radio-buttons {
-  display: table;
-  text-align: left; 
-  font-family: 'Roboto', sans-serif;
-}
+    .radio-buttons {
+      display: table;
+      text-align: left; 
+      font-family: 'Roboto', sans-serif;
+    }
 
-.btn {
-  background-color: rgb(14, 14, 51);
-  font-family: 'Roboto', sans-serif;
-  letter-spacing: 1px; 
-  margin-top: 1vh; 
-}
+    .btn {
+      background-color: rgb(14, 14, 51);
+      font-family: 'Roboto', sans-serif;
+      letter-spacing: 1px; 
+      margin-top: 1vh; 
+    }
 
-.in {
-  border-bottom: 1px solid rgb(14, 14, 51);;
-}
+    .in {
+      border-bottom: 1px solid rgb(14, 14, 51);;
+    }
 
-#submit-player {
-  position: absolute; 
-  bottom: 3vh; 
-  left: 0px; 
-  margin: 0 5vw; 
-  width: 52vw; 
-  font-family: 'Roboto', sans-serif;
-  letter-spacing: 1px; 
-}
+    #submit-player {
+      position: absolute; 
+      bottom: 3vh; 
+      left: 0px; 
+      margin: 0 5vw; 
+      width: 52vw; 
+      font-family: 'Roboto', sans-serif;
+      letter-spacing: 1px; 
+    }
 
-#invite-friend {
-  border: 1px solid  rgb(14, 14, 51);
-  margin-top: 4vh; 
-  padding: 10px; 
-  font-family: 'Roboto', sans-serif;
-  letter-spacing: 1px; 
-}
+    #invite-friend {
+      border: 1px solid  rgb(14, 14, 51);
+      margin-top: 4vh; 
+      padding: 10px; 
+      font-family: 'Roboto', sans-serif;
+      letter-spacing: 1px; 
+    }
 
-h3 {
-  text-align: left; 
-  color: rgb(14, 14, 51);
-  font-weight: bold; 
-  padding-top: 10px; 
-}
+    h3 {
+      text-align: left; 
+      color: rgb(14, 14, 51);
+      font-weight: bold; 
+      padding-top: 10px; 
+    }
 
-#user-info {
-  margin-top: 10px; 
-}
+    #user-info {
+      margin-top: 10px; 
+    }
 
-.container-game, #categorySelect {
-  padding-top: 4vh; 
-}
+    .container-game, #categorySelect {
+      padding-top: 4vh; 
+    }
 
-textarea {
-  border: none; 
-}
+    textarea {
+      border: none; 
+    }
 
-input, p, #categorySelect {
-  font-family: 'Roboto', sans-serif;
-}
-#game-play p {
-  font-family: 'Roboto', sans-serif;
- }
+    input, p, #categorySelect {
+      font-family: 'Roboto', sans-serif;
+    }
+    #game-play p {
+      font-family: 'Roboto', sans-serif;
+    }
 
+/*
+========================================
+Buttons 
+========================================
+*/
+    #modal-content-1 {
+      background-image: url('../images/player_1_winner.png');
+      background-size: cover; 
+      background-repeat: no-repeat; 
+      max-width: 500px;
+      width: 500px; 
+      height: auto; 
+    }
 
+    #modal-content-2 {
+      background-image: url('../images/player_2_winner.png');
+      background-size: cover; 
+      background-repeat: no-repeat; 
+      max-width: 500px;
+      width: 500px; 
+      height: auto; 
+    }
+
+    #modal-content-3 {
+      background-image: url('../images/draw_no_winner.png');
+      background-size: cover; 
+      background-repeat: no-repeat; 
+      max-width: 500px;
+      width: 500px; 
+      height: auto; 
+    }
