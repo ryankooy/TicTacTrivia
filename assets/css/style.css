@@ -280,6 +280,18 @@ Buttons
       height: auto; 
     }
 
+
+
+    .modalCustom {
+      color: silver; 
+      background: black; 
+      border: none;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    #winnerCircle {
+      margin-bottom: 2vh;}
+
     #myVideo2 {
       max-width: 300px;
       width: 100%;
@@ -295,4 +307,13 @@ Buttons
       margin-top: 2vh; 
       margin-bottom: 2vh; 
 
+    }
+
+    th {
+      font-size: 1.2rem; 
+      font-family: 'Roboto', sans-serif;
+      margin-top: 2vh; 
+      margin-bottom: 2vh; 
+      border-bottom: 1px solid grey;
+      padding-bottom: 2vh;
     }
