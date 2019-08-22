@@ -44,6 +44,10 @@ body {
   z-index: 1;
 }
 
+.radio-buttons:active {
+
+}
+
 #one:hover, #two:hover, #three:hover, #four:hover, #five:hover, #six:hover, #seven:hover, #eight:hover, #nine:hover {
 
 }
@@ -72,3 +76,22 @@ body {
   background-repeat: no-repeat; 
   z-index: 10;
 }
+
+/* The container */
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+
+
+/* Create a custom radio button */
+
