@@ -205,10 +205,12 @@ Buttons
     }
 
     #submit-player, #play-now, #play-again {
-      position: absolute; 
-      bottom: 3vh; 
+      position: relative; 
+      /* bottom: 3vh;  */
+      margin-top: 2vh;
       left: 0px; 
-      margin: 0 5vw; 
+      margin: 0 auto;
+      margin-top: 4vh; 
       width: 52vw; 
       font-family: 'Roboto', sans-serif;
       letter-spacing: 1px; 
