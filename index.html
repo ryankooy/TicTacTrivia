@@ -80,35 +80,45 @@
                 
             <!-- Section 2: Introduction -->
             <section id="introduction">
-                <div class="text-center row-1 tite"> 
+                <div class="text-center tite"> 
                         <h1>TIC TAC TRIVIA!</h1>
                     </div>
                 
                 <div class="row">
-                    <div class="instructions">
-                        <h2>Welcome to ***Extreme Trivia Tac Toe*****</h2>
-            
-                        <p>You must enter a username to play the game.  You can also enter your email address so that others can challenge you to a game.</p>
-                        <p>Choose either Player 1 or Player 2.</p>
-                        <p>If no other players are online, you can invite a friend, or challenge a previous player.</p>
-            
-                        <p>Once Player 1 and Player 2 are selected, the game will start and other players must wait until the game is complete in order to start a new game.</p>
-            
-                        <p>Player 1 will choose the category.</p>
-                        <p>Then player 1 will choose the difficulty level.</p>
-            
-                        <p>When the game starts, the 15 second timer will begin.</p>  
-                        <p>Player 1 must select a square on the 3 x 3 grid.</p>
-                        <p>Both players will be given the remaining time to answer the question.</p>
-            
-                        <p>If you answer the question first your icon will appear in that square. </p>
-                        <p>If your opponent answers that question first their icon will appear in that square.</p>
-                        <p>Then the next player selects a square.</p>
-                        <p>If time runs out or if no one anwers the question correctly, the next player gets to select a square.</p>
-            
-                        <p>The first player with 3 squares in a row wins the game!</p>
-            
-                        <p>There’s also a live chat that occurs throughout the game.</p>
+                    <div class="row instructions align-items-center">
+                        <div class="col-lg-6 col-md- col-sm- text-center">
+                            <h2>Welcome to Tic Tac Trivia</h2>
+                            <ol>
+                               <li><p>To get started enter a username on the next page.</p></li>
+                            
+                                <li><p>If no other players are online, you can invite a friend.</p></li>
+                    
+                                <li><p>Once Player 1 and Player 2 are selected, the game will start and other players must wait until the game is complete in order to start a new game.</p></li>
+                
+                                <li><p>Players can discuss what category and difficulty to select using a chat feature.</p></li>
+                                <li><p>When these have been selected the game will begin.</p></li>
+        
+                                <li><p>Player 1 has the first turn to select a square on the board</p></li>
+                                <li><p>Both players will be given 20 seconds to answer the question.</p></li>
+                    
+                                <li><p>The first player to correctly answer the question will be granted the selected square.</p></li>
+                
+                                <li><p>Then player 2 will have the opportunity to select a square.</p></li>
+                                <li><p>If time runs out or if no one anwers the question correctly, the next player gets to select a square.</p></li>
+                    
+                                <li><p>The first player with 3 squares in a row wins the game!</p></li>
+                    
+                                <li><p>There’s also a live chat that occurs throughout the game.</p></li>
+                                <li><p>Have Fun!</p>
+                            </ol>
+                        </div>
+                        <div class="col-lg-6 col-md- col-sm-">
+                            <video playsinline autoplay muted loop id="myVideo2">
+                                <source class="responsive-video" src="assets/images/demo_video.mp4" type="video/mp4"  alt="Your browser does not support HTML5 video." preload>
+                            </video>
+                        </div>
+
+
                         <button class="btn-start btn-block" id="play-now">PLAY</button>  
                     </div>
                 </div>
@@ -135,9 +145,6 @@
                         </div>
                     </div>
                     <div class="canter-align" id="section-3-player-1">
-                    </div>
-                    <div class="row waiting progress">
-                        <div class="indeterminate"></div>
                     </div>
                     <div id="invite-friend">
                         <h3>Challenge a friend by sending a link to their email.</h3>
@@ -425,7 +432,7 @@
                       </tr>
                     </tbody>
                   </table>
-                  <button class="btn-start btn-block" id="play-again">PLAY</button>  
+                  <button class="btn-start btn-block" id="play-again">PLAY AGAIN</button>  
             </section> 
        
         <!-- Firebase Core JavaScript Link -->

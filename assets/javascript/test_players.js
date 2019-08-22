@@ -8,9 +8,9 @@ var firebaseConfig = {
   };
  
  firebase.initializeApp(firebaseConfig);
- 
+
  var database = firebase.database();
- 
+
  /*
  ========================================
  Global Variables
@@ -54,6 +54,8 @@ var chosenSquare;
  var blueGame = false;               // True if Blue wins
  var redGame = false;                // True if Red wins
  var question1 = '';
+
+
  $(document).ready(function() {
 
  /*
@@ -75,11 +77,11 @@ Sound Effects
 ========================================
 */
 
- var s_buttonClick = document.getElementById("button-click");
- var s_wonGame = document.getElementById("won-game");
- var s_drawGame = document.getElementById("game-draw");
- var s_gameFull = document.getElementById("game-is-full");
- var s_2players = document.getElementById('2-players-in-game');
+//  var s_buttonClick = document.getElementById("button-click");
+//  var s_wonGame = document.getElementById("won-game");
+//  var s_drawGame = document.getElementById("game-draw");
+//  var s_gameFull = document.getElementById("game-is-full");
+//  var s_2players = document.getElementById('2-players-in-game');
  
 
 
@@ -104,7 +106,7 @@ Sound Effects
     $('#results').hide();        // Section 7: Results 
 
 /* ----------------------------------------------------------------- */
-    $('.waiting').hide();
+  
     $("myVideo").show()
     $('#start').show();                     // Section 1: Start 
     $('.containerMain2').hide();
@@ -206,7 +208,6 @@ $('#submit_invite').on('click', function() {
        var player_2_details;
        $('#section-3-player-1').html('<h2>' + playerName + ' You Are Player 1' + '</h2>');
        $('#section-3-player-1').append('<h2>' + 'You are currently the only player online. Waiting for player 2...' + '</h2>');
-       $('.waiting').show();
        player_1_details.html('PLAYER 1: ' + playerName + ' ');
        player_1 = 1; 
        currentTurn = 1;
@@ -228,7 +229,7 @@ $('#submit_invite').on('click', function() {
  
      } else if (!snapshot.child('players/2').exists()) {
       $('#invite-friend').hide();  
-      $('.waiting').hide();
+
        database.ref('players/2/').update(player); 
        player_2_details = $('player-2');
        var player_1_details; 

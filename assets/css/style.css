@@ -30,11 +30,12 @@ Main Container
 
     .containerMain {
         margin: 0 auto;
-        overflow: auto; 
+        overflow: scroll; 
         max-width: 62vw;
         min-height: 400px; 
         width: 100%;
-        height: 78vh;
+        max-height: 78vh;
+        height: 78vh; 
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
         border: 2px solid navy;
         background:white;
@@ -52,7 +53,7 @@ Main Container
       border: 2px solid navy;
       background:white;
       padding: 4vh 4vw; 
-      overflow: auto; 
+      overflow: scroll; 
     }
 
     .row-1 {
@@ -203,7 +204,7 @@ Buttons
       border-bottom: 1px solid rgb(14, 14, 51);;
     }
 
-    #submit-player {
+    #submit-player, #play-now, #play-again {
       position: absolute; 
       bottom: 3vh; 
       left: 0px; 
@@ -266,7 +267,7 @@ Buttons
       background-size: cover; 
       background-repeat: no-repeat; 
       max-width: 500px;
-      width: 500px; 
+      width: 100%; 
       height: auto; 
     }
 
@@ -275,6 +276,23 @@ Buttons
       background-size: cover; 
       background-repeat: no-repeat; 
       max-width: 500px;
-      width: 500px; 
+      width: 100%; 
       height: auto; 
+    }
+
+    #myVideo2 {
+      max-width: 300px;
+      width: 100%;
+      height: auto;
+    }
+
+    li {
+      display: decimal;
+      text-align: left;
+    }
+
+    .instructions {
+      margin-top: 2vh; 
+      margin-bottom: 2vh; 
+
     }
