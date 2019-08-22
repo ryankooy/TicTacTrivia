@@ -43,6 +43,7 @@ var chosenSquare;
    uid: "", 
  };
  
+ var time = 20;
  var clockRunning = false;
  var board = null;
  var currentTurn = null; 
@@ -67,6 +68,20 @@ var chosenSquare;
  var messageField = $('#message');
  var chatLog = $('#chat-log');
  var options = $('#answers');
+
+/*
+========================================
+Sound Effects
+========================================
+*/
+
+ var s_buttonClick = document.getElementById("button-click");
+ var s_wonGame = document.getElementById("won-game");
+ var s_drawGame = document.getElementById("game-draw");
+ var s_gameFull = document.getElementById("game-is-full");
+ var s_2players = document.getElementById('2-players-in-game');
+ 
+
 
  /*
  ========================================
@@ -95,6 +110,7 @@ var chosenSquare;
     $('.containerMain2').hide();
     
     $('#instructions').on('click', function() {   // Hides start page on click 
+        s_buttonClick.play();
         $('#introduction').show();         // Shows intrduction page 
         $('#start').hide();
         $('.containerMain').show();   
@@ -103,6 +119,7 @@ var chosenSquare;
     $('#invite-friend').hide(); 
     
     $('#play').on('click', function() {   // Hides start page on click 
+        s_buttonClick.play();
         $('#player-selection').show();     // Section 3 - player secetions
         $('#start').hide();
         $('.containerMain').show();   
@@ -112,23 +129,27 @@ $("#submit-player").hide();
 $('#introduction').hide();
 
 $('#play').on('click', function() {   // Hides start page on click 
+  s_buttonClick.play();
   $('#player-selection').show();     // Section 3 - player secetions
   $('.containerMain').show();   
 })
 
 $('#play-now').on('click', function() {   // Hides start page on click 
+  s_buttonClick.play();
   $('#player-selection').show();     // Section 3 - player secetions
   $('#introduction').hide();
   $('.containerMain').show();   
 })
 
 $("#userName").keyup(function() {
+  s_buttonClick.play();
   $("#submit-player").show();
 });
 
 /* ----------------------------------------------------------------- */
 
     $('#to-section-3').on('click', function(){
+      s_buttonClick.play();
       $('#player-selection').show();
       $('#introduction').hide(); 
     })
@@ -136,9 +157,11 @@ $("#userName").keyup(function() {
 /* ----------------------------------------------------------------- */
 
     $('#submit-player').on('click', newPlayers);
-
-    $('#to-section-4').on('click', function(){
+     s_buttonClick.play();
+      
+     $('#to-section-4').on('click', function(){
       $('#player-selection').hide();
+      s_buttonClick.play();
     })
 /* ----------------------------------------------------------------- */
     $('#containerP-1').hide();      // Hides player 1's game section 
@@ -147,17 +170,6 @@ $("#userName").keyup(function() {
     $(".radio-buttons").hide(); 
     $("#timer-1").hide();
     $("#timer-2").hide();
- /*
- ========================================
- Challenge a player
- ========================================
- */
-
-// var pastChallengers = $('<ul>').append(
-//   $('<li>').text(pastPlayers)
-// );
-
-// $('#section-3-player-1').prepend(pastChallengers);
 
  /*
  ========================================
@@ -166,7 +178,7 @@ $("#userName").keyup(function() {
  */
 
 $('#submit_invite').on('click', function() {
-
+  s_buttonClick.play();
   var e = $('#friend_email').val().trim();
   $('#friend_email').attr('value', 'e');
 
@@ -196,6 +208,7 @@ $('#submit_invite').on('click', function() {
        $('#section-3-player-1').append('<h2>' + 'You are currently the only player online. Waiting for player 2...' + '</h2>');
        player_1_details.html('PLAYER 1: ' + playerName + ' ');
        player_1 = 1; 
+       currentTurn = 1;
       //  player_2 = 2; 
        $('#invite-friend').show(); 
        $('#user-info').hide();
@@ -221,6 +234,7 @@ $('#submit_invite').on('click', function() {
        $('#section-3-player-2').html(playerName + 'YOU ARE PLAYER 2')
        player_2_details.html('PLAYER 2: ' + playerName + ' ');
        player_2 = 2; 
+       currentTurn = 2;
       //  player_1 = 1; 
        $('#player-selection').hide();
        console.log("This is the value of:" + player_2);
@@ -235,6 +249,7 @@ $('#submit_invite').on('click', function() {
        
        } else { // If two players are signed into the database alert that the game is full 
          alert('This game is currently full. Please try again later.');
+         s_gameFull.play();
      }
  
      })
@@ -263,7 +278,8 @@ $('#submit_invite').on('click', function() {
  */
  
  function startGame() {
-
+  
+  s_2players.play();
   $('.chat-box').show();  
   $('#category-selection-1').show();   
   $('#player-selection').hide();
@@ -276,8 +292,8 @@ $('#submit_invite').on('click', function() {
        var data = snapshot.val();
        var playerOneName = data.name;
  
-       if (player_1 === 1) {    
-           $('#player-1').html('PLAYER 1: ' + playerOneName + ' ');
+       if (player_1 === 1) { 
+        $('#player-2').html('PLAYER 2: ' + playerOneName + ' ');
        }
    })
    console.log("I am: " + player_1);
@@ -288,8 +304,8 @@ $('#submit_invite').on('click', function() {
        var playerTwoName = data.name;
  
        if (player_2 === 2) {
-           $('#player-2').html('PLAYER 2: ' + playerTwoName + ' ');
-       }
+          $('#player-2').html('PLAYER 2: ' + playerTwoName + ' ');
+         }
 
    });
    console.log("I am: " + player_2);
@@ -322,7 +338,7 @@ $('#submit_invite').on('click', function() {
            playerOne.on('value', function(snapshot) {
                var data = snapshot.val();
                var playerOneName = data.name;
-               $('#status-1').html('Player 1: ' + playerOneName + '\'s your turn to choose a square!');
+               $('.status').html('Player 1: ' + playerOneName + '\'s your turn to choose a square!');
   
                console.log('Player 1: ' + playerOneName + '\'s your turn to place an icon');
            })
@@ -331,7 +347,7 @@ $('#submit_invite').on('click', function() {
            playerTwo.on('value', function(snapshot) {
                var data = snapshot.val();
                var playerTwoName = data.name;
-               $('#status-2').html('Player 2: ' + playerTwoName + '\'s your turn to choose a square!');
+               $('.status').html('Player 2: ' + playerTwoName + '\'s your turn to choose a square!');
            
                console.log("please update to: " + playerTwoName + "\"s turn");
            })
@@ -361,8 +377,8 @@ $('#submit_invite').on('click', function() {
                currentTurn = 2;
                turn.set(currentTurn); 
               //  question(board);
-              $('#status-1').html('Player 1: ' + player_1_name + '\'s your turn to choose a square!');
-              $('#status-2').html('Player 1: ' + player_1_name + '\'s your turn to choose a square!');
+              $('.status').html('Player 1: ' + player_1_name + '\'s your turn to choose a square!');
+              // $('#status-2').html('Player 1: ' + player_1_name + '\'s your turn to choose a square!');
                console.log("please update to: " + player_1_name + "\"s turn");
                console.log("My turn should be 1: " + currentTurn);
                console.log("player 1 clicked a button");
@@ -370,16 +386,33 @@ $('#submit_invite').on('click', function() {
                currentTurn = 1;
                turn.set(currentTurn); 
               //  question(board);
-              $('#status-1').html('Player 2: ' + player_2_name + '\'s your turn to choose a square!');
-              $('#status-2').html('Player 2: ' + player_2_name + '\'s your turn to choose a square!');
+              $('.status').html('Player 2: ' + player_2_name + '\'s your turn to choose a square!');
+              // $('#status-2').html('Player 2: ' + player_2_name + '\'s your turn to choose a square!');
                console.log("please update to: " + player_2_name + "\"s turn");
                console.log("My turn should be 2: " + currentTurn);
                console.log("player 2: clicked a button");
                
            }
+        
        });
    });
  })
+
+   //  if (currentTurn === 1){
+          //   $('.status').html('Player 1: ' + player_1_name + '\'s your turn to choose a square!');
+          //   // $('#status-2').html('Player 1: ' + player_1_name + '\'s your turn to choose a square!');
+          //  } else if (currentTurn === 2){
+          //   $('.status').html('Player 2: ' + player_2_name + '\'s your turn to choose a square!');
+          //   // $('#status-2').html('Player 2: ' + player_2_name + '\'s your turn to choose a square!');
+            
+          //  }
+//  database.ref().once("value", function(snapshot) {
+//   var player_1_name = snapshot.child('players/' + player_1 + '/name').val();
+//   var player_2_name = snapshot.child('players/' + player_2 + '/name').val();
+
+//  turn.once('value').then(function(snapshot) { 
+//   currentTurn = snapshot.val();
+ 
  /*
  ========================================
  Chat function 
@@ -387,7 +420,7 @@ $('#submit_invite').on('click', function() {
  */
  
    $('#chat').on('click', function() {
- 
+    s_buttonClick.play();
      var message = {
        name: nameField.val(),
        message: messageField.val()
@@ -477,7 +510,7 @@ Setting a category
 
  
     $("#category-submit").on("click", function(event){ //Clicking the submit button on category select
-
+      s_buttonClick.play();
       $('#game-play').show();
       $('#category-selection-1').hide();
         event.preventDefault();
@@ -524,19 +557,28 @@ Setting a category
       $("#category-selection-1").hide()
       $("#game-play").show()
 
-
+      // database.ref().once("value", function(snapshot) {
+      //   var player_1_name = snapshot.child('players/' + player_1 + '/name').val();
+      //   var player_2_name = snapshot.child('players/' + player_2 + '/name').val();
+  
         if (player_1 === 1) {
           $('#containerP-1').show();
+          // $('#status-1').html('Player 1: ' + player_1_name + '\'s your turn to choose a square!');
+          // $('#status-2').append('Player 1: ' + player_1_name + '\'s your turn to choose a square!');
           
           // timer();
 
         }
         if (player_2 === 2) {
           $('#containerP-2').show();
+          // $('#status-1').html('Player 2: ' + player_2_name + '\'s your turn to choose a square!');
+          // $('#status-2').append('Player 2: ' + player_2_name + '\'s your turn to choose a square!');
+           
           // timer();
         
         }
     })
+  // })
 
 
 /*
@@ -684,34 +726,6 @@ Checking answer
     }
   })
 
-
- 
-
-
-
-
-
-  // $(document).on("click", '.guess1' ,function(){
-  //   if($(".guess1").is(':checked') && $(this).val() === correctANSText){
-  //     database.ref("players/1/choice").set(true)
-  //     // $(this).prop("checked", false)
-  //   }
-  //   if($(".guess1").is(':checked') && $(this).val() != correctANSText){
-  //     database.ref("players/1/choice").set(false)
-  //     // $(this).prop("checked", false)
-  //   }
-  // })
-  // $(document).on("click", '.guess2' ,function(){
-  //   if($(".guess2").is(':checked') && $(this).val() === correctANSText){
-  //     database.ref("players/2/choice").set(true)
-  //     // $(this).prop("checked", false)
-  //   }
-  //   if($(".guess2").is(':checked') && $(this).val() != correctANSText){
-  //     database.ref("players/2/choice").set(false)
-  //     // database.ref("players/2/choice").set(false) 
-  //     // $(this).prop("checked", false)
-  //   }
-  // })
   var player1Guess ="" 
   var player2Guess = ""
   database.ref("players/1/choice").on("value", function(snapshot){
@@ -782,6 +796,20 @@ Question Function to Generate the Q & A's
    
       $(".active-question-1").show();
       $(".active-question-2").show();
+      
+      var playerOne = database.ref('players/' + player_1 + '/');
+      var playerTwo = database.ref('players/' + player_2 + '/');
+            playerOne.on('value', function(snapshot) {
+              var data = snapshot.val();
+              var playerOneName = data.name;
+          $('#player-1').html('PLAYER 1: ' + playerOneName + ' ');
+          })
+
+          playerTwo.on('value', function(snapshot) {
+            var data = snapshot.val();
+            var playerTwoName = data.name;
+        $('#player-2').html('PLAYER 2: ' + playerTwoName + ' ');
+        })
 
       timer();
       clockRunning = true; 
@@ -844,7 +872,7 @@ Board onClick function (generating Q & A's
 */
 
     $(document).on("click", ".TTTboard", function(){
-        
+      s_buttonClick.play();
         board = parseInt($(this).val())
         database.ref("boardvalue").set(board)
 

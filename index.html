@@ -41,6 +41,24 @@
             <video playsinline autoplay muted loop id="myVideo">
                     <source class="responsive-video" src="assets/images/backgrounds/tic_tac_trivia....mp4" type="video/mp4"  alt="Your browser does not support HTML5 video." preload>
             </video>
+            
+            <!-- AUDIO FILES -->
+            <audio id="game-draw">
+                <source id="game-draw" src="assets/sound_effects/draw_game.mp3" type="audio/mpeg">
+            </audio>
+            <audio id="2-players-in-game">
+                <source src="assets/sound_effects/2_players_in_game.mp3" type="audio/mpeg">
+            </audio>
+            <audio id="button-click">
+                <source src="assets/sound_effects/button_click.mp3" type="audio/mpeg">
+            </audio>
+            <audio id="won-game">
+                <source src="assets/sound_effects/won_game.mp3" type="audio/mpeg">
+            </audio>
+            <audio id="game-is-full">
+                <source src="assets/sound_effects/game_is_full.mp3" type="audio/mpeg">
+            </audio>
+            
 
             <!-- Section 1: Start -->
             <section class="start-title" id="start"> 
@@ -92,10 +110,6 @@
                         <button class="btn-start btn-block" id="play-now">PLAY</button>  
                     </div>
                 </div>
-                    
-                <!-- <button class="btn btn-block" id="to-section-3">Challenge an Opponent</button> -->
-                
-
                
             </section> 
 
@@ -119,7 +133,7 @@
                         </div>
                     </div>
                     <div class="canter-align" id="section-3-player-1">
-                            <!-- <span id="section-3-player-1"></span> -->
+                        <!-- <span id="section-3-player-1"></span> -->
                     </div>
                     <div id="invite-friend">
                         <h3>Challenge a friend by sending a link to their email.</h3>
@@ -206,17 +220,21 @@
                         </div>
                      <!-- Player info  -->
                     <div class="col-lg-6 col-md- col-sm- ">
-                        
+                        <!-- <span class="status"></span> -->
                         <!-- Player 1's info -->
-                        <div class="containerP turn" id="containerP-1">
-                            <div id="player-1" data-turn="1"></div>
+                        <div class="containerP center-align turn" id="containerP-1">
+                            <span id="player-1" data-turn="1"></span>
                              
                             <!-- Timer & Status  -->
                             <div class="row title"> 
                                 <span id="timer-1"></span>
                             </div>
                             <div class="row title"> <!-- player... its your turn to choose a square  --> 
-                                <span id="status-1"></span>
+                                <span class="status"></span>
+                            </div>
+                            <div class="row title"> <!-- player... its your turn to choose a square  --> 
+                                <span id="wrongAnswer-1"></span>
+                           
                             </div>
                             <div class="row title">
                                 <span id="winner"></span>
@@ -254,15 +272,16 @@
                                 </form>
                         </div>
                         <!-- Player 2's info -->
-                        <div class="containerP turn" id="containerP-2">
-                            <div id="player-2" data-turn="2"></div>
+                        <div class="containerP center-align turn" id="containerP-2">
+                            <span id="player-2" data-turn="2"></span>
                             
                             <!-- Timer & Status  -->
                             <div class="row title"> 
                                 <span id="timer-2"></span>
                             </div>
                             <div class="row title"> <!-- player... its your turn to choose a square  --> 
-                                <span id="status-2"></span>
+                                <span class="status"></span>
+                                <span id="wrongAnswer-2"></span>
                             </div>
 
                             <!-- Questions & Answers  -->
