@@ -244,6 +244,8 @@ textarea {
 input, p, #categorySelect {
   font-family: 'Roboto', sans-serif;
 }
-
+#game-play p {
+  font-family: 'Roboto', sans-serif;
+ }
 
 
