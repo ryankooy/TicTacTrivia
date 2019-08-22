@@ -1,4 +1,3 @@
-
 function reset() {
   time = 20;                                // Resets timer
   $("#timer-1").text("00:20");            // Sets countDown display to "00:00"
@@ -21,8 +20,8 @@ function stop() {
   clearInterval(intervalId);    // ClearInterval to stop the count
   clockRunning = false;         // Stops the countDown
   $('.radio-buttons').hide();
-  $(".active-question-1").hide();
-  $(".active-question-2").hide();
+  // $(".active-question-1").hide();
+  // $(".active-question-2").hide();
 }
 function decrement() {
   time--;                           // Decrements time by 1
