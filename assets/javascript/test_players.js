@@ -545,8 +545,6 @@ Checking answer
 ===========================================
 */
   var correctANSText = ""
-  var guesses = database.ref("TotalGuesses")
-  database.ref("TotalGuesses").onDisconnect().remove();
  
   if (clockRunning === false){
     $('.radio-buttons').hide()
@@ -557,132 +555,132 @@ Checking answer
   }
   
 
-  $(document).on("click", '#btn-1-1', function(){
-    var pl_1 = database.ref("players/1/choice");
-    if($("#btn-1-1").is(':checked') && $(this).val() === correctANSText && clockRunning === true){
-      pl_1.set(true);
-      stop();
-      console.log('player 1 gets this square');
-      console.log('the time is running' + clockRunning);
+  // $(document).on("click", '#btn-1-1', function(){
+  //   var pl_1 = database.ref("players/1/choice");
+  //   if($("#btn-1-1").is(':checked') && $(this).val() === correctANSText && clockRunning === true){
+  //     pl_1.set(true);
+  //     stop();
+  //     console.log('player 1 gets this square');
+  //     console.log('the time is running' + clockRunning);
 
-    } else if ($("#btn-1-1").is(':checked') && $(this).val() != correctANSText && clockRunning === true){
-      pl_1.set(false);
-      stop();
-      console.log('the time is running' + clockRunning);
-    }
-  })
+  //   } else if ($("#btn-1-1").is(':checked') && $(this).val() != correctANSText && clockRunning === true){
+  //     pl_1.set(false);
+  //     stop();
+  //     console.log('the time is running' + clockRunning);
+  //   }
+  // })
 
-  $(document).on("click", '#btn-2-1', function(){
-    var pl_1 = database.ref("players/1/choice");
-    event.preventDefault();
-    if($("#btn-2-1").is(':checked') && $(this).val() === correctANSText && clockRunning === true){
-      pl_1.set(true);
-      stop();
-      console.log('the time is running' + clockRunning);
+  // $(document).on("click", '#btn-2-1', function(){
+  //   var pl_1 = database.ref("players/1/choice");
+  //   event.preventDefault();
+  //   if($("#btn-2-1").is(':checked') && $(this).val() === correctANSText && clockRunning === true){
+  //     pl_1.set(true);
+  //     stop();
+  //     console.log('the time is running' + clockRunning);
 
-    } else if ($("#btn-2-1").is(':checked') && $(this).val() != correctANSText && clockRunning === true){
-      pl_1.set(false);
-      stop();
-      console.log('the time is running' + clockRunning);
-    }
-  })
+  //   } else if ($("#btn-2-1").is(':checked') && $(this).val() != correctANSText && clockRunning === true){
+  //     pl_1.set(false);
+  //     stop();
+  //     console.log('the time is running' + clockRunning);
+  //   }
+  // })
 
-  $(document).on("click", '#btn-3-1', function(){
-    var pl_1 = database.ref("players/1/choice");
-    event.preventDefault();
+  // $(document).on("click", '#btn-3-1', function(){
+  //   var pl_1 = database.ref("players/1/choice");
+  //   event.preventDefault();
 
-    if($("#btn-3-1").is(':checked') && $(this).val() === correctANSText && clockRunning === true){
-      pl_1.set(true);
-      stop();
-      console.log('player 1 gets this square');
-      console.log('the time is running' + clockRunning);
+  //   if($("#btn-3-1").is(':checked') && $(this).val() === correctANSText && clockRunning === true){
+  //     pl_1.set(true);
+  //     stop();
+  //     console.log('player 1 gets this square');
+  //     console.log('the time is running' + clockRunning);
 
-    } else if ($("#btn-3-1").is(':checked') && $(this).val() != correctANSText && clockRunning === true){
-      pl_1.set(false);
-      stop();
-      console.log('the time is running' + clockRunning);
-    }
-  })
+  //   } else if ($("#btn-3-1").is(':checked') && $(this).val() != correctANSText && clockRunning === true){
+  //     pl_1.set(false);
+  //     stop();
+  //     console.log('the time is running' + clockRunning);
+  //   }
+  // })
 
-  $(document).on("click", '#btn-4-1', function(){
-    var pl_1 = database.ref("players/1/choice");
-    event.preventDefault();
-    if($("#btn-4-1").is(':checked') && $(this).val() === correctANSText && clockRunning === true ){
-      pl_1.set(true);
-      stop();
-      console.log('player 1 gets this square');
-      console.log('the time is running' + clockRunning);
+  // $(document).on("click", '#btn-4-1', function(){
+  //   var pl_1 = database.ref("players/1/choice");
+  //   event.preventDefault();
+  //   if($("#btn-4-1").is(':checked') && $(this).val() === correctANSText && clockRunning === true ){
+  //     pl_1.set(true);
+  //     stop();
+  //     console.log('player 1 gets this square');
+  //     console.log('the time is running' + clockRunning);
 
-    } else if ($("#btn-4-1").is(':checked') && $(this).val() != correctANSText && clockRunning === true){
-      pl_1.set(false);
-      stop();
-      console.log('the time is running' + clockRunning);
-    }
-  })
+  //   } else if ($("#btn-4-1").is(':checked') && $(this).val() != correctANSText && clockRunning === true){
+  //     pl_1.set(false);
+  //     stop();
+  //     console.log('the time is running' + clockRunning);
+  //   }
+  // })
 
-  $(document).on("click", '#btn-1-2', function(){
-    var pl_2 = database.ref("players/2/choice");
+  // $(document).on("click", '#btn-1-2', function(){
+  //   var pl_2 = database.ref("players/2/choice");
 
-    if($("#btn-1-2").is(':checked') && $(this).val() === correctANSText && clockRunning === true){
-      pl_2.set(true);
-      stop();
-      console.log('player 1 gets this square');
-      console.log('the time is running' + clockRunning);
+  //   if($("#btn-1-2").is(':checked') && $(this).val() === correctANSText && clockRunning === true){
+  //     pl_2.set(true);
+  //     stop();
+  //     console.log('player 1 gets this square');
+  //     console.log('the time is running' + clockRunning);
 
-    } else if ($("#btn-1-2").is(':checked') && $(this).val() != correctANSText && clockRunning === true){
-      pl_2.set(false);
-      stop();
-      console.log('the time is running' + clockRunning);
-    }
-  })
+  //   } else if ($("#btn-1-2").is(':checked') && $(this).val() != correctANSText && clockRunning === true){
+  //     pl_2.set(false);
+  //     stop();
+  //     console.log('the time is running' + clockRunning);
+  //   }
+  // })
 
-  $(document).on("click", '#btn-2-2', function(){
-    var pl_2 = database.ref("players/2/choice");
-    event.preventDefault();
-    if($("#btn-2-2").is(':checked') && $(this).val() === correctANSText && clockRunning === true){
-      pl_2.set(true);
-      stop();
-      console.log('the time is running' + clockRunning);
+  // $(document).on("click", '#btn-2-2', function(){
+  //   var pl_2 = database.ref("players/2/choice");
+  //   event.preventDefault();
+  //   if($("#btn-2-2").is(':checked') && $(this).val() === correctANSText && clockRunning === true){
+  //     pl_2.set(true);
+  //     stop();
+  //     console.log('the time is running' + clockRunning);
 
-    } else if ($("#btn-2-2").is(':checked') && $(this).val() != correctANSText && clockRunning === true){
-      pl_2.set(false);
-      stop();
-      console.log('the time is running' + clockRunning);
-    }
-  })
+  //   } else if ($("#btn-2-2").is(':checked') && $(this).val() != correctANSText && clockRunning === true){
+  //     pl_2.set(false);
+  //     stop();
+  //     console.log('the time is running' + clockRunning);
+  //   }
+  // })
 
-  $(document).on("click", '#btn-3-2', function(){
-    var pl_2 = database.ref("players/2/choice");
-    event.preventDefault();
+  // $(document).on("click", '#btn-3-2', function(){
+  //   var pl_2 = database.ref("players/2/choice");
+  //   event.preventDefault();
 
-    if($("#btn-3-2").is(':checked') && $(this).val() === correctANSText && clockRunning === true){
-      pl_2.set(true);
-      stop();
-      console.log('player 1 gets this square');
-      console.log('the time is running' + clockRunning);
+  //   if($("#btn-3-2").is(':checked') && $(this).val() === correctANSText && clockRunning === true){
+  //     pl_2.set(true);
+  //     stop();
+  //     console.log('player 1 gets this square');
+  //     console.log('the time is running' + clockRunning);
 
-    } else if ($("#btn-3-2").is(':checked') && $(this).val() != correctANSText && clockRunning === true){
-      pl_2.set(false);
-      stop();
-      console.log('the time is running' + clockRunning);
-    }
-  })
+  //   } else if ($("#btn-3-2").is(':checked') && $(this).val() != correctANSText && clockRunning === true){
+  //     pl_2.set(false);
+  //     stop();
+  //     console.log('the time is running' + clockRunning);
+  //   }
+  // })
 
-  $(document).on("click", '#btn-4-2', function(){
-    var pl_2 = database.ref("players/2/choice");
-    event.preventDefault();
-    if($("#btn-4-2").is(':checked') && $(this).val() === correctANSText && clockRunning === true ){
-      pl_2.set(true);
-      stop();
-      console.log('player 1 gets this square');
-      console.log('the time is running' + clockRunning);
+  // $(document).on("click", '#btn-4-2', function(){
+  //   var pl_2 = database.ref("players/2/choice");
+  //   event.preventDefault();
+  //   if($("#btn-4-2").is(':checked') && $(this).val() === correctANSText && clockRunning === true ){
+  //     pl_2.set(true);
+  //     stop();
+  //     console.log('player 1 gets this square');
+  //     console.log('the time is running' + clockRunning);
 
-    } else if ($("#btn-4-2").is(':checked') && $(this).val() != correctANSText && clockRunning === true){
-      pl_2.set(false);
-      stop();
-      console.log('the time is running' + clockRunning);
-    }
-  })
+  //   } else if ($("#btn-4-2").is(':checked') && $(this).val() != correctANSText && clockRunning === true){
+  //     pl_2.set(false);
+  //     stop();
+  //     console.log('the time is running' + clockRunning);
+  //   }
+  // })
 
 
  
@@ -691,34 +689,35 @@ Checking answer
 
 
 
-  // $(document).on("click", '.guess1' ,function(){
-  //   if($(".guess1").is(':checked') && $(this).val() === correctANSText){
-  //     database.ref("players/1/choice").set(true)
-  //     // $(this).prop("checked", false)
-  //   }
-  //   if($(".guess1").is(':checked') && $(this).val() != correctANSText){
-  //     database.ref("players/1/choice").set(false)
-  //     // $(this).prop("checked", false)
-  //   }
-  // })
-  // $(document).on("click", '.guess2' ,function(){
-  //   if($(".guess2").is(':checked') && $(this).val() === correctANSText){
-  //     database.ref("players/2/choice").set(true)
-  //     // $(this).prop("checked", false)
-  //   }
-  //   if($(".guess2").is(':checked') && $(this).val() != correctANSText){
-  //     database.ref("players/2/choice").set(false)
-  //     // database.ref("players/2/choice").set(false) 
-  //     // $(this).prop("checked", false)
-  //   }
-  // })
+  $(document).on("click", '.guess1' ,function(){
+    if($(".guess1").is(':checked') && $(this).val() === correctANSText && clockRunning === true){
+      database.ref("players/1/choice").set(true)
+      stop()
+      $(this).prop("checked", false)
+    }
+    if($(".guess1").is(':checked') && $(this).val() != correctANSText && clockRunning === true){
+      database.ref("players/1/choice").set(false)
+      stop()
+      $(this).prop("checked", false)
+    }
+  })
+  $(document).on("click", '.guess2' ,function(){
+    if($(".guess2").is(':checked') && $(this).val() === correctANSText && clockRunning === true){
+      database.ref("players/2/choice").set(true)
+      stop()
+      $(this).prop("checked", false)
+    }
+    if($(".guess2").is(':checked') && $(this).val() != correctANSText && clockRunning === true){
+      database.ref("players/2/choice").set(false)
+      stop()
+      $(this).prop("checked", false)
+    }
+  })
   var player1Guess ="" 
   var player2Guess = ""
   database.ref("players/1/choice").on("value", function(snapshot){
     var p1Exists = (snapshot.val())
     player1Guessed(p1Exists)
-    console.log("p1: " + p1Exists)
-    console.log(player1Guess,player2Guess)
     winner()
     if(player1Guess === false && player2Guess === false){
       console.log("both fail")
@@ -748,6 +747,7 @@ Checking answer
       // $("#containerP-2").hide()
       console.log("player 1 wins")
       $("[value=" + board + "]").attr("class", "red").addClass("player-1-botton")
+      stop()
       checkWins()
       clearWinCriteria()
 
@@ -757,6 +757,7 @@ Checking answer
       // $("#containerP-1").hide()
       // $("#containerP-2").hide()
       $("[value=" + board + "]").attr("class", "blue").addClass("player-2-botton")
+      stop()
       checkWins()
       setTimeout(clearWinCriteria, 2000)
     }
@@ -789,7 +790,7 @@ Question Function to Generate the Q & A's
         $(".active-answers-2").empty();        // Empties player-2's answers before a new question is generated
         
         guesses = 0;                          // Locally sets initial guesses to 0 
-        database.ref("TotalGuesses").set(guesses);   // Sets TotalGuesses in the database equal to the local guesses variable
+        // database.ref("TotalGuesses").set(guesses);   // Sets TotalGuesses in the database equal to the local guesses variable
         
         // When a child is added to the questionResults in the data base run the following function to generate the corresponding answers
         database.ref("questionResults/").on("child_added",function(childSnapshot){

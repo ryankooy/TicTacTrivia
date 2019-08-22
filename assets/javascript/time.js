@@ -46,7 +46,7 @@
 // }
 // }
 
-
+var time = 20
 function reset() {
   time = 20;                                // Resets timer
   $("#timer-1").text("00:20");            // Sets countDown display to "00:00"
