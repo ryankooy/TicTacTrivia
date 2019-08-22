@@ -1,5 +1,7 @@
 # UNC Coding Bootcamp Project 1 - Tic Tac Trivia!
 
+
+
 ## GitHub Deployment
  ### Live Site
  https://ryankooy.github.io/project-1/
@@ -10,17 +12,38 @@
 
 ## Introduction
 
-This Tic Tac Trivia! game can be used for both recreation and education. 
+This Tic Tac Trivia game can be used for both recreation and education. 
 
-For recreation, it provides additional facets that will challenge the players in ways that standard trivia games does not.  The addition of the timer and the tac toe style 3-in-a-row challenge increases the level of competition and skill. In addition, the ability to select the difficulty level will provide a challenge to the novice and seasoned trivia buff and everyone in between.
+For recreation, it provides additional facets that will challenge the players in ways that standard trivia games do not.  The addition of the timer and the tac toe style 3-in-a-row challenge increases the level of competition and skill. In addition, the ability to select the difficulty level will provide a challenge to the novice and seasoned trivia buff and everyone in between.
 
 For education, it provides a fun study alternative for students.  This Open Trivia API allows one to submit their own questions (this can be done by a teacher or student).  Once populated, students can challenge each other to a friendly competition style study session.  
 
-## Code Samples
+## Design Process / Code Samples
 
-The following is just an example of our end to end design process starting with requirements, concept development, coding and implementation.
+This section is an example of our design process and will illustrate how we excuted in initial requrement from the design phase all the way through to implementation.
 
-![Image description](readmefiles/inviteafriend.jpg)
+From the user story we defined the need for the user to be able to connect with people 
+![Image description](readmefiles/inviteafrienduserstory.jpg)
+
+This need went into our conceptual design document
+![Image description](readmefiles/inviteafriendconcept.jpg)
+
+After reviewing several APIs to accomplish this, Formspree was selected.  The HTML was created and the variables were defined and shared with other team members.
+![Image description](readmefiles/inviteafriendhtml.jpg)
+
+The backend team used the variables were used in the javascript file and JQuery was used to connect with the DOM 
+![Image description](readmefiles/inviteafriendjs.jpg)
+
+The Front End developers styled the variabes with custom css
+![Image description](readmefiles/inviteafriendcss.jpg)
+
+Player submits the form!
+![Image description](readmefiles/inviteafriendui.jpg)
+
+Opponents get the invite via email!
+![Image description](readmefiles/inviteafriendemail.jpg)
+
+After several iterations of trying to get the code to meet the exact requirement needed,  and and several rounds of testing, the finished feature was successfully implemented. 
 
 ## Features and Functionality
 
@@ -32,7 +55,8 @@ Used Formspree API to implement the "Invite a Friend" functionality. Since this 
  
 Using a combination of bootstrap, materialize, animate, and custom css we were able to create a polished UI that is mobile responsive.
  
-In addition to the existing knowledge base of the team, they pushed themselves to incorporate new technologies into the design.  They considered several solutions for their product and through trial and error they settled on Materalize and Animate.  In addition, they built on their knowledge of mobile responsiveness technologies and delve into viewport measurements to meet that requirement.
+In addition to the existing knowledge base of the team, we pushed ourselves to incorporate new technologies into the design.  We investigated several solutions for our product (including React, 
+Google authentication API, translation APIs, and Spotify API) and through trial and error, settled on Materalize and Animate. In addition, we dug deeper into the mobile responsiveness requirement, and decided to use viewport measurements.
  
 All code has been reviewed to ensure that it adheres to good quality coding standards including layout, indentation, syntax and grammar.
 
