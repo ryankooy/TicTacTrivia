@@ -40,7 +40,7 @@ The front end developers styled the variabes with custom CSS
 Player submits the form!
 ![Image description](readmefiles/inviteafriendui.JPG)
 Opponent get the invite via email!
-![Image description](readmefiles/inviteafriendemail.JPG)
+![Image description](readmefiles/inviteafriendemail.jpg)
 
 After several iterations of trying to get the code to meet the precise requirements needed, and after several rounds of testing, the finished feature was successfully implemented. 
 
@@ -64,15 +64,15 @@ This game is intended for two players only. If additional players enter the site
 
  
 ## APIs used
-Open Trivia API
+Open Trivia API,
 FormSpree API
 
 
 
 ## Team Members
-Ethan Donahue
-LaMana Donadelle
-Ryan Kooy
+Ethan Donahue,
+LaMana Donadelle,
+Ryan Kooy,
 Jessie Sholler
 
 ## Supporting Documentation
