@@ -40,7 +40,7 @@ Main Container
         border: 2px solid navy;
         background:white;
         position: absolute; 
-        padding: 4vh 4vw; 
+        padding: 40px; 
         left: 4vw; 
     }
     .containerMain2 {
@@ -157,7 +157,7 @@ Typography
       font-family: 'Roboto', sans-serif;
       margin-top: 2vh; 
       margin-bottom: 2vh; 
-      /* color: #4479f4; */
+      color: blue;
     }
     h2:hover {
       /* color: rgb(14, 14, 51); */
@@ -199,10 +199,7 @@ Buttons
       letter-spacing: 1px; 
       margin-top: 1vh; 
     }
-
-    .in {
-      border-bottom: 1px solid rgb(14, 14, 51);;
-    }
+  
 
     #submit-player, #play-now, #play-again {
       position: relative; 
@@ -211,7 +208,6 @@ Buttons
       left: 0px; 
       margin: 0 auto;
       margin-top: 4vh; 
-      width: 52vw; 
       font-family: 'Roboto', sans-serif;
       letter-spacing: 1px; 
     }
@@ -282,8 +278,6 @@ Buttons
       height: auto; 
     }
 
-
-
     .modalCustom {
       color: silver; 
       background: black; 
@@ -295,20 +289,28 @@ Buttons
       margin-bottom: 2vh;}
 
     #myVideo2 {
-      max-width: 300px;
+      max-width: 250px;
       width: 100%;
       height: auto;
+      display: inherit;
+      margin: 0 auto; 
     }
 
     li {
-      display: decimal;
+      list-style-type: square;
+      line-height: 1.5; 
       text-align: left;
+      font-size: 1.1rem;
+    }
+    li:hover {
+      border-bottom: 1px solid blue; 
+      font-weight: bold; 
+      color: blue;
     }
 
     .instructions {
       margin-top: 2vh; 
       margin-bottom: 2vh; 
-
     }
 
     th {
@@ -319,3 +321,42 @@ Buttons
       border-bottom: 1px solid grey;
       padding-bottom: 2vh;
     }
+    .containerP h2 {
+      margin-top: 0; 
+      padding-top: 0;
+      margin-bottom: 0; 
+    }
+
+    #game-play {
+      margin-bottom: 4vh; 
+    }
+    #game-play h1 {
+      font-size: 2rem; 
+      padding: 0; 
+    }
+
+    .status { 
+      display: table; 
+      margin: 0 auto; 
+      font-weight: bold; 
+      font-family: 'Roboto', sans-serif;
+      padding-top: 1vh;
+    }
+
+    #introduction h1 {
+      font-size: 2rem; 
+      line-height: 1.5; 
+    }
+
+    .intro {
+      padding-bottom: 2vh; 
+    }
+
+    .active-question-1, .active-question-2 {
+      font-family: 'Roboto', sans-serif;
+      padding-top: 1vh; 
+      padding-bottom: 1vh; 
+      color: blue; 
+      font-size: 1.2rem; 
+    }
+
