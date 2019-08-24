@@ -80,49 +80,51 @@
                 
             <!-- Section 2: Introduction -->
             <section id="introduction">
-                <div class="text-center tite"> 
-                        <h1>TIC TAC TRIVIA!</h1>
-                    </div>
-                
-                <div class="row">
-                    <div class="row instructions align-items-center">
+                    <div class="row intro align-items-center">
+
                         <div class="col-lg-6 col-md- col-sm- text-center">
-                            <h2>Welcome to Tic Tac Trivia</h2>
-                            <ol>
-                               <li><p>To get started, enter a username on the next page.</p></li>
-                            
-                                <li><p>If no other players are online, you can invite a friend.</p></li>
-                    
-                                <li><p>Once Player 1 and Player 2 are selected, the game will start. Other players must wait until the game is complete in order to start a new game.</p></li>
-                
-                                <li><p>Players can discuss what category and difficulty to select by using a chat feature.</p></li>
-
-                                <li><p>When these have been selected, the game will begin.</p></li>
-        
-                                <li><p>Player 1 has the first turn to select a square on the board</p></li>
-
-                                <li><p>Both players will be given 20 seconds to answer the question.</p></li>
-                    
-                                <li><p>The first player to correctly answer the question will be granted the selected square.</p></li>
-                
-                                <li><p>Player 2 will then have the opportunity to select a square.</p></li>
-
-                                <li><p>If time runs out or if no one anwers the question correctly, the next player gets to select a square.</p></li>
-                    
-                                <li><p>The first player with 3 squares in a row wins the game!</p></li>
-                    
-                                <li><p>There’s also a live chat that occurs throughout the game.</p></li>
-                                
-                                <li><p>Have Fun!</p>
-                            </ol>
+                            <h1> Welcome to TIC TAC TRIVIA!</h1>
                         </div>
+
                         <div class="col-lg-6 col-md- col-sm-">
+
                             <video playsinline autoplay muted loop id="myVideo2">
                                 <source class="responsive-video" src="assets/images/demo_video.mp4" type="video/mp4"  alt="Your browser does not support HTML5 video." preload>
                             </video>
                         </div>
+                    </div>
+                <div>
+                    <div class="instructions align-items-center">
+                        <div>
+                            <ol>
+                               <li><p>To get started, enter a username on the next page.</p></li>
+                            
+                                <li><p>If no other players are online, you can invite a friend.</p></li>
+                
+                                <li><p>Players can discuss what category and difficulty to select by using a chat feature.</p></li>
 
+                                <li><p>The game will begin after a category is selected.</p></li>
+        
+                                <li><p>Turns will alernate between players. Player 1 has the first turn to select a square on the board.</p></li>
 
+                                <li><p>Both players will be given 20 seconds to answer the question.</p></li>
+                    
+                                <li><p>The first player to correctly answer the question will be granted the selected square.</p></li>
+
+                                <li><p>If time runs out or if no one anwers the question correctly, the next player gets to select a square.</p></li>
+                    
+                                <li><p>The first player with 3 squares in a row wins the game!</p></li>
+                                
+                                <li><p>Have Fun!</p>
+                            </ol>
+                        </div>
+                        <!-- <div class="col-lg-6 col-md- col-sm-">
+
+                            <video playsinline autoplay muted loop id="myVideo2">
+                                <source class="responsive-video" src="assets/images/demo_video.mp4" type="video/mp4"  alt="Your browser does not support HTML5 video." preload>
+                            </video>
+                            
+                        </div> -->
                         <button class="btn-start btn-block" id="play-now">PLAY</button>  
                     </div>
                 </div>
@@ -235,7 +237,7 @@
                         </div>
                      <!-- Player info  -->
                     <div class="col-lg-6 col-md- col-sm- align-items-center">
-                        <!-- <span class="status"></span> -->
+   
                         <!-- Player 1's info -->
                         <div class="containerP center-align turn" id="containerP-1">
                             <h2 id="player-1" data-turn="1"></h2>
@@ -418,9 +420,6 @@
                   </table>
                   <button class="btn-start btn-block" id="play-again">PLAY AGAIN</button>  
             </section> 
-       
-        <!-- Firebase Core JavaScript Link -->
-        <!-- <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-messaging.js"></script> -->
         
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         

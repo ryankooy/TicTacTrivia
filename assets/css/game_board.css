@@ -35,7 +35,6 @@ body {
     position: relative; 
   } */
 .TTTboard {
-  
   height: 10vh;
   width: 10vh;
   position: relative;
@@ -45,13 +44,7 @@ body {
   z-index: 1;
 }
 
-.radio-buttons:active {
 
-}
-
-#one:hover, #two:hover, #three:hover, #four:hover, #five:hover, #six:hover, #seven:hover, #eight:hover, #nine:hover {
-
-}
   .row {
   margin: 0;
   padding: 0;
