@@ -9,63 +9,63 @@ var firebaseConfig = {
  
  firebase.initializeApp(firebaseConfig);
 
- var database = firebase.database();
+  var database = firebase.database();
 
- /*
- ========================================
- Global Variables
- ========================================
- */
- var players = database.ref('players');          // Connects players' details to the database
- var playerCount = database.ref('playerCount'); // Keeps track of the number of players in the database
- var outcome = database.ref('gameResults');    // Connects outcomes to the database
- var turn = database.ref('turn');
- var categoryResults = database.ref('categoryResults');
- var activeQuestion = database.ref('activeQuestion');
- var questionResults = database.ref("questionResults/");
- var boardValue = database.ref("boardvalue/");
- 
- var categories = {  //used to save the category and difficulty used for the leaderboards
-  category: "", 
-  difficulty: "",
-}
-var questions = { //saves the response from the trivia api into our firebase database
-  results: "",
-}
-var chosenSquare;
+  /*
+  ========================================
+  Global Variables
+  ========================================
+  */
+  var players = database.ref('players');          // Connects players' details to the database
+  var playerCount = database.ref('playerCount'); // Keeps track of the number of players in the database
+  var outcome = database.ref('gameResults');    // Connects outcomes to the database
+  var turn = database.ref('turn');
+  var categoryResults = database.ref('categoryResults');
+  var activeQuestion = database.ref('activeQuestion');
+  var questionResults = database.ref("questionResults/");
+  var boardValue = database.ref("boardvalue/");
+  
+  var categories = {  //used to save the category and difficulty used for the leaderboards
+    category: "", 
+    difficulty: "",
+  }
+  var questions = { //saves the response from the trivia api into our firebase database
+    results: "",
+  }
+  var chosenSquare;
 
- var player = {                  // Stores player details
-   name: "",
-   email: "",
-   choice: "",
-   wins: 0,
-   losses: 0,
-   uid: "", 
- };
+  var player = {                  // Stores player details
+    name: "",
+    email: "",
+    choice: "",
+    wins: 0,
+    losses: 0,
+    uid: "", 
+  };
  
- var time = 20;
- var clockRunning = false;
- var board = null;
- var currentTurn = null; 
- var player_1 = null;                // Sets up player 1
- var player_2 = null;                // Sets up player 2
- var totalPlayers = null;            // Sets up total number of players
- var gameResults = "";               // Stores game results 
- var blueGame = false;               // True if Blue wins
- var redGame = false;                // True if Red wins
- var question1 = '';
+  var time = 20;
+  var clockRunning = false;
+  var board = null;
+  var currentTurn = null; 
+  var player_1 = null;                // Sets up player 1
+  var player_2 = null;                // Sets up player 2
+  var totalPlayers = null;            // Sets up total number of players
+  var gameResults = "";               // Stores game results 
+  var blueGame = false;               // True if Blue wins
+  var redGame = false;                // True if Red wins
+  var question1 = '';
  
- $('.containerMain').hide();          // Hides main container 
-    $('.containerMain2').hide(); 
-    $('#introduction').hide();          // Section 2: Introduction 
-    $('#player-selection').hide();     // Section 3: Player Selection 
-    $('#category-selection-1').hide(); // Section 4: Category Selection 
-      // $('#category-selection-2').hide(); // Section 4: Category Selection 
-    $('#game-play').hide();         // Section 5: Game Play
-    $("#winner").hide()
-    $('.chat-box').hide();         // Chat Section 
-     $('#outcome').hide();         // Section 6: Outcome 
-    $('#results').hide();   
+  $('.containerMain').hide();          // Hides main container 
+  $('.containerMain2').hide(); 
+  $('#introduction').hide();          // Section 2: Introduction 
+  $('#player-selection').hide();     // Section 3: Player Selection 
+  $('#category-selection-1').hide(); // Section 4: Category Selection 
+    // $('#category-selection-2').hide(); // Section 4: Category Selection 
+  $('#game-play').hide();         // Section 5: Game Play
+  $("#winner").hide()
+  $('.chat-box').hide();         // Chat Section 
+  $('#outcome').hide();         // Section 6: Outcome 
+  $('#results').hide();   
 
 
  $(document).ready(function() {
@@ -81,7 +81,6 @@ var chosenSquare;
  var convo = database.ref().child('chat');
  var messageField = $('#message');
  var chatLog = $('#chat-log');
- var options = $('#answers');
 
 /*
 ========================================
@@ -221,7 +220,7 @@ $('#submit_invite').on('click', function() {
        player_1_details = $('player-1');
        var player_2_details;
        $('#section-3-player-1').html('<h2>' + playerName + ' You Are Player 1' + '</h2>');
-       $('#section-3-player-1').append('<h2>' + 'You are currently the only player online. Waiting for player 2...' + '</h2>');
+       $('#section-3-player-1').append('<h2>' + 'You are currently the only player online.' + '<br>' + 'Waiting for player 2...' + '</h2>');
        player_1_details.html('PLAYER 1: ' + playerName + ' ');
        player_1 = 1; 
        currentTurn = 1;

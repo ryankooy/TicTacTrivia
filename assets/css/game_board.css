@@ -16,76 +16,119 @@ Game Play layout
 Game Play layout
 ========================================
 */
-body {
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
-    /* min-height: 100vh; */
-    overflow: hidden;
-    padding: 8vh 8vw;
-}
-/* 
-.containerMain {
-    margin: 0 auto;
-    max-width: 1000px;
-    height: 78vh;
-    width: 100%;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    background: grey;
-    position: relative; 
-  } */
-.TTTboard {
-  height: 10vh;
-  width: 10vh;
-  position: relative;
-  background-image: url('../images/button_question.png');
-  background-size: cover; 
-  background-repeat: no-repeat; 
-  z-index: 1;
-}
+
+    .containerMain2 {
+            background:white;
+                border: 2px solid navy;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+                margin: 0 auto;
+             max-width: 62vw;
+                 width: 100%;
+            min-height: 40vh; 
+                height: 78vh;
+               padding: 4vh 4vw; 
+              overflow: scroll; 
+    }
+
+    .row {
+                margin: 0;
+               padding: 0;
+    }
+
+    #game-play {
+         margin-bottom: 4vh; 
+    }
+
+/*
+========================================
+Game Board 
+========================================
+*/
+
+    .board-row {
+               display: table;
+                margin: 0 auto;
+    }
+
+    .TTTboard { /* Tic Tac Trivia Squares */
+      background-image: url('../images/button_question.png');
+     background-repeat: no-repeat; 
+       background-size: cover; 
+                height: 10vh;
+                 width: 10vh;
+              position: relative;  
+               z-index: 1;
+    }
+
+    .player-1-botton {  /* Player 1 Squares */
+      background-image: url('../images/button_player_1.png');
+     background-repeat: no-repeat; 
+       background-size: cover; 
+                height: 10vh;
+                 width: 10vh;
+              position: relative;
+               z-index: 4;
+    }
+
+    .player-2-botton {  /* Player 2 Squares */
+      background-image: url('../images/button_player_2.png');
+     background-repeat: no-repeat; 
+       background-size: cover; 
+                height: 10vh;
+                 width: 10vh;
+              position: relative;
+               z-index: 4;
+    }
+  
+    .container {     /* The container */
+               display: block;
+                cursor: pointer;
+             font-size: 22px;
+         margin-bottom: 12px;
+          padding-left: 35px;
+              position: relative;
+           user-select: none;
+   -webkit-user-select: none;
+      -moz-user-select: none;
+       -ms-user-select: none;
+  
+    }
+/*
+========================================
+Typography 
+========================================
+*/
+    .containerP h2 {
+        margin-bottom: 0; 
+           margin-top: 0; 
+          padding-top: 0;
+    }
+
+    #game-play h1 {
+            font-size: 2rem; 
+              padding: 0; 
+    }
+
+    .status { 
+              display: table; 
+          font-family: 'Roboto', sans-serif;
+          font-weight: bold; 
+               margin: 0 auto; 
+          padding-top: 1vh;
+    }
 
 
-  .row {
-  margin: 0;
-  padding: 0;
-}
+    .active-question-1, .active-question-2 {
+                color: blue; 
+          font-family: 'Roboto', sans-serif;
+            font-size: 1.2rem; 
+          line-height: 1.5;
+       padding-bottom: 1vh; 
+          padding-top: 1vh; 
+           text-align: left;
+    }
 
-
-.player-1-botton {
-  height: 10vh;
-  width: 10vh;
-  position: relative;
-  background-image: url('../images/button_player_1.png');
-  background-size: cover; 
-  background-repeat: no-repeat; 
-  z-index: 10;
-}
-
-.player-2-botton {
-  height: 10vh;
-  width: 10vh;
-  position: relative;
-  background-image: url('../images/button_player_2.png');
-  background-size: cover; 
-  background-repeat: no-repeat; 
-  z-index: 10;
-}
-
-/* The container */
-.container {
-  display: block;
-  position: relative;
-  padding-left: 35px;
-  margin-bottom: 12px;
-  cursor: pointer;
-  font-size: 22px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-
-
-/* Create a custom radio button */
+    #winnerCircle {
+        margin-bottom: 2vh;
+    }
 
