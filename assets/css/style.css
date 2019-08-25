@@ -17,50 +17,36 @@ Main Container
 ========================================
 */
     body {
-        display: flex;
-        background-image: url('../images/backgrounds/static_background.png');
-        background-size: cover;
-        background-repeat: no-repeat;
+      background-image: url('../images/backgrounds/static_background.png');
+       background-size: cover;
+     background-repeat: no-repeat;
+               display: flex;  
         flex-direction: column;
-        margin: 0 auto;
-        min-height: 100vh;
-        overflow: hidden;
-        padding: 8vh 8vw;
+                margin: 0 auto;
+            min-height: 100vh;
+              overflow: hidden;
+               padding: 8vh 8vw;
     }
 
     .containerMain {
-        margin: 0 auto;
-        overflow: scroll; 
-        max-width: 62vw;
-        min-height: 400px; 
-        width: 100%;
-        max-height: 78vh;
-        height: 78vh; 
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-        border: 2px solid navy;
-        background:white;
-        position: absolute; 
-        padding: 40px; 
-        left: 4vw; 
-    }
-    .containerMain2 {
-      margin: 0 auto;
-      max-width: 62vw;
-      min-height: 400px; 
-      width: 100%;
-      height: 78vh;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-      border: 2px solid navy;
-      background:white;
-      padding: 4vh 4vw; 
-      overflow: scroll; 
+            background:white;
+                border: 2px solid navy;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+                height: 78vh; 
+                  left: 4vw; 
+                margin: 0 auto;
+             max-width: 62vw;
+                 width: 100%;
+            max-height: 78vh;
+            min-height: 40vh; 
+              overflow: scroll; 
+               padding: 40px; 
+              position: absolute;
+            
     }
 
-    .row-1 {
-      margin: 0 auto;
-      padding-left: 0 4vw; 
-      height: 5vh; 
-      margin-bottom: 20px; 
+    .container-game, #categorySelect {
+           padding-top: 4vh; 
     }
 
 /*
@@ -70,53 +56,62 @@ Chat Box Styling
 */
 
     .chat-box {
-      margin: 0 auto;
-      max-width: 53vw; 
-      width: 100%; 
-      min-width: 1px; 
-      padding-left: 4vw; 
-      padding-right: 4vw; 
+              margin: 0 auto;
+           max-width: 53vw; 
+           min-width: 1px; 
+               width: 100%;         
+        padding-left: 4vw; 
+       padding-right: 4vw; 
     }
 
     .chat-2 {
-      position: absolute; 
-      bottom: 18vh; 
-      max-width: 53vw; 
-      width: 100%; 
+              bottom: 18vh; 
+           max-width: 53vw;
+               width: 100%;  
+            position: absolute;   
     }
+
     .chat-3 {
-      z-index: 2;
-      position: absolute; 
-      bottom: 18vh; 
-      max-width: 60vw; 
-      width: 100%; 
-      left: 20vw; 
+              bottom: 18vh; 
+                left: 20vw; 
+           max-width: 60vw; 
+               width: 100%; 
+            position: absolute; 
+             z-index: 2;
     }
 
     #chat-log-1 {
-      max-height: 100px;
-      max-width: 53vw; 
-      width: 100%;
-      overflow: scroll;
-      overflow-x: hidden;
-      font-family: 'Roboto', sans-serif;
+         font-family: 'Roboto', sans-serif;
+          max-height: 100px;
+           max-width: 53vw; 
+               width: 100%;
+            overflow: scroll;
+          overflow-x: hidden;  
     }
 
 /*
 ========================================
-Video Background
+Videos
 ========================================
 */
 
-    #myVideo {
-      position: fixed; 
-      right: 0;
-      bottom: 0;
-      min-width: 100%; 
-      min-height: 100%;
-      overflow: hidden;
-      transform: scaleX(-1);
-      z-index: -1;
+    #myVideo { /* Video background */
+             bottom: 0;
+           position: fixed; 
+         min-height: 100%;
+          min-width: 100%; 
+           overflow: hidden;
+              right: 0;
+          transform: scaleX(-1);
+            z-index: -1;
+    }
+
+    #myVideo2 { /* Instructions Video */
+            display: inherit;
+             height: auto;
+             margin: 0 auto; 
+          max-width: 250px;
+              width: 100%;
     }
 
 /*
@@ -125,44 +120,66 @@ Typography
 ========================================
 */
 
-    /* Section 1 - Start Page Typography */
     .start-title {
       background-color: white; 
-      position: absolute; 
-      border: 2px solid navy;
-      height: auto; 
-      max-width: 71vw; 
-      width: 100%;
-      left: 0; 
-      top: 29vh;
-      z-index: 1; 
-      padding: 20px; 
+                border: 2px solid navy;
+                height: auto; 
+                  left: 0; 
+             max-width: 71vw; 
+                 width: 100%;
+               padding: 20px; 
+              position: absolute; 
+                   top: 29vh;
+               z-index: 1; 
     }
 
     h1, h2 {
-      display: table;
-      margin: 0 auto; 
-      text-align: center; 
-      color: black; 
-      padding: 10px;
+                 color: black; 
+               display: table;
+                margin: 0 auto; 
+               padding: 10px;
+            text-align: center; 
     }
     h1 {
-      font-size: 4rem; 
-      font-family: 'Vast Shadow', cursive;
-      color: rgb(14, 14, 51);
+                 color: rgb(14, 14, 51);
+           font-family: 'Vast Shadow', cursive;
+             font-size: 4rem; 
+    }
+
+    #introduction h1 {
+           line-height: 1.5; 
+             font-size: 2rem; 
     }
 
     h2 {
-      font-size: 1.2rem; 
-      font-family: 'Roboto', sans-serif;
-      margin-top: 2vh; 
-      margin-bottom: 2vh; 
-      color: blue;
+                 color: blue;
+           font-family: 'Roboto', sans-serif;
+             font-size: 1.2rem; 
+           line-height: 1.2;
+         margin-bottom: 2vh; 
+            margin-top: 2vh;     
     }
+
     h2:hover {
-      /* color: rgb(14, 14, 51); */
-      text-decoration: underline;
+                 color: rgb(14, 14, 51);
+       text-decoration: underline;    
     }
+
+    h3 {
+                 color: rgb(14, 14, 51);
+           font-weight: bold; 
+           padding-top: 10px; 
+            text-align: left; 
+    }
+
+    input, p, #categorySelect {
+           font-family: 'Roboto', sans-serif;
+    }
+
+    #game-play p {
+           font-family: 'Roboto', sans-serif;
+    }
+
 
 /*
 ========================================
@@ -171,192 +188,108 @@ Buttons
 */
 
     .btn-start {
-      left: 1.5vw; 
-      height: 50px; 
-      font-family: 'Roboto', sans-serif;
-      margin: 0 auto; 
-      border: none; 
-      margin-left: 20px; 
-      margin-right: 20px; 
-      letter-spacing: 1px; 
+               border: none; 
+          font-family: 'Roboto', sans-serif;
+               height: 50px; 
+                 left: 1.5vw; 
+       letter-spacing: 1px;
+               margin: 0 auto; 
+          margin-left: 20px; 
+         margin-right: 20px; 
+   
     }
     .btn-start:hover {
       background-color: rgb(14, 14, 51);
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-      color: white;
-      font-weight: bold; 
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+                 color: white;
+           font-weight: bold; 
     }
 
     .radio-buttons {
-      display: table;
-      text-align: left; 
-      font-family: 'Roboto', sans-serif;
+               display: table;
+           font-family: 'Roboto', sans-serif;
+            text-align: left;   
     }
 
     .btn {
       background-color: rgb(14, 14, 51);
-      font-family: 'Roboto', sans-serif;
-      letter-spacing: 1px; 
-      margin-top: 1vh; 
+           font-family: 'Roboto', sans-serif;
+        letter-spacing: 1px; 
+            margin-top: 1vh; 
     }
-  
 
     #submit-player, #play-now, #play-again {
-      position: relative; 
-      /* bottom: 3vh;  */
-      margin-top: 2vh;
-      left: 0px; 
-      margin: 0 auto;
-      margin-top: 4vh; 
-      font-family: 'Roboto', sans-serif;
-      letter-spacing: 1px; 
+           font-family: 'Roboto', sans-serif;
+                  left: 0px; 
+        letter-spacing: 1px; 
+                margin: 0 auto;
+            margin-top: 2vh;
+              position: relative; 
     }
 
     #invite-friend {
-      border: 1px solid  rgb(14, 14, 51);
-      margin-top: 4vh; 
-      padding: 10px; 
-      font-family: 'Roboto', sans-serif;
-      letter-spacing: 1px; 
-    }
-
-    h3 {
-      text-align: left; 
-      color: rgb(14, 14, 51);
-      font-weight: bold; 
-      padding-top: 10px; 
-    }
-
-    #user-info {
-      margin-top: 10px; 
-    }
-
-    .container-game, #categorySelect {
-      padding-top: 4vh; 
-    }
-
-    textarea {
-      border: none; 
-    }
-
-    input, p, #categorySelect {
-      font-family: 'Roboto', sans-serif;
-    }
-    #game-play p {
-      font-family: 'Roboto', sans-serif;
+                border: 1px solid  rgb(14, 14, 51);
+           font-family: 'Roboto', sans-serif;
+        letter-spacing: 1px; 
+            margin-top: 4vh; 
+               padding: 10px; 
     }
 
 /*
 ========================================
-Buttons 
+Forms 
 ========================================
 */
-    #modal-content-1 {
-      background-image: url('../images/player_1_winner.png');
-      background-size: cover; 
-      background-repeat: no-repeat; 
-      max-width: 500px;
-      width: 500px; 
-      height: auto; 
+
+    #user-info {
+           margin-top: 10px; 
     }
 
-    #modal-content-2 {
-      background-image: url('../images/player_2_winner.png');
-      background-size: cover; 
-      background-repeat: no-repeat; 
-      max-width: 500px;
-      width: 100%; 
-      height: auto; 
+    textarea {
+               border: none; 
     }
 
-    #modal-content-3 {
-      background-image: url('../images/draw_no_winner.png');
-      background-size: cover; 
-      background-repeat: no-repeat; 
-      max-width: 500px;
-      width: 100%; 
-      height: auto; 
-    }
-
-    .modalCustom {
-      color: silver; 
-      background: black; 
-      border: none;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    }
-
-    #winnerCircle {
-      margin-bottom: 2vh;}
-
-    #myVideo2 {
-      max-width: 250px;
-      width: 100%;
-      height: auto;
-      display: inherit;
-      margin: 0 auto; 
-    }
+/*
+========================================
+Instructions 
+========================================
+*/
 
     li {
-      list-style-type: square;
-      line-height: 1.5; 
-      text-align: left;
-      font-size: 1.1rem;
+            font-size: 1.1rem;
+          line-height: 1.5; 
+      list-style-type: square;  
+           text-align: left;
     }
+
     li:hover {
-      border-bottom: 1px solid blue; 
-      font-weight: bold; 
-      color: blue;
+                color: blue;
+        border-bottom: 1px solid blue; 
+          font-weight: bold; 
     }
 
     .instructions {
-      margin-top: 2vh; 
-      margin-bottom: 2vh; 
-    }
-
-    th {
-      font-size: 1.2rem; 
-      font-family: 'Roboto', sans-serif;
-      margin-top: 2vh; 
-      margin-bottom: 2vh; 
-      border-bottom: 1px solid grey;
-      padding-bottom: 2vh;
-    }
-    .containerP h2 {
-      margin-top: 0; 
-      padding-top: 0;
-      margin-bottom: 0; 
-    }
-
-    #game-play {
-      margin-bottom: 4vh; 
-    }
-    #game-play h1 {
-      font-size: 2rem; 
-      padding: 0; 
-    }
-
-    .status { 
-      display: table; 
-      margin: 0 auto; 
-      font-weight: bold; 
-      font-family: 'Roboto', sans-serif;
-      padding-top: 1vh;
-    }
-
-    #introduction h1 {
-      font-size: 2rem; 
-      line-height: 1.5; 
+           margin-top: 2vh; 
+        margin-bottom: 2vh; 
     }
 
     .intro {
-      padding-bottom: 2vh; 
+       padding-bottom: 2vh; 
     }
 
-    .active-question-1, .active-question-2 {
-      font-family: 'Roboto', sans-serif;
-      padding-top: 1vh; 
-      padding-bottom: 1vh; 
-      color: blue; 
-      font-size: 1.2rem; 
+/*
+========================================
+Leader Board
+========================================
+*/
+
+    th {
+      border-bottom: 1px solid grey;
+        font-family: 'Roboto', sans-serif;
+          font-size: 1.2rem;  
+      margin-bottom: 2vh; 
+         margin-top: 2vh; 
+     padding-bottom: 2vh;
     }
+
 
